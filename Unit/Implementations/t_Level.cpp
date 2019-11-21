@@ -39,7 +39,7 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/RigidBody2D.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 namespace KP = KillerPhysics;
 
 /*
@@ -49,7 +49,7 @@ Disabled until gameobject can be smarter
 //==========================================================================================================================
 //Concrete Level
 //==========================================================================================================================
-class TestLevel : public KE::Level
+class TestLevel : public TE::Level
 {
 public:
 	TestLevel(void)
@@ -67,7 +67,7 @@ public:
 	{  }
 };
 
-class TestLevelDefinedGameObject : public KE::GameObject
+class TestLevelDefinedGameObject : public TE::GameObject
 {
 public:
 	TestLevelDefinedGameObject(void)

@@ -40,13 +40,13 @@ Written by Maxwell Miller
 #include <Engine/EngineFactory.h>
 
 namespace KP = KillerPhysics;
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 /*
 
 Disabled until game object can be smarter
 
-class ForcesObject : public KE::GameObject
+class ForcesObject : public TE::GameObject
 {
 public:
 	ForcesObject(void)
@@ -66,13 +66,13 @@ public:
 
 	void SetBody2D(void)
 	{
-		p_body2D = KE::EngineFactory::Instance()->MakeRigidBody2D();
+		p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
 		p_body2D->SetObject(this);
 	}
 
 	void SetBody3D(void)
 	{
-		p_body3D = KE::EngineFactory::Instance()->MakeRigidBody3D();
+		p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
 		p_body3D->SetObject(this);
 	}
 
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(KM::Vector4(-1.0f, 0.0f, 0.0f));
+	gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
 
 	for(int i = 0; i < 50; ++i)
 	{
@@ -134,7 +134,7 @@ BOOST_AUTO_TEST_CASE(GravityForceRigidBody3D)
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(KM::Vector4(-1.0f, 0.0f, 0.0f));
+	gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
 
 	for(int i = 0; i < 50; ++i)
 	{

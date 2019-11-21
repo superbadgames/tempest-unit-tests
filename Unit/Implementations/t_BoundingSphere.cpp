@@ -37,12 +37,12 @@ Written by Maxwell Miller
 #include <Engine/BoundingSphere.h>
 #include <Engine/Point.h>
 
-namespace KC = KillerCollisions;
-namespace KM = KillerMath;
+namespace TC = TempestCollisions;
+namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(BoundingSphereConstructors)
 {
-	KC::BoundingSphere sphere1 { };
+	TC::BoundingSphere sphere1 { };
 
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[0], 0.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[1], 0.0f);
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(BoundingSphereConstructors)
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetRadius(), 0.0f);
 
-	KC::BoundingSphere sphere2 { KM::Point(2.0f, 5.0f, 1.0f), 25.0f };
+	TC::BoundingSphere sphere2 { TM::Point(2.0f, 5.0f, 1.0f), 25.0f };
 
 	BOOST_CHECK_EQUAL(sphere2.GetCenter()[0], 2.0f);
 	BOOST_CHECK_EQUAL(sphere2.GetCenter()[1], 5.0f);
@@ -59,12 +59,12 @@ BOOST_AUTO_TEST_CASE(BoundingSphereConstructors)
 	BOOST_CHECK_EQUAL(sphere2.GetRadius(), 25.0f);
 
 	//Combination test will be more difficult
-	//KC::BoundingSphere sphere3 { KM::Point() }
+	//TC::BoundingSphere sphere3 { TM::Point() }
 }
 
 BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 {
-	KC::BoundingSphere sphere { KM::Point(10.0f, 10.0f, 0.0f), 5.0f };
+	TC::BoundingSphere sphere { TM::Point(10.0f, 10.0f, 0.0f), 5.0f };
 
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 10.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 10.0f);
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere.GetRadius(), 5.0f);
 
-	sphere.SetCenter(KM::Point(35.0f, 1.0f, 2.0f));
+	sphere.SetCenter(TM::Point(35.0f, 1.0f, 2.0f));
 	sphere.SetRadius(2.5f);
 
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 35.0f);
@@ -91,8 +91,8 @@ BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 
 BOOST_AUTO_TEST_CASE(BoundingShereIntersectBoundingSphere)
 {
-	KC::BoundingSphere sphere1 { KM::Point(0.0f, 0.0f, 0.0f), 4.0f };
-	KC::BoundingSphere sphere2 { KM::Point(2.0f, 2.0f, 2.0f), 4.0f };
+	TC::BoundingSphere sphere1 { TM::Point(0.0f, 0.0f, 0.0f), 4.0f };
+	TC::BoundingSphere sphere2 { TM::Point(2.0f, 2.0f, 2.0f), 4.0f };
 
 	BOOST_CHECK_EQUAL(sphere1.TestCollision(sphere2), true);
 	BOOST_CHECK_EQUAL(sphere2.TestCollision(sphere1), true);
@@ -113,19 +113,19 @@ BOOST_AUTO_TEST_CASE(BoudningSphereGetGrowth)
 	//Note, only checking relative sizes, since size prediction is not
 	//really important. 
 
-	KC::BoundingSphere sphere1 { KM::Point(0.0f, 0.0f, 0.0f), 8.0f };
-	KC::BoundingSphere sphere2 { KM::Point(0.0f, 0.0f, 0.0f), 10.0f };
+	TC::BoundingSphere sphere1 { TM::Point(0.0f, 0.0f, 0.0f), 8.0f };
+	TC::BoundingSphere sphere2 { TM::Point(0.0f, 0.0f, 0.0f), 10.0f };
 
 	//Check if the growth from 2 would be bigger than 1 is now. 
 	BOOST_CHECK_GT(sphere1.GetGrowth(sphere2), sphere1.GetRadius());
 
-	KC::BoundingSphere sphere3 { KM::Point(10.0f, 10.0f, 0.0f), 10.0f };
+	TC::BoundingSphere sphere3 { TM::Point(10.0f, 10.0f, 0.0f), 10.0f };
 
 	//Check if 3, a sphere the same size of 2, but in a different place
 	//would have a larger growth, being further away.
 	BOOST_CHECK_GT(sphere1.GetGrowth(sphere3), sphere1.GetGrowth(sphere2));
 
-	KC::BoundingSphere sphere4 { KM::Point(5.0f, 5.0f, 0.0f), 2.0f };
+	TC::BoundingSphere sphere4 { TM::Point(5.0f, 5.0f, 0.0f), 2.0f };
 	
 	//Check if a smaller, but further away sphere would have less growth
 	//than a bigger, but closer sphere. 

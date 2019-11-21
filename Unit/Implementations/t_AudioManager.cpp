@@ -57,71 +57,71 @@ Written by Maxwell Miller
 #include <Engine/AudioClip.h>
 #include <Engine/AudioSource.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 {
-	shared_ptr<KE::AudioListener> listener = make_shared<KE::AudioListener>();
+	shared_ptr<TE::AudioListener> listener = make_shared<TE::AudioListener>();
 
-	KE::AudioManager::Instance()->SetListener(listener);
+	TE::AudioManager::Instance()->SetListener(listener);
 
-	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
 	clip->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
 
-	KE::AudioManager::Instance()->AddClip(1, clip);
+	TE::AudioManager::Instance()->AddClip(1, clip);
 
-	shared_ptr<KE::AudioClip> clip2 = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> clip2 = make_shared<TE::AudioClip>();
 	clip2->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 
-	shared_ptr<KE::AudioSource> source = make_shared<KE::AudioSource>();
+	shared_ptr<TE::AudioSource> source = make_shared<TE::AudioSource>();
 	source->AddClip(clip2);
 
-	KE::AudioManager::Instance()->AddSource(1, source);
-	KE::AudioManager::Instance()->AddClip(2, clip2);
+	TE::AudioManager::Instance()->AddSource(1, source);
+	TE::AudioManager::Instance()->AddClip(2, clip2);
 
-	shared_ptr<KE::AudioSource> source2 = make_shared<KE::AudioSource>();
+	shared_ptr<TE::AudioSource> source2 = make_shared<TE::AudioSource>();
 
-	KE::AudioManager::Instance()->AddSource(2, source2);
+	TE::AudioManager::Instance()->AddSource(2, source2);
 
-	KE::AudioManager::Instance()->AddClipToSource(2, 2);
+	TE::AudioManager::Instance()->AddClipToSource(2, 2);
 
 	//Check that sources and clips have been added correctly. 
 	//Assuming that not nullptr is enough to know its ok. 
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetListener(), nullptr);
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetClip(1), nullptr);
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(1), nullptr);
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(2)->GetClip(), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(1), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(1), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(2)->GetClip(), nullptr);
 
 	//Check that we can remove clips and sources
-	KE::AudioManager::Instance()->RemoveClip(1);
-	KE::AudioManager::Instance()->RemoveSource(1);
+	TE::AudioManager::Instance()->RemoveClip(1);
+	TE::AudioManager::Instance()->RemoveSource(1);
 
-	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetClip(1), nullptr);
-	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetSource(1), nullptr);
+	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetClip(1), nullptr);
+	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetSource(1), nullptr);
 
 	//Check that load clip is working
-	KE::AudioManager::Instance()->LoadClip(3, "../Assets/Audio/Komiku_04_Skate.wav");
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetClip(3), nullptr);
+	TE::AudioManager::Instance()->LoadClip(3, "../Assets/Audio/Komiku_04_Skate.wav");
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(3), nullptr);
 
-	shared_ptr<KE::AudioSource> source3 = make_shared<KE::AudioSource>();
-	KE::AudioManager::Instance()->AddSource(3, source);
+	shared_ptr<TE::AudioSource> source3 = make_shared<TE::AudioSource>();
+	TE::AudioManager::Instance()->AddSource(3, source);
 
-	KE::AudioManager::Instance()->AddClipToSource(3, 3);
+	TE::AudioManager::Instance()->AddClipToSource(3, 3);
 
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(3), nullptr);
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(3)->GetClip(), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3), nullptr);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3)->GetClip(), nullptr);
 
 	//Check for SetListener(void)
 	//First, unset the listener. Then call SetListener(void)
-	KE::AudioManager::Instance()->SetListener(nullptr);
-	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetListener(), nullptr);
+	TE::AudioManager::Instance()->SetListener(nullptr);
+	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetListener(), nullptr);
 
-	KE::AudioManager::Instance()->SetListener();
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetListener(), nullptr);
+	TE::AudioManager::Instance()->SetListener();
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
 
 	//Test Load Source
-	KE::AudioManager::Instance()->LoadSource(4);
-	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(4), nullptr);
+	TE::AudioManager::Instance()->LoadSource(4);
+	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(4), nullptr);
 }
 
 */

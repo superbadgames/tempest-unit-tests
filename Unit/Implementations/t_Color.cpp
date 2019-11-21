@@ -39,11 +39,11 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Color.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(ColorDefaultConstructorAndAccessors)
 {
-	KE::Color c {};
+	TE::Color c {};
 
 	BOOST_CHECK_EQUAL(c[0], 0.0f);
 	BOOST_CHECK_EQUAL(c[1], 0.0f);
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE(ColorDefaultConstructorAndAccessors)
 
 BOOST_AUTO_TEST_CASE(ColorSingleVersionConstructor)
 {
-	KE::Color c {1.0f};
+	TE::Color c {1.0f};
 
 	BOOST_CHECK_EQUAL(c[0], 1.0f);
 	BOOST_CHECK_EQUAL(c[1], 1.0f);
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE(ColorSingleVersionConstructor)
 
 BOOST_AUTO_TEST_CASE(ColorTripleVersionConstructor)
 {
-	KE::Color c {0.25f, 0.5f, 0.75f};
+	TE::Color c {0.25f, 0.5f, 0.75f};
 
 	BOOST_CHECK_EQUAL(c[0], 0.25f);
 	BOOST_CHECK_EQUAL(c[1], 0.5f);
@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE(ColorTripleVersionConstructor)
 
 BOOST_AUTO_TEST_CASE(ColorQuadVersionConstructor)
 {
-	KE::Color c {0.25f, 0.5f, 0.75f, 0.0f};
+	TE::Color c {0.25f, 0.5f, 0.75f, 0.0f};
 
 	BOOST_CHECK_EQUAL(c[0], 0.25f);
 	BOOST_CHECK_EQUAL(c[1], 0.5f);
@@ -83,9 +83,9 @@ BOOST_AUTO_TEST_CASE(ColorQuadVersionConstructor)
 
 BOOST_AUTO_TEST_CASE(ColorCopyConstructor)
 {
-	KE::Color col1 {0.30f, 0.66f, 0.90f, 0.1f};
+	TE::Color col1 {0.30f, 0.66f, 0.90f, 0.1f};
 
-	KE::Color col2(col1);
+	TE::Color col2(col1);
 
 	BOOST_CHECK_EQUAL(col2[0], 0.30f);
 	BOOST_CHECK_EQUAL(col2[1], 0.66f);
@@ -95,9 +95,9 @@ BOOST_AUTO_TEST_CASE(ColorCopyConstructor)
 
 BOOST_AUTO_TEST_CASE(ColorCopyOperator)
 {
-	KE::Color col1 {0.35f, 0.8f, 0.2f, 0.3f};
+	TE::Color col1 {0.35f, 0.8f, 0.2f, 0.3f};
 
-	KE::Color col2 = col1;
+	TE::Color col2 = col1;
 
 	BOOST_CHECK_EQUAL(col2[0], 0.35f);
 	BOOST_CHECK_EQUAL(col2[1], 0.8f);

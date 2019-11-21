@@ -37,18 +37,18 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/AudioClip.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioClipConstructor)
 {
-	KE::AudioClip clip {};
+	TE::AudioClip clip {};
 
 	BOOST_CHECK_EQUAL(clip.GetBufferID(), 0);
 }
 
 BOOST_AUTO_TEST_CASE(AudioClipLoadWAV)
 {
-	KE::AudioClip clip {};
+	TE::AudioClip clip {};
 
 	clip.LoadWAV2("../Assets/Audio/Komiku_04_Skate.wav");
 

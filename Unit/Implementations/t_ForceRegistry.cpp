@@ -41,13 +41,13 @@ Written by Maxwell Miller
 #include <Engine/PhysicsFactory.h>
 
 namespace KP = KillerPhysics;
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 /*
 
 Disabled until game object can be smarter
 
-class ForceRegObject : public KE::GameObject
+class ForceRegObject : public TE::GameObject
 {
 public:
 	ForceRegObject(void)
@@ -67,13 +67,13 @@ public:
 
 	void SetBody2D(void)
 	{
-		p_body2D = KE::EngineFactory::Instance()->MakeRigidBody2D();
+		p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
 		p_body2D->SetObject(this);
 	}
 
 	void SetBody3D(void)
 	{
-		p_body3D = KE::EngineFactory::Instance()->MakeRigidBody3D();
+		p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
 		p_body3D->SetObject(this);
 	}
 

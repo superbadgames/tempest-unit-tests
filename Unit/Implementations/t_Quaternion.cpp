@@ -45,11 +45,11 @@ Written by Maxwell Miller
 #include <string.h>
 #include <stdlib.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(QuaternionDefaultConstructor)
 {
-	KM::Quaternion Q{};
+	TM::Quaternion Q{};
 
 	const real* elems = Q.GetElems();
 
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(QuaternionDefaultConstructor)
 
 BOOST_AUTO_TEST_CASE(QuaternionSingleValueConstructor)
 {
-	KM::Quaternion Q{1.0f};
+	TM::Quaternion Q{1.0f};
 
 	const real* elems = Q.GetElems();
 
@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE(QuaternionSingleValueConstructor)
 
 BOOST_AUTO_TEST_CASE(QuaternionMultiValueConstructor)
 {
-	KM::Quaternion Q{0.0f, 1.0f, 2.0f, 3.0f};
+	TM::Quaternion Q{0.0f, 1.0f, 2.0f, 3.0f};
 
 	const real* elems = Q.GetElems();
 
@@ -85,8 +85,8 @@ BOOST_AUTO_TEST_CASE(QuaternionMultiValueConstructor)
 
 BOOST_AUTO_TEST_CASE(QuaternionCopyConstructor)
 {
-	KM::Quaternion Q1{1.0f, 4.0f, 2.0f, 0.004f};
-	KM::Quaternion Q2 = Q1;
+	TM::Quaternion Q1{1.0f, 4.0f, 2.0f, 0.004f};
+	TM::Quaternion Q2 = Q1;
 
 	const real* elems = Q2.GetElems();
 
@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE(QuaternionCopyConstructor)
 
 BOOST_AUTO_TEST_CASE(QuaternionGetters)
 {
-	KM::Quaternion Q{3.0f, 2.0f, 100.0f, 0.0534f};
+	TM::Quaternion Q{3.0f, 2.0f, 100.0f, 0.0534f};
 
 	BOOST_CHECK_EQUAL(Q[0], 3.0f);
 	BOOST_CHECK_EQUAL(Q[1], 2.0f);
@@ -108,20 +108,20 @@ BOOST_AUTO_TEST_CASE(QuaternionGetters)
 
 BOOST_AUTO_TEST_CASE(QuaternionMagnitude)
 {
-	KM::Quaternion Q{0.5f, 10.0f, 20.0f, 30.0f};
+	TM::Quaternion Q{0.5f, 10.0f, 20.0f, 30.0f};
 
 	BOOST_CHECK_EQUAL(RoundReal(Q.Magnitude()), RoundReal(37.41992f));
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionConjugate)
 {
-	KM::Quaternion Q1{1.0f, 3.0f, 5.0f, 2.0f};
+	TM::Quaternion Q1{1.0f, 3.0f, 5.0f, 2.0f};
 
-	KM::Quaternion Q2{-3.04f, 0.9435f, -0.8443f, -3.043234f};
+	TM::Quaternion Q2{-3.04f, 0.9435f, -0.8443f, -3.043234f};
 
-	KM::Quaternion Q3 = Q1.Conjugate();
+	TM::Quaternion Q3 = Q1.Conjugate();
 
-	KM::Quaternion Q4 = Q2.Conjugate();
+	TM::Quaternion Q4 = Q2.Conjugate();
 
 	BOOST_CHECK_EQUAL(Q3[0], 1.0f);
 	BOOST_CHECK_EQUAL(Q3[1], -3.0f);
@@ -136,9 +136,9 @@ BOOST_AUTO_TEST_CASE(QuaternionConjugate)
 
 BOOST_AUTO_TEST_CASE(QuaternionInverse)
 {
-	KM::Quaternion Q1{1.0f, 6.0f, 8.0f, 12.0f};
+	TM::Quaternion Q1{1.0f, 6.0f, 8.0f, 12.0f};
 
-	KM::Quaternion Q2 = Q1.Inverse();
+	TM::Quaternion Q2 = Q1.Inverse();
 
 	BOOST_CHECK_EQUAL(RoundReal(Q2[0]), RoundReal(0.06389f));
 	BOOST_CHECK_EQUAL(RoundReal(Q2[1]), RoundReal(-0.38333f));
@@ -148,11 +148,11 @@ BOOST_AUTO_TEST_CASE(QuaternionInverse)
 
 BOOST_AUTO_TEST_CASE(QuaternionDivideByScalar)
 {
-	KM::Quaternion Q1{2.0f, 4.0f, 6.0f, 8.0f};
+	TM::Quaternion Q1{2.0f, 4.0f, 6.0f, 8.0f};
 
 	Q1 = Q1 / 2.0f;
 
-	KM::Quaternion Q2{3.0f, 6.0f, 9.0f, 12.0f};
+	TM::Quaternion Q2{3.0f, 6.0f, 9.0f, 12.0f};
 
 	Q2 /= 3.0f;
 
@@ -169,11 +169,11 @@ BOOST_AUTO_TEST_CASE(QuaternionDivideByScalar)
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByScalar)
 {
-	KM::Quaternion Q1{4.0f, 2.0f, 6.0f, 9.0f};
+	TM::Quaternion Q1{4.0f, 2.0f, 6.0f, 9.0f};
 
 	Q1 = Q1 * 5.0f;
 
-	KM::Quaternion Q2{8.0f, 3.0f, 0.0f, 2.0f};
+	TM::Quaternion Q2{8.0f, 3.0f, 0.0f, 2.0f};
 
 	Q2 *= 14.0f;
 
@@ -190,13 +190,13 @@ BOOST_AUTO_TEST_CASE(QuaternionMultipliedByScalar)
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByQuaternion)
 {
-	KM::Quaternion Q1{5.0f, 3.0f, 8.0f, 6.0f};
+	TM::Quaternion Q1{5.0f, 3.0f, 8.0f, 6.0f};
 
-	KM::Quaternion Q2{6.0f, 12.0f, 1.0f, 5.0f};
+	TM::Quaternion Q2{6.0f, 12.0f, 1.0f, 5.0f};
 
-	KM::Quaternion Q3 = Q1 * Q2;
+	TM::Quaternion Q3 = Q1 * Q2;
 
-	KM::Quaternion Q4{5.0f, 3.0f, 8.0f, 6.0f};
+	TM::Quaternion Q4{5.0f, 3.0f, 8.0f, 6.0f};
 
 	Q4 *= Q2;
 
@@ -213,11 +213,11 @@ BOOST_AUTO_TEST_CASE(QuaternionMultipliedByQuaternion)
 
 BOOST_AUTO_TEST_CASE(QuaternionDifference)
 {
-	KM::Quaternion Q1{1.0f, 2.0f, 3.0f, 2.0f};
+	TM::Quaternion Q1{1.0f, 2.0f, 3.0f, 2.0f};
 
-	KM::Quaternion Q2{1.0f, 3.0f, 2.0f, 3.0f};
+	TM::Quaternion Q2{1.0f, 3.0f, 2.0f, 3.0f};
 
-	KM::Quaternion Q3 = Q1.Difference(Q2);
+	TM::Quaternion Q3 = Q1.Difference(Q2);
 
 	BOOST_CHECK_EQUAL(RoundReal(Q3[0]), 4.47834f);
 	BOOST_CHECK_EQUAL(RoundReal(Q3[1]), 1.41421f);
@@ -227,9 +227,9 @@ BOOST_AUTO_TEST_CASE(QuaternionDifference)
 
 BOOST_AUTO_TEST_CASE(QuaternionDot)
 {
-	KM::Quaternion Q1{6.0f, 4.0f, 12.0f, 0.0f};
+	TM::Quaternion Q1{6.0f, 4.0f, 12.0f, 0.0f};
 
-	KM::Quaternion Q2{1.0f, 6.0f, 8.0f, 3.0f};
+	TM::Quaternion Q2{1.0f, 6.0f, 8.0f, 3.0f};
 
 	real dot = Q1.Dot(Q2);
 
@@ -238,13 +238,13 @@ BOOST_AUTO_TEST_CASE(QuaternionDot)
 
 BOOST_AUTO_TEST_CASE(QuaternionNegationAndOpposite)
 {
-	KM::Quaternion Q1{2.0f, -3.0f, 4.0f, -5.0f};
+	TM::Quaternion Q1{2.0f, -3.0f, 4.0f, -5.0f};
 
 	Q1.Negate();
 
-	KM::Quaternion Q2{-3.0f, 2.0f, -3.0f, -5.0f};
+	TM::Quaternion Q2{-3.0f, 2.0f, -3.0f, -5.0f};
 
-	KM::Quaternion Q3 = Q2.Opposite();
+	TM::Quaternion Q3 = Q2.Opposite();
 
 	BOOST_CHECK_EQUAL(RoundReal(Q1[0]), -2.0f);
 	BOOST_CHECK_EQUAL(RoundReal(Q1[1]), 3.0f);
@@ -259,7 +259,7 @@ BOOST_AUTO_TEST_CASE(QuaternionNegationAndOpposite)
 
 BOOST_AUTO_TEST_CASE(QuaternionNormalization)
 {
-	KM::Quaternion Q1{4.0f, 2.0f, 6.0f, 2.0f};
+	TM::Quaternion Q1{4.0f, 2.0f, 6.0f, 2.0f};
 
 	Q1.Normalize();
 
@@ -268,8 +268,8 @@ BOOST_AUTO_TEST_CASE(QuaternionNormalization)
 
 BOOST_AUTO_TEST_CASE(QuaternionAddScaledQuaternion)
 {
-	KM::Quaternion Q1{1.0f, 2.0f, 3.0f, 4.0f};
-	KM::Vector4 vec{1.0f, 1.0f, 1.0f, 1.0f};
+	TM::Quaternion Q1{1.0f, 2.0f, 3.0f, 4.0f};
+	TM::Vector4 vec{1.0f, 1.0f, 1.0f, 1.0f};
 
 	Q1.AddScaledVector(vec, 5.0f);
 

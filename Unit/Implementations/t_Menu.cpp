@@ -38,14 +38,14 @@ Written by Maxwell Miller
 #include <Engine/Point.h>
 #include <Engine/Text.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 /*
 
 Disabled until gameobject can be smarter
 
-class MenuSelector : public KE::GameObject
+class MenuSelector : public TE::GameObject
 {
 public:
 	MenuSelector(void)
@@ -60,19 +60,19 @@ public:
 
 BOOST_AUTO_TEST_CASE(MenuConstructorAndAccessors)
 {
-	KE::Menu menu{ };
+	TE::Menu menu{ };
 
-	menu.SetPosition(KM::Point(50.0f, 100.0f));
+	menu.SetPosition(TM::Point(50.0f, 100.0f));
 
 	BOOST_CHECK_EQUAL(menu.GetPosition()[x], 50.0f);
 	BOOST_CHECK_EQUAL(menu.GetPosition()[y], 100.0f);
 
-	menu.SetItemOffset(KM::Point(0.0f, 25.0f));
+	menu.SetItemOffset(TM::Point(0.0f, 25.0f));
 	
 	BOOST_CHECK_EQUAL(menu.GetItemOffset()[x], 0.0f);
 	BOOST_CHECK_EQUAL(menu.GetItemOffset()[y], 25.0f);	
 
-	menu.SetTitleOffset(KM::Point(0.0f, 50.0f));
+	menu.SetTitleOffset(TM::Point(0.0f, 50.0f));
 
 	BOOST_CHECK_EQUAL(menu.GetTitleOffset()[x], 0.0f);
 	BOOST_CHECK_EQUAL(menu.GetTitleOffset()[y], 50.0f);
@@ -87,26 +87,26 @@ void MenuItem1Action(void)
 
 BOOST_AUTO_TEST_CASE(MenuItemAddRemove)
 {
-	KE::Menu menu { };
+	TE::Menu menu { };
 
 	menu.SetPosition(0.0f, -100.0f);
 	menu.SetItemOffset(10.0f, -25.0f);
 	menu.SetSelectorOffset(-10.0f, 0.0f);
 	
-	KE::MenuItem item1 { };
-	item1.text = shared_ptr<KE::Text>(new KE::Text("Item1"));
+	TE::MenuItem item1 { };
+	item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
 
 	//Test that items are added and positions are correct.
 	menu.AddItem(item1);
 
 	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
 
-	KE::MenuItem item2 { };
-	item2.text = shared_ptr<KE::Text>(new KE::Text("Item2"));
+	TE::MenuItem item2 { };
+	item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
 
 	menu.AddItem(item2);
 
-	std::vector<KE::MenuItem> list = menu.GetItemList();
+	std::vector<TE::MenuItem> list = menu.GetItemList();
 
 	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
 
@@ -141,19 +141,19 @@ BOOST_AUTO_TEST_CASE(MenuItemAddRemove)
 
 BOOST_AUTO_TEST_CASE(MenuItemSelector)
 {
-	KE::Menu menu { };
+	TE::Menu menu { };
 
 	menu.SetPosition(0.0f, -100.0f);
 	menu.SetItemOffset(0.0f, -25.0f);
 	menu.SetTitleOffset(0.0f, -50.0f);
 	menu.SetSelectorOffset(-10.0f, 0.0f);
 	
-	KE::MenuItem item1 { };
-	item1.text = shared_ptr<KE::Text>(new KE::Text("Item1"));
+	TE::MenuItem item1 { };
+	item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
 	item1.Action = &MenuItem1Action;
 
-	KE::MenuItem item2 { };
-	item2.text = shared_ptr<KE::Text>(new KE::Text("Item2"));
+	TE::MenuItem item2 { };
+	item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
 
 	menu.AddItem(item1);
 	menu.AddItem(item2);

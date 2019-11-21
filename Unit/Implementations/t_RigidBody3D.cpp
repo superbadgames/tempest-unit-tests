@@ -40,12 +40,12 @@ Written by Maxwell Miller
 #include <Engine/EngineFactory.h>
 #include <Engine/ErrorManager.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 namespace KP = KillerPhysics;
 
 
-class Object3D : public KE::GameObject
+class Object3D : public TE::GameObject
 {
 public:
 	Object3D(void)
@@ -64,7 +64,7 @@ public:
 
 	void SetBody(void)
 	{
-		p_body = KE::EngineFactory::Instance()->MakeRigidBody3D();
+		p_body = TE::EngineFactory::Instance()->MakeRigidBody3D();
 		p_body->SetObject(this);
 	}
 
@@ -75,9 +75,9 @@ void IntegrateNTimes(Object3D& obj, S32 n)
 {
 	for(S32 i = 0; i < n; ++i)
 	{
-		KM::Timer::Instance()->Update();
+		TM::Timer::Instance()->Update();
 		obj.p_body->Integrate();
-		KE::ErrorManager::Instance()->DisplayErrors();
+		TE::ErrorManager::Instance()->DisplayErrors();
 	}
 }
 

@@ -41,18 +41,18 @@ Written by Maxwell Miller
 
 #include <iostream>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(TimerDeltaAndTotalTimeUpdates)
 {
-	real startDelta = KM::Timer::Instance()->DeltaTime();
-	F64 startTotal = KM::Timer::Instance()->TotalTime();
+	real startDelta = TM::Timer::Instance()->DeltaTime();
+	F64 startTotal = TM::Timer::Instance()->TotalTime();
 
 	for(int i = 0; i < 100000; ++i)
 	{
-		KM::Timer::Instance()->Update();
+		TM::Timer::Instance()->Update();
 	}
 
-	BOOST_CHECK_GT(KM::Timer::Instance()->DeltaTime(), 0.0);
-	BOOST_CHECK_GT(KM::Timer::Instance()->TotalTime(), startTotal);
+	BOOST_CHECK_GT(TM::Timer::Instance()->DeltaTime(), 0.0);
+	BOOST_CHECK_GT(TM::Timer::Instance()->TotalTime(), startTotal);
 }

@@ -43,12 +43,12 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 
 BOOST_AUTO_TEST_CASE(RandomInt_tests)
 {
-	KM::Random gen { };
+	TM::Random gen { };
 
 	S32 a = gen.RandomInt(0, 1000);
 	BOOST_CHECK_GE(a, 0);
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(RandomInt_tests)
 
 BOOST_AUTO_TEST_CASE(RandomLong_tests)
 {
-	KM::Random gen { };
+	TM::Random gen { };
 
 	S64 a = gen.RandomLong(0, 200);
 	BOOST_CHECK_GE(a, 0);
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE(RandomLong_tests)
 
 BOOST_AUTO_TEST_CASE(RandomFloat_tests)
 {
-	KM::Random gen { };
+	TM::Random gen { };
 
 	F32 a = gen.RandomFloat(-10.0f, 10.0f);
 	BOOST_CHECK_GE(a, -10.0f);
@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE(RandomFloat_tests)
 
 BOOST_AUTO_TEST_CASE(RandomDouble_tests)
 {
-	KM::Random gen { };
+	TM::Random gen { };
 
 	F64 a = gen.RandomDouble(-10.0f, 10.0f);
 	BOOST_CHECK_GE(a, -10.0f);
@@ -124,21 +124,21 @@ BOOST_AUTO_TEST_CASE(RandomDouble_tests)
 
 BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 {
-	KM::Vector4 a = KM::Random::Instance()->RandomVector4(0.0f, 1.0f, true);
+	TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f, true);
 
 	BOOST_CHECK_GE(a[0], 0.0f);
 	BOOST_CHECK_LE(a[0], 1.0f);
 	BOOST_CHECK_GE(a[1], 0.0f);
 	BOOST_CHECK_LE(a[1], 1.0f);
 
-	a = KM::Random::Instance()->RandomVector4(10.0f, 100.0f, true);
+	a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f, true);
 
 	BOOST_CHECK_GE(a[0], 10.0f);
 	BOOST_CHECK_LE(a[0], 100.0f);
 	BOOST_CHECK_GE(a[1], 10.0f);
 	BOOST_CHECK_LE(a[1], 100.0f);
 
-	KM::Vector4 b = KM::Random::Instance()->RandomVector4(0.0f, 1.0f);
+	TM::Vector4 b = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
 	BOOST_CHECK_GE(b[0], 0.0f);
 	BOOST_CHECK_LE(b[0], 1.0f);
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 	BOOST_CHECK_GE(b[2], 0.0f);
 	BOOST_CHECK_LE(b[2], 1.0f);
 
-	b = KM::Random::Instance()->RandomVector4(10.0f, 100.0f);
+	b = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
 	BOOST_CHECK_GE(b[0], 10.0f);
 	BOOST_CHECK_LE(b[0], 100.0f);
@@ -159,7 +159,7 @@ BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 
 BOOST_AUTO_TEST_CASE(RandomQuaternion_tests)
 {
-	KM::Quaternion a = KM::Random::Instance()->RandomQuaternion(0.0f, 1.0f);
+	TM::Quaternion a = TM::Random::Instance()->RandomQuaternion(0.0f, 1.0f);
 
 	BOOST_CHECK_GE(a[0], 0.0f);
 	BOOST_CHECK_LE(a[0], 1.0f);
@@ -170,7 +170,7 @@ BOOST_AUTO_TEST_CASE(RandomQuaternion_tests)
 	BOOST_CHECK_GE(a[0], 0.0f);
 	BOOST_CHECK_LE(a[0], 1.0f);
 
-	a = KM::Random::Instance()->RandomQuaternion(10.0f, 100.0f);
+	a = TM::Random::Instance()->RandomQuaternion(10.0f, 100.0f);
 
 	BOOST_CHECK_GE(a[0], 10.0f);
 	BOOST_CHECK_LE(a[0], 100.0f);

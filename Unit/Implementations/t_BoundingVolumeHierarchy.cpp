@@ -40,13 +40,13 @@ Written by Maxwell Miller
 #include <Engine/Point.h>
 #include <Engine/BoundingSphere.h>
 
-namespace KC = KillerCollisions;
+namespace TC = TempestCollisions;
 namespace KP = KillerPhysics;
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(BVH_Constructor)
 {
-	KC::Node<KC::BoundingSphere, KP::RigidBody2D> node;
+	TC::Node<TC::BoundingSphere, KP::RigidBody2D> node;
 
 	BOOST_CHECK_EQUAL(node.IsLeaf(), false);
 }

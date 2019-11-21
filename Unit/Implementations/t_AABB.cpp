@@ -37,12 +37,12 @@ Written by Maxwell Miller
 #include <Engine/AABB.h>
 #include <Engine/Point.h>
 
-namespace KC = KillerCollisions;
-namespace KM = KillerMath;
+namespace TC = TempestCollisions;
+namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(AABBConstructors)
 {
-	KC::AABB box {  };
+	TC::AABB box {  };
 
 	BOOST_CHECK_EQUAL(box.GetCenter()[0], 0.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[1], 0.0f);
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(AABBConstructors)
 	BOOST_CHECK_EQUAL(box.GetHeight(), 0.0f);
 	BOOST_CHECK_EQUAL(box.GetDepth(), 0.0f);
 
-	KC::AABB box2 { KM::Point(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
+	TC::AABB box2 { TM::Point(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
 
 	BOOST_CHECK_EQUAL(box2.GetCenter()[0], 4.0f);
 	BOOST_CHECK_EQUAL(box2.GetCenter()[1], 53.0f);
@@ -68,9 +68,9 @@ BOOST_AUTO_TEST_CASE(AABBConstructors)
 
 BOOST_AUTO_TEST_CASE(AABBAccessors)
 {
-	KC::AABB box { };
+	TC::AABB box { };
 	
-	box.SetCenter(KM::Point(2.0f, 5.0f, 3.0f));
+	box.SetCenter(TM::Point(2.0f, 5.0f, 3.0f));
 
 	BOOST_CHECK_EQUAL(box.GetCenter()[0], 2.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[1], 5.0f);
@@ -128,8 +128,8 @@ BOOST_AUTO_TEST_CASE(AABBAccessors)
 
 BOOST_AUTO_TEST_CASE(AABBIntersectAABBTest)
 {
-	KC::AABB box1 { KM::Point(0.0f, 0.0f, 0.0f), 4.0f, 4.0f, 4.0f };
-	KC::AABB box2 { KM::Point(3.0f, 3.0f, 0.0f), 4.0f, 4.0f, 4.0f };
+	TC::AABB box1 { TM::Point(0.0f, 0.0f, 0.0f), 4.0f, 4.0f, 4.0f };
+	TC::AABB box2 { TM::Point(3.0f, 3.0f, 0.0f), 4.0f, 4.0f, 4.0f };
 
 	BOOST_CHECK_EQUAL(box1.TestCollision(box2), true);
 	BOOST_CHECK_EQUAL(box2.TestCollision(box1), true);

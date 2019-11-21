@@ -46,8 +46,8 @@ Written by Maxwell Miller
 
 #include <memory>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 //==========================================================================================================================
 //GameObject Class Creation
@@ -56,7 +56,7 @@ namespace KM = KillerMath;
 
 Disabling for now. Any test that relies on opengl needs to be worked out. 
 
-class DefinedObject : public KE::GameObject
+class DefinedObject : public TE::GameObject
 {
 public:
 	DefinedObject(void) 

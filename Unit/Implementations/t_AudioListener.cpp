@@ -37,11 +37,11 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/AudioListener.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioListnerConstructor)
 {
-	KE::AudioListener listener { };
+	TE::AudioListener listener { };
 
 	const F32* orientation = listener.GetOrientation();
 
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(AudioListnerConstructor)
 
 BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
 {
-	KE::AudioListener listener { };
+	TE::AudioListener listener { };
 
 	//Orientation
 	F32 newOrientation[6] = { 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f };

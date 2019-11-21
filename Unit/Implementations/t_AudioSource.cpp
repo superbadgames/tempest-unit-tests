@@ -38,12 +38,12 @@ Written by Maxwell Miller
 #include <Engine/AudioSource.h>
 #include <Engine/AudioClip.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 
 BOOST_AUTO_TEST_CASE(AudioSourceConstructor)
 {
-	KE::AudioSource source { };
+	TE::AudioSource source { };
 
 	BOOST_CHECK_EQUAL(source.GetPlaying(), false);
 	BOOST_CHECK_EQUAL(source.GetLooping(), false);
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(AudioSourceConstructor)
 
 BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
 {
-	KE::AudioSource source { };
+	TE::AudioSource source { };
 
 	//Looping
 	source.SetLooping(true);
@@ -131,9 +131,9 @@ BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
 BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
 {
 
-	KE::AudioSource source { };
+	TE::AudioSource source { };
 
-	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
 
 	clip->LoadWAV2("../Assets/Audio/Komiku_04_Skate.wav");
 
@@ -141,7 +141,7 @@ BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
 	
 	source.AddClip(clip);
 
-	shared_ptr<KE::AudioClip> clipCopy = source.GetClip();
+	shared_ptr<TE::AudioClip> clipCopy = source.GetClip();
 
 	BOOST_CHECK_NE(clipCopy, nullptr);
 	BOOST_CHECK_GT(static_cast<S32>(clipCopy->GetBufferID()), 1);
