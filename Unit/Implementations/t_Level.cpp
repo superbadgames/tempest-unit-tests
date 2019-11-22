@@ -40,7 +40,7 @@ Written by Maxwell Miller
 #include <Engine/RigidBody2D.h>
 
 namespace TE = Tempest;
-namespace KP = KillerPhysics;
+namespace TP =TempestPhysics;
 
 /*
 
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(LevelAddAndRemoveObjects)
 	already spent too much time trying to get this to work. Calling it for now, since this is an
 	issue in the unit test framework, not the code itself.
 
-	shared_ptr<KP::RigidBody2D> RigidBody2D { new KP::RigidBody2D() };
+	shared_ptr<TP::RigidBody2D> RigidBody2D { new TP::RigidBody2D() };
 
 	U32 RigidBody2DID = RigidBody2D->GetID();
 

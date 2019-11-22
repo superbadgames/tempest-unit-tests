@@ -41,12 +41,12 @@ Written by Maxwell Miller
 #include <Engine/BoundingSphere.h>
 
 namespace TC = TempestCollisions;
-namespace KP = KillerPhysics;
+namespace TP =TempestPhysics;
 namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(BVH_Constructor)
 {
-	TC::Node<TC::BoundingSphere, KP::RigidBody2D> node;
+	TC::Node<TC::BoundingSphere, TP::RigidBody2D> node;
 
 	BOOST_CHECK_EQUAL(node.IsLeaf(), false);
 }

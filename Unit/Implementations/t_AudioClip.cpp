@@ -37,6 +37,9 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/AudioClip.h>
 
+#include <iostream>
+#include <Windows.h>
+
 namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioClipConstructor)
@@ -49,8 +52,8 @@ BOOST_AUTO_TEST_CASE(AudioClipConstructor)
 BOOST_AUTO_TEST_CASE(AudioClipLoadWAV)
 {
 	TE::AudioClip clip {};
-
-	clip.LoadWAV2("../Assets/Audio/Komiku_04_Skate.wav");
+	
+	clip.LoadWAV2("./Assets/Komiku_04_Skate.wav");
 
 	BOOST_CHECK_GT(static_cast<S32>(clip.GetBufferID()), 1);
 }

@@ -42,7 +42,7 @@ Written by Maxwell Miller
 
 namespace TE = Tempest;
 namespace TM = TempestMath;
-namespace KP = KillerPhysics;
+namespace TP =TempestPhysics;
 
 
 class Object3D : public TE::GameObject
@@ -68,7 +68,7 @@ public:
 		p_body->SetObject(this);
 	}
 
-	KP::p_RigidBody3D p_body;
+	TP::p_RigidBody3D p_body;
 };
 
 void IntegrateNTimes(Object3D& obj, S32 n)
@@ -83,7 +83,7 @@ void IntegrateNTimes(Object3D& obj, S32 n)
 
 BOOST_AUTO_TEST_CASE(RigidBody3DConstructor)
 {
-	KP::RigidBody3D body { };
+	TP::RigidBody3D body { };
 
 	BOOST_CHECK_EQUAL(body.GetActive(), true);
 	BOOST_CHECK_EQUAL(body.GetVelocity()[x], 0.0f);

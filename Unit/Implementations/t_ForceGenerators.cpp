@@ -39,7 +39,7 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
 
-namespace KP = KillerPhysics;
+namespace TP =TempestPhysics;
 namespace TM = TempestMath;
 
 /*
@@ -76,13 +76,13 @@ public:
 		p_body3D->SetObject(this);
 	}
 
-	KP::p_RigidBody2D p_body2D;
-	KP::p_RigidBody3D p_body3D;
+	TP::p_RigidBody2D p_body2D;
+	TP::p_RigidBody3D p_body3D;
 };
 
 BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
 {
-	KP::GravityForce gravity { };
+	TP::GravityForce gravity { };
 	ForcesObject obj { };
 	obj.SetBody2D();
 	obj.SetPosition(0.0f, 20.0f, 0.0f);
@@ -116,7 +116,7 @@ BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
 
 BOOST_AUTO_TEST_CASE(GravityForceRigidBody3D)
 {
-	KP::GravityForce gravity { };
+	TP::GravityForce gravity { };
 	ForcesObject obj { };
 	obj.SetBody3D();
 	obj.SetPosition(0.0f, 20.0f, 0.0f);

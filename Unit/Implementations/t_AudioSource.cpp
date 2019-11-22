@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
 
 	shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
 
-	clip->LoadWAV2("../Assets/Audio/Komiku_04_Skate.wav");
+	clip->LoadWAV2("./Assets/Komiku_04_Skate.wav");
 
 	BOOST_CHECK_GT(static_cast<S32>(clip->GetBufferID()), 1);
 	

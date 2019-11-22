@@ -40,7 +40,7 @@ Written by Maxwell Miller
 #include <Engine/EngineFactory.h>
 #include <Engine/PhysicsFactory.h>
 
-namespace KP = KillerPhysics;
+namespace TP =TempestPhysics;
 namespace TM = TempestMath;
 
 /*
@@ -77,18 +77,18 @@ public:
 		p_body3D->SetObject(this);
 	}
 
-	KP::p_RigidBody2D p_body2D;
-	KP::p_RigidBody3D p_body3D;
+	TP::p_RigidBody2D p_body2D;
+	TP::p_RigidBody3D p_body3D;
 };
 
 BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 {
-	KP::ForceRegistry registry { };
+	TP::ForceRegistry registry { };
 	ForceRegObject obj { };
 	obj.SetPosition(0.0f, 20.0f, 0.0f);
 	obj.SetBody2D();
 
-	KP::p_GravityForce p_gravity = KP::PhysicsFactory::Instance()->MakeGravityForce();
+	TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
 
 	registry.Add(obj.p_body2D, p_gravity);
 
@@ -121,12 +121,12 @@ BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 
 BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
 {
-	KP::ForceRegistry registry { };
+	TP::ForceRegistry registry { };
 	ForceRegObject obj { };
 	obj.SetPosition(0.0f, 20.0f, 0.0f);
 	obj.SetBody3D();
 
-	KP::p_GravityForce p_gravity = KP::PhysicsFactory::Instance()->MakeGravityForce();
+	TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
 
 	registry.Add(obj.p_body3D, p_gravity);
 
