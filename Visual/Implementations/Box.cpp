@@ -21,7 +21,7 @@ _boundingBox()
 	GameObject::SetScale(1.0f, 1.0f);
 }
 
-Box::Box(const KM::Point& pos, F32 width, F32 height)
+Box::Box(const TM::Point& pos, F32 width, F32 height)
 :
 _speed(200.0f),
 _direction(0.0f),
@@ -33,7 +33,7 @@ _boundingBox(pos, width, height, 0.0f)
 	GameObject::SetScale(width, height);
 }
 
-Box::Box(const KM::Point& pos, F32 width, F32 height, const KE::Color& col)
+Box::Box(const TM::Point& pos, F32 width, F32 height, const TE::Color& col)
 : 
 _speed(200.0f),
 _direction(0.0f),
@@ -47,7 +47,7 @@ _boundingBox(pos, width, height, 0.0f)
 }
 
 
-Box::Box(const KM::Point& pos, F32 width, F32 height, const KE::Color& col, shared_ptr<KE::Texture> texture)
+Box::Box(const TM::Point& pos, F32 width, F32 height, const TE::Color& col, shared_ptr<TE::Texture> texture)
 : 
 _speed(200.0f),
 _direction(0.0f),
@@ -71,13 +71,13 @@ _boundingBox(pos, width, height, 0.0f)
 //==========================================================================================================================
 void Box::v_Update(void) 
 {
-	GameObject::AddScaledPosition(_direction, KM::Timer::Instance()->DeltaTime() * _speed);
+	GameObject::AddScaledPosition(_direction, TM::Timer::Instance()->DeltaTime() * _speed);
 	_boundingBox.SetCenter(GameObject::GetPosition());
 }
 
 void Box::OnCollide(void)
 {
-	GameObject::AddScaledPosition(-_direction, KM::Timer::Instance()->DeltaTime() * _speed);
+	GameObject::AddScaledPosition(-_direction, TM::Timer::Instance()->DeltaTime() * _speed);
 	_boundingBox.SetCenter(GameObject::GetPosition());
 
 	_direction = 0.0f;

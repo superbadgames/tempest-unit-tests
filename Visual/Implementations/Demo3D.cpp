@@ -30,9 +30,9 @@ Demo3D::~Demo3D(void)
 void Demo3D::v_Init(void)
 {
 	Level::SetID(DEMO3D_ID);
-	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(KE::Color(0.2f, 0.4f, 0.5f));
+	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(TE::Color(0.2f, 0.4f, 0.5f));
 
 	//Set up Cameras
 	F32 left = -25.0f;
@@ -42,20 +42,20 @@ void Demo3D::v_Init(void)
 
 	//Load Light Shader
 	//Light
-	std::vector<KE::ShaderData> shaderData;
-	KE::ShaderData vs;
+	std::vector<TE::ShaderData> shaderData;
+	TE::ShaderData vs;
 	vs.filePath = "./Assets/Shaders/light_vertex.glsl";
-	vs.type = KE::ShaderType::VERTEX;
+	vs.type = TE::ShaderType::VERTEX;
 	shaderData.push_back(vs);
 
-	KE::ShaderData fs;
+	TE::ShaderData fs;
 	fs.filePath = "./Assets/Shaders/light_fragment.glsl";
-	fs.type = KE::ShaderType::FRAGMENT;
+	fs.type = TE::ShaderType::FRAGMENT;
 	shaderData.push_back(fs);
 
 	U32 ligthShaderID = 102;
 
-	KE::ShaderManager::Instance()->LoadShader(ligthShaderID, shaderData);
+	TE::ShaderManager::Instance()->LoadShader(ligthShaderID, shaderData);
 
 	_orbitCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
 	//_orbitCamera.SetOrthographic(left, right, bottom, top, 0.01f, 100.0f);
@@ -76,7 +76,7 @@ void Demo3D::v_Init(void)
 	_crate1 = ProjectFactory::Instance()->MakeCube();
 	_crate1->InitCube("./Assets/Models/Course/crate.obj");
 	_crate1->SetPosition(-5.0f, 0.0f, 0.0f);
-	_crate1->SetTexture(KE::TextureManager::Instance()->GetTexture(500));
+	_crate1->SetTexture(TE::TextureManager::Instance()->GetTexture(500));
 	_crate1->SetColor(1.0f, 0.0f, 0.0f);
 	Level::AddObjectToLevel(_crate1);
 
@@ -84,7 +84,7 @@ void Demo3D::v_Init(void)
 	_crate2 = ProjectFactory::Instance()->MakeCube();
 	_crate2->InitCube("./Assets/Models/Course/crate.obj");
 	_crate2->SetPosition(5.0f, 0.0f, 0.0f);
-	_crate2->SetTexture(KE::TextureManager::Instance()->GetTexture(501));
+	_crate2->SetTexture(TE::TextureManager::Instance()->GetTexture(501));
 	_crate2->SetColor(0.0f, 1.0f, 0.0f);
 	//_crate2->SetActive(false);
 	Level::AddObjectToLevel(_crate2);
@@ -93,7 +93,7 @@ void Demo3D::v_Init(void)
 	_robot = ProjectFactory::Instance()->MakeCube();
 	_robot->InitCube("./Assets/Models/Course/robot.obj");
 	_robot->SetPosition(0.0f, -1.0f, -2.0f);
-	_robot->SetTexture(KE::TextureManager::Instance()->GetTexture(502));
+	_robot->SetTexture(TE::TextureManager::Instance()->GetTexture(502));
 	_robot->SetColor(0.5f, 0.5f, 0.5f);
 	//_robot->SetActive(false);
 	Level::AddObjectToLevel(_robot);
@@ -113,7 +113,7 @@ void Demo3D::v_Init(void)
 	_bunny->SetPosition(-2.0f, 0.0f, 0.0f);
 	_bunny->SetScale(0.7f, 0.7f, 0.7f);
 	//_bunny->SetActive(false);
-	//_bunny->SetTexture(KE::TextureManager::Instance()->GetTexture(503));
+	//_bunny->SetTexture(TE::TextureManager::Instance()->GetTexture(503));
 	Level::AddObjectToLevel(_bunny);
 
 	//Floor
@@ -121,7 +121,7 @@ void Demo3D::v_Init(void)
 	_floor->InitCube("./Assets/Models/Course/floor.obj");
 	_floor->SetPosition(0.0f, -1.0f, 0.0f);
 	_floor->SetScale(10.0f, 0.1f, 10.0f);
-	_floor->SetTexture(KE::TextureManager::Instance()->GetTexture(504));
+	_floor->SetTexture(TE::TextureManager::Instance()->GetTexture(504));
 	//_floor->SetActive(false);
 	Level::AddObjectToLevel(_floor);
 
@@ -133,16 +133,16 @@ void Demo3D::v_Init(void)
 	_light->SetActive(false);
 	Level::AddObjectToLevel(_light);	
 
-	KE::Color lightColor(1.0f, 1.0f, 1.0f);	
+	TE::Color lightColor(1.0f, 1.0f, 1.0f);	
 	lightColor.UseAlpha(false);
-	KM::Point lightPos = _light->GetPosition();
-	KM::Vector3 lightDirection{ 0.0f, -0.9f, -0.17f };
-	KE::Color ambient{ 1.0f, 1.0f, 1.0f };
+	TM::Point lightPos = _light->GetPosition();
+	TM::Vector3 lightDirection{ 0.0f, -0.9f, -0.17f };
+	TE::Color ambient{ 1.0f, 1.0f, 1.0f };
 	ambient.UseAlpha(false);
-	KE::Color specular{ 1.0f, 1.0f, 1.0f };
+	TE::Color specular{ 1.0f, 1.0f, 1.0f };
 	specular.UseAlpha(false);
 
-	KM::Point targetPos = _robot->GetPosition();
+	TM::Point targetPos = _robot->GetPosition();
 	_orbitCamera.SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
 	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
 	_orbitCamera.SetMouseSensitivity(0.25f);
@@ -168,9 +168,9 @@ void Demo3D::v_Init(void)
 	_light->SetUniform("lightColor", lightColor);
 
 
-	KE::Color ambientMat{ 0.1f, 0.1f, 0.1f };
+	TE::Color ambientMat{ 0.1f, 0.1f, 0.1f };
 	ambientMat.UseAlpha(false);
-	KE::Color specularMat{ 0.5f, 0.5f, 0.5f };
+	TE::Color specularMat{ 0.5f, 0.5f, 0.5f };
 	specularMat.UseAlpha(false);
 	F32 shininess = 150.0f;
 	
@@ -189,43 +189,43 @@ void Demo3D::v_Init(void)
 
 void Demo3D::v_Update(void)
 {
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE))
 	{
-		KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 		return;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::F11))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::F11))
 	{
-		KE::GameWindow::Instance()->ToggleWireFrame();
+		TE::GameWindow::Instance()->ToggleWireFrame();
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::F1))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::F1))
 	{
 		_useOrbit = !_useOrbit;
 
 		if(!_useOrbit)
 		{
 			Level::SetCamera(&_fpsCamera);
-			KE::GameWindow::Instance()->DisableMouseCursor();
+			TE::GameWindow::Instance()->DisableMouseCursor();
 		}
 		else
 		{
 			Level::SetCamera(&_orbitCamera);
-			KE::GameWindow::Instance()->EnableMouseCursor();
+			TE::GameWindow::Instance()->EnableMouseCursor();
 		}
 	}
 
-	KM::Vector4 viewPos;
+	TM::Vector4 viewPos;
 
 	if(_useOrbit)
 	{
 		viewPos = _orbitCamera.GetPosition();
 
-		if(KE::Controller::Instance()->GetKeyHeld(KE::LEFT_MOUSE))
+		if(TE::Controller::Instance()->GetKeyHeld(TE::LEFT_MOUSE))
 		{
 			_orbitCamera.Orbit();
 		}
 
-		if(KE::Controller::Instance()->GetKeyHeld(KE::RIGHT_MOUSE))
+		if(TE::Controller::Instance()->GetKeyHeld(TE::RIGHT_MOUSE))
 		{
 			_orbitCamera.Zoom();
 		}
@@ -234,39 +234,39 @@ void Demo3D::v_Update(void)
 	{
 		viewPos = _fpsCamera.GetPosition();
 
-		if(KE::Controller::Instance()->GetKeyHeld(KE::W))
+		if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetLookVector()); //forward
 		}
-		else if(KE::Controller::Instance()->GetKeyHeld(KE::S))
+		else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetLookVector() * -1.0f); //back
 		}
 		
-		if(KE::Controller::Instance()->GetKeyHeld(KE::D))
+		if(TE::Controller::Instance()->GetKeyHeld(TE::D))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetRightVector()); //right
 		}
-		else if(KE::Controller::Instance()->GetKeyHeld(KE::A))
+		else if(TE::Controller::Instance()->GetKeyHeld(TE::A))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetRightVector() * -1.0f); //left
 		}
 
-		if(KE::Controller::Instance()->GetKeyHeld(KE::SPACE))
+		if(TE::Controller::Instance()->GetKeyHeld(TE::SPACE))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetUpVector()); //up
 		}
-		else if(KE::Controller::Instance()->GetKeyHeld(KE::LSHIFT))
+		else if(TE::Controller::Instance()->GetKeyHeld(TE::LSHIFT))
 		{
 			_fpsCamera.v_Move(_fpsCamera.GetUpVector() * -1.0f); //down
 		}
 	}
 
 	//Move Light Code
-	_lightMovAngle += KM::Timer::Instance()->DeltaTime() * 50.0f;
+	_lightMovAngle += TM::Timer::Instance()->DeltaTime() * 50.0f;
 	_light->SetPositionX(8.0f * sin(RADIAN(_lightMovAngle)));
 	
-	KM::Point lightPos = _light->GetPosition();
+	TM::Point lightPos = _light->GetPosition();
 
 	//Update view Position
 	Level::SetObjectUniforms("view_position", viewPos);

@@ -23,9 +23,9 @@ Written by Maxwell Miller
 #include <Engine/LevelManager.h>
 #include <Engine/GravityForce.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
-namespace KP = KillerPhysics;
+namespace TE = Tempest;
+namespace TM = TempestMath;
+namespace TP = TempestPhysics;
 
 //=====std includes=====
 #include <vector>
@@ -38,7 +38,7 @@ namespace Boxes
 	class Cannon;
 	typedef shared_ptr<Cannon> p_Cannon;
 
-	class Cannon : public KE::GameObject
+	class Cannon : public TE::GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -57,7 +57,7 @@ namespace Boxes
 //==========================================================================================================================
 		void v_Update(void);
 
-		void Fire(const KM::Vector4& heading, ProjectileType type);
+		void Fire(const TM::Vector4& heading, ProjectileType type);
 
 		void AddToPool(p_Projectile p)
 		{
@@ -99,22 +99,22 @@ namespace Boxes
 			return _topBoundary;
 		}
 
-		inline void SetUpDirection(const KM::Vector4& direction)
+		inline void SetUpDirection(const TM::Vector4& direction)
 		{
 			_upDirection = direction;
 		}
 
-		inline const KM::Vector4& GetUpDirection(void) const
+		inline const TM::Vector4& GetUpDirection(void) const
 		{
 			return _upDirection;
 		}
 
-		inline void SetDownDirection(const KM::Vector4& direction)
+		inline void SetDownDirection(const TM::Vector4& direction)
 		{
 			_downDirection = direction;
 		}
 
-		inline const KM::Vector4& GetDownDirection(void) const
+		inline const TM::Vector4& GetDownDirection(void) const
 		{
 			return _downDirection;
 		}
@@ -128,8 +128,8 @@ namespace Boxes
 		F32						  			 _movementSpeed;
 		F32						  			 _bottomBoundary;
 		F32						  			 _topBoundary;
-		KM::Vector4							 _upDirection;
-		KM::Vector4							 _downDirection;
+		TM::Vector4							 _upDirection;
+		TM::Vector4							 _downDirection;
 		std::vector<p_Projectile> 			 _projectilePool;
 	};
 }//end namespace

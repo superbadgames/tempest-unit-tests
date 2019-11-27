@@ -32,12 +32,12 @@ Written by Maxwell Miller
 
 #include <iostream>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 namespace Boxes 
 {
-	class MovingBoxes : public KE::Level 
+	class MovingBoxes : public TE::Level 
 	{
 	public:
 //==========================================================================================================================
@@ -80,7 +80,7 @@ namespace Boxes
 		p_Box 	 _redbox;
 		p_Box 	 _bluebox;
 		p_Box 	 _greenbox;
-		KE::Text _levelTitle;
+		TE::Text _levelTitle;
 		p_Box 	 _activeBox;
 	};
 

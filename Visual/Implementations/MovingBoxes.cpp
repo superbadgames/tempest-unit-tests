@@ -37,37 +37,37 @@ void MovingBoxes::v_Init(void)
 { 
 
 	Level::SetID(MOVING_BOXES_ID);
-	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
+	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	F32 width = static_cast<F32>(KE::GameWindow::Instance()->GetWidth());
-	F32 height = static_cast<F32>(KE::GameWindow::Instance()->GetHeight());
+	F32 width = static_cast<F32>(TE::GameWindow::Instance()->GetWidth());
+	F32 height = static_cast<F32>(TE::GameWindow::Instance()->GetHeight());
 
-	_left = KE::GameWindow::Instance()->GetScreenLeft();
-	_right = KE::GameWindow::Instance()->GetScreenRight();
-	_bottom = KE::GameWindow::Instance()->GetScreenBottom();
-	_top = KE::GameWindow::Instance()->GetScreenTop();
+	_left = TE::GameWindow::Instance()->GetScreenLeft();
+	_right = TE::GameWindow::Instance()->GetScreenRight();
+	_bottom = TE::GameWindow::Instance()->GetScreenBottom();
+	_top = TE::GameWindow::Instance()->GetScreenTop();
 
-	_levelTitle.SetFont(KE::FontManager::Instance()->GetFont(100));
+	_levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("Moving Boxes");
-	_levelTitle.SetPosition(KM::Point(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
+	_levelTitle.SetPosition(TM::Point(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 
 	_redbox->SetPosition(0.0f, _top / 3.0f);
-	_redbox->SetTexture(KE::TextureManager::Instance()->GetTexture(100));
+	_redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_redbox->SetScale(32.0f, 32.0f);
 	_redbox->InitBounding();
 	Level::AddObjectToLevel(_redbox);
 
 	_greenbox->SetPosition(_left / 3.0f, 0.0f);
-	_greenbox->SetTexture(KE::TextureManager::Instance()->GetTexture(101));
+	_greenbox->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
 	_greenbox->SetScale(32.0f, 32.0f);
 	_greenbox->InitBounding();
 	Level::AddObjectToLevel(_greenbox);
 
 	_bluebox->SetPosition(_right / 3.0f, 0.0f);
-	_bluebox->SetTexture(KE::TextureManager::Instance()->GetTexture(102));
+	_bluebox->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
 	_bluebox->SetScale(32.0f, 32.0f);
 	_bluebox->InitBounding();
 	Level::AddObjectToLevel(_bluebox);
@@ -82,32 +82,32 @@ void MovingBoxes::v_Init(void)
 //=============================================================================
 void MovingBoxes::v_Update(void) 
 {
-	KE::AudioManager::Instance()->PlaySource(2);
+	TE::AudioManager::Instance()->PlaySource(2);
 	
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
 	{ 
-		KE::AudioManager::Instance()->StopSource(2);
-		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID); 
+		TE::AudioManager::Instance()->StopSource(2);
+		TE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID); 
 		return;
 	}
 
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ONE)) 
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE)) 
 	{ 
 		_activeBox = _redbox;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::TWO)) 
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::TWO)) 
 	{ 
 		_activeBox = _greenbox; 
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::THREE)) 
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::THREE)) 
 	{ 
 		_activeBox = _bluebox;
 	}
 
-	bool up = KE::Controller::Instance()->GetKeyDown(KE::Keys::UP_ARROW);
-	bool down = KE::Controller::Instance()->GetKeyDown(KE::Keys::DOWN_ARROW);
-	bool left = KE::Controller::Instance()->GetKeyDown(KE::Keys::LEFT_ARROW);
-	bool right = KE::Controller::Instance()->GetKeyDown(KE::Keys::RIGHT_ARROW);
+	bool up = TE::Controller::Instance()->GetKeyDown(TE::Keys::UP_ARROW);
+	bool down = TE::Controller::Instance()->GetKeyDown(TE::Keys::DOWN_ARROW);
+	bool left = TE::Controller::Instance()->GetKeyDown(TE::Keys::LEFT_ARROW);
+	bool right = TE::Controller::Instance()->GetKeyDown(TE::Keys::RIGHT_ARROW);
 
 	if(up)	  
 	{ 
@@ -143,7 +143,7 @@ void MovingBoxes::v_Update(void)
 		_activeBox->SetDirection(-1.0f, -1.0f);
 	}
 	
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::SPACE))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::SPACE))
 	{
 		_activeBox->SetDirection(0.0f, 0.0f);
 	}
@@ -162,7 +162,7 @@ void MovingBoxes::v_Update(void)
 //==========================================================================================================================	
 void MovingBoxes::CheckBoxEdge(shared_ptr<Box> b)
 {
-	KM::Point tempPos = b->GetPosition();
+	TM::Point tempPos = b->GetPosition();
 
 	//Righ/Left check
 	if(tempPos[0] >= _right) 

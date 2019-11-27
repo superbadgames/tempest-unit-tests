@@ -13,8 +13,8 @@
 #include <Engine/Font.h>
 #include <Engine/ShaderManager.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 #include <Boxes/Cube.h>
 #include <Boxes/DataBases.h>
@@ -28,7 +28,7 @@ namespace Boxes
 //
 //==========================================================================================================================
 
-	class Demo3D : public KE::Level
+	class Demo3D : public TE::Level
 	{
 	public:
 //==========================================================================================================================
@@ -58,8 +58,8 @@ namespace Boxes
 		p_Cube 			_bunny;
 		p_Cube 			_light;
 		F32 			_lightMovAngle;
-		KE::OrbitCamera _orbitCamera;
-		KE::FPSCamera   _fpsCamera;
+		TE::OrbitCamera _orbitCamera;
+		TE::FPSCamera   _fpsCamera;
 		
 	};//end Class
 }//end Namespace

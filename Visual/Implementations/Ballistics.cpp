@@ -15,7 +15,7 @@ _levelTitle(),
 _cannon(nullptr),
 p_gravityForce(nullptr)
 {
-	p_gravityForce = KP::PhysicsFactory::Instance()->MakeGravityForce();
+	p_gravityForce = TP::PhysicsFactory::Instance()->MakeGravityForce();
 	p_gravityForce->Set(0.0f, -100.0f, 0.0f);
 }
 
@@ -32,9 +32,9 @@ Ballistics::~Ballistics(void)
 void Ballistics::v_Init(void)
 {
 	Level::SetID(BALLISTICS_ID);
-	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
+	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
 	F32 width = static_cast<F32>(Level::GetWidth());
 	F32 height = static_cast<F32>(Level::GetHeight());
@@ -44,9 +44,9 @@ void Ballistics::v_Init(void)
 	F32 bottom = -height / 2.0f;
 	F32 top = height / 2.0f;
 
-	_levelTitle.SetFont(KE::FontManager::Instance()->GetFont(100));
+	_levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("BALLISTICS");
-	_levelTitle.SetPosition(KM::Point(-_levelTitle.GetWidth(), top - (top * 0.1f)));
+	_levelTitle.SetPosition(TM::Point(-_levelTitle.GetWidth(), top - (top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 	
 
@@ -58,7 +58,7 @@ void Ballistics::v_Init(void)
 	_cannon->SetMovementSpeed(120.0f);
 	_cannon->SetTopBoundary(top);
 	_cannon->SetBottomBoundary(bottom);
-	_cannon->SetTexture(KE::TextureManager::Instance()->GetTexture(300));
+	_cannon->SetTexture(TE::TextureManager::Instance()->GetTexture(300));
 	Level::AddObjectToLevel(_cannon);
 
 	
@@ -72,7 +72,7 @@ void Ballistics::v_Init(void)
 	}
 
 	//TODO:: Once level's call init when they are set to active, this can be removed
-	KE::GameWindow::Instance()->EnableMouseCursor();
+	TE::GameWindow::Instance()->EnableMouseCursor();
 }	
 
 //=============================================================================
@@ -82,43 +82,43 @@ void Ballistics::v_Init(void)
 //=============================================================================
 void Ballistics::v_Update(void)
 {
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
 	{ 
-		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		TE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID);
 		return;
 	}
 
 	//===== Get User Input =====
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ONE))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE))
 	{
 		_activeProjectileType = BULLET;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::TWO))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::TWO))
 	{
 		_activeProjectileType = ARTILLERY;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::THREE))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::THREE))
 	{
 		_activeProjectileType = MISSILE;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::FOUR))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::FOUR))
 	{
 		_activeProjectileType = FIRE_BALL;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::FIVE))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::FIVE))
 	{
 		_activeProjectileType = LAZER;
 	}
-	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::SIX))
+	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::SIX))
 	{
 		_activeProjectileType = GRENADE;
 	}
 
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::LEFT_MOUSE)) 
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::LEFT_MOUSE)) 
 	{ 
-		KM::Point input = KE::Controller::Instance()->GetMouseCoordInScreen();
+		TM::Point input = TE::Controller::Instance()->GetMouseCoordInScreen();
 
-		KM::Vector4 heading = KM::Vector4(input - _cannon->GetPosition());
+		TM::Vector4 heading = TM::Vector4(input - _cannon->GetPosition());
 
 		heading.Normalize();
 				

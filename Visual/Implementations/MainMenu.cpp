@@ -26,17 +26,17 @@ MainMenu::~MainMenu(void)
 void MainMenu::v_Init(void)
 {
 	Level::SetID(MAIN_MENU_ID);
-	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
+	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	F32 top = KE::GameWindow::Instance()->GetScreenTop();
+	F32 top = TE::GameWindow::Instance()->GetScreenTop();
 
-	_selector->SetColor(KE::Color(1.0f, 0.0f, 0.0f));
-	_selector->SetTexture(KE::TextureManager::Instance()->GetTexture(100));
+	_selector->SetColor(TE::Color(1.0f, 0.0f, 0.0f));
+	_selector->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_selector->SetScale(15.0f, 15.0f);
 
-	_mainTitle.SetFont(KE::FontManager::Instance()->GetFont(101));
+	_mainTitle.SetFont(TE::FontManager::Instance()->GetFont(101));
 	_mainTitle.AddText("BOXES vs TRIANGLES");
 
 	_menu.SetPosition(-_mainTitle.GetWidth(), top - (top * 0.1f));
@@ -45,24 +45,24 @@ void MainMenu::v_Init(void)
 	_menu.SetSelectorOffset(-50.0f, 0.0f);
 	_menu.SetWrap(true);
 
-	KE::MenuItem level1 { };
-	level1.text = shared_ptr<KE::Text>(new KE::Text("Moving Boxes", KE::FontManager::Instance()->GetFont(100)));
+	TE::MenuItem level1 { };
+	level1.text = shared_ptr<TE::Text>(new TE::Text("Moving Boxes", TE::FontManager::Instance()->GetFont(100)));
 	level1.Action = &MenuItem_Level1Action;
 
-	KE::MenuItem ballistics { };
-	ballistics.text = shared_ptr<KE::Text>(new KE::Text("Ballistic", KE::FontManager::Instance()->GetFont(100)));
+	TE::MenuItem ballistics { };
+	ballistics.text = shared_ptr<TE::Text>(new TE::Text("Ballistic", TE::FontManager::Instance()->GetFont(100)));
 	ballistics.Action = &MenuItem_BallisticsAction;
 
-	//KE::MenuItem firework { };
-	//firework.text = shared_ptr<KE::Text>(new KE::Text("Firework Demo", KE::FontManager::Instance()->GetFont(100)));
+	//TE::MenuItem firework { };
+	//firework.text = shared_ptr<TE::Text>(new TE::Text("Firework Demo", TE::FontManager::Instance()->GetFont(100)));
 	//firework.Action = &MenuItem_FireworkAction;
 
-	//KE::MenuItem springs { };
-	//springs.text = shared_ptr<KE::Text>(new KE::Text("Springs Demo", KE::FontManager::Instance()->GetFont(100)));
+	//TE::MenuItem springs { };
+	//springs.text = shared_ptr<TE::Text>(new TE::Text("Springs Demo", TE::FontManager::Instance()->GetFont(100)));
 	//springs.Action = &MenuItem_SpringsAction;
 
-	KE::MenuItem opengl { };
-	opengl.text = shared_ptr<KE::Text>(new KE::Text("3D Level", KE::FontManager::Instance()->GetFont(100)));
+	TE::MenuItem opengl { };
+	opengl.text = shared_ptr<TE::Text>(new TE::Text("3D Level", TE::FontManager::Instance()->GetFont(100)));
 	opengl.Action = &MenuItem_OpenglAction;
 
 
@@ -86,27 +86,27 @@ void MainMenu::v_Init(void)
 
 void MainMenu::v_Update(void)
 {
-	KE::AudioManager::Instance()->PlaySource(1);
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
+	TE::AudioManager::Instance()->PlaySource(1);
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE))
 	{
-		KE::AudioManager::Instance()->StopSource(1);
-		KE::Engine::Instance()->End();
+		TE::AudioManager::Instance()->StopSource(1);
+		TE::Engine::Instance()->End();
 	}
 
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::UP_ARROW))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::UP_ARROW))
 	{
 		_menu.MoveSelectorUp();
 	}	
 
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::DOWN_ARROW))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::DOWN_ARROW))
 	{
 		_menu.MoveSelectorDown();
 	}
 
 
-	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ENTER))
+	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ENTER))
 	{
-		KE::AudioManager::Instance()->StopSource(1);
+		TE::AudioManager::Instance()->StopSource(1);
 		_menu.CallSelectedAction();
 	}
 }

@@ -10,15 +10,15 @@
 #include <Engine/Timer.h>
 #include <Engine/GameWindow.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 namespace Boxes
 {
 	class Cube;
 	typedef shared_ptr<Cube> p_Cube;
 
-	class Cube : public KE::GameObject
+	class Cube : public TE::GameObject
 	{
 	public:
 //==========================================================================================================================

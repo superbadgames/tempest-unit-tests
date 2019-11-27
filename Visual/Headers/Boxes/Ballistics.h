@@ -22,8 +22,8 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 #include <Engine/PhysicsFactory.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 //=====Box includes=====
 #include <Boxes/DataBases.h>
@@ -34,7 +34,7 @@ namespace KM = KillerMath;
 
 namespace Boxes
 {
-	class Ballistics : public KE::Level
+	class Ballistics : public TE::Level
 	{
 	public:
 //==========================================================================================================================
@@ -64,8 +64,8 @@ namespace Boxes
 //==========================================================================================================================		
 		U32									_poolSize;
 		ProjectileType			  			_activeProjectileType;
-		KE::Text 							_levelTitle;
+		TE::Text 							_levelTitle;
 		p_Cannon							_cannon;
-		KP::p_GravityForce					p_gravityForce;
+		TP::p_GravityForce					p_gravityForce;
 	};
 }//end namespace

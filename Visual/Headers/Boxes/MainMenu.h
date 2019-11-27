@@ -25,22 +25,20 @@ Written by Maxwell Miller
 #include <Engine/Menu.h>
 #include <Engine/AudioManager.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 //=====Box includes=====
 #include <Boxes/Box.h>
 #include <Boxes/DataBases.h>
 #include <Boxes/MovingBoxes.h>
 #include <Boxes/Ballistics.h>
-#include <Boxes/FireworksDemo.h>
-#include <Boxes/Springs.h>
 #include <Boxes/Demo3D.h>
 #include <Boxes/ProjectFactory.h>
 
 namespace Boxes
 {
-	class MainMenu : public KE::Level
+	class MainMenu : public TE::Level
 	{
 	public:
 //==========================================================================================================================
@@ -72,9 +70,9 @@ namespace Boxes
 //feature, so when that is completed this will be replaced. 
 //==========================================================================================================================				
 		p_Box 	    _selector;
-		KE::Menu 	_menu;
-		KE::Font    _menuItemFont;
-		KE::Text    _mainTitle;
+		TE::Menu 	_menu;
+		TE::Font    _menuItemFont;
+		TE::Text    _mainTitle;
 	};//End MainMenu
 
 //==========================================================================================================================
@@ -84,27 +82,17 @@ namespace Boxes
 //==========================================================================================================================
 	static void MenuItem_Level1Action(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(make_shared<MovingBoxes>());
+		TE::Engine::Instance()->SetActiveLevel(make_shared<MovingBoxes>());
 	}
 
 	static void MenuItem_BallisticsAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(make_shared<Ballistics>());
-	}
-
-	static void MenuItem_FireworkAction(void)
-	{
-		KE::Engine::Instance()->SetActiveLevel(make_shared<FireworksDemo>());
-	}
-
-	static void MenuItem_SpringsAction(void)
-	{
-		KE::Engine::Instance()->SetActiveLevel(make_shared<Springs>());
+		TE::Engine::Instance()->SetActiveLevel(make_shared<Ballistics>());
 	}
 
 	static void MenuItem_OpenglAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(make_shared<Demo3D>());
+		TE::Engine::Instance()->SetActiveLevel(make_shared<Demo3D>());
 	}
 }
 

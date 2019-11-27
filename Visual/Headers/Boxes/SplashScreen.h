@@ -25,8 +25,8 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
+namespace TE = Tempest;
+namespace TM = TempestMath;
 
 //=====Box includes=====
 #include <Boxes/Box.h>
@@ -36,7 +36,7 @@ namespace KM = KillerMath;
 namespace Boxes 
 {
 
-	class SplashScreen: public KE::Level
+	class SplashScreen: public TE::Level
 	{
 	public:
 //==========================================================================================================================
@@ -66,6 +66,6 @@ namespace Boxes
 		p_Box 	 _red;
 		p_Box 	 _green;
 		p_Box 	 _blue;
-		KE::Text _mainTitle;
+		TE::Text _mainTitle;
 	};//End Class
 }

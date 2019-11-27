@@ -40,9 +40,9 @@ Written by Maxwell Miller
 //
 //==========================================================================================================================
 #if DEBUG
-	#pragma comment(lib, "Killer_Engine_Win32_Debug.lib")
+	#pragma comment(lib, "Tempest_Win32_Debug.lib")
 #else
-	#pragma comment(lib, "Killer_Engine_Win32_Release.lib")
+	#pragma comment(lib, "Tempest_Win32_Release.lib")
 #endif
 
 //=====Engine Includes=====
@@ -61,15 +61,13 @@ Written by Maxwell Miller
 #include <Engine/AudioSource.h>
 #include <Engine/AudioClip.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 //=====Game Includes=====
 #include <Boxes/MainMenu.h>
 #include <Boxes/SplashScreen.h>
 #include <Boxes/MovingBoxes.h>
 #include <Boxes/Ballistics.h>
-#include <Boxes/FireworksDemo.h>
-#include <Boxes/Springs.h>
 #include <Boxes/Demo3D.h>
 #include <Boxes/Box.h>
 
@@ -85,113 +83,113 @@ int main(void)
 	const S32    wndFullScreen = false;
 
 
-	KE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
+	TE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
 
-	KE::AudioManager::Instance();
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::AudioManager::Instance();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
 //=====Pre-Load Assets=====	
-	KE::TextureManager::Instance()->LoadTexture(100, "./Assets/Textures/Boxes/red_box_32_32.png");
-	KE::TextureManager::Instance()->LoadTexture(101, "./Assets/Textures/Boxes/green_box_32_32.png");
-	KE::TextureManager::Instance()->LoadTexture(102, "./Assets/Textures/Boxes/blue_box_32_32.png");
-	KE::TextureManager::Instance()->LoadTexture(300, "./Assets/Textures/Ballistics/cannon.png");
-	KE::TextureManager::Instance()->LoadTexture(301, "./Assets/Textures/Ballistics/bullet_v2.png");
-	KE::TextureManager::Instance()->LoadTexture(302, "./Assets/Textures/Ballistics/artillery_v1.png");
-	KE::TextureManager::Instance()->LoadTexture(303, "./Assets/Textures/Ballistics/missile_v1.png");
-	KE::TextureManager::Instance()->LoadTexture(304, "./Assets/Textures/Ballistics/fireball_v1.png");
-	KE::TextureManager::Instance()->LoadTexture(305, "./Assets/Textures/Ballistics/lazer_v1.png");
-	KE::TextureManager::Instance()->LoadTexture(306, "./Assets/Textures/Ballistics/grenade_v1.png");
-	KE::TextureManager::Instance()->LoadTexture(500, "./Assets/Textures/Course/crate.jpg");
-	KE::TextureManager::Instance()->LoadTexture(501, "./Assets/Textures/Course/woodcrate_diffuse.jpg");
-	KE::TextureManager::Instance()->LoadTexture(502, "./Assets/Textures/Course/robot_diffuse.jpg");
-	KE::TextureManager::Instance()->LoadTexture(503, "./Assets/Textures/Course/bunny_diffuse.jpg");
-	KE::TextureManager::Instance()->LoadTexture(504, "./Assets/Textures/Course/tile_floor.jpg");
+	TE::TextureManager::Instance()->LoadTexture(100, "./Assets/Textures/Boxes/red_box_32_32.png");
+	TE::TextureManager::Instance()->LoadTexture(101, "./Assets/Textures/Boxes/green_box_32_32.png");
+	TE::TextureManager::Instance()->LoadTexture(102, "./Assets/Textures/Boxes/blue_box_32_32.png");
+	TE::TextureManager::Instance()->LoadTexture(300, "./Assets/Textures/Ballistics/cannon.png");
+	TE::TextureManager::Instance()->LoadTexture(301, "./Assets/Textures/Ballistics/bullet_v2.png");
+	TE::TextureManager::Instance()->LoadTexture(302, "./Assets/Textures/Ballistics/artillery_v1.png");
+	TE::TextureManager::Instance()->LoadTexture(303, "./Assets/Textures/Ballistics/missile_v1.png");
+	TE::TextureManager::Instance()->LoadTexture(304, "./Assets/Textures/Ballistics/fireball_v1.png");
+	TE::TextureManager::Instance()->LoadTexture(305, "./Assets/Textures/Ballistics/lazer_v1.png");
+	TE::TextureManager::Instance()->LoadTexture(306, "./Assets/Textures/Ballistics/grenade_v1.png");
+	TE::TextureManager::Instance()->LoadTexture(500, "./Assets/Textures/Course/crate.jpg");
+	TE::TextureManager::Instance()->LoadTexture(501, "./Assets/Textures/Course/woodcrate_diffuse.jpg");
+	TE::TextureManager::Instance()->LoadTexture(502, "./Assets/Textures/Course/robot_diffuse.jpg");
+	TE::TextureManager::Instance()->LoadTexture(503, "./Assets/Textures/Course/bunny_diffuse.jpg");
+	TE::TextureManager::Instance()->LoadTexture(504, "./Assets/Textures/Course/tile_floor.jpg");
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
-	KE::FontManager::Instance()->LoadFont(100, "ariel", "./Assets/Fonts/arial.ttf", 18);
-	KE::FontManager::Instance()->LoadFont(101, "bank_gothic", "./Assets/Fonts/bank_gothic.ttf", 18);
+	TE::FontManager::Instance()->LoadFont(100, "ariel", "./Assets/Fonts/arial.ttf", 18);
+	TE::FontManager::Instance()->LoadFont(101, "bank_gothic", "./Assets/Fonts/bank_gothic.ttf", 18);
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
-	KE::AudioManager::Instance()->SetListener();
+	TE::AudioManager::Instance()->SetListener();
 
 	
 	
-	shared_ptr<KE::AudioClip> skate = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> skate = make_shared<TE::AudioClip>();
 	skate->LoadWAV2("./Assets/Audio/Komiku_04_Skate.wav");
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
-	shared_ptr<KE::AudioClip> battle = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> battle = make_shared<TE::AudioClip>();
 	battle->LoadWAV2("./Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 	
-	shared_ptr<KE::AudioSource> background = make_shared<KE::AudioSource>();
+	shared_ptr<TE::AudioSource> background = make_shared<TE::AudioSource>();
 	background->AddClip(skate);
 	
-	shared_ptr<KE::AudioSource> movingBoxesBackground = make_shared<KE::AudioSource>();
+	shared_ptr<TE::AudioSource> movingBoxesBackground = make_shared<TE::AudioSource>();
 	movingBoxesBackground->AddClip(battle);
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
-	KE::AudioManager::Instance()->AddClip(1, skate);
-	KE::AudioManager::Instance()->AddClip(2, battle);
-	KE::AudioManager::Instance()->AddSource(1, background);
-	KE::AudioManager::Instance()->AddSource(2, movingBoxesBackground);
+	TE::AudioManager::Instance()->AddClip(1, skate);
+	TE::AudioManager::Instance()->AddClip(2, battle);
+	TE::AudioManager::Instance()->AddSource(1, background);
+	TE::AudioManager::Instance()->AddSource(2, movingBoxesBackground);
 
-	//KE::AudioManager::Instance()->LoadClip(1, "./Assets/Audio/Komiku_04_Skate.wav");
-	//KE::AudioManager::Instance()->LoadClip(2, "./Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
-	//KE::AudioManager::Instance()->LoadSource(1);
-	//KE::AudioManager::Instance()->AddClipToSource(1, 1);
+	//TE::AudioManager::Instance()->LoadClip(1, "./Assets/Audio/Komiku_04_Skate.wav");
+	//TE::AudioManager::Instance()->LoadClip(2, "./Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
+	//TE::AudioManager::Instance()->LoadSource(1);
+	//TE::AudioManager::Instance()->AddClipToSource(1, 1);
 	
 	//continue adding textures for glfw tests
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	TE::ErrorManager::Instance()->DisplayErrors();
 
 
 	//=====Add Levels=====
 	
 	shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
-	KE::Engine::Instance()->SetActiveLevel(splashScreen);
+	TE::Engine::Instance()->SetActiveLevel(splashScreen);
 	
 	shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
 	mainMenu->v_Init();
-	KE::Engine::Instance()->AddLevelToManager(mainMenu);
-	//KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+	TE::Engine::Instance()->AddLevelToManager(mainMenu);
+	//TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 
 	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
-	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	//KE::Engine::Instance()->AddLevelToManager(levelBallistics);
+	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
+	//TE::Engine::Instance()->AddLevelToManager(levelBallistics);
 
 	//shared_ptr<FireworksDemo> fireworks { new FireworksDemo() };
-	//fireworks->v_InitLevel(5, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	//KE::Engine::Instance()->AddLevelToManager(fireworks);
+	//fireworks->v_InitLevel(5, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
+	//TE::Engine::Instance()->AddLevelToManager(fireworks);
 
 	//shared_ptr<Springs> springs { new Springs() };
-	//springs->v_InitLevel(6, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	//KE::Engine::Instance()->AddLevelToManager(springs);
+	//springs->v_InitLevel(6, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
+	//TE::Engine::Instance()->AddLevelToManager(springs);
 
 	//shared_ptr<Demo3D> demo3D { new Demo3D() };
-	//demo3D->v_InitLevel(7, wndWidth, wndHeight, KE::Color(0.2f, 0.4f, 0.5f));
-	//KE::Engine::Instance()->AddLevelToManager(demo3D);
+	//demo3D->v_InitLevel(7, wndWidth, wndHeight, TE::Color(0.2f, 0.4f, 0.5f));
+	//TE::Engine::Instance()->AddLevelToManager(demo3D);
 	
-	//KE::Engine::Instance()->SetActiveLevel(1);
+	//TE::Engine::Instance()->SetActiveLevel(1);
 
-	if(KE::ErrorManager::Instance()->DisplayErrors())
+	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{
-		KE::Engine::Instance()->End();
+		TE::Engine::Instance()->End();
 	}
 
-	while (KE::Engine::Instance()->Running()) 
+	while (TE::Engine::Instance()->Running()) 
 	{
-		KE::Engine::Instance()->Update();
-		KE::Engine::Instance()->Render();
+		TE::Engine::Instance()->Update();
+		TE::Engine::Instance()->Render();
 		
-		if(KE::ErrorManager::Instance()->DisplayErrors())
+		if(TE::ErrorManager::Instance()->DisplayErrors())
 		{
-			KE::Engine::Instance()->End();
+			TE::Engine::Instance()->End();
 		}
 
-		KE::GameWindow::Instance()->DisplayFPS();
+		TE::GameWindow::Instance()->DisplayFPS();
 	}
 }

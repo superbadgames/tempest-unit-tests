@@ -25,9 +25,9 @@ Written by Maxwell Miller
 #include <Engine/PhysicsFactory.h>
 #include <Engine/Point.h>
 
-namespace KE = KillerEngine;
-namespace KM = KillerMath;
-namespace KP = KillerPhysics;
+namespace TE = Tempest;
+namespace TM = TempestMath;
+namespace TP = TempestPhysics;
 
 namespace Boxes
 {
@@ -41,7 +41,7 @@ namespace Boxes
 		GRENADE
 	};
 
-	class Projectile : public KE::GameObject
+	class Projectile : public TE::GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -77,12 +77,12 @@ namespace Boxes
 
 		ProjectileType GetType(void);
 
-		inline void AddScaledVelocity(const KM::Vector4& vec, F32 scale)
+		inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
 		{
 			p_rigidBody->AddScaledVelocity(vec, scale);
 		}
 
-		inline KP::p_RigidBody2D GetRigidBody(void)
+		inline TP::p_RigidBody2D GetRigidBody(void)
 		{
 			return p_rigidBody;
 		}
@@ -91,9 +91,9 @@ namespace Boxes
 		F32  		   			   _maxDistance;
 		F32  		   			   _sqrDistance;
 		F32			   			   _speedScale;
-		KM::Point 				   _startingLocation;
+		TM::Point 				   _startingLocation;
 		ProjectileType 			   _type;
-		KP::p_RigidBody2D 		   p_rigidBody;
+		TP::p_RigidBody2D 		   p_rigidBody;
 
 	};//end class Projectile
 

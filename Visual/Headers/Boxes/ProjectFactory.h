@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/PhysicsFactory.h>
 
-namespace KP = KillerPhysics;
+namespace TP = TempestPhysics;
 
 //===== Boxes Includes =====
 #include <Boxes/Box.h>
