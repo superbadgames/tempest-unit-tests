@@ -45,7 +45,7 @@ namespace Boxes
 //Constructors
 //
 //==========================================================================================================================
-		MovingBoxes(void) final;
+		MovingBoxes(void);
 		
 		~MovingBoxes(void) final;
 
@@ -81,6 +81,9 @@ namespace Boxes
 		p_Box 	 _bluebox;
 		p_Box 	 _greenbox;
 		TE::Text _levelTitle;
+		TE::Text _updateText;
+		string   _message1;
+		string   _message2;
 		p_Box 	 _activeBox;
 	};
 

@@ -17,6 +17,9 @@ _redbox(ProjectFactory::Instance()->MakeBox()),
 _bluebox(ProjectFactory::Instance()->MakeBox()),
 _greenbox(ProjectFactory::Instance()->MakeBox()),
 _levelTitle(),
+_updateText(),
+_message1("Message 1"),
+_message2("Message 2"),
 _activeBox(nullptr)
 {  }
 
@@ -54,6 +57,11 @@ void MovingBoxes::v_Init(void)
 	_levelTitle.SetPosition(TM::Point(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 
+	_updateText.SetFont(TE::FontManager::Instance()->GetFont(100));
+	_updateText.AddText("Starting Text");
+	_updateText.SetPosition(TM::Point(-_levelTitle.GetWidth(), _top - (_top * 0.25f)));
+	Level::AddTextToLevel(_updateText);
+
 	_redbox->SetPosition(0.0f, _top / 3.0f);
 	_redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_redbox->SetScale(32.0f, 32.0f);
@@ -72,7 +80,7 @@ void MovingBoxes::v_Init(void)
 	_bluebox->InitBounding();
 	Level::AddObjectToLevel(_bluebox);
 
-	//_activeBox = &_redbox;	
+	_activeBox = _redbox;
 }
 
 //=============================================================================
@@ -81,7 +89,7 @@ void MovingBoxes::v_Init(void)
 //
 //=============================================================================
 void MovingBoxes::v_Update(void) 
-{
+{	
 	TE::AudioManager::Instance()->PlaySource(2);
 	
 	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
@@ -104,10 +112,10 @@ void MovingBoxes::v_Update(void)
 		_activeBox = _bluebox;
 	}
 
-	bool up = TE::Controller::Instance()->GetKeyDown(TE::Keys::UP_ARROW);
-	bool down = TE::Controller::Instance()->GetKeyDown(TE::Keys::DOWN_ARROW);
-	bool left = TE::Controller::Instance()->GetKeyDown(TE::Keys::LEFT_ARROW);
-	bool right = TE::Controller::Instance()->GetKeyDown(TE::Keys::RIGHT_ARROW);
+	bool up = TE::Controller::Instance()->GetKeyDown(TE::UP_ARROW);
+	bool down = TE::Controller::Instance()->GetKeyDown(TE::DOWN_ARROW);
+	bool left = TE::Controller::Instance()->GetKeyDown(TE::LEFT_ARROW);
+	bool right = TE::Controller::Instance()->GetKeyDown(TE::RIGHT_ARROW);
 
 	if(up)	  
 	{ 
@@ -143,9 +151,21 @@ void MovingBoxes::v_Update(void)
 		_activeBox->SetDirection(-1.0f, -1.0f);
 	}
 	
-	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::SPACE))
+	if(TE::Controller::Instance()->GetKeyDown(TE::SPACE))
 	{
 		_activeBox->SetDirection(0.0f, 0.0f);
+	}
+
+	if(TE::Controller::Instance()->GetKeyDown(TE::U))
+	{
+		if(_updateText.GetText() == _message1)
+		{
+			_updateText.AddText(_message2);
+		}
+		else
+		{
+			_updateText.AddText(_message1);
+		}
 	}
 
 	CheckBoxEdge(_redbox);
@@ -160,7 +180,7 @@ void MovingBoxes::v_Update(void)
 //MovingBoxes functions
 //
 //==========================================================================================================================	
-void MovingBoxes::CheckBoxEdge(shared_ptr<Box> b)
+void MovingBoxes::CheckBoxEdge(p_Box b)
 {
 	TM::Point tempPos = b->GetPosition();
 
