@@ -18,8 +18,8 @@ _bowlingPin(nullptr),
 _bunny(nullptr),
 _light(nullptr),
 _lightMovAngle(0.0f),
-_orbitCamera(),
-_fpsCamera()
+_orbitCamera(make_shared<TE::OrbitCamera>()),
+_fpsCamera(make_shared<TE::FPSCamera>())
 {
 
 }
@@ -57,20 +57,20 @@ void Demo3D::v_Init(void)
 
 	TE::ShaderManager::Instance()->LoadShader(ligthShaderID, shaderData);
 
-	_orbitCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
-	//_orbitCamera.SetOrthographic(left, right, bottom, top, 0.01f, 100.0f);
-	_orbitCamera.SetPosition(0.0f, 0.0f, 0.0f);
+	_orbitCamera->SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
+	//_orbitCamera->SetOrthographic(left, right, bottom, top, 0.01f, 100.0f);
+	_orbitCamera->SetPosition(0.0f, 0.0f, 0.0f);
 	//Offset for robot to look right
 	
 
-	_fpsCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
-	//_fpsCamera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
-	_fpsCamera.SetPosition(0.0f, 0.0f, 0.0f);
-	_fpsCamera.SetMoveSpeed(10.0f);
-	_fpsCamera.SetMouseSensitivity(0.1f);
-	_fpsCamera.SetDeadZone(0.2f);
+	_fpsCamera->SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
+	//_fpsCamera->SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
+	_fpsCamera->SetPosition(0.0f, 0.0f, 0.0f);
+	_fpsCamera->SetMoveSpeed(10.0f);
+	_fpsCamera->SetMouseSensitivity(0.1f);
+	_fpsCamera->SetDeadZone(0.2f);
 
-	Level::SetCamera(&_orbitCamera);
+	TE::GameWindow::Instance()->SetCamera(_orbitCamera);
 
 	//Crate1
 	_crate1 = ProjectFactory::Instance()->MakeCube();
@@ -143,9 +143,9 @@ void Demo3D::v_Init(void)
 	specular.UseAlpha(false);
 
 	TM::Point targetPos = _robot->GetPosition();
-	_orbitCamera.SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
-	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
-	_orbitCamera.SetMouseSensitivity(0.25f);
+	_orbitCamera->SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
+	_orbitCamera->SetUpVector(0.0f, 1.0f, 0.0f);
+	_orbitCamera->SetMouseSensitivity(0.25f);
 
 	//Add the following: 
 	// point:
@@ -204,12 +204,12 @@ void Demo3D::v_Update(void)
 
 		if(!_useOrbit)
 		{
-			Level::SetCamera(&_fpsCamera);
+			TE::GameWindow::Instance()->SetCamera(_fpsCamera);
 			TE::GameWindow::Instance()->DisableMouseCursor();
 		}
 		else
 		{
-			Level::SetCamera(&_orbitCamera);
+			TE::GameWindow::Instance()->SetCamera(_orbitCamera);
 			TE::GameWindow::Instance()->EnableMouseCursor();
 		}
 	}
@@ -218,47 +218,47 @@ void Demo3D::v_Update(void)
 
 	if(_useOrbit)
 	{
-		viewPos = _orbitCamera.GetPosition();
+		viewPos = _orbitCamera->GetPosition();
 
 		if(TE::Controller::Instance()->GetKeyHeld(TE::LEFT_MOUSE))
 		{
-			_orbitCamera.Orbit();
+			_orbitCamera->Orbit();
 		}
 
 		if(TE::Controller::Instance()->GetKeyHeld(TE::RIGHT_MOUSE))
 		{
-			_orbitCamera.Zoom();
+			_orbitCamera->Zoom();
 		}
 	}
 	else
 	{
-		viewPos = _fpsCamera.GetPosition();
+		viewPos = _fpsCamera->GetPosition();
 
 		if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetLookVector()); //forward
+			_fpsCamera->v_Move(_fpsCamera->GetLookVector()); //forward
 		}
 		else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetLookVector() * -1.0f); //back
+			_fpsCamera->v_Move(_fpsCamera->GetLookVector() * -1.0f); //back
 		}
 		
 		if(TE::Controller::Instance()->GetKeyHeld(TE::D))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetRightVector()); //right
+			_fpsCamera->v_Move(_fpsCamera->GetRightVector()); //right
 		}
 		else if(TE::Controller::Instance()->GetKeyHeld(TE::A))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetRightVector() * -1.0f); //left
+			_fpsCamera->v_Move(_fpsCamera->GetRightVector() * -1.0f); //left
 		}
 
 		if(TE::Controller::Instance()->GetKeyHeld(TE::SPACE))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetUpVector()); //up
+			_fpsCamera->v_Move(_fpsCamera->GetUpVector()); //up
 		}
 		else if(TE::Controller::Instance()->GetKeyHeld(TE::LSHIFT))
 		{
-			_fpsCamera.v_Move(_fpsCamera.GetUpVector() * -1.0f); //down
+			_fpsCamera->v_Move(_fpsCamera->GetUpVector() * -1.0f); //down
 		}
 	}
 
@@ -273,4 +273,9 @@ void Demo3D::v_Update(void)
 
 	//Update light Position
 	Level::SetObjectUniforms("light.position", lightPos);
+}
+
+void Demo3D::v_Awake(void)
+{
+	ActivateBackgroundColor();
 }

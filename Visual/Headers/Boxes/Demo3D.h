@@ -48,6 +48,8 @@ namespace Boxes
 
 		void v_Update(void) final;
 
+		void v_Awake(void) final;
+
 	private:
 		bool			_useOrbit;
 		p_Cube   		_crate1;
@@ -58,8 +60,8 @@ namespace Boxes
 		p_Cube 			_bunny;
 		p_Cube 			_light;
 		F32 			_lightMovAngle;
-		TE::OrbitCamera _orbitCamera;
-		TE::FPSCamera   _fpsCamera;
+		TE::p_OrbitCamera _orbitCamera;
+		TE::p_FPSCamera   _fpsCamera;
 		
 	};//end Class
 }//end Namespace
