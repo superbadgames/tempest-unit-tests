@@ -33,7 +33,8 @@ void MainMenu::v_Init(void)
 	F32 top = TE::GameWindow::Instance()->GetScreenTop();
 
 	_selector->SetColor(TE::Color(1.0f, 0.0f, 0.0f));
-	_selector->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
+	// TODO:: After Tempest issue #64, refactor
+	//_selector->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_selector->SetScale(15.0f, 15.0f);
 
 	_mainTitle.SetFont(TE::FontManager::Instance()->GetFont(101));

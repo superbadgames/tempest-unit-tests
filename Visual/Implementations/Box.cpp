@@ -16,7 +16,8 @@ _direction(0.0f),
 _boundingBox()
 { 
 	_direction.Make2D();
-	GameObject::MakeSprite();
+	// TODO:: After Tempest issue #60, refactor
+	//GameObject::MakeSprite();
 	GameObject::SetPosition(0.0f, 0.0f);
 	GameObject::SetScale(1.0f, 1.0f);
 }
@@ -28,7 +29,8 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 {
 	_direction.Make2D();
-	GameObject::MakeSprite();
+	// TODO:: After Tempest issue #60, refactor
+	//GameObject::MakeSprite();
 	GameObject::SetPosition(pos);
 	GameObject::SetScale(width, height);
 }
@@ -40,7 +42,8 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 	
 	_direction.Make2D();
-	GameObject::MakeSprite();
+	// TODO:: After Tempest issue #60, refactor
+	//GameObject::MakeSprite();
 	GameObject::SetPosition(pos);
 	GameObject::SetScale(width, height);
 	GameObject::SetColor(col);
@@ -54,11 +57,13 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 
 	_direction.Make2D();
-	GameObject::MakeSprite();
+	// TODO:: After Tempest issue #60, refactor
+	//GameObject::MakeSprite();
 	GameObject::SetPosition(pos);
 	GameObject::SetScale(width, height);
 	GameObject::SetColor(col);
-	GameObject::SetTexture(texture);
+	// TODO:: After Tempest issue #64, refactor
+	//GameObject::SetTexture(texture);
 }
 
 //==========================================================================================================================

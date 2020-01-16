@@ -17,7 +17,8 @@ _startingLocation(0.0f),
 _type(),
 p_rigidBody(nullptr)
 {
-	GameObject::MakeSprite();
+	// TODO:: After Tempest issue #60, refactor
+	//GameObject::MakeSprite();
 	GameObject::SetActive(false);
 	p_rigidBody = TP::PhysicsFactory::Instance()->MakeRigidBody2D();
 	p_rigidBody->SetObject(this);
@@ -85,7 +86,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.99f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(5.0f, 5.0f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(301));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(301));
 			_speedScale = 1000.0f;
 			break;
 		case ARTILLERY:
@@ -94,7 +96,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.6f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(15.0f, 15.0f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(302));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(302));
 			_speedScale = 1000.0f;
 			break;
 		case MISSILE:
@@ -103,7 +106,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.99f);
 			p_rigidBody->SetAcceleration(500.0f, 0.0f);
 			GameObject::SetScale(20.0f, 20.0f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(303));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(303));
 			_speedScale = 300.0f;
 			break;
 		case FIRE_BALL:
@@ -112,7 +116,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.99f);
 			p_rigidBody->SetAcceleration(10.0f, 0.0f);
 			GameObject::SetScale(7.5f, 7.5f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(304));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(304));
 			_speedScale = 250.0;
 			break;
 		case LAZER:
@@ -121,7 +126,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.99f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(10.0f, 7.5f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(305));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(305));
 			_speedScale	= 900.0f;
 			break;
 		case GRENADE:
@@ -130,7 +136,8 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.25f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(15.0f, 15.0f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(306));
+			// TODO:: After Tempest issue #64, refactor
+			//GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(306));
 			_speedScale	= 350.0f;
 			break;
 		default:
