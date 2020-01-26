@@ -58,8 +58,7 @@ void Ballistics::v_Init(void)
 	_cannon->SetMovementSpeed(120.0f);
 	_cannon->SetTopBoundary(top);
 	_cannon->SetBottomBoundary(bottom);
-	// TODO:: After Tempest issue #64, refactor
-	//_cannon->SetTexture(TE::TextureManager::Instance()->GetTexture(300));
+	_cannon->SetTexture(TE::TextureManager::Instance()->GetTexture(300));
 	Level::AddObjectToLevel(_cannon);
 
 	

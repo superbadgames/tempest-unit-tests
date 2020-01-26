@@ -16,8 +16,7 @@ _upDirection(0.0f, 1.0f),
 _downDirection(0.0f, -1.0f),
 _projectilePool()
 {
-	// TODO:: After Tempest issue #60, refactor
-	//GameObject::MakeSprite();
+	GameObject::MakeSprite();
 }
 
 Cannon::~Cannon(void)

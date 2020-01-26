@@ -63,22 +63,19 @@ void MovingBoxes::v_Init(void)
 	Level::AddTextToLevel(_updateText);
 
 	_redbox->SetPosition(0.0f, _top / 3.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
+	_redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_redbox->SetScale(32.0f, 32.0f);
 	_redbox->InitBounding();
 	Level::AddObjectToLevel(_redbox);
 
 	_greenbox->SetPosition(_left / 3.0f, 0.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_greenbox->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
+	_greenbox->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
 	_greenbox->SetScale(32.0f, 32.0f);
 	_greenbox->InitBounding();
 	Level::AddObjectToLevel(_greenbox);
 
 	_bluebox->SetPosition(_right / 3.0f, 0.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_bluebox->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
+	_bluebox->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
 	_bluebox->SetScale(32.0f, 32.0f);
 	_bluebox->InitBounding();
 	Level::AddObjectToLevel(_bluebox);

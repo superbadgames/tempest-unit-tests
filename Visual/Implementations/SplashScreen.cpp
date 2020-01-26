@@ -38,21 +38,18 @@ void SplashScreen::v_Init(void)
 	F32 top = TE::GameWindow::Instance()->GetScreenTop();
 
 	_red->SetPosition(0.0f, 0.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_red->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
+	_red->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
 	_red->SetScale(25.0f, 25.0f);
 	Level::AddObjectToLevel(_red);
 
 	_green->SetPosition(left / 3.0f, top / 3.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_green->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
+	_green->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
 	_green->SetScale(25.0f, 25.0f);
 	_green->SetSpeed(400.0f);
 	Level::AddObjectToLevel(_green);
 
 	_blue->SetPosition(right / 3.0f, top / 3.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_blue->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
+	_blue->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
 	_blue->SetScale(25.0f, 25.0f);
 	_blue->SetSpeed(400.0f);
 	Level::AddObjectToLevel(_blue);
