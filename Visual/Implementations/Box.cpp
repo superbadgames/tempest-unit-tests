@@ -1,5 +1,4 @@
 #include <Boxes/Box.h>
-#include <iostream>
 
 using namespace Boxes;
 
@@ -16,10 +15,9 @@ _direction(0.0f),
 _boundingBox()
 { 
 	_direction.Make2D();
-	// TODO:: After Tempest issue #60, refactor
-	//GameObject::MakeSprite();
-	GameObject::SetPosition(0.0f, 0.0f);
-	GameObject::SetScale(1.0f, 1.0f);
+	MakeSprite();
+	SetPosition(0.0f, 0.0f);
+	SetScale(1.0f, 1.0f);
 }
 
 Box::Box(const TM::Point& pos, F32 width, F32 height)
@@ -29,10 +27,9 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 {
 	_direction.Make2D();
-	// TODO:: After Tempest issue #60, refactor
-	//GameObject::MakeSprite();
-	GameObject::SetPosition(pos);
-	GameObject::SetScale(width, height);
+	MakeSprite();
+	SetPosition(pos);
+	SetScale(width, height);
 }
 
 Box::Box(const TM::Point& pos, F32 width, F32 height, const TE::Color& col)
@@ -42,11 +39,10 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 	
 	_direction.Make2D();
-	// TODO:: After Tempest issue #60, refactor
-	//GameObject::MakeSprite();
-	GameObject::SetPosition(pos);
-	GameObject::SetScale(width, height);
-	GameObject::SetColor(col);
+	MakeSprite();
+	SetPosition(pos);
+	SetScale(width, height);
+	SetColor(col);
 }
 
 
@@ -57,13 +53,11 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 
 	_direction.Make2D();
-	// TODO:: After Tempest issue #60, refactor
-	//GameObject::MakeSprite();
-	GameObject::SetPosition(pos);
-	GameObject::SetScale(width, height);
-	GameObject::SetColor(col);
-	// TODO:: After Tempest issue #64, refactor
-	//GameObject::SetTexture(texture);
+	MakeSprite();
+	SetPosition(pos);
+	SetScale(width, height);
+	SetColor(col);
+	SetTexture(texture);
 }
 
 //==========================================================================================================================
@@ -76,21 +70,21 @@ _boundingBox(pos, width, height, 0.0f)
 //==========================================================================================================================
 void Box::v_Update(void) 
 {
-	GameObject::AddScaledPosition(_direction, TM::Timer::Instance()->DeltaTime() * _speed);
-	_boundingBox.SetCenter(GameObject::GetPosition());
+	AddScaledPosition(_direction, TM::Timer::Instance()->DeltaTime() * _speed);
+	_boundingBox.SetCenter(GetPosition());
 }
 
 void Box::OnCollide(void)
 {
-	GameObject::AddScaledPosition(-_direction, TM::Timer::Instance()->DeltaTime() * _speed);
-	_boundingBox.SetCenter(GameObject::GetPosition());
+	AddScaledPosition(-_direction, TM::Timer::Instance()->DeltaTime() * _speed);
+	_boundingBox.SetCenter(GetPosition());
 
 	_direction = 0.0f;
 }
 
 void Box::InitBounding(void)
 {
-	_boundingBox.SetCenter(GameObject::GetPosition());
+	_boundingBox.SetCenter(GetPosition());
 	//Set the half dimensions equal to the dimensions... Not sure why this is. It was not intended to be used this way.
-	_boundingBox.SetHalfDimensions(GameObject::GetScale());
+	_boundingBox.SetHalfDimensions(GetScale());
 }

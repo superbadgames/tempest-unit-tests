@@ -76,8 +76,7 @@ void Demo3D::v_Init(void)
 	_crate1 = ProjectFactory::Instance()->MakeCube();
 	_crate1->InitCube("./Assets/Models/Course/crate.obj");
 	_crate1->SetPosition(-5.0f, 0.0f, 0.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_crate1->SetTexture(TE::TextureManager::Instance()->GetTexture(500));
+	_crate1->SetTexture(TE::TextureManager::Instance()->GetTexture(500));
 	_crate1->SetColor(1.0f, 0.0f, 0.0f);
 	Level::AddObjectToLevel(_crate1);
 
@@ -85,8 +84,7 @@ void Demo3D::v_Init(void)
 	_crate2 = ProjectFactory::Instance()->MakeCube();
 	_crate2->InitCube("./Assets/Models/Course/crate.obj");
 	_crate2->SetPosition(5.0f, 0.0f, 0.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_crate2->SetTexture(TE::TextureManager::Instance()->GetTexture(501));
+	_crate2->SetTexture(TE::TextureManager::Instance()->GetTexture(501));
 	_crate2->SetColor(0.0f, 1.0f, 0.0f);
 	//_crate2->SetActive(false);
 	Level::AddObjectToLevel(_crate2);
@@ -95,8 +93,7 @@ void Demo3D::v_Init(void)
 	_robot = ProjectFactory::Instance()->MakeCube();
 	_robot->InitCube("./Assets/Models/Course/robot.obj");
 	_robot->SetPosition(0.0f, -1.0f, -2.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_robot->SetTexture(TE::TextureManager::Instance()->GetTexture(502));
+	_robot->SetTexture(TE::TextureManager::Instance()->GetTexture(502));
 	_robot->SetColor(0.5f, 0.5f, 0.5f);
 	//_robot->SetActive(false);
 	Level::AddObjectToLevel(_robot);
@@ -124,8 +121,7 @@ void Demo3D::v_Init(void)
 	_floor->InitCube("./Assets/Models/Course/floor.obj");
 	_floor->SetPosition(0.0f, -1.0f, 0.0f);
 	_floor->SetScale(10.0f, 0.1f, 10.0f);
-	// TODO:: After Tempest issue #64, refactor
-	//_floor->SetTexture(TE::TextureManager::Instance()->GetTexture(504));
+	_floor->SetTexture(TE::TextureManager::Instance()->GetTexture(504));
 	//_floor->SetActive(false);
 	Level::AddObjectToLevel(_floor);
 
@@ -169,8 +165,7 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("light.direction", lightDirection);
 
 
-	// TODO:: After Tempest issue #64, refactor
-	//_light->SetUniform("lightColor", lightColor);
+	_light->GetShader()->SetUniform("lightColor", lightColor);
 
 
 	TE::Color ambientMat{ 0.1f, 0.1f, 0.1f };
@@ -183,13 +178,12 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("material.specular", specularMat);
 	Level::SetObjectUniforms("material.shininess", shininess);
 
-	// TODO:: After Tempest issue #64, refactor
-	//_crate1->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	//_crate2->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	//_robot->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	//_bowlingPin->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	//_bunny->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	//_floor->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate1->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate2->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_robot->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bowlingPin->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bunny->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_floor->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
 
 }
 

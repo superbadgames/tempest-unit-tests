@@ -156,7 +156,7 @@ int main(void)
 	mainMenu->v_Init();
 	TE::Engine::Instance()->AddLevelToManager(mainMenu);
 
-	TE::Engine::Instance()->SetActiveLevel(make_shared<MovingBoxes>());
+	TE::Engine::Instance()->SetActiveLevel(make_shared<SplashScreen>());
 	//TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 
 	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
