@@ -165,7 +165,7 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("light.direction", lightDirection);
 
 
-	_light->SetUniform("lightColor", lightColor);
+	_light->GetShader()->SetUniform("lightColor", lightColor);
 
 
 	TE::Color ambientMat{ 0.1f, 0.1f, 0.1f };
@@ -178,12 +178,12 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("material.specular", specularMat);
 	Level::SetObjectUniforms("material.shininess", shininess);
 
-	_crate1->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_crate2->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_robot->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_bowlingPin->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_bunny->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_floor->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate1->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate2->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_robot->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bowlingPin->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bunny->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_floor->GetShader()->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
 
 }
 
