@@ -75,7 +75,7 @@ void IntegrateNTimes(Object3D& obj, S32 n)
 {
 	for(S32 i = 0; i < n; ++i)
 	{
-		TM::Timer::Instance()->Update();
+		TM::Timer::Instance()->SingleStep();
 		obj.p_body->Integrate();
 		TE::ErrorManager::Instance()->DisplayErrors();
 	}

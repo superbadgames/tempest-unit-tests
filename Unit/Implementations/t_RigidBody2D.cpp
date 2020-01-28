@@ -72,7 +72,7 @@ void IntegrateNTimes(Object& obj, S32 n)
 {
 	for(S32 i = 0; i < n; ++i)
 	{
-		TM::Timer::Instance()->Update();
+		TM::Timer::Instance()->SingleStep();
 		obj.p_body->Integrate();
 		TE::ErrorManager::Instance()->DisplayErrors();
 	}
@@ -116,14 +116,14 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	obj.p_body->SetAcceleration(-0.25f, 0.0f);
 	obj.SetPosition(1.0f, 1.0f);
 
-	IntegrateNTimes(obj, 1);
+	IntegrateNTimes(obj, 100);
 
 	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
 	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 
-	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
+	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 100.0f);
 	//Damping will reduce, hence Less Than, not Equal
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[z], 0.0f);

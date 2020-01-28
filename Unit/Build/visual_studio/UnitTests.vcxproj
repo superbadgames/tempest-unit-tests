@@ -129,6 +129,7 @@
     <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp" />
     <ClCompile Include="..\..\Implementations\t_ForceRegistry.cpp" />
     <ClCompile Include="..\..\Implementations\t_GameObject.cpp" />
+    <ClCompile Include="..\..\Implementations\t_GameObjectManager.cpp" />
     <ClCompile Include="..\..\Implementations\t_Level.cpp" />
     <ClCompile Include="..\..\Implementations\t_Main.cpp" />
     <ClCompile Include="..\..\Implementations\t_Matrix3.cpp" />

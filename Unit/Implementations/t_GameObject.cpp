@@ -52,9 +52,6 @@ namespace TM = TempestMath;
 //==========================================================================================================================
 //GameObject Class Creation
 //==========================================================================================================================
-/*
-
-Disabling for now. Any test that relies on opengl needs to be worked out. 
 
 class DefinedObject : public TE::GameObject
 {
@@ -69,4 +66,9 @@ public:
 	{  }
 };
 
-*/
+BOOST_AUTO_TEST_CASE(GameObjectConstructor)
+{
+	DefinedObject obj { };
+
+	BOOST_CHECK_EQUAL(obj.GetID(), 1);
+}

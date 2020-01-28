@@ -1,5 +1,5 @@
 /*------------------------------------------------------------
-This file will test the functionality of the Vector4 class which
+This file will test the functionality of the Vector3 class which
 will be used in the Killer1 Engine. Most of the examples and all
 of the equations are from 3D Math Primer for Graphics and Game
 Development by Dunn and Parberry (awesome book for those who
@@ -36,23 +36,56 @@ Written by Maxwell Miller
 -------------------------------------------------------------*/
 
 #include <boost/test/unit_test.hpp>
+#include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
-#include <Engine/Timer.h>
+#include <Engine/GameObjectManager.h>
+#include <Engine/ErrorManager.h>
 
-#include <iostream>
+namespace TE = Tempest;
 
-namespace TM = TempestMath;
-
-BOOST_AUTO_TEST_CASE(TimerDeltaAndTotalTimeUpdates)
+class DefinedObject : public TE::GameObject
 {
-	real startDelta = TM::Timer::Instance()->DeltaTime();
-	F64 startTotal = TM::Timer::Instance()->TotalTime();
+public:
+	DefinedObject(void)
+	{  }
 
-	for(int i = 0; i < 100; ++i)
-	{
-		TM::Timer::Instance()->SingleStep();
-	}
+	~DefinedObject(void)
+	{  }
 
-	BOOST_CHECK_GT(TM::Timer::Instance()->DeltaTime(), 0.0);
-	BOOST_CHECK_GT(TM::Timer::Instance()->TotalTime(), startTotal);
+	void v_Update(void)
+	{  }
+};
+
+BOOST_AUTO_TEST_CASE(GameObjectManagerConstructor)
+{
+	BOOST_CHECK_NE(TE::GameObjectManager::Instance(), nullptr);
+}
+
+BOOST_AUTO_TEST_CASE(GameObjectManagerAddRemoveGetGameObject)
+{
+	shared_ptr<DefinedObject> obj1 = make_shared<DefinedObject>();
+	U32 id_1 = obj1->GetID();
+
+	shared_ptr<DefinedObject> obj2 = make_shared<DefinedObject>();
+	U32 id_2 = obj2->GetID();
+
+	shared_ptr<DefinedObject> obj3 = make_shared<DefinedObject>();
+	U32 id_3 = obj3->GetID();
+
+	BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count(), 0);
+	
+	TE::GameObjectManager::Instance()->Add(obj1);
+	TE::GameObjectManager::Instance()->Add(obj2);
+	TE::GameObjectManager::Instance()->Add(obj3);
+	
+	BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count(), 3);
+
+	TE::p_GameObject gotObj = TE::GameObjectManager::Instance()->GetGameObject(id_1);
+
+	BOOST_CHECK_EQUAL(gotObj->GetID(), id_1);
+	
+	TE::GameObjectManager::Instance()->Remove(id_2);
+	TE::GameObjectManager::Instance()->Remove(id_3);
+
+	BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count(), 1);
 }
