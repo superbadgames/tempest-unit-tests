@@ -11,6 +11,7 @@ Written by Maxwell Miller
 //Killer1 includes
 #include <Engine/Atom.h>
 #include <Engine/LevelManager.h>
+#include <Engine/Engine.h>
 #include <Engine/GameWindow.h>
 #include <Engine/Level.h>
 #include <Engine/Timer.h>

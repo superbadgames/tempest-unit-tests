@@ -11,6 +11,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
+#include <Engine/Engine.h>
 #include <Engine/LevelManager.h>
 #include <Engine/GameWindow.h>
 #include <Engine/Level.h>

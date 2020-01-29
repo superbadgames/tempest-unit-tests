@@ -191,7 +191,7 @@ void Demo3D::v_Update(void)
 {
 	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE))
 	{
-		TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		TE::Engine::Instance()->SetActiveLevel(TE::LevelManager::Instance()->GetLevel(MAIN_MENU_ID));
 		return;
 	}
 	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::F11))
@@ -273,9 +273,4 @@ void Demo3D::v_Update(void)
 
 	//Update light Position
 	Level::SetObjectUniforms("light.position", lightPos);
-}
-
-void Demo3D::v_Awake(void)
-{
-	ActivateBackgroundColor();
 }

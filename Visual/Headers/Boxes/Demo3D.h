@@ -48,8 +48,6 @@ namespace Boxes
 
 		void v_Update(void) final;
 
-		void v_Awake(void) final;
-
 	private:
 		bool			_useOrbit;
 		p_Cube   		_crate1;
