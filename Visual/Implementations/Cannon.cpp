@@ -57,7 +57,9 @@ void Cannon::v_Update(void)
 		{
 			TE::GameObject::AddScaledPosition(_downDirection, _movementSpeed);
 		}
-	}	
+	}
+
+	DefaultUpdate();
 }
 
 void Cannon::Fire(const TM::Vector4& heading, ProjectileType type)

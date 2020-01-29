@@ -7,8 +7,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================================================================*/
-#ifndef MAIN_MAIN_H
-#define MAIN_MAIN_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -82,18 +81,22 @@ namespace Boxes
 //==========================================================================================================================
 	static void MenuItem_Level1Action(void)
 	{
-		TE::Engine::Instance()->SetActiveLevel(make_shared<MovingBoxes>());
+		p_MovingBoxes level = make_shared<MovingBoxes>();
+		level->v_Init();
+		TE::Engine::Instance()->SetActiveLevel(level);
 	}
 
 	static void MenuItem_BallisticsAction(void)
 	{
-		TE::Engine::Instance()->SetActiveLevel(make_shared<Ballistics>());
+		p_Ballistics level = make_shared<Ballistics>();
+		level->v_Init();
+		TE::Engine::Instance()->SetActiveLevel(level);
 	}
 
 	static void MenuItem_OpenglAction(void)
 	{
-		TE::Engine::Instance()->SetActiveLevel(make_shared<Demo3D>());
+		p_Demo3D level = make_shared<Demo3D>();
+		level->v_Init();
+		TE::Engine::Instance()->SetActiveLevel(level);
 	}
 }
-
-#endif

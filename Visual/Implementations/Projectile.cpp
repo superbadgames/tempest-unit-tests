@@ -1,5 +1,4 @@
 #include <Boxes/Projectile.h>
-#include <iostream>
 
 using namespace Boxes;
 
@@ -46,6 +45,7 @@ void Projectile::v_Update(void)
 	}
 
 	p_rigidBody->Integrate();
+	DefaultUpdate();
 }
 
 //==========================================================================================================================

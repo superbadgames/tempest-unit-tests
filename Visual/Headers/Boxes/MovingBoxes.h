@@ -87,5 +87,5 @@ namespace Boxes
 		string   _message2;
 		p_Box 	 _activeBox;
 	};
-
+	typedef shared_ptr<MovingBoxes> p_MovingBoxes;
 }//End namespace

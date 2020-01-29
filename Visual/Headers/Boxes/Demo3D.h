@@ -62,4 +62,5 @@ namespace Boxes
 		TE::p_FPSCamera   _fpsCamera;
 		
 	};//end Class
+	typedef shared_ptr<Demo3D> p_Demo3D;
 }//end Namespace

@@ -69,4 +69,5 @@ namespace Boxes
 		p_Box 	 _blue;
 		TE::Text _mainTitle;
 	};//End Class
+	typedef shared_ptr<SplashScreen> p_SplashScreen;
 }

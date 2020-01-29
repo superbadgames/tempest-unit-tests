@@ -156,7 +156,7 @@ int main(void)
 	mainMenu->v_Init();
 	TE::LevelManager::Instance()->Add(mainMenu);
 
-	shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
+	p_SplashScreen splashScreen = make_shared<SplashScreen>();
 	splashScreen->v_Init();
 	TE::Engine::Instance()->SetActiveLevel(splashScreen);
 	//TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);

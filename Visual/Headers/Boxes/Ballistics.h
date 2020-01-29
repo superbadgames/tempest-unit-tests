@@ -69,4 +69,5 @@ namespace Boxes
 		p_Cannon							_cannon;
 		TP::p_GravityForce					p_gravityForce;
 	};
+	typedef shared_ptr<Ballistics> p_Ballistics;
 }//end namespace

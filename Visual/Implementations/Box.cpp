@@ -72,6 +72,8 @@ void Box::v_Update(void)
 {
 	AddScaledPosition(_direction, TM::Timer::Instance()->DeltaTime() * _speed);
 	_boundingBox.SetCenter(GetPosition());
+	
+	DefaultUpdate();
 }
 
 void Box::OnCollide(void)
