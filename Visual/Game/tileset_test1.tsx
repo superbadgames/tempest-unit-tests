@@ -5,52 +5,52 @@
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="64" height="64" source="building.png"/>
+  <image width="64" height="64" source="Assets/Textures/TiledTest/building.png"/>
  </tile>
  <tile id="1">
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="32" height="32" source="bush.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/bush.png"/>
  </tile>
  <tile id="2">
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="32" height="32" source="house.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/house.png"/>
  </tile>
  <tile id="4">
   <properties>
    <property name="type" value="orc"/>
   </properties>
-  <image width="32" height="32" source="orc.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/orc.png"/>
  </tile>
  <tile id="5">
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="32" height="32" source="path.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/path.png"/>
  </tile>
  <tile id="6">
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="32" height="32" source="path2.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/path2.png"/>
  </tile>
  <tile id="7">
   <properties>
    <property name="type" value="static"/>
   </properties>
-  <image width="32" height="32" source="path3.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/path3.png"/>
  </tile>
  <tile id="8">
   <properties>
    <property name="hp" type="int" value="10"/>
    <property name="type" value="orc"/>
   </properties>
-  <image width="32" height="32" source="orc_red.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/orc_red.png"/>
  </tile>
  <tile id="9">
-  <image width="32" height="32" source="man.png"/>
+  <image width="32" height="32" source="Assets/Textures/TiledTest/man.png"/>
  </tile>
 </tileset>

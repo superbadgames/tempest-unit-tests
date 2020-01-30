@@ -21,7 +21,7 @@ void TiledTest::v_Init(void)
 	//Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
 	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	ImportTMXMapData("./Assets/Maps/tiled_tests.tmx");
+	ImportTMXMapData("tiled_tests.tmx");
 }
 
 void TiledTest::v_Update(void)
