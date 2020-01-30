@@ -26,6 +26,9 @@
     <Filter Include="Exclude">
       <UniqueIdentifier>{a167857f-5c35-40da-b495-6b7c14b5764c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TiledTest">
+      <UniqueIdentifier>{d852b01a-57a4-4de2-adae-0fcfd867636d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Main.cpp">
@@ -61,6 +64,9 @@
     <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
       <Filter>Source Files\Factory</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\TiledTest.cpp">
+      <Filter>Source Files\TiledTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h">
@@ -95,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
       <Filter>Source Files\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\TiledTest.h">
+      <Filter>Source Files\TiledTest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

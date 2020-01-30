@@ -138,6 +138,10 @@
     <ClCompile Include="..\..\Implementations\ProjectFactory.cpp" />
     <ClCompile Include="..\..\Implementations\Projectile.cpp" />
     <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
+    <ClCompile Include="..\..\Implementations\TiledTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\Ballistics.h" />
@@ -151,6 +155,10 @@
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h" />
     <ClInclude Include="..\..\Headers\Boxes\Projectile.h" />
     <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h" />
+    <ClInclude Include="..\..\Headers\Boxes\TiledTest.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

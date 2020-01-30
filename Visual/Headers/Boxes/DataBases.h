@@ -13,6 +13,7 @@ namespace Boxes
 		BALLISTICS_ID = 4,
 		FIREWORKS_ID = 5,
 		SPRINGS_ID = 6, 
-		DEMO3D_ID = 7
+		DEMO3D_ID = 7,
+		TILED_TEST_ID = 8,
 	};
 }//end Namespace

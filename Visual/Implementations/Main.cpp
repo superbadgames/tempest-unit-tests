@@ -70,6 +70,7 @@ namespace TE = Tempest;
 #include <Boxes/Ballistics.h>
 #include <Boxes/Demo3D.h>
 #include <Boxes/Box.h>
+#include <Boxes/TiledTest.h>
 
 using namespace Boxes;
 
@@ -152,32 +153,17 @@ int main(void)
 	//shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
 	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
 	
-	shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
+	/*shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
 	mainMenu->v_Init();
 	TE::LevelManager::Instance()->Add(mainMenu);
 
 	p_SplashScreen splashScreen = make_shared<SplashScreen>();
 	splashScreen->v_Init();
-	TE::Engine::Instance()->SetActiveLevel(splashScreen);
-	//TE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+	TE::Engine::Instance()->SetActiveLevel(splashScreen);*/
 
-	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
-	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
-	//TE::Engine::Instance()->AddLevelToManager(levelBallistics);
-
-	//shared_ptr<FireworksDemo> fireworks { new FireworksDemo() };
-	//fireworks->v_InitLevel(5, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
-	//TE::Engine::Instance()->AddLevelToManager(fireworks);
-
-	//shared_ptr<Springs> springs { new Springs() };
-	//springs->v_InitLevel(6, wndWidth, wndHeight, TE::Color(0.2f, 0.2f, 0.2f));
-	//TE::Engine::Instance()->AddLevelToManager(springs);
-
-	//shared_ptr<Demo3D> demo3D { new Demo3D() };
-	//demo3D->v_InitLevel(7, wndWidth, wndHeight, TE::Color(0.2f, 0.4f, 0.5f));
-	//TE::Engine::Instance()->AddLevelToManager(demo3D);
-	
-	//TE::Engine::Instance()->SetActiveLevel(1);
+	p_TiledTest level = make_shared<TiledTest>();
+	level->v_Init();
+	TE::Engine::Instance()->SetActiveLevel(level);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{
