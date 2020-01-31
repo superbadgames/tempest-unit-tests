@@ -38,6 +38,12 @@ namespace Boxes
 		
 		void v_Update(void) final;
 
+		void v_Enter(void) final
+		{
+			TE::GameWindow::Instance()->SetCamera(_camera);
+			ActivateBackgroundColor();
+		}
+
 	private:
 		TE::p_FPSCamera _camera;
 

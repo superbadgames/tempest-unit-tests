@@ -1,5 +1,4 @@
 #include <Boxes/TiledTest.h>
-#include <iostream>
 
 using namespace Boxes;
 
@@ -29,8 +28,8 @@ void TiledTest::v_Init(void)
 							 TE::GameWindow::Instance()->GetScreenBottom(), TE::GameWindow::Instance()->GetScreenTop(), 
 							 -100.0f, 100.0f);
 	_camera->SetPosition(0.0f, 0.0f, 0.0f);
-	_camera->SetMoveSpeed(10.0f);
-	_camera->SetMouseSensitivity(0.1f);
+	_camera->SetMoveSpeed(100.0f);
+	_camera->SetMouseSensitivity(0.0f);
 	_camera->SetDeadZone(0.2f);
 
 	TE::GameWindow::Instance()->SetCamera(_camera);
@@ -57,13 +56,10 @@ void TiledTest::v_Update(void)
 	{
 		TE::Engine::Instance()->End();
 	}
-
-	_camera->v_Update();
 	
 	if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 	{
 		_camera->v_Move(_camera->GetUpVector()); //up
-		std::cout << "w held\n";
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 	{
@@ -77,6 +73,4 @@ void TiledTest::v_Update(void)
 	{
 		
 	}
-
-	std::cout << "cam pos: " << TE::GameWindow::Instance()->GetCamera()->GetPosition()[x] << "," << TE::GameWindow::Instance()->GetCamera()->GetPosition()[y] << std::endl;
 }
