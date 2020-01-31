@@ -8,6 +8,7 @@
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
 #include <Engine/Timer.h>
+#include <Engine/FPSCamera.h>
 #include <Boxes/DataBases.h>
 #include <Boxes/Box.h>
 
@@ -38,7 +39,7 @@ namespace Boxes
 		void v_Update(void) final;
 
 	private:
-		TE::p_Camera _camera;
+		TE::p_FPSCamera _camera;
 
 	};//end Class
 	typedef shared_ptr<TiledTest> p_TiledTest;

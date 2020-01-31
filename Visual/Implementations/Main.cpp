@@ -163,7 +163,12 @@ int main(void)
 
 	p_TiledTest level = make_shared<TiledTest>();
 	level->v_Init();
+
+	p_Demo3D level2 = make_shared<Demo3D>();
+	level2->v_Init();
+
 	TE::Engine::Instance()->SetActiveLevel(level);
+	//TE::Engine::Instance()->SetActiveLevel(level2);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{

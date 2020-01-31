@@ -10,7 +10,7 @@ using namespace Boxes;
 //==========================================================================================================================
 TiledTest::TiledTest(void)
 	:
-	_camera(nullptr)
+	_camera(make_shared<TE::FPSCamera>())
 {  }
 
 TiledTest::~TiledTest(void)
@@ -24,10 +24,14 @@ void TiledTest::v_Init(void)
 	//Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
 	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	_camera = make_shared<TE::Camera>();
+	_camera = make_shared<TE::FPSCamera>();
 	_camera->SetOrthographic(TE::GameWindow::Instance()->GetScreenLeft(), TE::GameWindow::Instance()->GetScreenRight(), 
 							 TE::GameWindow::Instance()->GetScreenBottom(), TE::GameWindow::Instance()->GetScreenTop(), 
 							 -100.0f, 100.0f);
+	_camera->SetPosition(0.0f, 0.0f, 0.0f);
+	_camera->SetMoveSpeed(10.0f);
+	_camera->SetMouseSensitivity(0.1f);
+	_camera->SetDeadZone(0.2f);
 
 	TE::GameWindow::Instance()->SetCamera(_camera);
 
@@ -37,7 +41,6 @@ void TiledTest::v_Init(void)
 	{
 		p_Box obj = make_shared<Box>();
 		TE::p_Texture tex = make_shared<TE::Texture>();
-		std::cout << "texture path = " << object.imageFilePath << std::endl;
 		tex->LoadTexture(object.imageFilePath);
 
 		obj->SetPosition(object.pos);
@@ -55,37 +58,25 @@ void TiledTest::v_Update(void)
 		TE::Engine::Instance()->End();
 	}
 
-	F32 speed = 25.0f;
-
-	//std::cout << "delta * speed: " << speed * TM::Timer::Instance()->DeltaTime() << std::endl;
-
-	TM::Point camPos = TE::GameWindow::Instance()->GetCamera()->GetPosition();
+	_camera->v_Update();
 	
 	if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 	{
-		camPos.AddScaledPoint(TM::Point(0.0f, 1.0f), speed * TM::Timer::Instance()->DeltaTime());
-		TE::GameWindow::Instance()->GetCamera()->SetPosition(100.0f, 100.0f);
+		_camera->v_Move(_camera->GetUpVector()); //up
+		std::cout << "w held\n";
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 	{
-		//TE::GameWindow::Instance()->GetCamera()->ScalePosition(0.0f, -1.0f, TM::Timer::Instance()->DeltaTime());
-		camPos.AddScaledPoint(TM::Point(0.0f, -1.0f), speed * TM::Timer::Instance()->DeltaTime());
-		TE::GameWindow::Instance()->GetCamera()->SetPosition(0.0f, 0.0f);
+		_camera->v_Move(_camera->GetUpVector() * -1.0f); //up
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::D))
 	{
-		//TE::GameWindow::Instance()->GetCamera()->ScalePosition(1.0f, 0.0f, TM::Timer::Instance()->DeltaTime());
-		camPos.AddScaledPoint(TM::Point(1.0f, 0.0f), speed * TM::Timer::Instance()->DeltaTime());
-		TE::GameWindow::Instance()->GetCamera()->SetPosition(100.0f, 0.0f);
+		
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::A))
 	{
-		//TE::GameWindow::Instance()->GetCamera()->ScalePosition(-1.0f, 0.0f, TM::Timer::Instance()->DeltaTime());
-		camPos.AddScaledPoint(TM::Point(-1.0f, 0.0f), speed * TM::Timer::Instance()->DeltaTime());
-		TE::GameWindow::Instance()->GetCamera()->SetPosition(0.0f, 0.0f);
+		
 	}
 
-	Level::SetObjectUniforms("view_position", camPos);
-
-	std::cout << "camera pos = " << TE::GameWindow::Instance()->GetCamera()->GetPosition()[x] << "," << TE::GameWindow::Instance()->GetCamera()->GetPosition()[y] << "," << TE::GameWindow::Instance()->GetCamera()->GetPosition()[z] << std::endl;
+	std::cout << "cam pos: " << TE::GameWindow::Instance()->GetCamera()->GetPosition()[x] << "," << TE::GameWindow::Instance()->GetCamera()->GetPosition()[y] << std::endl;
 }
