@@ -1,4 +1,5 @@
 #include <Boxes/TiledTest.h>
+#include <iostream>
 
 using namespace Boxes;
 
@@ -9,7 +10,7 @@ using namespace Boxes;
 //==========================================================================================================================
 TiledTest::TiledTest(void)
 	:
-	_camera(make_shared<TE::FPSCamera>())
+	_camera(make_shared<TE::Camera2D>())
 {  }
 
 TiledTest::~TiledTest(void)
@@ -23,14 +24,11 @@ void TiledTest::v_Init(void)
 	//Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
 	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	_camera = make_shared<TE::FPSCamera>();
 	_camera->SetOrthographic(TE::GameWindow::Instance()->GetScreenLeft(), TE::GameWindow::Instance()->GetScreenRight(), 
 							 TE::GameWindow::Instance()->GetScreenBottom(), TE::GameWindow::Instance()->GetScreenTop(), 
 							 -100.0f, 100.0f);
 	_camera->SetPosition(0.0f, 0.0f, 0.0f);
 	_camera->SetMoveSpeed(100.0f);
-	_camera->SetMouseSensitivity(0.0f);
-	_camera->SetDeadZone(0.2f);
 
 	TE::GameWindow::Instance()->SetCamera(_camera);
 
@@ -59,18 +57,18 @@ void TiledTest::v_Update(void)
 	
 	if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 	{
-		_camera->v_Move(_camera->GetUpVector()); //up
+		_camera->v_Move(0.0f, 1.0f); //up
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 	{
-		_camera->v_Move(_camera->GetUpVector() * -1.0f); //up
+		_camera->v_Move(0.0f, -1.0f); //up
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::D))
 	{
-		
+		_camera->v_Move(1.0f, 0.0f);
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::A))
 	{
-		
+		_camera->v_Move(-1.0f, 0.0f);
 	}
 }
