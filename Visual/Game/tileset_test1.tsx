@@ -51,6 +51,9 @@
   <image width="32" height="32" source="Assets/Textures/TiledTest/orc_red.png"/>
  </tile>
  <tile id="9">
+  <properties>
+   <property name="type" value="player"/>
+  </properties>
   <image width="32" height="32" source="Assets/Textures/TiledTest/man.png"/>
  </tile>
 </tileset>
