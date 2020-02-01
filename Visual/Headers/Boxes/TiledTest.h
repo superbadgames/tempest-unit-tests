@@ -9,6 +9,7 @@
 #include <Engine/Engine.h>
 #include <Engine/Timer.h>
 #include <Engine/Camera2D.h>
+#include <Engine/FPSCamera.h>
 #include <Boxes/DataBases.h>
 #include <Boxes/Box.h>
 
@@ -46,6 +47,7 @@ namespace Boxes
 
 	private:
 		TE::p_Camera2D _camera;
+		TE::p_FPSCamera _camera2;
 
 	};//end Class
 	typedef shared_ptr<TiledTest> p_TiledTest;
