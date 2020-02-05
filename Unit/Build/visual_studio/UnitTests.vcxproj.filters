@@ -100,5 +100,8 @@
     <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h">
       <Filter>Source Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Implementations\t_StateMachine.cpp">
+      <Filter>Source Code\Tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
