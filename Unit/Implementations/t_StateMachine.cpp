@@ -67,6 +67,15 @@ public:
 	~ReturnOne(void) final
 	{  }
 
+	static shared_ptr<ReturnOne> Instance(void)
+	{
+		if(_instance == nullptr)
+		{
+			_instance = shared_ptr<ReturnOne>(new ReturnOne());
+		}
+		return _instance;
+	}
+	
 	void v_Enter(p_DefinedObject obj) final
 	{
 
@@ -81,6 +90,9 @@ public:
 	{
 
 	}
+
+private:
+	static shared_ptr<ReturnOne> _instance;
 };
 
 BOOST_AUTO_TEST_CASE(StateMachineFirstGo)

@@ -23,9 +23,6 @@
     <Filter Include="Source Files\Factory">
       <UniqueIdentifier>{60fc00a8-d4d5-4f94-8a9c-cf4c27931a92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Exclude">
-      <UniqueIdentifier>{a167857f-5c35-40da-b495-6b7c14b5764c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TiledTest">
       <UniqueIdentifier>{d852b01a-57a4-4de2-adae-0fcfd867636d}</UniqueIdentifier>
     </Filter>
