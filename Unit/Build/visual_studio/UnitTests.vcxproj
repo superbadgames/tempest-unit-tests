@@ -140,6 +140,7 @@
     <ClCompile Include="..\..\Implementations\t_Random.cpp" />
     <ClCompile Include="..\..\Implementations\t_RigidBody2D.cpp" />
     <ClCompile Include="..\..\Implementations\t_RigidBody3D.cpp" />
+    <ClCompile Include="..\..\Implementations\t_StateMachine.cpp" />
     <ClCompile Include="..\..\Implementations\t_Timer.cpp" />
     <ClCompile Include="..\..\Implementations\t_Vector3.cpp" />
     <ClCompile Include="..\..\Implementations\t_Vector4.cpp" />
@@ -149,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h" />
-    <ClInclude Include="..\..\Implementations\t_StateMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

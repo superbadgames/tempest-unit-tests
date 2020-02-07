@@ -40,62 +40,159 @@ Written by Maxwell Miller
 
 namespace TE = Tempest;
 
+//==========================================================================================================================
+// Defined version of the GameObject for testing
+//==========================================================================================================================
 class DefinedObject : public TE::GameObject
 {
 public:
 	DefinedObject(void)
 		:
-		_stateMachine(*this),
+		_stateMachine(shared_ptr<DefinedObject>(this)),
+		_enterState(false),
+		_executeIncrement(0)
 	{  }
 
 	~DefinedObject(void)
 	{  }
 
 	void v_Update(void)
-	{  }
+	{
+		_stateMachine.Update();
+	}
 
+	void SetState(TE::p_State<DefinedObject> state)
+	{
+		_stateMachine.ChangeState(state);
+	}
+	
+	bool GetEnterState(void) const
+	{
+		return _enterState;
+	}
+
+	void SetEnterState(bool state)
+	{
+		_enterState = state;
+	}
+
+	void Increment(U32 inc)
+	{
+		_executeIncrement += inc;
+	}
+
+	U32 GetIncrement(void) const
+	{
+		return _executeIncrement;
+	}
+
+private:
 	TE::StateMachine<DefinedObject> _stateMachine;
+	bool _enterState;
+	U32 _executeIncrement;
 };
 typedef shared_ptr<DefinedObject> p_DefinedObject;
 
-class ReturnOne : public TE::State<DefinedObject>
+
+//==========================================================================================================================
+//Defined version of the State for testing
+//==========================================================================================================================
+class IncrementOneState : public TE::State<DefinedObject>
 {
 public:
-	ReturnOne(void)
+	IncrementOneState(void)
 	{  }
 
-	~ReturnOne(void) final
+	~IncrementOneState(void) final
 	{  }
 
-	static shared_ptr<ReturnOne> Instance(void)
+	static shared_ptr<IncrementOneState> Instance(void)
 	{
 		if(_instance == nullptr)
 		{
-			_instance = shared_ptr<ReturnOne>(new ReturnOne());
+			_instance = shared_ptr<IncrementOneState>(new IncrementOneState());
 		}
 		return _instance;
 	}
 	
 	void v_Enter(p_DefinedObject obj) final
 	{
-
+		obj->SetEnterState(true);
 	}
 
 	void v_Execute(p_DefinedObject obj) final
 	{
-
+		obj->Increment(1);
 	}
 
 	void v_Exit(p_DefinedObject obj) final
 	{
-
+		obj->SetEnterState(false);
 	}
 
 private:
-	static shared_ptr<ReturnOne> _instance;
+	static shared_ptr<IncrementOneState> _instance;
 };
 
+//==========================================================================================================================
+//Defined version of the State for testing
+//==========================================================================================================================
+class IncrementTwoState : public TE::State<DefinedObject>
+{
+public:
+	IncrementTwoState(void)
+	{  }
+
+	~IncrementTwoState(void) final
+	{  }
+
+	static shared_ptr<IncrementTwoState> Instance(void)
+	{
+		if(_instance == nullptr)
+		{
+			_instance = shared_ptr<IncrementTwoState>(new IncrementTwoState());
+		}
+		return _instance;
+	}
+
+	void v_Enter(p_DefinedObject obj) final
+	{
+		obj->SetEnterState(true);
+	}
+
+	void v_Execute(p_DefinedObject obj) final
+	{
+		obj->Increment(2);
+	}
+
+	void v_Exit(p_DefinedObject obj) final
+	{
+		obj->SetEnterState(false);
+	}
+
+private:
+	static shared_ptr<IncrementTwoState> _instance;
+};
+
+//==========================================================================================================================
+//Tests
+//==========================================================================================================================
 BOOST_AUTO_TEST_CASE(StateMachineFirstGo)
 {
+	DefinedObject obj { };
+
+	BOOST_CHECK_EQUAL(obj.GetIncrement(), 0);
+	BOOST_CHECK_EQUAL(obj.GetEnterState(), false);
+
+	obj.SetState(IncrementOneState::Instance());
+
+	BOOST_CHECK_EQUAL(obj.GetIncrement(), 0);
+	BOOST_CHECK_EQUAL(obj.GetEnterState(), true);
+
+	obj.v_Update();
+
+	BOOST_CHECK_EQUAL(obj.GetIncrement(), 1);
+	BOOST_CHECK_EQUAL(obj.GetEnterState(), true);
+
 
 }
