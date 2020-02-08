@@ -134,6 +134,8 @@ private:
 	static shared_ptr<IncrementOneState> _instance;
 };
 
+shared_ptr<IncrementOneState> IncrementOneState::_instance = nullptr;
+
 //==========================================================================================================================
 //Defined version of the State for testing
 //==========================================================================================================================
