@@ -93,6 +93,9 @@
     <ClCompile Include="..\..\Implementations\t_StateMachine.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_Event.cpp">
+      <Filter>Source Code\Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">

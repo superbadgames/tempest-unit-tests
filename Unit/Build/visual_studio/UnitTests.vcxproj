@@ -55,19 +55,19 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="TempestCore.props" />
+    <Import Project="..\..\..\..\Tempest\Build\visual_studio\TempestCore.props" />
     <Import Project="UnitCommons.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="TempestCore.props" />
+    <Import Project="..\..\..\..\Tempest\Build\visual_studio\TempestCore.props" />
     <Import Project="UnitCommons.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="TempestCore.props" />
+    <Import Project="..\..\..\..\Tempest\Build\visual_studio\TempestCore.props" />
     <Import Project="UnitCommons.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="TempestCore.props" />
+    <Import Project="..\..\..\..\Tempest\Build\visual_studio\TempestCore.props" />
     <Import Project="UnitCommons.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp" />
     <ClCompile Include="..\..\Implementations\t_Color.cpp" />
+    <ClCompile Include="..\..\Implementations\t_Event.cpp" />
     <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp" />
     <ClCompile Include="..\..\Implementations\t_ForceRegistry.cpp" />
     <ClCompile Include="..\..\Implementations\t_GameObject.cpp" />
