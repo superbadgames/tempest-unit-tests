@@ -115,14 +115,48 @@ BOOST_AUTO_TEST_CASE(EventManagerWithObject)
 
     TE::Event subEvent{"sub", 0, obj->GetID(), TM::Timer::Instance()->TotalTime() + 0.5f, 3};
 
-    for(int i = 0; i < 10; i++)
+    TE::EventManager::Instance()->AddEvent(subEvent);
+
+    for(int i = 0; i < 50; i++)
     {
         TM::Timer::Instance()->SingleStep();
 
         TE::EventManager::Instance()->Dispatch();
-
-       // BOOST_CHECK_EQUAL(obj->GetCount(), 2);
     }
 
     BOOST_CHECK_EQUAL(obj->GetCount(), -1);
+
+    addEvent.DispatchTime = TM::Timer::Instance()->TotalTime() + 0.3;
+    addEvent.Data = 11;
+    subEvent.DispatchTime = TM::Timer::Instance()->TotalTime() + 1.0;
+    subEvent.Data = 2;
+
+    TE::EventManager::Instance()->AddEvent(subEvent);
+    TE::EventManager::Instance()->AddEvent(addEvent);
+
+    for(int i = 0; i < 30; i++)
+    {
+        TM::Timer::Instance()->SingleStep();
+
+        TE::EventManager::Instance()->Dispatch();
+    }
+
+    BOOST_CHECK_EQUAL(obj->GetCount(), 10);
+
+    for(int i = 0; i < 50; i++)
+    {
+        TM::Timer::Instance()->SingleStep();
+
+        TE::EventManager::Instance()->Dispatch();
+    }
+
+    BOOST_CHECK_EQUAL(obj->GetCount(), 8);
+
+    addEvent.DispatchTime = 0.0;
+    addEvent.Data = 10;
+
+    TE::EventManager::Instance()->AddEvent(addEvent);
+    TE::EventManager::Instance()->Dispatch();
+
+    BOOST_CHECK_EQUAL(obj->GetCount(), 18);
 }
