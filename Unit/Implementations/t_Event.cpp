@@ -40,11 +40,48 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Event.hpp>
 #include <Engine/Keys.h>
+#include <Engine/EventManager.h>
+#include <Engine/GameObject.h>
+#include <Engine/Timer.h>
 
 #include <iostream>
 
 namespace TE = Tempest;
+namespace TM = TempestMath;
 
+class MockEventObj : public TE::GameObject
+{
+public:
+    MockEventObj(void)
+        : _count(0)
+    {  }
+
+    ~MockEventObj(void)
+    {  }
+
+    void v_Update(void)
+    {  }
+
+    void v_OnEvent(TE::Event event)
+    {        
+        if(std::strcmp(event.Type.c_str(), "add") == 0)
+        {
+            _count += std::any_cast<S32>(event.Data);
+        }
+        else if(std::strcmp(event.Type.c_str(), "sub") == 0)
+        {
+            _count -= std::any_cast<S32>(event.Data);
+        }
+    }
+
+    S32 GetCount(void)
+    {
+        return _count;
+    }
+
+private:
+    S32 _count;
+};
 
 BOOST_AUTO_TEST_CASE(EventCompareType)
 {
@@ -61,4 +98,31 @@ BOOST_AUTO_TEST_CASE(EventAddData)
    BOOST_CHECK_EQUAL(message.ReceiverID, 2);
    BOOST_CHECK_EQUAL(message.DispatchTime, 450.1234);
    BOOST_CHECK_EQUAL(std::any_cast<TE::Keys>(message.Data), TE::Keys::ENTER);
+}
+
+BOOST_AUTO_TEST_CASE(EventManagerWithObject)
+{
+    shared_ptr<MockEventObj> obj = make_shared<MockEventObj>();
+    
+    TE::Event addEvent{"add", 0, obj->GetID(), 0.0, 2};
+    
+    TE::EventManager::Instance()->AddListener(obj, "add");
+    TE::EventManager::Instance()->AddListener(obj, "sub");
+
+    TE::EventManager::Instance()->DispatchNow(addEvent);
+
+    BOOST_CHECK_EQUAL(obj->GetCount(), 2);
+
+    TE::Event subEvent{"sub", 0, obj->GetID(), TM::Timer::Instance()->TotalTime() + 0.5f, 3};
+
+    for(int i = 0; i < 10; i++)
+    {
+        TM::Timer::Instance()->SingleStep();
+
+        TE::EventManager::Instance()->Dispatch();
+
+       // BOOST_CHECK_EQUAL(obj->GetCount(), 2);
+    }
+
+    BOOST_CHECK_EQUAL(obj->GetCount(), -1);
 }

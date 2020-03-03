@@ -70,5 +70,5 @@ BOOST_AUTO_TEST_CASE(GameObjectConstructor)
 {
 	DefinedObject obj { };
 
-	BOOST_CHECK_EQUAL(obj.GetID(), 1);
+	BOOST_CHECK_GE(obj.GetID(), (U32)1);
 }
