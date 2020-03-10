@@ -35,8 +35,8 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
-#include <Engine/State.h>
-#include <Engine/StateMachine.h>
+#include <Engine/State.hpp>
+#include <Engine/StateMachine.hpp>
 
 namespace TE = Tempest;
 
