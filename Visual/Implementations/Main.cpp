@@ -153,22 +153,22 @@ int main(void)
 	//shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
 	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
 	
-	/*shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
+	shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
 	mainMenu->v_Init();
 	TE::LevelManager::Instance()->Add(mainMenu);
 
 	p_SplashScreen splashScreen = make_shared<SplashScreen>();
 	splashScreen->v_Init();
-	TE::Engine::Instance()->SetActiveLevel(splashScreen);*/
+	TE::Engine::Instance()->SetActiveLevel(splashScreen);
 
-	p_TiledTest level = make_shared<TiledTest>();
-	level->v_Init();
+	//p_TiledTest level = make_shared<TiledTest>();
+	//level->v_Init();
 
-	p_Demo3D level2 = make_shared<Demo3D>();
-	level2->v_Init();
+	//p_Demo3D level2 = make_shared<Demo3D>();
+	//level2->v_Init();
 
-	TE::Engine::Instance()->SetActiveLevel(level);
-	//TE::Engine::Instance()->SetActiveLevel(level2);
+	TE::Engine::Instance()->SetActiveLevel(splashScreen);
+	//TE::Engine::Instance()->SetActiveLevel(level);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{

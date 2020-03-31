@@ -49,232 +49,214 @@ namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(QuaternionDefaultConstructor)
 {
-	TM::Quaternion Q{};
+	TM::Quaternion q{};
 
-	const real* elems = Q.GetElems();
-
-	BOOST_CHECK_EQUAL(elems[0], 0.0f);
-	BOOST_CHECK_EQUAL(elems[1], 0.0f);
-	BOOST_CHECK_EQUAL(elems[2], 0.0f);
-	BOOST_CHECK_EQUAL(elems[3], 0.0f);
+	BOOST_CHECK_EQUAL(q[x], 0.0f);
+	BOOST_CHECK_EQUAL(q[y], 0.0f);
+	BOOST_CHECK_EQUAL(q[z], 0.0f);
+	BOOST_CHECK_EQUAL(q[w], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionSingleValueConstructor)
 {
-	TM::Quaternion Q{1.0f};
+	TM::Quaternion q{1.0f};
 
-	const real* elems = Q.GetElems();
-
-	BOOST_CHECK_EQUAL(elems[0], 1.0f);
-	BOOST_CHECK_EQUAL(elems[1], 1.0f);
-	BOOST_CHECK_EQUAL(elems[2], 1.0f);
-	BOOST_CHECK_EQUAL(elems[3], 1.0f);
+	BOOST_CHECK_EQUAL(q[x], 1.0f);
+	BOOST_CHECK_EQUAL(q[y], 1.0f);
+	BOOST_CHECK_EQUAL(q[z], 1.0f);
+	BOOST_CHECK_EQUAL(q[2], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMultiValueConstructor)
 {
-	TM::Quaternion Q{0.0f, 1.0f, 2.0f, 3.0f};
+	TM::Quaternion q{1.0f, 2.0f, 3.0f, 0.0f};
 
-	const real* elems = Q.GetElems();
-
-	BOOST_CHECK_EQUAL(elems[0], 0.0f);
-	BOOST_CHECK_EQUAL(elems[1], 1.0f);
-	BOOST_CHECK_EQUAL(elems[2], 2.0f);
-	BOOST_CHECK_EQUAL(elems[3], 3.0f);	
+	BOOST_CHECK_EQUAL(q[x], 1.0f);
+	BOOST_CHECK_EQUAL(q[y], 2.0f);
+	BOOST_CHECK_EQUAL(q[z], 3.0f);	
+	BOOST_CHECK_EQUAL(q[w], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionCopyConstructor)
 {
-	TM::Quaternion Q1{1.0f, 4.0f, 2.0f, 0.004f};
-	TM::Quaternion Q2 = Q1;
+	TM::Quaternion q{4.0f, 2.0f, 0.004f, 1.0f};
+	TM::Quaternion q2 = q;
 
-	const real* elems = Q2.GetElems();
-
-	BOOST_CHECK_EQUAL(elems[0], 1.0f);
-	BOOST_CHECK_EQUAL(elems[1], 4.0f);
-	BOOST_CHECK_EQUAL(elems[2], 2.0f);
-	BOOST_CHECK_EQUAL(elems[3], 0.004f);
-}
-
-BOOST_AUTO_TEST_CASE(QuaternionGetters)
-{
-	TM::Quaternion Q{3.0f, 2.0f, 100.0f, 0.0534f};
-
-	BOOST_CHECK_EQUAL(Q[0], 3.0f);
-	BOOST_CHECK_EQUAL(Q[1], 2.0f);
-	BOOST_CHECK_EQUAL(Q[2], 100.0f);
-	BOOST_CHECK_EQUAL(Q[3], 0.0534f);
+	BOOST_CHECK_EQUAL(q2[x], 4.0f);
+	BOOST_CHECK_EQUAL(q2[y], 2.0f);
+	BOOST_CHECK_EQUAL(q2[z], 0.004f);
+	BOOST_CHECK_EQUAL(q2[w], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMagnitude)
 {
-	TM::Quaternion Q{0.5f, 10.0f, 20.0f, 30.0f};
+	TM::Quaternion q{10.0f, 20.0f, 30.0f, 0.5f};
 
-	BOOST_CHECK_EQUAL(RoundReal(Q.Magnitude()), RoundReal(37.41992f));
+	BOOST_CHECK_EQUAL(RoundReal(q.Magnitude()), RoundReal(37.41992f));
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionConjugate)
 {
-	TM::Quaternion Q1{1.0f, 3.0f, 5.0f, 2.0f};
+	TM::Quaternion q1{3.0f, 5.0f, 2.0f, 1.0f};
 
-	TM::Quaternion Q2{-3.04f, 0.9435f, -0.8443f, -3.043234f};
+	TM::Quaternion q2{0.9435f, -0.8443f, -3.043234f, -3.04f};
 
-	TM::Quaternion Q3 = Q1.Conjugate();
+	TM::Quaternion q3 = q1.Conjugate();
 
-	TM::Quaternion Q4 = Q2.Conjugate();
+	TM::Quaternion q4 = q2.Conjugate();
 
-	BOOST_CHECK_EQUAL(Q3[0], 1.0f);
-	BOOST_CHECK_EQUAL(Q3[1], -3.0f);
-	BOOST_CHECK_EQUAL(Q3[2], -5.0f);
-	BOOST_CHECK_EQUAL(Q3[3], -2.0f);
+	BOOST_CHECK_EQUAL(q3[x], -3.0f);
+	BOOST_CHECK_EQUAL(q3[y], -5.0f);
+	BOOST_CHECK_EQUAL(q3[z], -2.0f);
+	BOOST_CHECK_EQUAL(q3[w], 1.0f);
 
-	BOOST_CHECK_EQUAL(Q4[0], -3.04f);
-	BOOST_CHECK_EQUAL(Q4[1], -0.9435f);
-	BOOST_CHECK_EQUAL(Q4[2], 0.8443f);
-	BOOST_CHECK_EQUAL(Q4[3], 3.043234f);
+	BOOST_CHECK_EQUAL(q4[x], -0.9435f);
+	BOOST_CHECK_EQUAL(q4[y], 0.8443f);
+	BOOST_CHECK_EQUAL(q4[z], 3.043234f);
+	BOOST_CHECK_EQUAL(q4[w], -3.04f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionInverse)
 {
-	TM::Quaternion Q1{1.0f, 6.0f, 8.0f, 12.0f};
+	TM::Quaternion q1{6.0f, 8.0f, 12.0f, 1.0f};
 
-	TM::Quaternion Q2 = Q1.Inverse();
+	TM::Quaternion q2 = q1.Inverse();
 
-	BOOST_CHECK_EQUAL(RoundReal(Q2[0]), RoundReal(0.06389f));
-	BOOST_CHECK_EQUAL(RoundReal(Q2[1]), RoundReal(-0.38333f));
-	BOOST_CHECK_EQUAL(RoundReal(Q2[2]), RoundReal(-0.51110f));
-	BOOST_CHECK_EQUAL(RoundReal(Q2[3]), RoundReal(-0.76665f));
+	BOOST_CHECK_EQUAL(RoundReal(q2[x]), RoundReal(-0.38333f));
+	BOOST_CHECK_EQUAL(RoundReal(q2[y]), RoundReal(-0.51110f));
+	BOOST_CHECK_EQUAL(RoundReal(q2[z]), RoundReal(-0.76665f));
+	BOOST_CHECK_EQUAL(RoundReal(q2[w]), RoundReal(0.06389f));
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDivideByScalar)
 {
-	TM::Quaternion Q1{2.0f, 4.0f, 6.0f, 8.0f};
+	TM::Quaternion q1{4.0f, 6.0f, 8.0f, 2.0f};
 
-	Q1 = Q1 / 2.0f;
+	q1 = q1 / 2.0f;
 
-	TM::Quaternion Q2{3.0f, 6.0f, 9.0f, 12.0f};
+	TM::Quaternion q2{6.0f, 9.0f, 12.0f, 3.0f};
 
-	Q2 /= 3.0f;
+	q2 /= 3.0f;
 
-	BOOST_CHECK_EQUAL(Q1[0], 1.0f);
-	BOOST_CHECK_EQUAL(Q1[1], 2.0f);
-	BOOST_CHECK_EQUAL(Q1[2], 3.0f);
-	BOOST_CHECK_EQUAL(Q1[3], 4.0f);
+	BOOST_CHECK_EQUAL(q1[x], 2.0f);
+	BOOST_CHECK_EQUAL(q1[y], 3.0f);
+	BOOST_CHECK_EQUAL(q1[z], 4.0f);
+	BOOST_CHECK_EQUAL(q1[w], 1.0f);
 
-	BOOST_CHECK_EQUAL(Q2[0], 1.0f);
-	BOOST_CHECK_EQUAL(Q2[1], 2.0f);
-	BOOST_CHECK_EQUAL(Q2[2], 3.0f);
-	BOOST_CHECK_EQUAL(Q2[3], 4.0f);
+	BOOST_CHECK_EQUAL(q2[x], 2.0f);
+	BOOST_CHECK_EQUAL(q2[y], 3.0f);
+	BOOST_CHECK_EQUAL(q2[z], 4.0f);
+	BOOST_CHECK_EQUAL(q2[w], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByScalar)
 {
-	TM::Quaternion Q1{4.0f, 2.0f, 6.0f, 9.0f};
+	TM::Quaternion q1{2.0f, 6.0f, 9.0f, 4.0f};
 
-	Q1 = Q1 * 5.0f;
+	q1 = q1 * 5.0f;
 
-	TM::Quaternion Q2{8.0f, 3.0f, 0.0f, 2.0f};
+	TM::Quaternion q2{3.0f, 0.0f, 2.0f, 8.0f};
 
-	Q2 *= 14.0f;
+	q2 *= 14.0f;
 
-	BOOST_CHECK_EQUAL(Q1[0], 20.0f);
-	BOOST_CHECK_EQUAL(Q1[1], 10.0f);
-	BOOST_CHECK_EQUAL(Q1[2], 30.0f);
-	BOOST_CHECK_EQUAL(Q1[3], 45.0f);
+	BOOST_CHECK_EQUAL(q1[x], 10.0f);
+	BOOST_CHECK_EQUAL(q1[y], 30.0f);
+	BOOST_CHECK_EQUAL(q1[z], 45.0f);
+	BOOST_CHECK_EQUAL(q1[w], 20.0f);
 
-	BOOST_CHECK_EQUAL(Q2[0], 112.0f);
-	BOOST_CHECK_EQUAL(Q2[1], 42.0f);
-	BOOST_CHECK_EQUAL(Q2[2], 0.0f);
-	BOOST_CHECK_EQUAL(Q2[3], 28.0f);
+	BOOST_CHECK_EQUAL(q2[x], 42.0f);
+	BOOST_CHECK_EQUAL(q2[y], 0.0f);
+	BOOST_CHECK_EQUAL(q2[z], 28.0f);
+	BOOST_CHECK_EQUAL(q2[w], 112.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByQuaternion)
 {
-	TM::Quaternion Q1{5.0f, 3.0f, 8.0f, 6.0f};
+	TM::Quaternion q1{3.0f, 8.0f, 6.0f, 5.0f};
 
-	TM::Quaternion Q2{6.0f, 12.0f, 1.0f, 5.0f};
+	TM::Quaternion q2{12.0f, 1.0f, 5.0f, 6.0f};
 
-	TM::Quaternion Q3 = Q1 * Q2;
+	TM::Quaternion q3 = q1 * q2;
 
-	TM::Quaternion Q4{5.0f, 3.0f, 8.0f, 6.0f};
+	TM::Quaternion q4{3.0f, 8.0f, 6.0f, 5.0f};
 
-	Q4 *= Q2;
+	q4 *= q2;
 
-	BOOST_CHECK_EQUAL(Q3[0], -44.0f);
-	BOOST_CHECK_EQUAL(Q3[1], 112.0f);
-	BOOST_CHECK_EQUAL(Q3[2], 110.0f);
-	BOOST_CHECK_EQUAL(Q3[3], -32.0f);
+	BOOST_CHECK_EQUAL(q3[x], 112.0f);
+	BOOST_CHECK_EQUAL(q3[y], 110.0f);
+	BOOST_CHECK_EQUAL(q3[z], -32.0f);
+	BOOST_CHECK_EQUAL(q3[w], -44.0f);
 
-	BOOST_CHECK_EQUAL(Q4[0], -44.0f);
-	BOOST_CHECK_EQUAL(Q4[1], 112.0f);
-	BOOST_CHECK_EQUAL(Q4[2], 110.0f);
-	BOOST_CHECK_EQUAL(Q4[3], -32.0f);
+	BOOST_CHECK_EQUAL(q4[x], 112.0f);
+	BOOST_CHECK_EQUAL(q4[y], 110.0f);
+	BOOST_CHECK_EQUAL(q4[z], -32.0f);
+	BOOST_CHECK_EQUAL(q4[w], -44.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDifference)
 {
-	TM::Quaternion Q1{1.0f, 2.0f, 3.0f, 2.0f};
+	TM::Quaternion q1{2.0f, 3.0f, 2.0f, 1.0f};
 
-	TM::Quaternion Q2{1.0f, 3.0f, 2.0f, 3.0f};
+	TM::Quaternion q2{3.0f, 2.0f, 3.0f, 1.0f};
 
-	TM::Quaternion Q3 = Q1.Difference(Q2);
+	TM::Quaternion q3 = q1.Difference(q2);
 
-	BOOST_CHECK_EQUAL(RoundReal(Q3[0]), 4.47834f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[1]), 1.41421f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[2]), -0.2357f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[3]), -0.94281f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[x]), 1.41421f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[y]), -0.2357f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[z]), -0.94281f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[w]), 4.47834f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDot)
 {
-	TM::Quaternion Q1{6.0f, 4.0f, 12.0f, 0.0f};
+	TM::Quaternion q1{4.0f, 12.0f, 0.0f, 6.0f};
 
-	TM::Quaternion Q2{1.0f, 6.0f, 8.0f, 3.0f};
+	TM::Quaternion q2{6.0f, 8.0f, 3.0f, 1.0f};
 
-	real dot = Q1.Dot(Q2);
+	real dot = q1.Dot(q2);
 
-	BOOST_CHECK_EQUAL(dot, 126.0f);	
+	BOOST_CHECK_EQUAL(dot, 126.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionNegationAndOpposite)
 {
-	TM::Quaternion Q1{2.0f, -3.0f, 4.0f, -5.0f};
+	TM::Quaternion q1{-3.0f, 4.0f, -5.0f, 2.0f};
 
-	Q1.Negate();
+	q1.Negate();
 
-	TM::Quaternion Q2{-3.0f, 2.0f, -3.0f, -5.0f};
+	TM::Quaternion q2{2.0f, -3.0f, -5.0f, -3.0f};
 
-	TM::Quaternion Q3 = Q2.Opposite();
+	TM::Quaternion q3 = q2.Opposite();
 
-	BOOST_CHECK_EQUAL(RoundReal(Q1[0]), -2.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q1[1]), 3.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q1[2]), -4.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q1[3]), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1[x]), 3.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1[y]), -4.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1[z]), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1[w]), -2.0f);
 
-	BOOST_CHECK_EQUAL(RoundReal(Q3[0]), 3.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[1]), -2.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[2]), 3.0f);
-	BOOST_CHECK_EQUAL(RoundReal(Q3[3]), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[x]), -2.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[y]), 3.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[z]), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3[w]), 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionNormalization)
 {
-	TM::Quaternion Q1{4.0f, 2.0f, 6.0f, 2.0f};
+	TM::Quaternion q1{2.0f, 6.0f, 2.0f, 4.0f};
 
-	Q1.Normalize();
+	q1.Normalize();
 
-	BOOST_CHECK_EQUAL(RoundReal(Q1.Magnitude()), 1.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1.Magnitude()), 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionAddScaledQuaternion)
 {
-	TM::Quaternion Q1{1.0f, 2.0f, 3.0f, 4.0f};
-	TM::Vector4 vec{1.0f, 1.0f, 1.0f, 1.0f};
+	TM::Quaternion q1{2.0f, 3.0f, 4.0f, 1.0f};
+	TM::Vector3 vec{1.0f, 1.0f, 1.0f};
 
-	Q1.AddScaledVector(vec, 5.0f);
+	q1.AddScaledVector(vec, 5.0f);
 
-	BOOST_CHECK_EQUAL(Q1[0], 6.0f);
-	BOOST_CHECK_EQUAL(Q1[1], 7.0f);
-	BOOST_CHECK_EQUAL(Q1[2], 8.0f);
-	BOOST_CHECK_EQUAL(Q1[3], 9.0f);
+	BOOST_CHECK_EQUAL(q1[x], 7.0f);
+	BOOST_CHECK_EQUAL(q1[y], 0.5f);
+	BOOST_CHECK_EQUAL(q1[z], 9.0f);
+	BOOST_CHECK_EQUAL(q1[w], -21.5);
 }
