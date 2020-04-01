@@ -150,6 +150,15 @@ void MovingBoxes::v_Update(void)
 	{ 
 		_activeBox->SetDirection(-1.0f, -1.0f);
 	}
+
+	if(TE::Controller::Instance()->GetKeyHeld(TE::E))
+	{
+		_activeBox->AddOrientation(0.0f, 0.0f, 25.0f);
+	}
+	else if(TE::Controller::Instance()->GetKeyHeld(TE::Q))
+	{
+		_activeBox->AddOrientation(0.0f, 0.0f, -25.0f);
+	}
 	
 	if(TE::Controller::Instance()->GetKeyDown(TE::SPACE))
 	{

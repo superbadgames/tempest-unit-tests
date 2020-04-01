@@ -161,14 +161,16 @@ int main(void)
 	splashScreen->v_Init();
 	TE::Engine::Instance()->SetActiveLevel(splashScreen);
 
+	//p_MovingBoxes boxes = make_shared<MovingBoxes>();
+	//boxes->v_Init();
+	//TE::Engine::Instance()->SetActiveLevel(boxes);
+	
 	//p_TiledTest level = make_shared<TiledTest>();
 	//level->v_Init();
+	//TE::Engine::Instance()->SetActiveLevel(level);
 
 	//p_Demo3D level2 = make_shared<Demo3D>();
 	//level2->v_Init();
-
-	TE::Engine::Instance()->SetActiveLevel(splashScreen);
-	//TE::Engine::Instance()->SetActiveLevel(level);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{

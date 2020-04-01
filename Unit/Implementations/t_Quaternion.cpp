@@ -36,6 +36,7 @@ Written by Maxwell Miller
 -------------------------------------------------------------*/
 
 #include <boost/test/unit_test.hpp>
+#include <boost/test/floating_point_comparison.hpp>
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/Quaternion.h>
@@ -248,15 +249,42 @@ BOOST_AUTO_TEST_CASE(QuaternionNormalization)
 	BOOST_CHECK_EQUAL(RoundReal(q1.Magnitude()), 1.0f);
 }
 
-BOOST_AUTO_TEST_CASE(QuaternionAddScaledQuaternion)
+BOOST_AUTO_TEST_CASE(QuaternionSetEuler)
 {
-	TM::Quaternion q1{2.0f, 3.0f, 4.0f, 1.0f};
-	TM::Vector3 vec{1.0f, 1.0f, 1.0f};
+	TM::Quaternion q1{0.0f};
+	TM::Vector3 vec{15.0f, 45.0f, 90.0f};
 
-	q1.AddScaledVector(vec, 5.0f);
+	q1.RotateByEuler(vec);
 
-	BOOST_CHECK_EQUAL(q1[x], 7.0f);
-	BOOST_CHECK_EQUAL(q1[y], 0.5f);
-	BOOST_CHECK_EQUAL(q1[z], 9.0f);
-	BOOST_CHECK_EQUAL(q1[w], -21.5);
+	BOOST_CHECK_CLOSE(q1[x], -0.0175278038f, 0.001);
+	BOOST_CHECK_CLOSE(q1[y], -0.785737991f, 0.001);
+	BOOST_CHECK_CLOSE(q1[z], -0.286628932f, 0.001);
+	BOOST_CHECK_CLOSE(q1[w], -0.547861636f, 0.001);
+
+	q1.RotateByEuler(45.0f, 65.0f, 180.0f);
+
+	BOOST_CHECK_CLOSE(q1[x], -0.558113098f, 0.001);
+	BOOST_CHECK_CLOSE(q1[y], 0.142150357f, 0.001);
+	BOOST_CHECK_CLOSE(q1[z], 0.792166591f, 0.001);
+	BOOST_CHECK_CLOSE(q1[w], -0.201928511f, 0.001);
+}
+
+BOOST_AUTO_TEST_CASE(QuaternionAddEuler)
+{
+	TM::Quaternion q{0.0f};
+	q.RotateByEuler(15.0f, 20.0f, 36.0f);
+	q.AddEuler(10.0f, 34.0f, 90.0f);
+
+	BOOST_CHECK_CLOSE(q[x], 0.534287393f, 0.001);
+	BOOST_CHECK_CLOSE(q[y], 0.520725489f, 0.001);
+	BOOST_CHECK_CLOSE(q[z], -0.118739009f, 0.001);
+	BOOST_CHECK_CLOSE(q[w], 0.655196905f, 0.001);
+
+	TM::Vector3 vec{15.0f, 45.0f, 90.0f};
+	q.AddEuler(vec);
+
+	BOOST_CHECK_CLOSE(q[x], -0.546752453f, 0.001);
+	BOOST_CHECK_CLOSE(q[y], -0.644875228f, 0.001);
+	BOOST_CHECK_CLOSE(q[z], -0.53342855f, 0.001);
+	BOOST_CHECK_CLOSE(q[w], 0.0255273655f, 0.001);
 }

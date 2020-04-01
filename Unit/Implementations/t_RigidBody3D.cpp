@@ -51,7 +51,7 @@ public:
 	Object3D(void)
 	: p_body(nullptr)
 	{
-		GameObject::SetOrientation(1.0f);
+		GameObject::SetOrientation(1.0f, 1.0f, 1.0f);
 	}
 
 	~Object3D(void)
