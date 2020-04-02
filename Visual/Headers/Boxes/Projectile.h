@@ -18,7 +18,7 @@ Written by Maxwell Miller
 //=====Killer2D includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
@@ -41,7 +41,7 @@ namespace Boxes
 		GRENADE
 	};
 
-	class Projectile : public TE::GameObject
+	class Projectile : public TE::GameObject2D
 	{
 	public:
 //==========================================================================================================================

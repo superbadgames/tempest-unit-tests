@@ -36,7 +36,7 @@ Written by Maxwell Miller
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/RigidBody2D.h>
 
 namespace TE = Tempest;

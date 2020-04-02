@@ -51,21 +51,21 @@ void Cube::v_Update(void)
 //==========================================================================================================================
 void Cube::InitCube(string filePath)
 {
-	GameObject::SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));	
+	SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));	
 
 	_mesh->LoadOBJ(filePath);
 }
 
 void Cube::InitCube(string meshFilePath, U32 shaderID)
 {
-	GameObject::SetShader(TE::ShaderManager::Instance()->GetShader(shaderID));
+	SetShader(TE::ShaderManager::Instance()->GetShader(shaderID));
 
 	_mesh->LoadOBJ(meshFilePath);
 }
 
 void Cube::InitCube(void)
 {
-	GameObject::SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));	
+	SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));	
 
 	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, 1.0f), 0.0f, 1.0f)); 	//Front Top Left        0
 	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, 1.0f), 1.0f, 1.0f)); 	//Front Top Right 		1 

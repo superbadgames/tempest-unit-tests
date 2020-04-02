@@ -34,7 +34,7 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/RigidBody2D.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
 #include <Engine/ErrorManager.h>
@@ -44,14 +44,14 @@ namespace TM = TempestMath;
 namespace TP =TempestPhysics;
 
 
-class Object : public TE::GameObject
+class RigidBody2DDefinedObj : public TE::GameObject2D
 {
 public:
-	Object(void)
+	RigidBody2DDefinedObj(void)
 	: p_body(nullptr)
 	{  }
 
-	~Object(void)
+	~RigidBody2DDefinedObj(void)
 	{
 		p_body.reset();
 	}
@@ -68,7 +68,7 @@ public:
 	TP::p_RigidBody2D p_body;
 };
 
-void IntegrateNTimes(Object& obj, S32 n)
+void IntegrateNTimes(RigidBody2DDefinedObj& obj, S32 n)
 {
 	for(S32 i = 0; i < n; ++i)
 	{
@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 
 BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 {
-	Object obj { };
+	RigidBody2DDefinedObj obj { };
 	obj.SetBody();
 
 	BOOST_CHECK_NE(obj.p_body, nullptr);
@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 
 BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)
 {
-	Object obj { };
+	RigidBody2DDefinedObj obj { };
 	obj.SetBody();
 	obj.p_body->SetInverseMass(0.0f);
 
@@ -155,7 +155,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)
 
 BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
 {
-	Object obj { };
+	RigidBody2DDefinedObj obj { };
 	obj.SetBody();
 
 	obj.p_body->SetVelocity(10.0f, 20.0f);

@@ -16,7 +16,7 @@ _upDirection(0.0f, 1.0f),
 _downDirection(0.0f, -1.0f),
 _projectilePool()
 {
-	GameObject::MakeSprite();
+	Init();
 }
 
 Cannon::~Cannon(void)
@@ -34,28 +34,28 @@ void Cannon::v_Update(void)
 
 	//std::cout << ""
 
-	F32 yPos = TE::GameObject::GetPosition()[1];
+	F32 yPos = GetPosition()[1];
 
 	if(yPos > _bottomBoundary && yPos < _topBoundary)
 	{
 		if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 		{
-			TE::GameObject::AddScaledPosition(_upDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+			AddScaledPosition(_upDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
 		}
 		else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 		{
-			TE::GameObject::AddScaledPosition(_downDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+			AddScaledPosition(_downDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
 		}
 	}
 	else
 	{
 		if(yPos <= _bottomBoundary)
 		{
-			TE::GameObject::AddScaledPosition(_upDirection, _movementSpeed);
+			AddScaledPosition(_upDirection, _movementSpeed);
 		}
 		else if(yPos >= _topBoundary)
 		{
-			TE::GameObject::AddScaledPosition(_downDirection, _movementSpeed);
+			AddScaledPosition(_downDirection, _movementSpeed);
 		}
 	}
 
@@ -68,7 +68,7 @@ void Cannon::Fire(const TM::Vector4& heading, ProjectileType type)
 	{
 		if(!projectile->GetActive())
 		{
-			projectile->SetPosition(GameObject::GetPosition());
+			projectile->SetPosition(GetPosition());
 			projectile->SetType(type);
 			projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
 			projectile->SetActive(true);

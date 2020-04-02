@@ -15,7 +15,7 @@ _direction(0.0f),
 _boundingBox()
 { 
 	_direction.Make2D();
-	MakeSprite();
+	Init();
 	SetPosition(0.0f, 0.0f);
 	SetScale(1.0f, 1.0f);
 }
@@ -27,7 +27,7 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 {
 	_direction.Make2D();
-	MakeSprite();
+	Init();
 	SetPosition(pos);
 	SetScale(width, height);
 }
@@ -39,7 +39,7 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 	
 	_direction.Make2D();
-	MakeSprite();
+	Init();
 	SetPosition(pos);
 	SetScale(width, height);
 	SetColor(col);
@@ -53,7 +53,7 @@ _direction(0.0f),
 _boundingBox(pos, width, height, 0.0f)
 { 
 	_direction.Make2D();
-	MakeSprite();
+	Init();
 	SetPosition(pos);
 	SetScale(width, height);
 	SetColor(col);

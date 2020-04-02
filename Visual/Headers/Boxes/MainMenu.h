@@ -93,10 +93,10 @@ namespace Boxes
 		TE::Engine::Instance()->SetActiveLevel(level);
 	}
 
-	static void MenuItem_OpenglAction(void)
+	/*static void MenuItem_OpenglAction(void)
 	{
 		p_Demo3D level = make_shared<Demo3D>();
 		level->v_Init();
 		TE::Engine::Instance()->SetActiveLevel(level);
-	}
+	}*/
 }

@@ -34,7 +34,7 @@ Written by Maxwell Miller
 
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/State.hpp>
 #include <Engine/StateMachine.hpp>
 
@@ -43,7 +43,7 @@ namespace TE = Tempest;
 //==========================================================================================================================
 // Defined version of the GameObject for testing
 //==========================================================================================================================
-class StateTestObj : public TE::GameObject
+class StateTestObj : public TE::GameObject2D
 {
 public:
 	StateTestObj(void)

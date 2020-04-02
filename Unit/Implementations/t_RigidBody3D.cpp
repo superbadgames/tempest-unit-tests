@@ -35,7 +35,7 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/RigidBody3D.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject3D.h>
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
 #include <Engine/ErrorManager.h>
@@ -45,16 +45,16 @@ namespace TM = TempestMath;
 namespace TP =TempestPhysics;
 
 
-class Object3D : public TE::GameObject
+class RigitBody3DDefinedObj : public TE::GameObject3D
 {
 public:
-	Object3D(void)
+	RigitBody3DDefinedObj(void)
 	: p_body(nullptr)
 	{
-		GameObject::SetOrientation(1.0f, 1.0f, 1.0f);
+		GameObject3D::SetOrientation(1.0f, 1.0f, 1.0f);
 	}
 
-	~Object3D(void)
+	~RigitBody3DDefinedObj(void)
 	{
 		p_body.reset();
 	}
@@ -71,7 +71,7 @@ public:
 	TP::p_RigidBody3D p_body;
 };
 
-void IntegrateNTimes(Object3D& obj, S32 n)
+void IntegrateNTimes(RigitBody3DDefinedObj& obj, S32 n)
 {
 	for(S32 i = 0; i < n; ++i)
 	{
@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE(RigidBody3DConstructor)
 
 BOOST_AUTO_TEST_CASE(RigidBody3DGameObjectIntegration)
 {
-	Object3D obj { };
+	RigitBody3DDefinedObj obj { };
 	obj.SetBody();
 
 	BOOST_CHECK_NE(obj.p_body, nullptr);
@@ -155,7 +155,7 @@ BOOST_AUTO_TEST_CASE(RigidBody3DGameObjectIntegration)
 
 BOOST_AUTO_TEST_CASE(RigidBody3DZeroMass)
 {
-	Object3D obj { };
+	RigitBody3DDefinedObj obj { };
 	obj.SetBody();
 	obj.p_body->SetInverseMass(0.0f);
 

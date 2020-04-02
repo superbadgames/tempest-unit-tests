@@ -1,3 +1,7 @@
+/*
+
+This needs to be refactored and made into something far more interesting. This is going to be a task for another day. 
+
 #include <Boxes/Demo3D.h>
 
 using namespace Boxes;
@@ -274,3 +278,5 @@ void Demo3D::v_Update(void)
 	//Update light Position
 	Level::SetObjectUniforms("light.position", lightPos);
 }
+
+*/

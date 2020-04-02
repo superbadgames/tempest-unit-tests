@@ -13,7 +13,7 @@ Written by Maxwell Miller
 
 //Killer1 Includes
 #include <Engine/Atom.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
 #include <Engine/Vector4.h>
@@ -30,7 +30,7 @@ namespace Boxes
 	class Box;
 	typedef shared_ptr<Box> p_Box;
 
-	class Box : public TE::GameObject 
+	class Box : public TE::GameObject2D
 	{
 	public:
 //==========================================================================================================================

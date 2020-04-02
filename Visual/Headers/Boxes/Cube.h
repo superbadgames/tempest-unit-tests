@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject3D.h>
 #include <Engine/Vector4.h>
 #include <Engine/Vertex.h>
 #include <Engine/Color.h>
@@ -18,7 +18,7 @@ namespace Boxes
 	class Cube;
 	typedef shared_ptr<Cube> p_Cube;
 
-	class Cube : public TE::GameObject
+	class Cube : public TE::GameObject3D
 	{
 	public:
 //==========================================================================================================================

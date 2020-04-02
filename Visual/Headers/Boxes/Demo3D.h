@@ -1,11 +1,13 @@
 #pragma once
+/*
+
+TODO: Update once Level3D is created, make the Robot moveable in 1st or 3rd preson. 
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
-#include <Engine/GameObject.h>
 #include <Engine/Timer.h>
 #include <Engine/Texture.h>
 #include <Engine/OrbitCamera.h>
@@ -64,3 +66,5 @@ namespace Boxes
 	};//end Class
 	typedef shared_ptr<Demo3D> p_Demo3D;
 }//end Namespace
+
+*/

@@ -16,8 +16,8 @@ _startingLocation(0.0f),
 _type(),
 p_rigidBody(nullptr)
 {
-	GameObject::MakeSprite();
-	GameObject::SetActive(false);
+	Init();
+	SetActive(false);
 	p_rigidBody = TP::PhysicsFactory::Instance()->MakeRigidBody2D();
 	p_rigidBody->SetObject(this);
 }
@@ -34,12 +34,12 @@ Projectile::~Projectile(void)
 //==========================================================================================================================
 void Projectile::v_Update(void)
 {		
-	TM::Point deltaPos = _startingLocation - GameObject::GetPosition();
+	TM::Point deltaPos = _startingLocation - GetPosition();
 	_sqrDistance = deltaPos.SqrMagnitude();
 	
 	if(_sqrDistance >= _maxDistance) 
 	{ 
-		GameObject::SetActive(false);
+		SetActive(false);
 		_sqrDistance = 0;
 		p_rigidBody->SetVelocity(0.0f, 0.0f);
 	}
@@ -94,7 +94,7 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetDamping(0.6f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			SetScale(15.0f, 15.0f);
-			GameObject::SetTexture(TE::TextureManager::Instance()->GetTexture(302));
+			SetTexture(TE::TextureManager::Instance()->GetTexture(302));
 			_speedScale = 1000.0f;
 			break;
 		case MISSILE:
@@ -120,7 +120,7 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetMass(0.1f);
 			p_rigidBody->SetDamping(0.99f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
-			GameObject::SetScale(10.0f, 7.5f);
+			SetScale(10.0f, 7.5f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(305));
 			_speedScale	= 900.0f;
 			break;
@@ -129,7 +129,7 @@ void Projectile::SetType(ProjectileType type)
 			p_rigidBody->SetMass(75.0f);
 			p_rigidBody->SetDamping(0.25f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
-			GameObject::SetScale(15.0f, 15.0f);
+			SetScale(15.0f, 15.0f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(306));
 			_speedScale	= 350.0f;
 			break;

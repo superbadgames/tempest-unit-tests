@@ -61,9 +61,9 @@ void MainMenu::v_Init(void)
 	//springs.text = shared_ptr<TE::Text>(new TE::Text("Springs Demo", TE::FontManager::Instance()->GetFont(100)));
 	//springs.Action = &MenuItem_SpringsAction;
 
-	TE::MenuItem opengl { };
+	/*TE::MenuItem opengl { };
 	opengl.text = shared_ptr<TE::Text>(new TE::Text("3D Level", TE::FontManager::Instance()->GetFont(100)));
-	opengl.Action = &MenuItem_OpenglAction;
+	opengl.Action = &MenuItem_OpenglAction;*/
 
 
 	Level::AddObjectToLevel(_selector);
@@ -72,7 +72,7 @@ void MainMenu::v_Init(void)
 	Level::AddTextToLevel(ballistics.text);
 	//Level::AddTextToLevel(firework.text);
 	//Level::AddTextToLevel(springs.text);
-	Level::AddTextToLevel(opengl.text);
+	//Level::AddTextToLevel(opengl.text);
 
 	_menu.SetSelector(_selector);
 	_menu.SetTitle(_mainTitle);
@@ -80,7 +80,7 @@ void MainMenu::v_Init(void)
 	_menu.AddItem(ballistics);
 	//_menu.AddItem(firework);
 	//_menu.AddItem(springs);
-	_menu.AddItem(opengl);
+	//_menu.AddItem(opengl);
 
 }
 

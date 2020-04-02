@@ -39,7 +39,7 @@ Written by Maxwell Miller
 
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/Vector4.h>
@@ -53,22 +53,22 @@ namespace TM = TempestMath;
 //GameObject Class Creation
 //==========================================================================================================================
 
-class DefinedObject : public TE::GameObject
+class DefinedObject : public TE::GameObject2D
 {
 public:
-	DefinedObject(void) 
-	{  }
+    DefinedObject(void) 
+    {  }
 
-	~DefinedObject(void)
-	{  }
+    ~DefinedObject(void)
+    {  }
 
-	void v_Update(void)
-	{  }
+    void v_Update(void)
+    {  }
 };
 
 BOOST_AUTO_TEST_CASE(GameObjectConstructor)
 {
-	DefinedObject obj { };
+    DefinedObject obj { };
 
-	BOOST_CHECK_GE(obj.GetID(), (U32)1);
+    BOOST_CHECK_GE(obj.GetID(), (U32)1);
 }

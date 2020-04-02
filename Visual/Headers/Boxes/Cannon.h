@@ -15,7 +15,7 @@ Written by Maxwell Miller
 
 //Killer1 Includes
 #include <Engine/Atom.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
 #include <Engine/Texture.h>
@@ -38,7 +38,7 @@ namespace Boxes
 	class Cannon;
 	typedef shared_ptr<Cannon> p_Cannon;
 
-	class Cannon : public TE::GameObject
+	class Cannon : public TE::GameObject2D
 	{
 	public:
 //==========================================================================================================================

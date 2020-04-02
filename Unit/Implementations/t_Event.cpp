@@ -41,7 +41,7 @@ Written by Maxwell Miller
 #include <Engine/Event.hpp>
 #include <Engine/Keys.h>
 #include <Engine/EventManager.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/Timer.h>
 
 #include <iostream>
@@ -49,14 +49,14 @@ Written by Maxwell Miller
 namespace TE = Tempest;
 namespace TM = TempestMath;
 
-class MockEventObj : public TE::GameObject
+class MockEventObj2D : public TE::GameObject2D
 {
 public:
-    MockEventObj(void)
+    MockEventObj2D(void)
         : _count(0)
     {  }
 
-    ~MockEventObj(void)
+    ~MockEventObj2D(void)
     {  }
 
     void v_Update(void)
@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE(EventAddData)
 
 BOOST_AUTO_TEST_CASE(EventManagerWithObject)
 {
-    shared_ptr<MockEventObj> obj = make_shared<MockEventObj>();
+    shared_ptr<MockEventObj2D> obj = make_shared<MockEventObj2D>();
     
     TE::Event addEvent{"add", 0, obj->GetID(), 0.0, 2};
     
