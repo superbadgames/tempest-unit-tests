@@ -35,7 +35,7 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/AABB.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 
 namespace TC = TempestCollisions;
 namespace TM = TempestMath;
@@ -47,17 +47,15 @@ BOOST_AUTO_TEST_CASE(AABBConstructors)
 	BOOST_CHECK_EQUAL(box.GetCenter()[0], 0.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[1], 0.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[2], 0.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(box.GetWidth(), 0.0f);
 	BOOST_CHECK_EQUAL(box.GetHeight(), 0.0f);
 	BOOST_CHECK_EQUAL(box.GetDepth(), 0.0f);
 
-	TC::AABB box2 { TM::Point(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
+	TC::AABB box2 { TM::Point3(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
 
 	BOOST_CHECK_EQUAL(box2.GetCenter()[0], 4.0f);
 	BOOST_CHECK_EQUAL(box2.GetCenter()[1], 53.0f);
 	BOOST_CHECK_EQUAL(box2.GetCenter()[2], 20.0f);
-	BOOST_CHECK_EQUAL(box2.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(box2.GetWidth(), 1.0f);
 	BOOST_CHECK_EQUAL(box2.GetHeight(), 2.0f);
 	BOOST_CHECK_EQUAL(box2.GetDepth(), 3.0f);
@@ -70,19 +68,17 @@ BOOST_AUTO_TEST_CASE(AABBAccessors)
 {
 	TC::AABB box { };
 	
-	box.SetCenter(TM::Point(2.0f, 5.0f, 3.0f));
+	box.SetCenter(TM::Point3(2.0f, 5.0f, 3.0f));
 
 	BOOST_CHECK_EQUAL(box.GetCenter()[0], 2.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[1], 5.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[2], 3.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[3], 1.0f);
 
 	box.SetCenter(14.0f, 30.0f, 150.0f);
 
 	BOOST_CHECK_EQUAL(box.GetCenter()[0], 14.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[1], 30.0f);
 	BOOST_CHECK_EQUAL(box.GetCenter()[2], 150.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[3], 1.0f);
 
 	box.SetHalfWidth(5.0f);
 	BOOST_CHECK_EQUAL(box.GetHalfWidth(), 5.0f);
@@ -128,8 +124,8 @@ BOOST_AUTO_TEST_CASE(AABBAccessors)
 
 BOOST_AUTO_TEST_CASE(AABBIntersectAABBTest)
 {
-	TC::AABB box1 { TM::Point(0.0f, 0.0f, 0.0f), 4.0f, 4.0f, 4.0f };
-	TC::AABB box2 { TM::Point(3.0f, 3.0f, 0.0f), 4.0f, 4.0f, 4.0f };
+	TC::AABB box1 { TM::Point3(0.0f, 0.0f, 0.0f), 4.0f, 4.0f, 4.0f };
+	TC::AABB box2 { TM::Point3(3.0f, 3.0f, 0.0f), 4.0f, 4.0f, 4.0f };
 
 	BOOST_CHECK_EQUAL(box1.TestCollision(box2), true);
 	BOOST_CHECK_EQUAL(box2.TestCollision(box1), true);

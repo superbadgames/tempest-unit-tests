@@ -124,14 +124,14 @@ BOOST_AUTO_TEST_CASE(RandomDouble_tests)
 
 BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 {
-	TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f, true);
+	TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
 	BOOST_CHECK_GE(a[0], 0.0f);
 	BOOST_CHECK_LE(a[0], 1.0f);
 	BOOST_CHECK_GE(a[1], 0.0f);
 	BOOST_CHECK_LE(a[1], 1.0f);
 
-	a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f, true);
+	a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
 	BOOST_CHECK_GE(a[0], 10.0f);
 	BOOST_CHECK_LE(a[0], 100.0f);

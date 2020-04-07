@@ -35,7 +35,7 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/BoundingSphere.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 
 namespace TC = TempestCollisions;
 namespace TM = TempestMath;
@@ -47,38 +47,34 @@ BOOST_AUTO_TEST_CASE(BoundingSphereConstructors)
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[0], 0.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[1], 0.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetCenter()[2], 0.0f);
-	BOOST_CHECK_EQUAL(sphere1.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetRadius(), 0.0f);
 
-	TC::BoundingSphere sphere2 { TM::Point(2.0f, 5.0f, 1.0f), 25.0f };
+	TC::BoundingSphere sphere2 { TM::Point3(2.0f, 5.0f, 1.0f), 25.0f };
 
 	BOOST_CHECK_EQUAL(sphere2.GetCenter()[0], 2.0f);
 	BOOST_CHECK_EQUAL(sphere2.GetCenter()[1], 5.0f);
 	BOOST_CHECK_EQUAL(sphere2.GetCenter()[2], 1.0f);
-	BOOST_CHECK_EQUAL(sphere2.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere2.GetRadius(), 25.0f);
 
 	//Combination test will be more difficult
-	//TC::BoundingSphere sphere3 { TM::Point() }
+	//TC::BoundingSphere sphere3 { TM::Point3() }
 }
 
 BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 {
-	TC::BoundingSphere sphere { TM::Point(10.0f, 10.0f, 0.0f), 5.0f };
+	TC::BoundingSphere sphere { TM::Point3(10.0f, 10.0f, 0.0f), 5.0f };
 
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 10.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 10.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 0.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere.GetRadius(), 5.0f);
 
-	sphere.SetCenter(TM::Point(35.0f, 1.0f, 2.0f));
+	sphere.SetCenter(TM::Point3(35.0f, 1.0f, 2.0f));
 	sphere.SetRadius(2.5f);
 
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 35.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 1.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 2.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[3], 1.0f);
 	BOOST_CHECK_EQUAL(sphere.GetRadius(), 2.5f);
 
 	sphere.SetCenter(26.0f, 15.0f, 23.0f);
@@ -86,13 +82,12 @@ BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 26.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 15.0f);
 	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 23.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[3], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(BoundingShereIntersectBoundingSphere)
 {
-	TC::BoundingSphere sphere1 { TM::Point(0.0f, 0.0f, 0.0f), 4.0f };
-	TC::BoundingSphere sphere2 { TM::Point(2.0f, 2.0f, 2.0f), 4.0f };
+	TC::BoundingSphere sphere1 { TM::Point3(0.0f, 0.0f, 0.0f), 4.0f };
+	TC::BoundingSphere sphere2 { TM::Point3(2.0f, 2.0f, 2.0f), 4.0f };
 
 	BOOST_CHECK_EQUAL(sphere1.TestCollision(sphere2), true);
 	BOOST_CHECK_EQUAL(sphere2.TestCollision(sphere1), true);
@@ -113,19 +108,19 @@ BOOST_AUTO_TEST_CASE(BoudningSphereGetGrowth)
 	//Note, only checking relative sizes, since size prediction is not
 	//really important. 
 
-	TC::BoundingSphere sphere1 { TM::Point(0.0f, 0.0f, 0.0f), 8.0f };
-	TC::BoundingSphere sphere2 { TM::Point(0.0f, 0.0f, 0.0f), 10.0f };
+	TC::BoundingSphere sphere1 { TM::Point3(0.0f, 0.0f, 0.0f), 8.0f };
+	TC::BoundingSphere sphere2 { TM::Point3(0.0f, 0.0f, 0.0f), 10.0f };
 
 	//Check if the growth from 2 would be bigger than 1 is now. 
 	BOOST_CHECK_GT(sphere1.GetGrowth(sphere2), sphere1.GetRadius());
 
-	TC::BoundingSphere sphere3 { TM::Point(10.0f, 10.0f, 0.0f), 10.0f };
+	TC::BoundingSphere sphere3 { TM::Point3(10.0f, 10.0f, 0.0f), 10.0f };
 
 	//Check if 3, a sphere the same size of 2, but in a different place
 	//would have a larger growth, being further away.
 	BOOST_CHECK_GT(sphere1.GetGrowth(sphere3), sphere1.GetGrowth(sphere2));
 
-	TC::BoundingSphere sphere4 { TM::Point(5.0f, 5.0f, 0.0f), 2.0f };
+	TC::BoundingSphere sphere4 { TM::Point3(5.0f, 5.0f, 0.0f), 2.0f };
 	
 	//Check if a smaller, but further away sphere would have less growth
 	//than a bigger, but closer sphere. 

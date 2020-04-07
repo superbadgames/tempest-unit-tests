@@ -39,6 +39,7 @@ Written by Maxwell Miller
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/Matrix4.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector4.h>
 
 
@@ -288,9 +289,9 @@ BOOST_AUTO_TEST_CASE(Matrix4Reset)
 {
 	TM::Matrix4 mat
 	(
-		TM::Vector4(2.0f, 4.0f, 10.0f),
-		TM::Vector4(10.0f, 15.0f, 25.0f),
-		TM::Vector4(1.0f, 2.0f, 3.0f)
+		TM::Vector4(2.0f, 4.0f, 10.0f, 0.0f),
+		TM::Vector4(10.0f, 15.0f, 25.0f, 0.0f),
+		TM::Vector4(1.0f, 2.0f, 3.0f, 0.0f)
 	);
 
 	mat.Reset();
@@ -369,46 +370,12 @@ BOOST_AUTO_TEST_CASE(Matrix4Translation)
 	BOOST_CHECK_EQUAL(T3[3][z], 100.0f);
 	BOOST_CHECK_EQUAL(T3[3][w], 1.0f);
 
-	TM::Matrix4 T4 = TM::Matrix4::Translate(TM::Vector4(5.0f, 4.0f, 2.0f));
+	TM::Matrix4 T4 = TM::Matrix4::Translate(TM::Vector4(5.0f, 4.0f, 2.0f, 0.0f));
 
 	BOOST_CHECK_EQUAL(T4[3][x], 5.0f);
 	BOOST_CHECK_EQUAL(T4[3][y], 4.0f);
 	BOOST_CHECK_EQUAL(T4[3][z], 2.0f);
 	BOOST_CHECK_EQUAL(T4[3][w], 1.0f);
-}
-
-BOOST_AUTO_TEST_CASE(Matrix4AddTranslate)
-{
-	TM::Matrix4 mat{};
-	mat.SetTranslate(5.0f, 10.0f, 15.0f);
-
-	mat.AddTranslate(TM::Vector4(2.0f, 4.0f));
-
-	BOOST_CHECK_EQUAL(mat[3][x], 7.0f);
-	BOOST_CHECK_EQUAL(mat[3][y], 14.0f);
-	BOOST_CHECK_EQUAL(mat[3][z], 15.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	mat.AddTranslate(3.0f, 4.0f);
-
-	BOOST_CHECK_EQUAL(mat[3][x], 10.0f);
-	BOOST_CHECK_EQUAL(mat[3][y], 18.0f);
-	BOOST_CHECK_EQUAL(mat[3][z], 15.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	mat.AddTranslate(TM::Vector4(10.0f, 10.0f, 10.0f));
-
-	BOOST_CHECK_EQUAL(mat[3][x], 20.0f);
-	BOOST_CHECK_EQUAL(mat[3][y], 28.0f);
-	BOOST_CHECK_EQUAL(mat[3][z], 25.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	mat.AddTranslate(20.0f, 20.0f, 20.0f);
-
-	BOOST_CHECK_EQUAL(mat[3][x], 40.0f);
-	BOOST_CHECK_EQUAL(mat[3][y], 48.0f);
-	BOOST_CHECK_EQUAL(mat[3][z], 45.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix4Scale)
@@ -429,15 +396,14 @@ BOOST_AUTO_TEST_CASE(Matrix4Scale)
 	BOOST_CHECK_EQUAL(mat[2][z], 2.0f);
 	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
 
-	mat.SetScale(TM::Vector4(5.0f, 4.0f, 3.0f));
+	mat.SetScale(TM::Vector4(5.0f, 4.0f, 3.0f, 0.0f));
 
 	BOOST_CHECK_EQUAL(mat[0][x], 5.0f);
 	BOOST_CHECK_EQUAL(mat[1][y], 4.0f);
 	BOOST_CHECK_EQUAL(mat[2][z], 3.0f);
 	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
 	
-	TM::Vector4 vec{2.0f, 3.0f, 10.0f};
-	vec.Make2D();
+	TM::Vector2 vec{2.0f, 3.0f};
 
 	mat.SetScale(vec);
 
@@ -446,10 +412,9 @@ BOOST_AUTO_TEST_CASE(Matrix4Scale)
 	BOOST_CHECK_EQUAL(mat[2][z], 1.0f);
 	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
 
-	vec.Set(10.0f, 20.0f, 5.0f);
-	vec.Make3D();
+	TM::Vector3 vec3d{10.0f, 20.0f, 5.0f};
 
-	mat.SetScale(vec);
+	mat.SetScale(vec3d);
 
 	BOOST_CHECK_EQUAL(mat[0][x], 10.0f);
 	BOOST_CHECK_EQUAL(mat[1][y], 20.0f);
@@ -470,51 +435,13 @@ BOOST_AUTO_TEST_CASE(Matrix4Scale)
 	BOOST_CHECK_EQUAL(mat3[2][z], 8.0f);
 	BOOST_CHECK_EQUAL(mat3[3][w], 1.0f);
 
-	TM::Matrix4 mat4 = TM::Matrix4::Scale(TM::Vector4(13.0f, 50.0f, 2.0f));
+	TM::Matrix4 mat4 = TM::Matrix4::Scale(TM::Vector4(13.0f, 50.0f, 2.0f, 0.0f));
 
 	BOOST_CHECK_EQUAL(mat4[0][x], 13.0f);
 	BOOST_CHECK_EQUAL(mat4[1][y], 50.0f);
 	BOOST_CHECK_EQUAL(mat4[2][z], 2.0f);
 	BOOST_CHECK_EQUAL(mat4[3][w], 1.0f);
 }
-
-BOOST_AUTO_TEST_CASE(Matrix4AddScale)
-{
-	TM::Matrix4 mat(1.0f);
-
-	mat.AddScale(3.0f, 2.0f);
-
-	BOOST_CHECK_EQUAL(mat[0][x], 4.0f);
-	BOOST_CHECK_EQUAL(mat[1][y], 3.0f);
-	BOOST_CHECK_EQUAL(mat[2][z], 1.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	mat.AddScale(2.0f, 2.0f, 2.0f);
-
-	BOOST_CHECK_EQUAL(mat[0][x], 6.0f);
-	BOOST_CHECK_EQUAL(mat[1][y], 5.0f);
-	BOOST_CHECK_EQUAL(mat[2][z], 3.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	TM::Vector4 vec{3.0f, 4.0f, 5.0f};
-	vec.Make2D();
-
-	mat.AddScale(vec);
-
-	BOOST_CHECK_EQUAL(mat[0][x], 9.0f);
-	BOOST_CHECK_EQUAL(mat[1][y], 9.0f);
-	BOOST_CHECK_EQUAL(mat[2][z], 3.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-
-	vec.Make3D();
-	mat.AddScale(vec);
-
-	BOOST_CHECK_EQUAL(mat[0][x], 12.0f);
-	BOOST_CHECK_EQUAL(mat[1][y], 13.0f);
-	BOOST_CHECK_EQUAL(mat[2][z], 8.0f);
-	BOOST_CHECK_EQUAL(mat[3][w], 1.0f);
-}
-
 
 BOOST_AUTO_TEST_CASE(Matrix4Rotation)
 {

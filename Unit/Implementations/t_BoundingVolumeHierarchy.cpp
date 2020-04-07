@@ -37,7 +37,6 @@ Written by Maxwell Miller
 #include <Engine/BroadPhaseCollision.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
-#include <Engine/Point.h>
 #include <Engine/BoundingSphere.h>
 
 namespace TC = TempestCollisions;

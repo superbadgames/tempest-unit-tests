@@ -61,15 +61,6 @@ BOOST_AUTO_TEST_CASE(Vector3SingleContructor)
 	BOOST_CHECK_EQUAL(v[z], 5.0f);
 }
 
-BOOST_AUTO_TEST_CASE(Vector3DoubleContructor) 
-{
-	TM::Vector3 v {1.0f, 2.0f};
-
-	BOOST_CHECK_EQUAL(v[x], 1.0f);
-	BOOST_CHECK_EQUAL(v[y], 2.0f);
-	BOOST_CHECK_EQUAL(v[z], 0.0f);
-}
-
 BOOST_AUTO_TEST_CASE(Vector3TrippleContructor) 
 {
 	TM::Vector3 v {1.0f, 2.0f, 3.0f};
@@ -112,15 +103,6 @@ BOOST_AUTO_TEST_CASE(Vector3CopyAssignment)
 	BOOST_CHECK_EQUAL(v2[x], 4.5f);
 	BOOST_CHECK_EQUAL(v2[y], 5.4f);
 	BOOST_CHECK_EQUAL(v2[z], 6.8f);
-
-	TM::Vector3 v3 {4.5f, 5.4f};
-	v3.Make2D();
-
-	TM::Vector3 v4 = v3;
-
-	BOOST_CHECK_EQUAL(v2[x], 4.5f);
-	BOOST_CHECK_EQUAL(v2[y], 5.4f);
-	BOOST_CHECK_EQUAL(v2[z], 6.8f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3Assignment) 
@@ -131,14 +113,6 @@ BOOST_AUTO_TEST_CASE(Vector3Assignment)
 	BOOST_CHECK_EQUAL(v1[x], 3.0f);
 	BOOST_CHECK_EQUAL(v1[y], 3.0f);
 	BOOST_CHECK_EQUAL(v1[z], 3.0f);
-
-	TM::Vector3 v2{};
-	v2.Make2D();
-	v2 = 3.0f;
-
-	BOOST_CHECK_EQUAL(v2[x], 3.0f);
-	BOOST_CHECK_EQUAL(v2[y], 3.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3AddVector3) 
@@ -151,16 +125,6 @@ BOOST_AUTO_TEST_CASE(Vector3AddVector3)
 	BOOST_CHECK_EQUAL(sum[x], 3.0f);
 	BOOST_CHECK_EQUAL(sum[y], 4.0f);
 	BOOST_CHECK_EQUAL(sum[z], 6.0f);
-
-	TM::Vector3 v3 {1.0f, 1.0f};
-	v3.Make2D();
-	TM::Vector3 v4 {2.0f, 3.0f, 4.0f};
-
-	TM::Vector3 sum2 = v3 + v4;
-
-	BOOST_CHECK_EQUAL(sum2[x], 3.0f);
-	BOOST_CHECK_EQUAL(sum2[y], 4.0f);
-	BOOST_CHECK_EQUAL(sum2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3AddEqVector3) 
@@ -173,15 +137,6 @@ BOOST_AUTO_TEST_CASE(Vector3AddEqVector3)
 	BOOST_CHECK_EQUAL(v1[x], 2.0f);
 	BOOST_CHECK_EQUAL(v1[y], 2.0f);
 	BOOST_CHECK_EQUAL(v1[z], 5.0f);
-
-	TM::Vector3 v3 {1.0f, 1.0f};
-	TM::Vector3 v4 {1.0f, 1.0f, 3.0f};
-
-	v3 += v4;
-
-	BOOST_CHECK_EQUAL(v3[x], 2.0f);
-	BOOST_CHECK_EQUAL(v3[y], 2.0f);
-	BOOST_CHECK_EQUAL(v3[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3SubtractVector3) 
@@ -194,15 +149,6 @@ BOOST_AUTO_TEST_CASE(Vector3SubtractVector3)
 	BOOST_CHECK_EQUAL(difference[x], 15.0f);
 	BOOST_CHECK_EQUAL(difference[y], 25.0f);
 	BOOST_CHECK_EQUAL(difference[z], 35.0f);
-
-	TM::Vector3 v3 {20.0f, 30.0f};
-	TM::Vector3 v4 {5.0f, 5.0f, 5.0f};
-
-	TM::Vector3 difference2 = v3 - v4;
-
-	BOOST_CHECK_EQUAL(difference2[x], 15.0f);
-	BOOST_CHECK_EQUAL(difference2[y], 25.0f);
-	BOOST_CHECK_EQUAL(difference2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3SubtractEqVector3) 
@@ -215,16 +161,6 @@ BOOST_AUTO_TEST_CASE(Vector3SubtractEqVector3)
 	BOOST_CHECK_EQUAL(v1[x], 1.0f);
 	BOOST_CHECK_EQUAL(v1[y], 2.0f);
 	BOOST_CHECK_EQUAL(v1[z], 3.0f);
-
-	TM::Vector3 v3 {2.0f, 3.0f};
-	v3.Make2D();
-	TM::Vector3 v4 {1.0f, 1.0f, 1.0f};
-
-	v3 -= v4;
-
-	BOOST_CHECK_EQUAL(v3[x], 1.0f);
-	BOOST_CHECK_EQUAL(v3[y], 2.0f);
-	BOOST_CHECK_EQUAL(v3[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3MultiplyVector3Scalar) 
@@ -237,16 +173,6 @@ BOOST_AUTO_TEST_CASE(Vector3MultiplyVector3Scalar)
 	BOOST_CHECK_EQUAL(product[x], 10.0f);
 	BOOST_CHECK_EQUAL(product[y], 15.0f);
 	BOOST_CHECK_EQUAL(product[z], 20.0f);
-
-	TM::Vector3 v3 {2.0f, 3.0f};
-	v3.Make2D();
-	F32 v4 {5.0f};
-
-	TM::Vector3 product2 = v3 * v4;
-
-	BOOST_CHECK_EQUAL(product2[x], 10.0f);
-	BOOST_CHECK_EQUAL(product2[y], 15.0f);
-	BOOST_CHECK_EQUAL(product2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3MultiplyEqVector3Scalar) 
@@ -259,16 +185,6 @@ BOOST_AUTO_TEST_CASE(Vector3MultiplyEqVector3Scalar)
 	BOOST_CHECK_EQUAL(v1[x], 40.0f);
 	BOOST_CHECK_EQUAL(v1[y], 50.0f);
 	BOOST_CHECK_EQUAL(v1[z], 75.0f);
-
-	TM::Vector3 v3 {8.0f, 10.0f};
-	v3.Make2D();
-	F32 v4 {5.0f};
-
-	v3 *= v4;
-
-	BOOST_CHECK_EQUAL(v3[x], 40.0f);
-	BOOST_CHECK_EQUAL(v3[y], 50.0f);
-	BOOST_CHECK_EQUAL(v3[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3MultiplyByVector3)
@@ -282,16 +198,6 @@ BOOST_AUTO_TEST_CASE(Vector3MultiplyByVector3)
 	BOOST_CHECK_EQUAL(C[x], 12.0f);
 	BOOST_CHECK_EQUAL(C[y], 40.0f);
 	BOOST_CHECK_EQUAL(C[z], 90.0f);
-
-	TM::Vector3 D {2.0f, 5.0f};
-	D.Make2D();
-	TM::Vector3 E {6.0f, 8.0f, 9.0f};
-
-	TM::Vector3 F = D * E;
-
-	BOOST_CHECK_EQUAL(F[x], 12.0f);
-	BOOST_CHECK_EQUAL(F[y], 40.0f);
-	BOOST_CHECK_EQUAL(F[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3DotMultiplication) 
@@ -313,15 +219,6 @@ BOOST_AUTO_TEST_CASE(Vector3DivideVector3ByScalar)
 	BOOST_CHECK_EQUAL(quotient[x], 5.0f);
 	BOOST_CHECK_EQUAL(quotient[y], 10.0f);
 	BOOST_CHECK_EQUAL(quotient[z], 15.0f);
-
-	TM::Vector3 v2 {10.0f, 20.0f};
-	v2.Make2D();
-
-	TM::Vector3 quotient2 = v2 / 2.0f;
-
-	BOOST_CHECK_EQUAL(quotient2[x], 5);
-	BOOST_CHECK_EQUAL(quotient2[y], 10);
-	BOOST_CHECK_EQUAL(quotient2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3DivideEqVector3ByScalar) 
@@ -334,16 +231,6 @@ BOOST_AUTO_TEST_CASE(Vector3DivideEqVector3ByScalar)
 	BOOST_CHECK_EQUAL(v1[x], 5);
 	BOOST_CHECK_EQUAL(v1[y], 10);
 	BOOST_CHECK_EQUAL(v1[z], 20.0f);
-
-	TM::Vector3 v3 {10.0f, 20.0f};
-	v3.Make2D();
-	F32 v4 {2.0f};
-
-	v3 /= v4;
-
-	BOOST_CHECK_EQUAL(v3[x], 5);
-	BOOST_CHECK_EQUAL(v3[y], 10);
-	BOOST_CHECK_EQUAL(v3[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3_Comparison_Operators)
@@ -418,14 +305,6 @@ BOOST_AUTO_TEST_CASE(Vector3AddScaledVector3)
 	BOOST_CHECK_EQUAL(Vector3Test[x], 465.0f);
 	BOOST_CHECK_EQUAL(Vector3Test[y], 125.0f);
 	BOOST_CHECK_EQUAL(Vector3Test[z], 245.0f);
-
-	TM::Vector3 Vector3Test2 {15.0f, 25.0f};
-	Vector3Test2.Make2D();
-	Vector3Test2.AddScaledVector(scaled, 10);
-
-	BOOST_CHECK_EQUAL(Vector3Test2[x], 465.0f);
-	BOOST_CHECK_EQUAL(Vector3Test2[y], 125.0f);
-	BOOST_CHECK_EQUAL(Vector3Test2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3CrossProduct) 
@@ -460,15 +339,6 @@ BOOST_AUTO_TEST_CASE(Vector3Negation)
 	BOOST_CHECK_EQUAL(v[x], -1.0f);
 	BOOST_CHECK_EQUAL(v[y], -2.0f);
 	BOOST_CHECK_EQUAL(v[z], -3.0f);
-
-
-	TM::Vector3 v2 {3.0f, 5.0f};
-
-	v2 = -v2;
-
-	BOOST_CHECK_EQUAL(v2[x], -3.0f);
-	BOOST_CHECK_EQUAL(v2[y], -5.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3Pre_PostIncrement)
@@ -487,19 +357,6 @@ BOOST_AUTO_TEST_CASE(Vector3Pre_PostIncrement)
 	BOOST_CHECK_EQUAL(v[y], 4.0f);
 	BOOST_CHECK_EQUAL(v[z], 5.0f);
 
-	TM::Vector3 v2 {3.0f, 5.0f};
-
-	++v2;
-
-	BOOST_CHECK_EQUAL(v2[x], 4.0f);
-	BOOST_CHECK_EQUAL(v2[y], 6.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
-
-	v2++;
-
-	BOOST_CHECK_EQUAL(v2[x], 5.0f);
-	BOOST_CHECK_EQUAL(v2[y], 7.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Vector3Pre_PostDecrement)
@@ -517,18 +374,4 @@ BOOST_AUTO_TEST_CASE(Vector3Pre_PostDecrement)
 	BOOST_CHECK_EQUAL(v[x], 8.0f);
 	BOOST_CHECK_EQUAL(v[y], 18.0f);
 	BOOST_CHECK_EQUAL(v[z], 28.0f);
-
-	TM::Vector3 v2 {5.0f, 2.0f};
-
-	--v2;
-
-	BOOST_CHECK_EQUAL(v2[x], 4.0f);
-	BOOST_CHECK_EQUAL(v2[y], 1.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
-
-	v2--;
-
-	BOOST_CHECK_EQUAL(v2[x], 3.0f);
-	BOOST_CHECK_EQUAL(v2[y], 0.0f);
-	BOOST_CHECK_EQUAL(v2[z], 0.0f);
 }
