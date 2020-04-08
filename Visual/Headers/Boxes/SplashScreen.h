@@ -19,7 +19,7 @@ Written by Maxwell Miller
 #include <Engine/FontManager.h>
 #include <Engine/Text.h>
 #include <Engine/Color.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
 #include <Engine/AudioManager.h>
@@ -37,37 +37,37 @@ namespace TM = TempestMath;
 namespace Boxes 
 {
 
-	class SplashScreen: public TE::Level
-	{
-	public:
+    class SplashScreen: public TE::Level
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
-		SplashScreen(void);
-		
-		~SplashScreen(void);
+        SplashScreen(void);
+        
+        ~SplashScreen(void);
 
 //==========================================================================================================================
 //
 //Virtual functions
 //
 //==========================================================================================================================		
-		void v_Init() final;
-		
-		void v_Update(void) final;
-	
-	private:
+        void v_Init() final;
+        
+        void v_Update(void) final;
+    
+    private:
 //==========================================================================================================================
 //
 //Members
 //
 //==========================================================================================================================		
-		p_Box 	 _red;
-		p_Box 	 _green;
-		p_Box 	 _blue;
-		TE::Text _mainTitle;
-	};//End Class
-	typedef shared_ptr<SplashScreen> p_SplashScreen;
+        p_Box 	 _red;
+        p_Box 	 _green;
+        p_Box 	 _blue;
+        TE::Text _mainTitle;
+    };//End Class
+    typedef shared_ptr<SplashScreen> p_SplashScreen;
 }

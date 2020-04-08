@@ -159,11 +159,11 @@ int main(void)
 
 	p_SplashScreen splashScreen = make_shared<SplashScreen>();
 	splashScreen->v_Init();
-	TE::Engine::Instance()->SetActiveLevel(splashScreen);
+	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
 
-	//p_MovingBoxes boxes = make_shared<MovingBoxes>();
-	//boxes->v_Init();
-	//TE::Engine::Instance()->SetActiveLevel(boxes);
+	p_MovingBoxes boxes = make_shared<MovingBoxes>();
+	boxes->v_Init();
+	TE::Engine::Instance()->SetActiveLevel(boxes);
 	
 	//p_TiledTest level = make_shared<TiledTest>();
 	//level->v_Init();

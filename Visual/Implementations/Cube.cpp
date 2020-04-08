@@ -67,35 +67,35 @@ void Cube::InitCube(void)
 {
 	SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));	
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, 1.0f), 0.0f, 1.0f)); 	//Front Top Left        0
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, 1.0f), 1.0f, 1.0f)); 	//Front Top Right 		1 
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, 1.0f), 1.0f, 0.0f));	//Front Bottom Right	2
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, 1.0f), 0.0f, 0.0f));	//Front Bottom Left		3
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, 1.0f), 0.0f, 1.0f)); 	//Front Top Left        0
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, 1.0f), 1.0f, 1.0f)); 	//Front Top Right 		1 
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, 1.0f), 1.0f, 0.0f));	//Front Bottom Right	2
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, 1.0f), 0.0f, 0.0f));	//Front Bottom Left		3
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Back Top Left        	4
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Back Top Right 		5 
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Back Bottom Right		6
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Back Bottom Left		7
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Back Top Left        	4
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Back Top Right 		5 
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Back Bottom Right		6
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Back Bottom Left		7
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, 1.0f), 0.0f, 1.0f)); 	//Right Top Left        8
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Right Top Right 		9 
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Right Bottom Right	10
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, 1.0f), 0.0f, 0.0f));	//Right Bottom Left		11
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, 1.0f), 0.0f, 1.0f)); 	//Right Top Left        8
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Right Top Right 		9 
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Right Bottom Right	10
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, 1.0f), 0.0f, 0.0f));	//Right Bottom Left		11
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Left Top Left        	12
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, 1.0f), 1.0f, 1.0f)); 	//Left Top Right 		13
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, 1.0f), 1.0f, 0.0f));	//Left Bottom Right		14
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Left Bottom Left		15
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Left Top Left        	12
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, 1.0f), 1.0f, 1.0f)); 	//Left Top Right 		13
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, 1.0f), 1.0f, 0.0f));	//Left Bottom Right		14
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Left Bottom Left		15
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, 1.0f), 0.0f, 1.0f)); 	//Bottom Top Left       16
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, 1.0f), 1.0f, 1.0f)); 	//Bottom Top Right 		17 
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Bottomn Bottom Right	18
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Bottomn Bottom Left	19
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, 1.0f), 0.0f, 1.0f)); 	//Bottom Top Left       16
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, 1.0f), 1.0f, 1.0f)); 	//Bottom Top Right 		17 
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, -1.0f, -1.0f), 1.0f, 0.0f));	//Bottomn Bottom Right	18
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, -1.0f, -1.0f), 0.0f, 0.0f));	//Bottomn Bottom Left	19
 
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Top Top Left        	20
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Top Top Right 		21
-	_mesh->AddVertex(TE::Vertex(TM::Point(1.0f, 1.0f, 1.0f), 1.0f, 0.0f));	//Top Bottom Right		22
-	_mesh->AddVertex(TE::Vertex(TM::Point(-1.0f, 1.0f, 1.0f), 0.0f, 0.0f));	//Top Bottom Left		23
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, -1.0f), 0.0f, 1.0f)); 	//Top Top Left        	20
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, -1.0f), 1.0f, 1.0f)); 	//Top Top Right 		21
+	_mesh->AddVertex(TE::Vertex(TM::Point3(1.0f, 1.0f, 1.0f), 1.0f, 0.0f));		//Top Bottom Right		22
+	_mesh->AddVertex(TE::Vertex(TM::Point3(-1.0f, 1.0f, 1.0f), 0.0f, 0.0f));	//Top Bottom Left		23
 
 	_mesh->SetIndices(std::vector<U32>
 	{

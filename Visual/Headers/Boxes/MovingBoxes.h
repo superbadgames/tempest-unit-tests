@@ -20,8 +20,6 @@ Written by Maxwell Miller
 #include <Engine/TextureManager.h>
 #include <Engine/FontManager.h>
 #include <Engine/Text.h>
-#include <Engine/Vector4.h>
-#include <Engine/Point.h>
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
 #include <Engine/AudioManager.h>
@@ -37,54 +35,54 @@ namespace TM = TempestMath;
 
 namespace Boxes 
 {
-	class MovingBoxes : public TE::Level 
-	{
-	public:
+    class MovingBoxes : public TE::Level 
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-		MovingBoxes(void);
-		
-		~MovingBoxes(void) final;
+        MovingBoxes(void);
+        
+        ~MovingBoxes(void) final;
 
 //==========================================================================================================================
 //
 //Virtual functions
 //
 //==========================================================================================================================
-		void v_Init(void);
-		
-		void v_Update(void);
+        void v_Init(void);
+        
+        void v_Update(void);
 
 //==========================================================================================================================
 //
 //MovingBoxes functions
 //
 //==========================================================================================================================		
-		void CheckBoxEdge(p_Box b);
+        void CheckBoxEdge(p_Box b);
 
-		void CheckCollisions(void);
+        void CheckCollisions(void);
 
-	private:
+    private:
 //==========================================================================================================================
 //
 //Members
 //
 //==========================================================================================================================		
-		F32 	 _left;
-		F32 	 _right;
-		F32 	 _bottom;
-		F32 	 _top;
-		p_Box 	 _redbox;
-		p_Box 	 _bluebox;
-		p_Box 	 _greenbox;
-		TE::Text _levelTitle;
-		TE::Text _updateText;
-		string   _message1;
-		string   _message2;
-		p_Box 	 _activeBox;
-	};
-	typedef shared_ptr<MovingBoxes> p_MovingBoxes;
+        F32 	 _left;
+        F32 	 _right;
+        F32 	 _bottom;
+        F32 	 _top;
+        p_Box 	 _redbox;
+        p_Box 	 _bluebox;
+        p_Box 	 _greenbox;
+        TE::Text _levelTitle;
+        TE::Text _updateText;
+        string   _message1;
+        string   _message2;
+        p_Box 	 _activeBox;
+    };
+    typedef shared_ptr<MovingBoxes> p_MovingBoxes;
 }//End namespace

@@ -34,7 +34,7 @@ Projectile::~Projectile(void)
 //==========================================================================================================================
 void Projectile::v_Update(void)
 {		
-	TM::Point deltaPos = _startingLocation - GetPosition();
+	TM::Point2 deltaPos = _startingLocation - GetPosition();
 	_sqrDistance = deltaPos.SqrMagnitude();
 	
 	if(_sqrDistance >= _maxDistance) 

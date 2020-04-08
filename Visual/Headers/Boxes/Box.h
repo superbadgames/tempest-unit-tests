@@ -16,8 +16,8 @@ Written by Maxwell Miller
 #include <Engine/GameObject2D.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
-#include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Vector2.h>
+#include <Engine/Point2.h>
 #include <Engine/Color.h>
 #include <Engine/AABB.h>
 
@@ -41,11 +41,11 @@ namespace Boxes
 
 		Box(void);
 
-		Box(const TM::Point& pos, F32 width, F32 height);
+		Box(const TM::Point2& pos, F32 width, F32 height);
 		
-		Box(const TM::Point& pos, F32 width, F32 height, const TE::Color& col);
+		Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col);
 
-		Box(const TM::Point& pos, F32 width, F32 height, const TE::Color& col, shared_ptr<TE::Texture> texture);
+		Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col, TE::p_Texture texture);
 
 //==========================================================================================================================
 //
@@ -76,7 +76,7 @@ namespace Boxes
 			return _speed;
 		}
 
-		inline void SetDirection(const TM::Vector4& dir)
+		inline void SetDirection(const TM::Vector2& dir)
 		{
 			_direction = dir;
 		}
@@ -87,17 +87,10 @@ namespace Boxes
 			_direction[1] = y;
 		}
 
-		inline const TM::Vector4& GetDirection(void) const
+		inline const TM::Vector2& GetDirection(void) const
 		{
 			return _direction;
 		}
-
-		inline const TC::AABB& GetBounding(void) const
-		{
-			return _boundingBox;
-		}
-
-		void InitBounding(void);
 
 	private:
 //==========================================================================================================================
@@ -106,8 +99,7 @@ namespace Boxes
 //
 //==========================================================================================================================		
 		F32  	  				_speed;
-		TM::Vector4 			_direction;
-		TC::AABB				_boundingBox;
+		TM::Vector2 			_direction;
 	};
 
 }//End namespace

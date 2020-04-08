@@ -19,7 +19,7 @@ Written by Maxwell Miller
 #include <Engine/FontManager.h>
 #include <Engine/Text.h>
 #include <Engine/Engine.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 #include <Engine/Color.h>
 #include <Engine/Menu.h>
 #include <Engine/AudioManager.h>
@@ -37,28 +37,28 @@ namespace TM = TempestMath;
 
 namespace Boxes
 {
-	class MainMenu : public TE::Level
-	{
-	public:
+    class MainMenu : public TE::Level
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
-		MainMenu(void);
+        MainMenu(void);
 
-		~MainMenu(void);
+        ~MainMenu(void);
 
 //==========================================================================================================================
 //
 //Virtual Functions 
 //
 //==========================================================================================================================		
-		void v_Init(void) final;
+        void v_Init(void) final;
 
-		void v_Update(void) final;
+        void v_Update(void) final;
 
-	private:
+    private:
 //==========================================================================================================================
 //
 //Members
@@ -68,35 +68,35 @@ namespace Boxes
 //Menu Members. For now the menu is going to be hard coded into this level. There is a project added to make this an enigine
 //feature, so when that is completed this will be replaced. 
 //==========================================================================================================================				
-		p_Box 	    _selector;
-		TE::Menu 	_menu;
-		TE::Font    _menuItemFont;
-		TE::Text    _mainTitle;
-	};//End MainMenu
+        p_Box 	    _selector;
+        TE::Menu 	_menu;
+        TE::Font    _menuItemFont;
+        TE::Text    _mainTitle;
+    };//End MainMenu
 
 //==========================================================================================================================
 //
 //Menu Functions
 //
 //==========================================================================================================================
-	static void MenuItem_Level1Action(void)
-	{
-		p_MovingBoxes level = make_shared<MovingBoxes>();
-		level->v_Init();
-		TE::Engine::Instance()->SetActiveLevel(level);
-	}
+    static void MenuItem_Level1Action(void)
+    {
+        p_MovingBoxes level = make_shared<MovingBoxes>();
+        level->v_Init();
+        TE::Engine::Instance()->SetActiveLevel(level);
+    }
 
-	static void MenuItem_BallisticsAction(void)
-	{
-		p_Ballistics level = make_shared<Ballistics>();
-		level->v_Init();
-		TE::Engine::Instance()->SetActiveLevel(level);
-	}
+    static void MenuItem_BallisticsAction(void)
+    {
+        p_Ballistics level = make_shared<Ballistics>();
+        level->v_Init();
+        TE::Engine::Instance()->SetActiveLevel(level);
+    }
 
-	/*static void MenuItem_OpenglAction(void)
-	{
-		p_Demo3D level = make_shared<Demo3D>();
-		level->v_Init();
-		TE::Engine::Instance()->SetActiveLevel(level);
-	}*/
+    /*static void MenuItem_OpenglAction(void)
+    {
+        p_Demo3D level = make_shared<Demo3D>();
+        level->v_Init();
+        TE::Engine::Instance()->SetActiveLevel(level);
+    }*/
 }

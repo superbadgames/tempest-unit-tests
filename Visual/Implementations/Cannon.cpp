@@ -16,12 +16,12 @@ _upDirection(0.0f, 1.0f),
 _downDirection(0.0f, -1.0f),
 _projectilePool()
 {
-	Init();
+    Init();
 }
 
 Cannon::~Cannon(void)
 {
-	_projectilePool.clear();
+    _projectilePool.clear();
 }
 //==========================================================================================================================
 //
@@ -30,49 +30,49 @@ Cannon::~Cannon(void)
 //==========================================================================================================================
 void Cannon::v_Update(void)
 {
-	//_forceRegistry.UpdateForces();
+    //_forceRegistry.UpdateForces();
 
-	//std::cout << ""
+    //std::cout << ""
 
-	F32 yPos = GetPosition()[1];
+    F32 yPos = GetPosition()[1];
 
-	if(yPos > _bottomBoundary && yPos < _topBoundary)
-	{
-		if(TE::Controller::Instance()->GetKeyHeld(TE::W))
-		{
-			AddScaledPosition(_upDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
-		}
-		else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
-		{
-			AddScaledPosition(_downDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
-		}
-	}
-	else
-	{
-		if(yPos <= _bottomBoundary)
-		{
-			AddScaledPosition(_upDirection, _movementSpeed);
-		}
-		else if(yPos >= _topBoundary)
-		{
-			AddScaledPosition(_downDirection, _movementSpeed);
-		}
-	}
+    if(yPos > _bottomBoundary && yPos < _topBoundary)
+    {
+        if(TE::Controller::Instance()->GetKeyHeld(TE::W))
+        {
+            AddScaledPosition(_upDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+        }
+        else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
+        {
+            AddScaledPosition(_downDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+        }
+    }
+    else
+    {
+        if(yPos <= _bottomBoundary)
+        {
+            AddScaledPosition(_upDirection, _movementSpeed);
+        }
+        else if(yPos >= _topBoundary)
+        {
+            AddScaledPosition(_downDirection, _movementSpeed);
+        }
+    }
 
-	DefaultUpdate();
+    DefaultUpdate();
 }
 
-void Cannon::Fire(const TM::Vector4& heading, ProjectileType type)
+void Cannon::Fire(const TM::Vector2& heading, ProjectileType type)
 {
-	for(auto projectile : _projectilePool)
-	{
-		if(!projectile->GetActive())
-		{
-			projectile->SetPosition(GetPosition());
-			projectile->SetType(type);
-			projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
-			projectile->SetActive(true);
-			return;
-		}
-	}
+    for(auto projectile : _projectilePool)
+    {
+        if(!projectile->GetActive())
+        {
+            projectile->SetPosition(GetPosition());
+            projectile->SetType(type);
+            projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
+            projectile->SetActive(true);
+            return;
+        }
+    }
 }

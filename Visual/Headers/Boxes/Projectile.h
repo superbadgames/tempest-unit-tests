@@ -23,7 +23,7 @@ Written by Maxwell Miller
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
 #include <Engine/PhysicsFactory.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 
 namespace TE = Tempest;
 namespace TM = TempestMath;
@@ -31,71 +31,71 @@ namespace TP = TempestPhysics;
 
 namespace Boxes
 {
-	enum ProjectileType
-	{
-		BULLET,
-		ARTILLERY,
-		MISSILE,
-		FIRE_BALL,
-		LAZER,
-		GRENADE
-	};
+    enum ProjectileType
+    {
+        BULLET,
+        ARTILLERY,
+        MISSILE,
+        FIRE_BALL,
+        LAZER,
+        GRENADE
+    };
 
-	class Projectile : public TE::GameObject2D
-	{
-	public:
+    class Projectile : public TE::GameObject2D
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
-		Projectile(void);
+        Projectile(void);
 
-		~Projectile(void);
+        ~Projectile(void);
 
 //==========================================================================================================================
 //
 //Virtual GameObject2D Functions
 //
 //==========================================================================================================================
-		void v_Update(void);
+        void v_Update(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		void SetMaxDistance(F32 dist);
+        void SetMaxDistance(F32 dist);
 
-		F32 GetMaxDistance(void);
+        F32 GetMaxDistance(void);
 
-		void SetSpeedScale(F32 scale);
+        void SetSpeedScale(F32 scale);
 
-		F32 GetSpeedScale(void);
+        F32 GetSpeedScale(void);
 
-		void SetType(ProjectileType type);
+        void SetType(ProjectileType type);
 
-		ProjectileType GetType(void);
+        ProjectileType GetType(void);
 
-		inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
-		{
-			p_rigidBody->AddScaledVelocity(vec, scale);
-		}
+        inline void AddScaledVelocity(const TM::Vector2& vec, F32 scale)
+        {
+            p_rigidBody->AddScaledVelocity(vec, scale);
+        }
 
-		inline TP::p_RigidBody2D GetRigidBody(void)
-		{
-			return p_rigidBody;
-		}
+        inline TP::p_RigidBody2D GetRigidBody(void)
+        {
+            return p_rigidBody;
+        }
 
-	private:
-		F32  		   			   _maxDistance;
-		F32  		   			   _sqrDistance;
-		F32			   			   _speedScale;
-		TM::Point 				   _startingLocation;
-		ProjectileType 			   _type;
-		TP::p_RigidBody2D 		   p_rigidBody;
+    private:
+        F32  		   			   _maxDistance;
+        F32  		   			   _sqrDistance;
+        F32			   			   _speedScale;
+        TM::Point2 				   _startingLocation;
+        ProjectileType 			   _type;
+        TP::p_RigidBody2D 		   p_rigidBody;
 
-	};//end class Projectile
+    };//end class Projectile
 
-	typedef shared_ptr<Projectile> p_Projectile;
+    typedef shared_ptr<Projectile> p_Projectile;
 }//end namespace

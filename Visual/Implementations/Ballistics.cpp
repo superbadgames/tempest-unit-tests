@@ -46,7 +46,7 @@ void Ballistics::v_Init(void)
 
 	_levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("BALLISTICS");
-	_levelTitle.SetPosition(TM::Point(-_levelTitle.GetWidth(), top - (top * 0.1f)));
+	_levelTitle.SetPosition(TM::Point2(-_levelTitle.GetWidth(), top - (top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 	
 
@@ -116,9 +116,9 @@ void Ballistics::v_Update(void)
 
 	if(TE::Controller::Instance()->GetKeyDown(TE::Keys::LEFT_MOUSE)) 
 	{ 
-		TM::Point input = TE::Controller::Instance()->GetMouseCoordInScreen();
+		TM::Point2 input = TE::Controller::Instance()->GetMouseCoordInScreen();
 
-		TM::Vector4 heading = TM::Vector4(input - _cannon->GetPosition());
+		TM::Vector2 heading = TM::Vector2(input - _cannon->GetPosition());
 
 		heading.Normalize();
 				
