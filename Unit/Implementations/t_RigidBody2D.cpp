@@ -83,14 +83,14 @@ BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 	TP::RigidBody2D body { };
 
 	BOOST_CHECK_EQUAL(body.GetActive(), true);
-	BOOST_CHECK_EQUAL(body.GetVelocity()[x], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetVelocity()[y], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetAcceleration()[x], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetAcceleration()[y], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetForces()[x], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetForces()[y], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetGravityForce()[x], 0.0f);
-	BOOST_CHECK_EQUAL(body.GetGravityForce()[y], 0.0f);
+	BOOST_CHECK_EQUAL(body.GetVelocity().x, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetVelocity().y, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetAcceleration().x, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetAcceleration().y, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetForces().x, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetForces().y, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetGravityForce().x, 0.0f);
+	BOOST_CHECK_EQUAL(body.GetGravityForce().y, 0.0f);
 	BOOST_CHECK_EQUAL(body.GetInverseMass(), 1.0f);
 	BOOST_CHECK_EQUAL(body.GetMass(), 1.0f);
 	BOOST_CHECK_EQUAL(body.HasFiniteMass(), true);
@@ -110,12 +110,12 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 
 	IntegrateNTimes(obj, 100);
 
-	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
-	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition().x, 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition().y, 1.0f);
 
-	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 100.0f);
+	BOOST_CHECK_LT(obj.p_body->GetVelocity().x, 100.0f);
 	//Damping will reduce, hence Less Than, not Equal
-	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
+	BOOST_CHECK_LT(obj.p_body->GetVelocity().y, 1.0f);
 	
 	BOOST_CHECK_EQUAL(obj.p_body->GetActive(), true);
 
@@ -135,8 +135,8 @@ BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)
 
 	IntegrateNTimes(obj, 1000);
 
-	BOOST_CHECK_EQUAL(obj.GetPosition()[x], 15.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 12.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().x, 15.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().y, 12.0f);
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
@@ -149,6 +149,6 @@ BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
 
 	IntegrateNTimes(obj, 1000);
 
-	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[x], 0.0f);
-	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[y], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().x, 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().y, 0.0f);
 }

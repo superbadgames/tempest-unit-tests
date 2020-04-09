@@ -51,12 +51,12 @@ BOOST_AUTO_TEST_CASE(AudioListnerConstructor)
 	BOOST_CHECK_EQUAL(orientation[3], 0.0f);
 	BOOST_CHECK_EQUAL(orientation[4], 1.0f);
 	BOOST_CHECK_EQUAL(orientation[5], 0.0f);
-	BOOST_CHECK_EQUAL(listener.GetPosition()[x], 0.0f);
-	BOOST_CHECK_EQUAL(listener.GetPosition()[y], 0.0f);
-	BOOST_CHECK_EQUAL(listener.GetPosition()[z], 1.0f);
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[x], 0.0f);
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[y], 0.0f);
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().x, 0.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().y, 0.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().z, 1.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().x, 0.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().y, 0.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().z, 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
@@ -94,9 +94,9 @@ BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
 	//Position
 	listener.SetPosition(1.0f, 2.0f, 3.0f);
 
-	BOOST_CHECK_EQUAL(listener.GetPosition()[x], 1.0f);
-	BOOST_CHECK_EQUAL(listener.GetPosition()[y], 2.0f);
-	BOOST_CHECK_EQUAL(listener.GetPosition()[z], 3.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().x, 1.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().y, 2.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition().z, 3.0f);
 
 	F32 xPos, yPos, zPos;
 
@@ -109,9 +109,9 @@ BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
 	//Velocity
 	listener.SetVelocity(8.0f, 9.0f, 10.0f);
 
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[x], 8.0f);
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[y], 9.0f);
-	BOOST_CHECK_EQUAL(listener.GetVelocity()[z], 10.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().x, 8.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().y, 9.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity().z, 10.0f);
 
 	F32 xVel, yVel, zVel;
 

@@ -52,19 +52,19 @@ BOOST_AUTO_TEST_CASE(QuaternionDefaultConstructor)
 {
 	TM::Quaternion q{};
 
-	BOOST_CHECK_EQUAL(q[x], 0.0f);
-	BOOST_CHECK_EQUAL(q[y], 0.0f);
-	BOOST_CHECK_EQUAL(q[z], 0.0f);
-	BOOST_CHECK_EQUAL(q[w], 0.0f);
+	BOOST_CHECK_EQUAL(q.x, 0.0f);
+	BOOST_CHECK_EQUAL(q.y, 0.0f);
+	BOOST_CHECK_EQUAL(q.z, 0.0f);
+	BOOST_CHECK_EQUAL(q.w, 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionSingleValueConstructor)
 {
 	TM::Quaternion q{1.0f};
 
-	BOOST_CHECK_EQUAL(q[x], 1.0f);
-	BOOST_CHECK_EQUAL(q[y], 1.0f);
-	BOOST_CHECK_EQUAL(q[z], 1.0f);
+	BOOST_CHECK_EQUAL(q.x, 1.0f);
+	BOOST_CHECK_EQUAL(q.y, 1.0f);
+	BOOST_CHECK_EQUAL(q.z, 1.0f);
 	BOOST_CHECK_EQUAL(q[2], 1.0f);
 }
 
@@ -72,10 +72,10 @@ BOOST_AUTO_TEST_CASE(QuaternionMultiValueConstructor)
 {
 	TM::Quaternion q{1.0f, 2.0f, 3.0f, 0.0f};
 
-	BOOST_CHECK_EQUAL(q[x], 1.0f);
-	BOOST_CHECK_EQUAL(q[y], 2.0f);
-	BOOST_CHECK_EQUAL(q[z], 3.0f);	
-	BOOST_CHECK_EQUAL(q[w], 0.0f);
+	BOOST_CHECK_EQUAL(q.x, 1.0f);
+	BOOST_CHECK_EQUAL(q.y, 2.0f);
+	BOOST_CHECK_EQUAL(q.z, 3.0f);	
+	BOOST_CHECK_EQUAL(q.w, 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionCopyConstructor)
@@ -83,10 +83,10 @@ BOOST_AUTO_TEST_CASE(QuaternionCopyConstructor)
 	TM::Quaternion q{4.0f, 2.0f, 0.004f, 1.0f};
 	TM::Quaternion q2 = q;
 
-	BOOST_CHECK_EQUAL(q2[x], 4.0f);
-	BOOST_CHECK_EQUAL(q2[y], 2.0f);
-	BOOST_CHECK_EQUAL(q2[z], 0.004f);
-	BOOST_CHECK_EQUAL(q2[w], 1.0f);
+	BOOST_CHECK_EQUAL(q2.x, 4.0f);
+	BOOST_CHECK_EQUAL(q2.y, 2.0f);
+	BOOST_CHECK_EQUAL(q2.z, 0.004f);
+	BOOST_CHECK_EQUAL(q2.w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMagnitude)
@@ -106,15 +106,15 @@ BOOST_AUTO_TEST_CASE(QuaternionConjugate)
 
 	TM::Quaternion q4 = q2.Conjugate();
 
-	BOOST_CHECK_EQUAL(q3[x], -3.0f);
-	BOOST_CHECK_EQUAL(q3[y], -5.0f);
-	BOOST_CHECK_EQUAL(q3[z], -2.0f);
-	BOOST_CHECK_EQUAL(q3[w], 1.0f);
+	BOOST_CHECK_EQUAL(q3.x, -3.0f);
+	BOOST_CHECK_EQUAL(q3.y, -5.0f);
+	BOOST_CHECK_EQUAL(q3.z, -2.0f);
+	BOOST_CHECK_EQUAL(q3.w, 1.0f);
 
-	BOOST_CHECK_EQUAL(q4[x], -0.9435f);
-	BOOST_CHECK_EQUAL(q4[y], 0.8443f);
-	BOOST_CHECK_EQUAL(q4[z], 3.043234f);
-	BOOST_CHECK_EQUAL(q4[w], -3.04f);
+	BOOST_CHECK_EQUAL(q4.x, -0.9435f);
+	BOOST_CHECK_EQUAL(q4.y, 0.8443f);
+	BOOST_CHECK_EQUAL(q4.z, 3.043234f);
+	BOOST_CHECK_EQUAL(q4.w, -3.04f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionInverse)
@@ -123,10 +123,10 @@ BOOST_AUTO_TEST_CASE(QuaternionInverse)
 
 	TM::Quaternion q2 = q1.Inverse();
 
-	BOOST_CHECK_EQUAL(RoundReal(q2[x]), RoundReal(-0.38333f));
-	BOOST_CHECK_EQUAL(RoundReal(q2[y]), RoundReal(-0.51110f));
-	BOOST_CHECK_EQUAL(RoundReal(q2[z]), RoundReal(-0.76665f));
-	BOOST_CHECK_EQUAL(RoundReal(q2[w]), RoundReal(0.06389f));
+	BOOST_CHECK_EQUAL(RoundReal(q2.x), RoundReal(-0.38333f));
+	BOOST_CHECK_EQUAL(RoundReal(q2.y), RoundReal(-0.51110f));
+	BOOST_CHECK_EQUAL(RoundReal(q2.z), RoundReal(-0.76665f));
+	BOOST_CHECK_EQUAL(RoundReal(q2.w), RoundReal(0.06389f));
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDivideByScalar)
@@ -139,15 +139,15 @@ BOOST_AUTO_TEST_CASE(QuaternionDivideByScalar)
 
 	q2 /= 3.0f;
 
-	BOOST_CHECK_EQUAL(q1[x], 2.0f);
-	BOOST_CHECK_EQUAL(q1[y], 3.0f);
-	BOOST_CHECK_EQUAL(q1[z], 4.0f);
-	BOOST_CHECK_EQUAL(q1[w], 1.0f);
+	BOOST_CHECK_EQUAL(q1.x, 2.0f);
+	BOOST_CHECK_EQUAL(q1.y, 3.0f);
+	BOOST_CHECK_EQUAL(q1.z, 4.0f);
+	BOOST_CHECK_EQUAL(q1.w, 1.0f);
 
-	BOOST_CHECK_EQUAL(q2[x], 2.0f);
-	BOOST_CHECK_EQUAL(q2[y], 3.0f);
-	BOOST_CHECK_EQUAL(q2[z], 4.0f);
-	BOOST_CHECK_EQUAL(q2[w], 1.0f);
+	BOOST_CHECK_EQUAL(q2.x, 2.0f);
+	BOOST_CHECK_EQUAL(q2.y, 3.0f);
+	BOOST_CHECK_EQUAL(q2.z, 4.0f);
+	BOOST_CHECK_EQUAL(q2.w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByScalar)
@@ -160,15 +160,15 @@ BOOST_AUTO_TEST_CASE(QuaternionMultipliedByScalar)
 
 	q2 *= 14.0f;
 
-	BOOST_CHECK_EQUAL(q1[x], 10.0f);
-	BOOST_CHECK_EQUAL(q1[y], 30.0f);
-	BOOST_CHECK_EQUAL(q1[z], 45.0f);
-	BOOST_CHECK_EQUAL(q1[w], 20.0f);
+	BOOST_CHECK_EQUAL(q1.x, 10.0f);
+	BOOST_CHECK_EQUAL(q1.y, 30.0f);
+	BOOST_CHECK_EQUAL(q1.z, 45.0f);
+	BOOST_CHECK_EQUAL(q1.w, 20.0f);
 
-	BOOST_CHECK_EQUAL(q2[x], 42.0f);
-	BOOST_CHECK_EQUAL(q2[y], 0.0f);
-	BOOST_CHECK_EQUAL(q2[z], 28.0f);
-	BOOST_CHECK_EQUAL(q2[w], 112.0f);
+	BOOST_CHECK_EQUAL(q2.x, 42.0f);
+	BOOST_CHECK_EQUAL(q2.y, 0.0f);
+	BOOST_CHECK_EQUAL(q2.z, 28.0f);
+	BOOST_CHECK_EQUAL(q2.w, 112.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionMultipliedByQuaternion)
@@ -183,15 +183,15 @@ BOOST_AUTO_TEST_CASE(QuaternionMultipliedByQuaternion)
 
 	q4 *= q2;
 
-	BOOST_CHECK_EQUAL(q3[x], 112.0f);
-	BOOST_CHECK_EQUAL(q3[y], 110.0f);
-	BOOST_CHECK_EQUAL(q3[z], -32.0f);
-	BOOST_CHECK_EQUAL(q3[w], -44.0f);
+	BOOST_CHECK_EQUAL(q3.x, 112.0f);
+	BOOST_CHECK_EQUAL(q3.y, 110.0f);
+	BOOST_CHECK_EQUAL(q3.z, -32.0f);
+	BOOST_CHECK_EQUAL(q3.w, -44.0f);
 
-	BOOST_CHECK_EQUAL(q4[x], 112.0f);
-	BOOST_CHECK_EQUAL(q4[y], 110.0f);
-	BOOST_CHECK_EQUAL(q4[z], -32.0f);
-	BOOST_CHECK_EQUAL(q4[w], -44.0f);
+	BOOST_CHECK_EQUAL(q4.x, 112.0f);
+	BOOST_CHECK_EQUAL(q4.y, 110.0f);
+	BOOST_CHECK_EQUAL(q4.z, -32.0f);
+	BOOST_CHECK_EQUAL(q4.w, -44.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDifference)
@@ -202,10 +202,10 @@ BOOST_AUTO_TEST_CASE(QuaternionDifference)
 
 	TM::Quaternion q3 = q1.Difference(q2);
 
-	BOOST_CHECK_EQUAL(RoundReal(q3[x]), 1.41421f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[y]), -0.2357f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[z]), -0.94281f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[w]), 4.47834f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.x), 1.41421f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.y), -0.2357f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.z), -0.94281f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.w), 4.47834f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionDot)
@@ -229,15 +229,15 @@ BOOST_AUTO_TEST_CASE(QuaternionNegationAndOpposite)
 
 	TM::Quaternion q3 = q2.Opposite();
 
-	BOOST_CHECK_EQUAL(RoundReal(q1[x]), 3.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q1[y]), -4.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q1[z]), 5.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q1[w]), -2.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1.x), 3.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1.y), -4.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1.z), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q1.w), -2.0f);
 
-	BOOST_CHECK_EQUAL(RoundReal(q3[x]), -2.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[y]), 3.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[z]), 5.0f);
-	BOOST_CHECK_EQUAL(RoundReal(q3[w]), 3.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.x), -2.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.y), 3.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.z), 5.0f);
+	BOOST_CHECK_EQUAL(RoundReal(q3.w), 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionNormalization)
@@ -256,17 +256,17 @@ BOOST_AUTO_TEST_CASE(QuaternionSetEuler)
 
 	q1.RotateByEuler(vec);
 
-	BOOST_CHECK_CLOSE(q1[x], -0.0175278038f, 0.001);
-	BOOST_CHECK_CLOSE(q1[y], -0.785737991f, 0.001);
-	BOOST_CHECK_CLOSE(q1[z], -0.286628932f, 0.001);
-	BOOST_CHECK_CLOSE(q1[w], -0.547861636f, 0.001);
+	BOOST_CHECK_CLOSE(q1.x, -0.0175278038f, 0.001);
+	BOOST_CHECK_CLOSE(q1.y, -0.785737991f, 0.001);
+	BOOST_CHECK_CLOSE(q1.z, -0.286628932f, 0.001);
+	BOOST_CHECK_CLOSE(q1.w, -0.547861636f, 0.001);
 
 	q1.RotateByEuler(45.0f, 65.0f, 180.0f);
 
-	BOOST_CHECK_CLOSE(q1[x], -0.558113098f, 0.001);
-	BOOST_CHECK_CLOSE(q1[y], 0.142150357f, 0.001);
-	BOOST_CHECK_CLOSE(q1[z], 0.792166591f, 0.001);
-	BOOST_CHECK_CLOSE(q1[w], -0.201928511f, 0.001);
+	BOOST_CHECK_CLOSE(q1.x, -0.558113098f, 0.001);
+	BOOST_CHECK_CLOSE(q1.y, 0.142150357f, 0.001);
+	BOOST_CHECK_CLOSE(q1.z, 0.792166591f, 0.001);
+	BOOST_CHECK_CLOSE(q1.w, -0.201928511f, 0.001);
 }
 
 BOOST_AUTO_TEST_CASE(QuaternionAddEuler)
@@ -275,16 +275,16 @@ BOOST_AUTO_TEST_CASE(QuaternionAddEuler)
 	q.RotateByEuler(15.0f, 20.0f, 36.0f);
 	q.AddEuler(10.0f, 34.0f, 90.0f);
 
-	BOOST_CHECK_CLOSE(q[x], 0.534287393f, 0.001);
-	BOOST_CHECK_CLOSE(q[y], 0.520725489f, 0.001);
-	BOOST_CHECK_CLOSE(q[z], -0.118739009f, 0.001);
-	BOOST_CHECK_CLOSE(q[w], 0.655196905f, 0.001);
+	BOOST_CHECK_CLOSE(q.x, 0.534287393f, 0.001);
+	BOOST_CHECK_CLOSE(q.y, 0.520725489f, 0.001);
+	BOOST_CHECK_CLOSE(q.z, -0.118739009f, 0.001);
+	BOOST_CHECK_CLOSE(q.w, 0.655196905f, 0.001);
 
 	TM::Vector3 vec{15.0f, 45.0f, 90.0f};
 	q.AddEuler(vec);
 
-	BOOST_CHECK_CLOSE(q[x], -0.546752453f, 0.001);
-	BOOST_CHECK_CLOSE(q[y], -0.644875228f, 0.001);
-	BOOST_CHECK_CLOSE(q[z], -0.53342855f, 0.001);
-	BOOST_CHECK_CLOSE(q[w], 0.0255273655f, 0.001);
+	BOOST_CHECK_CLOSE(q.x, -0.546752453f, 0.001);
+	BOOST_CHECK_CLOSE(q.y, -0.644875228f, 0.001);
+	BOOST_CHECK_CLOSE(q.z, -0.53342855f, 0.001);
+	BOOST_CHECK_CLOSE(q.w, 0.0255273655f, 0.001);
 }

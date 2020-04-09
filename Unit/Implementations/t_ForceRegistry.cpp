@@ -98,10 +98,10 @@ BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 		obj.p_body2D->Integrate();
 	}
 
-	BOOST_CHECK_EQUAL(obj.GetPosition()[x], 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition()[y], 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
@@ -113,10 +113,10 @@ BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 		obj.p_body2D->Integrate();
 	}
 
-	BOOST_CHECK_GT(obj.GetPosition()[x], 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
@@ -136,10 +136,10 @@ BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
 		obj.p_body3D->Integrate();
 	}
 
-	BOOST_CHECK_EQUAL(obj.GetPosition()[x], 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition()[y], 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
@@ -151,10 +151,10 @@ BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
 		obj.p_body3D->Integrate();
 	}
 
-	BOOST_CHECK_GT(obj.GetPosition()[x], 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 0.0f);
-	BOOST_CHECK_GT(obj.GetPosition()[z], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+	BOOST_CHECK_GT(obj.GetPosition().z, 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 */
