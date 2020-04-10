@@ -83,8 +83,8 @@ namespace Boxes
 
 		inline void SetDirection(F32 x, F32 y)
 		{
-			_direction[0] = x;
-			_direction[1] = y;
+			_direction.x = x;
+			_direction.y = y;
 		}
 
 		inline const TM::Vector2& GetDirection(void) const

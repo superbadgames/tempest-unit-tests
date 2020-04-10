@@ -49,34 +49,34 @@ BOOST_AUTO_TEST_CASE(Matrix3DefaultConstructor)
 {
 	TM::Matrix3 M1{};
 
-	BOOST_CHECK_EQUAL(M1[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(M1[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(M1[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(M1.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(M1[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(M1[1].y, 1.0f);
-	BOOST_CHECK_EQUAL(M1[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column2.y, 1.0f);
+	BOOST_CHECK_EQUAL(M1.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(M1[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(M1[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(M1[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(M1.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column3.z, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3DiagnalConstructor) 
 {
 	TM::Matrix3 M1(5.0f);
 
-	BOOST_CHECK_EQUAL(M1[0].x, 5.0f);
-	BOOST_CHECK_EQUAL(M1[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(M1[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column1.x, 5.0f);
+	BOOST_CHECK_EQUAL(M1.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(M1[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(M1[1].y, 5.0f);
-	BOOST_CHECK_EQUAL(M1[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column2.y, 5.0f);
+	BOOST_CHECK_EQUAL(M1.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(M1[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(M1[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(M1[2].z, 5.0f);
+	BOOST_CHECK_EQUAL(M1.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(M1.column3.z, 5.0f);
 }
 
 
@@ -88,17 +88,17 @@ BOOST_AUTO_TEST_CASE(Matrix3Vector3Constructor)
 
 	TM::Matrix3 mat(vecX, vecY, vecZ);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[0].y, 2.0f);
-	BOOST_CHECK_EQUAL(mat[0].z, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 3.0f);
 	
-	BOOST_CHECK_EQUAL(mat[1].x, 15.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 25.0f);
-	BOOST_CHECK_EQUAL(mat[1].z, 35.0f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 15.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 25.0f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 35.0f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 30.0f);
-	BOOST_CHECK_EQUAL(mat[2].y, 50.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 70.0f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 30.0f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 50.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 70.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3CopyConstructor)
@@ -107,17 +107,17 @@ BOOST_AUTO_TEST_CASE(Matrix3CopyConstructor)
 
 	TM::Matrix3 B = A;
 
-	BOOST_CHECK_EQUAL(B[0].x, 10.0f);
-	BOOST_CHECK_EQUAL(B[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(B[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(B.column1.x, 10.0f);
+	BOOST_CHECK_EQUAL(B.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(B.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(B[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(B[1].y, 10.0f);
-	BOOST_CHECK_EQUAL(B[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(B.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(B.column2.y, 10.0f);
+	BOOST_CHECK_EQUAL(B.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(B[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(B[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(B[2].z, 10.0f);
+	BOOST_CHECK_EQUAL(B.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(B.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(B.column3.z, 10.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3OperatorMultiply) {
@@ -137,17 +137,17 @@ BOOST_AUTO_TEST_CASE(Matrix3OperatorMultiply) {
 
 	TM::Matrix3 C = A * B;
 
-	BOOST_CHECK_EQUAL(C[0].x, 45.0f);
-	BOOST_CHECK_EQUAL(C[0].y, 28.0f);
-	BOOST_CHECK_EQUAL(C[0].z, 59.0f);
+	BOOST_CHECK_EQUAL(C.column1.x, 45.0f);
+	BOOST_CHECK_EQUAL(C.column1.y, 28.0f);
+	BOOST_CHECK_EQUAL(C.column1.z, 59.0f);
 	
-	BOOST_CHECK_EQUAL(C[1].x, 48.0f);
-	BOOST_CHECK_EQUAL(C[1].y, 42.0f);
-	BOOST_CHECK_EQUAL(C[1].z, 68.0f);
+	BOOST_CHECK_EQUAL(C.column2.x, 48.0f);
+	BOOST_CHECK_EQUAL(C.column2.y, 42.0f);
+	BOOST_CHECK_EQUAL(C.column2.z, 68.0f);
 	
-	BOOST_CHECK_EQUAL(C[2].x, 42.0f);
-	BOOST_CHECK_EQUAL(C[2].y, 25.0f);
-	BOOST_CHECK_EQUAL(C[2].z, 48.0f);
+	BOOST_CHECK_EQUAL(C.column3.x, 42.0f);
+	BOOST_CHECK_EQUAL(C.column3.y, 25.0f);
+	BOOST_CHECK_EQUAL(C.column3.z, 48.0f);
 }
 
 
@@ -168,17 +168,17 @@ BOOST_AUTO_TEST_CASE(Matrix3OperatorEQMultiply) {
 
 	A = A * B;
 
-	BOOST_CHECK_EQUAL(A[0].x, 45.0f);
-	BOOST_CHECK_EQUAL(A[0].y, 28.0f);
-	BOOST_CHECK_EQUAL(A[0].z, 59.0f);
+	BOOST_CHECK_EQUAL(A.column1.x, 45.0f);
+	BOOST_CHECK_EQUAL(A.column1.y, 28.0f);
+	BOOST_CHECK_EQUAL(A.column1.z, 59.0f);
 	
-	BOOST_CHECK_EQUAL(A[1].x, 48.0f);
-	BOOST_CHECK_EQUAL(A[1].y, 42.0f);
-	BOOST_CHECK_EQUAL(A[1].z, 68.0f);
+	BOOST_CHECK_EQUAL(A.column2.x, 48.0f);
+	BOOST_CHECK_EQUAL(A.column2.y, 42.0f);
+	BOOST_CHECK_EQUAL(A.column2.z, 68.0f);
 	
-	BOOST_CHECK_EQUAL(A[2].x, 42.0f);
-	BOOST_CHECK_EQUAL(A[2].y, 25.0f);
-	BOOST_CHECK_EQUAL(A[2].z, 48.0f);
+	BOOST_CHECK_EQUAL(A.column3.x, 42.0f);
+	BOOST_CHECK_EQUAL(A.column3.y, 25.0f);
+	BOOST_CHECK_EQUAL(A.column3.z, 48.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3Reset)
@@ -192,31 +192,31 @@ BOOST_AUTO_TEST_CASE(Matrix3Reset)
 
 	mat.Reset();
 
-	BOOST_CHECK_EQUAL(mat[0].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 0.0f);
 
 	mat.Reset(1.0f);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 1.0f);
-	BOOST_CHECK_EQUAL(mat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
 }
 
 
@@ -226,55 +226,55 @@ BOOST_AUTO_TEST_CASE(Matrix3Scale)
 
 	mat.SetScale(3.0f, 4.0f);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 3.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 4.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 4.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
 
 	mat.SetScale(2.0f, 2.0f, 2.0f);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 2.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 2.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 2.0f);
 
 	mat.SetScale(TM::Vector3(5.0f, 4.0f, 3.0f));
 
-	BOOST_CHECK_EQUAL(mat[0].x, 5.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 4.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 5.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 4.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 3.0f);
 	
 	TM::Vector2 vec{2.0f, 3.0f};
 
 	mat.SetScale(vec);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 2.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 3.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
 
 	TM::Vector3 vec3d{10.0f, 20.0f, 5.0f};
 	
 	mat.SetScale(vec3d);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 10.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 20.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 5.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 10.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 20.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 5.0f);
 
 	TM::Matrix3 mat2 = TM::Matrix3::Scale(2.0f, 5.0f);
 
-	BOOST_CHECK_EQUAL(mat2[0].x, 2.0f);
-	BOOST_CHECK_EQUAL(mat2[1].y, 5.0f);
-	BOOST_CHECK_EQUAL(mat2[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(mat2.column1.x, 2.0f);
+	BOOST_CHECK_EQUAL(mat2.column2.y, 5.0f);
+	BOOST_CHECK_EQUAL(mat2.column3.z, 1.0f);
 
 	TM::Matrix3 mat3 = TM::Matrix3::Scale(6.0f, 4.0f, 8.0f);
 
-	BOOST_CHECK_EQUAL(mat3[0].x, 6.0f);
-	BOOST_CHECK_EQUAL(mat3[1].y, 4.0f);
-	BOOST_CHECK_EQUAL(mat3[2].z, 8.0f);
+	BOOST_CHECK_EQUAL(mat3.column1.x, 6.0f);
+	BOOST_CHECK_EQUAL(mat3.column2.y, 4.0f);
+	BOOST_CHECK_EQUAL(mat3.column3.z, 8.0f);
 
 	TM::Matrix3 mat4 = TM::Matrix3::Scale(TM::Vector3(13.0f, 50.0f, 2.0f));
 
-	BOOST_CHECK_EQUAL(mat4[0].x, 13.0f);
-	BOOST_CHECK_EQUAL(mat4[1].y, 50.0f);
-	BOOST_CHECK_EQUAL(mat4[2].z, 2.0f);
+	BOOST_CHECK_EQUAL(mat4.column1.x, 13.0f);
+	BOOST_CHECK_EQUAL(mat4.column2.y, 50.0f);
+	BOOST_CHECK_EQUAL(mat4.column3.z, 2.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3Rotation)
@@ -283,102 +283,102 @@ BOOST_AUTO_TEST_CASE(Matrix3Rotation)
 
 	mat.SetRotateX(-22.0f);
 
-	BOOST_CHECK_EQUAL(mat[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 0.0f);
 
-	BOOST_CHECK_EQUAL(mat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].y), 0.92718f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].z), 0.37461f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.y), 0.92718f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.z), 0.37461f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].y), -0.37461f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].z), 0.92718f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.y), -0.37461f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.92718f);
 
 	TM::Matrix3 xMat = TM::Matrix3::RotateX(-22.0f);
 
-	BOOST_CHECK_EQUAL(xMat[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(xMat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(xMat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(xMat.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(xMat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(xMat.column1.z, 0.0f);
 
-	BOOST_CHECK_EQUAL(xMat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(xMat[1].y), 0.92718f);
-	BOOST_CHECK_EQUAL(RoundFloat(xMat[1].z), 0.37461f);
+	BOOST_CHECK_EQUAL(xMat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.y), 0.92718f);
+	BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.z), 0.37461f);
 	
-	BOOST_CHECK_EQUAL(xMat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(xMat[2].y), -0.37461f);
-	BOOST_CHECK_EQUAL(RoundFloat(xMat[2].z), 0.92718f);
+	BOOST_CHECK_EQUAL(xMat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.y), -0.37461f);
+	BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.z), 0.92718f);
 
 
 	mat.SetRotateY(30.0f);
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].x), 0.86603f);
-	BOOST_CHECK_EQUAL(mat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].z),0.50000f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.86603f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.z),0.50000f);
 	
-	BOOST_CHECK_EQUAL(mat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 1.0f);
-	BOOST_CHECK_EQUAL(mat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].x), -0.50000f);
-	BOOST_CHECK_EQUAL(mat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].z), 0.86603f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.x), -0.50000f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.86603f);
 
 	TM::Matrix3 yMat = TM::Matrix3::RotateY(30.0f);
 
-	BOOST_CHECK_EQUAL(RoundFloat(yMat[0].x), 0.86603f);
-	BOOST_CHECK_EQUAL(yMat[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(yMat[0].z),0.50000f);
+	BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.x), 0.86603f);
+	BOOST_CHECK_EQUAL(yMat.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.z),0.50000f);
 	
-	BOOST_CHECK_EQUAL(yMat[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(yMat[1].y, 1.0f);
-	BOOST_CHECK_EQUAL(yMat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(yMat.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(yMat.column2.y, 1.0f);
+	BOOST_CHECK_EQUAL(yMat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(yMat[2].x), -0.50000f);
-	BOOST_CHECK_EQUAL(yMat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(yMat[2].z), 0.86603f);
+	BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.x), -0.50000f);
+	BOOST_CHECK_EQUAL(yMat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.z), 0.86603f);
 
 	mat.SetRotateZ(26.0f);
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].x), 0.89879f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].y), -0.43837f);
-	BOOST_CHECK_EQUAL(mat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.89879f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), -0.43837f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].x), 0.43837f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].y), 0.89879f);
-	BOOST_CHECK_EQUAL(mat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.x), 0.43837f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.y), 0.89879f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
 
 	TM::Matrix3 zMat = TM::Matrix3::RotateZ(26.0f);
 
-	BOOST_CHECK_EQUAL(RoundFloat(zMat[0].x), 0.89879f);
-	BOOST_CHECK_EQUAL(RoundFloat(zMat[0].y), -0.43837f);
-	BOOST_CHECK_EQUAL(zMat[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.x), 0.89879f);
+	BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.y), -0.43837f);
+	BOOST_CHECK_EQUAL(zMat.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(zMat[1].x), 0.43837f);
-	BOOST_CHECK_EQUAL(RoundFloat(zMat[1].y), 0.89879f);
-	BOOST_CHECK_EQUAL(zMat[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.x), 0.43837f);
+	BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.y), 0.89879f);
+	BOOST_CHECK_EQUAL(zMat.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(zMat[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(zMat[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(zMat[2].z, 1.0f);
+	BOOST_CHECK_EQUAL(zMat.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(zMat.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(zMat.column3.z, 1.0f);
 /*	
 	mat.Rotate(30.0f, 78.0f, 245.0f);
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].x), -0.08787f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].y), 0.18843);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[0].z), 0.97815f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), -0.08787f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), 0.18843);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column1.z), 0.97815f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].x), -0.99158f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].y), 0.07725f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[1].z), -0.10396f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.x), -0.99158f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.y), 0.07725f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column2.z), -0.10396f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].x), -0.09515f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].y), -0.97904f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat[2].z), 0.18006f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.x), -0.09515f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.y), -0.97904f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.18006f);
 */
 }
 
@@ -394,17 +394,17 @@ BOOST_AUTO_TEST_CASE(Matrix3Transpose)
 
 	mat.Transpose();
 
-	BOOST_CHECK_EQUAL(mat[0].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[0].y, 2.0f);
-	BOOST_CHECK_EQUAL(mat[0].z, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column1.y, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column1.z, 3.0f);
 	
-	BOOST_CHECK_EQUAL(mat[1].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[1].y, 2.0f);
-	BOOST_CHECK_EQUAL(mat[1].z, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column2.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column2.y, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column2.z, 3.0f);
 	
-	BOOST_CHECK_EQUAL(mat[2].x, 1.0f);
-	BOOST_CHECK_EQUAL(mat[2].y, 2.0f);
-	BOOST_CHECK_EQUAL(mat[2].z, 3.0f);
+	BOOST_CHECK_EQUAL(mat.column3.x, 1.0f);
+	BOOST_CHECK_EQUAL(mat.column3.y, 2.0f);
+	BOOST_CHECK_EQUAL(mat.column3.z, 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3ComponentMultiplication)
@@ -420,17 +420,17 @@ BOOST_AUTO_TEST_CASE(Matrix3ComponentMultiplication)
 
 	mat1.ComponentMulti(mat2);
 
-	BOOST_CHECK_EQUAL(mat1[0].x, 5.0f);
-	BOOST_CHECK_EQUAL(mat1[0].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat1[0].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column1.x, 5.0f);
+	BOOST_CHECK_EQUAL(mat1.column1.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column1.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat1[1].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat1[1].y, 10.0f);
-	BOOST_CHECK_EQUAL(mat1[1].z, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column2.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column2.y, 10.0f);
+	BOOST_CHECK_EQUAL(mat1.column2.z, 0.0f);
 	
-	BOOST_CHECK_EQUAL(mat1[2].x, 0.0f);
-	BOOST_CHECK_EQUAL(mat1[2].y, 0.0f);
-	BOOST_CHECK_EQUAL(mat1[2].z, 15.0f);
+	BOOST_CHECK_EQUAL(mat1.column3.x, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column3.y, 0.0f);
+	BOOST_CHECK_EQUAL(mat1.column3.z, 15.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix3Determinate)
@@ -465,36 +465,36 @@ BOOST_AUTO_TEST_CASE(Matrix3Inverse)
 
 	mat1.SetInverse();
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[0].x), -0.14516f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[0].y), 0.01613f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[0].z), 1.30645f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column1.x), -0.14516f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column1.y), 0.01613f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column1.z), 1.30645f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[1].x), 0.07258f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[1].y), -0.00806f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[1].z), -0.15323f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column2.x), 0.07258f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column2.y), -0.00806f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column2.z), -0.15323f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[2].x), 0.12903f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[2].y), 0.09677f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat1[2].z), -1.16129f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.x), 0.12903f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.y), 0.09677f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.z), -1.16129f);
 
 	//TM::Matrix3 mat2 = mat1.GetInverse();
 
 /*
-	This should work, but for some reason [1].y is wrong, and I do not know why
+	This should work, but for some reason .column2.y is wrong, and I do not know why
 	It is coming up ad like, -5.something something. Not sure why. Could cause
 	problems later for sure though...
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[0].x), 3.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[0].y), 18.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[0].z), 1.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.x), 3.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.y), 18.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.z), 1.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[1].x), 8.0f);
-	BOOST_CHECK_EQUAL(mat2[1].y, 0.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[1].z), 9.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.x), 8.0f);
+	BOOST_CHECK_EQUAL(mat2.column2.y, 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.z), 9.0f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[2].x), 1.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[2].y), 2.0f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat2[2].z), 0.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.x), 1.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.y), 2.0f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.z), 0.0f);
 
 	BOOST_CHECK_EQUAL(RoundFloat(mat2[3].x), 7.0f);
 	BOOST_CHECK_EQUAL(RoundFloat(mat2[3].y), 2.99999f);
@@ -510,15 +510,15 @@ BOOST_AUTO_TEST_CASE(Matrix3Inverse)
 
 	TM::Matrix3 mat4 = mat3.GetInverse();
 
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[0].x), 0.34921f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[0].y), -0.31746f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[0].z), 0.01587f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column1.x), 0.34921f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column1.y), -0.31746f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column1.z), 0.01587f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[1].x), -0.31746f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[1].y), 0.01587f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[1].z), 0.34921f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column2.x), -0.31746f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column2.y), 0.01587f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column2.z), 0.34921f);
 	
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[2].x), 0.01587f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[2].y), 0.34921f);
-	BOOST_CHECK_EQUAL(RoundFloat(mat4[2].z), -0.317460001f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column3.x), 0.01587f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column3.y), 0.34921f);
+	BOOST_CHECK_EQUAL(RoundFloat(mat4.column3.z), -0.317460001f);
 }

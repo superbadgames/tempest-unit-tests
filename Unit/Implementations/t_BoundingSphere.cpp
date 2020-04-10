@@ -44,16 +44,16 @@ BOOST_AUTO_TEST_CASE(BoundingSphereConstructors)
 {
 	TC::BoundingSphere sphere1 { };
 
-	BOOST_CHECK_EQUAL(sphere1.GetCenter()[0], 0.0f);
-	BOOST_CHECK_EQUAL(sphere1.GetCenter()[1], 0.0f);
-	BOOST_CHECK_EQUAL(sphere1.GetCenter()[2], 0.0f);
+	BOOST_CHECK_EQUAL(sphere1.GetCenter().x, 0.0f);
+	BOOST_CHECK_EQUAL(sphere1.GetCenter().y, 0.0f);
+	BOOST_CHECK_EQUAL(sphere1.GetCenter().z, 0.0f);
 	BOOST_CHECK_EQUAL(sphere1.GetRadius(), 0.0f);
 
 	TC::BoundingSphere sphere2 { TM::Point3(2.0f, 5.0f, 1.0f), 25.0f };
 
-	BOOST_CHECK_EQUAL(sphere2.GetCenter()[0], 2.0f);
-	BOOST_CHECK_EQUAL(sphere2.GetCenter()[1], 5.0f);
-	BOOST_CHECK_EQUAL(sphere2.GetCenter()[2], 1.0f);
+	BOOST_CHECK_EQUAL(sphere2.GetCenter().x, 2.0f);
+	BOOST_CHECK_EQUAL(sphere2.GetCenter().y, 5.0f);
+	BOOST_CHECK_EQUAL(sphere2.GetCenter().z, 1.0f);
 	BOOST_CHECK_EQUAL(sphere2.GetRadius(), 25.0f);
 
 	//Combination test will be more difficult
@@ -64,24 +64,24 @@ BOOST_AUTO_TEST_CASE(BoundingSphereAccessors)
 {
 	TC::BoundingSphere sphere { TM::Point3(10.0f, 10.0f, 0.0f), 5.0f };
 
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 10.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 10.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 0.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().x, 10.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().y, 10.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().z, 0.0f);
 	BOOST_CHECK_EQUAL(sphere.GetRadius(), 5.0f);
 
 	sphere.SetCenter(TM::Point3(35.0f, 1.0f, 2.0f));
 	sphere.SetRadius(2.5f);
 
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 35.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 1.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 2.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().x, 35.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().y, 1.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().z, 2.0f);
 	BOOST_CHECK_EQUAL(sphere.GetRadius(), 2.5f);
 
 	sphere.SetCenter(26.0f, 15.0f, 23.0f);
 
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[0], 26.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[1], 15.0f);
-	BOOST_CHECK_EQUAL(sphere.GetCenter()[2], 23.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().x, 26.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().y, 15.0f);
+	BOOST_CHECK_EQUAL(sphere.GetCenter().z, 23.0f);
 }
 
 BOOST_AUTO_TEST_CASE(BoundingShereIntersectBoundingSphere)

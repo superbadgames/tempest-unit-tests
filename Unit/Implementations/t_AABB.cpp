@@ -44,18 +44,18 @@ BOOST_AUTO_TEST_CASE(AABBConstructors)
 {
 	TC::AABB box {  };
 
-	BOOST_CHECK_EQUAL(box.GetCenter()[0], 0.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[1], 0.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[2], 0.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().x, 0.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().y, 0.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().z, 0.0f);
 	BOOST_CHECK_EQUAL(box.GetWidth(), 0.0f);
 	BOOST_CHECK_EQUAL(box.GetHeight(), 0.0f);
 	BOOST_CHECK_EQUAL(box.GetDepth(), 0.0f);
 
 	TC::AABB box2 { TM::Point3(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
 
-	BOOST_CHECK_EQUAL(box2.GetCenter()[0], 4.0f);
-	BOOST_CHECK_EQUAL(box2.GetCenter()[1], 53.0f);
-	BOOST_CHECK_EQUAL(box2.GetCenter()[2], 20.0f);
+	BOOST_CHECK_EQUAL(box2.GetCenter().x, 4.0f);
+	BOOST_CHECK_EQUAL(box2.GetCenter().y, 53.0f);
+	BOOST_CHECK_EQUAL(box2.GetCenter().z, 20.0f);
 	BOOST_CHECK_EQUAL(box2.GetWidth(), 1.0f);
 	BOOST_CHECK_EQUAL(box2.GetHeight(), 2.0f);
 	BOOST_CHECK_EQUAL(box2.GetDepth(), 3.0f);
@@ -70,15 +70,15 @@ BOOST_AUTO_TEST_CASE(AABBAccessors)
 	
 	box.SetCenter(TM::Point3(2.0f, 5.0f, 3.0f));
 
-	BOOST_CHECK_EQUAL(box.GetCenter()[0], 2.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[1], 5.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[2], 3.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().x, 2.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().y, 5.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().z, 3.0f);
 
 	box.SetCenter(14.0f, 30.0f, 150.0f);
 
-	BOOST_CHECK_EQUAL(box.GetCenter()[0], 14.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[1], 30.0f);
-	BOOST_CHECK_EQUAL(box.GetCenter()[2], 150.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().x, 14.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().y, 30.0f);
+	BOOST_CHECK_EQUAL(box.GetCenter().z, 150.0f);
 
 	box.SetHalfWidth(5.0f);
 	BOOST_CHECK_EQUAL(box.GetHalfWidth(), 5.0f);

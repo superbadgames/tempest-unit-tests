@@ -191,23 +191,23 @@ void MovingBoxes::CheckBoxEdge(p_Box b)
     TM::Point2 tempPos = b->GetPosition();
 
     //Righ/Left check
-    if(tempPos[0] >= _right) 
+    if(tempPos.x >= _right) 
     {
-        tempPos[0] = _left;
+        tempPos.x = _left;
     }
-    else if(tempPos[0] <= _left) 
+    else if(tempPos.x <= _left) 
     {
-        tempPos[0] = _right;
+        tempPos.x = _right;
     }
     
     //Top/Bottom check
-    if(tempPos[1] >= _top) 
+    if(tempPos.y >= _top) 
     {
-        tempPos[1] = _bottom;
+        tempPos.y = _bottom;
     }
-    else if(tempPos[1] <= _bottom) 
+    else if(tempPos.y <= _bottom) 
     {
-        tempPos[1] = _top;
+        tempPos.y = _top;
     }
 
     b->SetPosition(tempPos);

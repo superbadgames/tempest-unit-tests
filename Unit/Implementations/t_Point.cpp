@@ -48,18 +48,18 @@ BOOST_AUTO_TEST_CASE(PointefaultConstructorAndAccessor)
 {
 	TM::Point3 v {};
 
-	BOOST_CHECK_EQUAL(v[0], 0.0f);
-	BOOST_CHECK_EQUAL(v[1], 0.0f);
-	BOOST_CHECK_EQUAL(v[2], 0.0f);
+	BOOST_CHECK_EQUAL(v.x, 0.0f);
+	BOOST_CHECK_EQUAL(v.y, 0.0f);
+	BOOST_CHECK_EQUAL(v.z, 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointSingleContructor) 
 {
 	TM::Point3 v {5.0f};
 
-	BOOST_CHECK_EQUAL(v[0], 5.0f);
-	BOOST_CHECK_EQUAL(v[1], 5.0f);
-	BOOST_CHECK_EQUAL(v[2], 5.0f);
+	BOOST_CHECK_EQUAL(v.x, 5.0f);
+	BOOST_CHECK_EQUAL(v.y, 5.0f);
+	BOOST_CHECK_EQUAL(v.z, 5.0f);
 }
 
 
@@ -67,9 +67,9 @@ BOOST_AUTO_TEST_CASE(PointTrippleContructor)
 {
 	TM::Point3 v {1.0f, 2.0f, 3.0f};
 
-	BOOST_CHECK_EQUAL(v[0], 1.0f);
-	BOOST_CHECK_EQUAL(v[1], 2.0f);
-	BOOST_CHECK_EQUAL(v[2], 3.0f);
+	BOOST_CHECK_EQUAL(v.x, 1.0f);
+	BOOST_CHECK_EQUAL(v.y, 2.0f);
+	BOOST_CHECK_EQUAL(v.z, 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointCopyContructor) 
@@ -78,22 +78,22 @@ BOOST_AUTO_TEST_CASE(PointCopyContructor)
 
 	TM::Point3 Point(Point1);
 
-	BOOST_CHECK_EQUAL(Point[0], 3.0f);
-	BOOST_CHECK_EQUAL(Point[1], 6.0f);
-	BOOST_CHECK_EQUAL(Point[2], 9.0f);
+	BOOST_CHECK_EQUAL(Point.x, 3.0f);
+	BOOST_CHECK_EQUAL(Point.y, 6.0f);
+	BOOST_CHECK_EQUAL(Point.z, 9.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointSetters) 
 {
 	TM::Point3 v{};
 
-	v[0] = 5.0f;
-	v[1] = 10.0f;
-	v[2] = 20.0f;
+	v.x = 5.0f;
+	v.y = 10.0f;
+	v.z = 20.0f;
 
-	BOOST_CHECK_EQUAL(v[0], 5.0f);
-	BOOST_CHECK_EQUAL(v[1], 10.0f);
-	BOOST_CHECK_EQUAL(v[2], 20.0f);
+	BOOST_CHECK_EQUAL(v.x, 5.0f);
+	BOOST_CHECK_EQUAL(v.y, 10.0f);
+	BOOST_CHECK_EQUAL(v.z, 20.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointCopyAssignment) 
@@ -102,9 +102,9 @@ BOOST_AUTO_TEST_CASE(PointCopyAssignment)
 
 	TM::Point3 v2 = v1;
 
-	BOOST_CHECK_EQUAL(v2[0], 4.5f);
-	BOOST_CHECK_EQUAL(v2[1], 5.4f);
-	BOOST_CHECK_EQUAL(v2[2], 6.8f);
+	BOOST_CHECK_EQUAL(v2.x, 4.5f);
+	BOOST_CHECK_EQUAL(v2.y, 5.4f);
+	BOOST_CHECK_EQUAL(v2.z, 6.8f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAssignment) 
@@ -112,9 +112,9 @@ BOOST_AUTO_TEST_CASE(PointAssignment)
 	TM::Point3 v1{};
 	v1 = 3.0f;
 
-	BOOST_CHECK_EQUAL(v1[0], 3.0f);
-	BOOST_CHECK_EQUAL(v1[1], 3.0f);
-	BOOST_CHECK_EQUAL(v1[2], 3.0f);
+	BOOST_CHECK_EQUAL(v1.x, 3.0f);
+	BOOST_CHECK_EQUAL(v1.y, 3.0f);
+	BOOST_CHECK_EQUAL(v1.z, 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAddPoint) 
@@ -124,9 +124,9 @@ BOOST_AUTO_TEST_CASE(PointAddPoint)
 
 	TM::Point3 sum = v1 + v2;
 
-	BOOST_CHECK_EQUAL(sum[0], 3.0f);
-	BOOST_CHECK_EQUAL(sum[1], 4.0f);
-	BOOST_CHECK_EQUAL(sum[2], 6.0f);
+	BOOST_CHECK_EQUAL(sum.x, 3.0f);
+	BOOST_CHECK_EQUAL(sum.y, 4.0f);
+	BOOST_CHECK_EQUAL(sum.z, 6.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAddVector4) 
@@ -136,9 +136,9 @@ BOOST_AUTO_TEST_CASE(PointAddVector4)
 
 	TM::Point3 sum = v1 + v2;
 
-	BOOST_CHECK_EQUAL(sum[0], 3.0f);
-	BOOST_CHECK_EQUAL(sum[1], 4.0f);
-	BOOST_CHECK_EQUAL(sum[2], 6.0f);
+	BOOST_CHECK_EQUAL(sum.x, 3.0f);
+	BOOST_CHECK_EQUAL(sum.y, 4.0f);
+	BOOST_CHECK_EQUAL(sum.z, 6.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAddEqPoint) 
@@ -148,9 +148,9 @@ BOOST_AUTO_TEST_CASE(PointAddEqPoint)
 
 	v1 += v2;
 
-	BOOST_CHECK_EQUAL(v1[0], 2.0f);
-	BOOST_CHECK_EQUAL(v1[1], 2.0f);
-	BOOST_CHECK_EQUAL(v1[2], 5.0f);
+	BOOST_CHECK_EQUAL(v1.x, 2.0f);
+	BOOST_CHECK_EQUAL(v1.y, 2.0f);
+	BOOST_CHECK_EQUAL(v1.z, 5.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAddEqVector4) 
@@ -160,9 +160,9 @@ BOOST_AUTO_TEST_CASE(PointAddEqVector4)
 
 	v1 += v2;
 
-	BOOST_CHECK_EQUAL(v1[0], 2.0f);
-	BOOST_CHECK_EQUAL(v1[1], 2.0f);
-	BOOST_CHECK_EQUAL(v1[2], 5.0f);
+	BOOST_CHECK_EQUAL(v1.x, 2.0f);
+	BOOST_CHECK_EQUAL(v1.y, 2.0f);
+	BOOST_CHECK_EQUAL(v1.z, 5.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointSubtractPoint) 
@@ -172,9 +172,9 @@ BOOST_AUTO_TEST_CASE(PointSubtractPoint)
 
 	TM::Point3 difference = v1 - v2;
 
-	BOOST_CHECK_EQUAL(difference[0], 15.0f);
-	BOOST_CHECK_EQUAL(difference[1], 25.0f);
-	BOOST_CHECK_EQUAL(difference[2], 35.0f);
+	BOOST_CHECK_EQUAL(difference.x, 15.0f);
+	BOOST_CHECK_EQUAL(difference.y, 25.0f);
+	BOOST_CHECK_EQUAL(difference.z, 35.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointSubtractEqPoint) 
@@ -184,9 +184,9 @@ BOOST_AUTO_TEST_CASE(PointSubtractEqPoint)
 
 	v1 -= v2;
 
-	BOOST_CHECK_EQUAL(v1[0], 1.0f);
-	BOOST_CHECK_EQUAL(v1[1], 2.0f);
-	BOOST_CHECK_EQUAL(v1[2], 3.0f);
+	BOOST_CHECK_EQUAL(v1.x, 1.0f);
+	BOOST_CHECK_EQUAL(v1.y, 2.0f);
+	BOOST_CHECK_EQUAL(v1.z, 3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointMultiplyPointScalar) 
@@ -196,9 +196,9 @@ BOOST_AUTO_TEST_CASE(PointMultiplyPointScalar)
 
 	TM::Point3 product = v1 * v2;
 
-	BOOST_CHECK_EQUAL(product[0], 10.0f);
-	BOOST_CHECK_EQUAL(product[1], 15.0f);
-	BOOST_CHECK_EQUAL(product[2], 20.0f);
+	BOOST_CHECK_EQUAL(product.x, 10.0f);
+	BOOST_CHECK_EQUAL(product.y, 15.0f);
+	BOOST_CHECK_EQUAL(product.z, 20.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointMultiplyEqPointScalar) 
@@ -208,9 +208,9 @@ BOOST_AUTO_TEST_CASE(PointMultiplyEqPointScalar)
 
 	v1 *= v2;
 
-	BOOST_CHECK_EQUAL(v1[0], 40.0f);
-	BOOST_CHECK_EQUAL(v1[1], 50.0f);
-	BOOST_CHECK_EQUAL(v1[2], 75.0f);
+	BOOST_CHECK_EQUAL(v1.x, 40.0f);
+	BOOST_CHECK_EQUAL(v1.y, 50.0f);
+	BOOST_CHECK_EQUAL(v1.z, 75.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointMultiplyByPoint)
@@ -221,9 +221,9 @@ BOOST_AUTO_TEST_CASE(PointMultiplyByPoint)
 	TM::Point3 C = A * B;
 
 
-	BOOST_CHECK_EQUAL(C[0], 12.0f);
-	BOOST_CHECK_EQUAL(C[1], 40.0f);
-	BOOST_CHECK_EQUAL(C[2], 90.0f);
+	BOOST_CHECK_EQUAL(C.x, 12.0f);
+	BOOST_CHECK_EQUAL(C.y, 40.0f);
+	BOOST_CHECK_EQUAL(C.z, 90.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointDotMultiplication) 
@@ -242,9 +242,9 @@ BOOST_AUTO_TEST_CASE(PointDividePointByScalar)
 
 	TM::Point3 quotient = v1 / 2.0f;
 
-	BOOST_CHECK_EQUAL(quotient[0], 5.0f);
-	BOOST_CHECK_EQUAL(quotient[1], 10.0f);
-	BOOST_CHECK_EQUAL(quotient[2], 15.0f);
+	BOOST_CHECK_EQUAL(quotient.x, 5.0f);
+	BOOST_CHECK_EQUAL(quotient.y, 10.0f);
+	BOOST_CHECK_EQUAL(quotient.z, 15.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointDivideEqPointByScalar) 
@@ -254,9 +254,9 @@ BOOST_AUTO_TEST_CASE(PointDivideEqPointByScalar)
 
 	v1 /= v2;
 
-	BOOST_CHECK_EQUAL(v1[0], 5);
-	BOOST_CHECK_EQUAL(v1[1], 10);
-	BOOST_CHECK_EQUAL(v1[2], 20.0f);
+	BOOST_CHECK_EQUAL(v1.x, 5);
+	BOOST_CHECK_EQUAL(v1.y, 10);
+	BOOST_CHECK_EQUAL(v1.z, 20.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Point_Comparison_Operators)
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(Point_Comparison_Operators)
 	BOOST_CHECK_EQUAL(midValue == lowValue, false);	
 	BOOST_CHECK_EQUAL(midValue != equalValue, false);
 
-	highValue[0] = 1.0f;
+	highValue.x = 1.0f;
 
 	BOOST_CHECK_EQUAL(midValue >= highValue, false);
 }
@@ -299,9 +299,9 @@ BOOST_AUTO_TEST_CASE(PointNormalize)
 	TM::Point3 PointTest {12.0f, -5.0f, 25.0f};
 	PointTest.Normalize();
 
-	BOOST_CHECK_EQUAL(RoundFloat(PointTest[0]), 0.42586f);
-	BOOST_CHECK_EQUAL(RoundFloat(PointTest[1]), -0.17744f);
-	BOOST_CHECK_EQUAL(RoundFloat(PointTest[2]), 0.88722f);
+	BOOST_CHECK_EQUAL(RoundFloat(PointTest.x), 0.42586f);
+	BOOST_CHECK_EQUAL(RoundFloat(PointTest.y), -0.17744f);
+	BOOST_CHECK_EQUAL(RoundFloat(PointTest.z), 0.88722f);
 
 //===== TODO:: Add 2D test =====	
 }
@@ -310,15 +310,15 @@ BOOST_AUTO_TEST_CASE(PointResetvoid)
 {
 	TM::Point3 PointTest {12.0f, -5.0f, 20.0f};
 
-	BOOST_CHECK_EQUAL(PointTest[0], 12.0f);
-	BOOST_CHECK_EQUAL(PointTest[1], -5.0f);
-	BOOST_CHECK_EQUAL(PointTest[2], 20.0f);
+	BOOST_CHECK_EQUAL(PointTest.x, 12.0f);
+	BOOST_CHECK_EQUAL(PointTest.y, -5.0f);
+	BOOST_CHECK_EQUAL(PointTest.z, 20.0f);
 
 	PointTest.Reset();
 
-	BOOST_CHECK_EQUAL(PointTest[0], 0.0f);
-	BOOST_CHECK_EQUAL(PointTest[1], 0.0f);
-	BOOST_CHECK_EQUAL(PointTest[2], 0.0f);
+	BOOST_CHECK_EQUAL(PointTest.x, 0.0f);
+	BOOST_CHECK_EQUAL(PointTest.y, 0.0f);
+	BOOST_CHECK_EQUAL(PointTest.z, 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointAddScaledPoint) 
@@ -328,9 +328,9 @@ BOOST_AUTO_TEST_CASE(PointAddScaledPoint)
 
 	PointTest.AddScaledPoint(scaled, 10);
 
-	BOOST_CHECK_EQUAL(PointTest[0], 465.0f);
-	BOOST_CHECK_EQUAL(PointTest[1], 125.0f);
-	BOOST_CHECK_EQUAL(PointTest[2], 245.0f);
+	BOOST_CHECK_EQUAL(PointTest.x, 465.0f);
+	BOOST_CHECK_EQUAL(PointTest.y, 125.0f);
+	BOOST_CHECK_EQUAL(PointTest.z, 245.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointCrossProduct) 
@@ -340,9 +340,9 @@ BOOST_AUTO_TEST_CASE(PointCrossProduct)
 
 	TM::Point3 cross = v1.CrossProduct(v2);
 
-	BOOST_CHECK_EQUAL(cross[0], 44.0f);
-	BOOST_CHECK_EQUAL(cross[1], 0.0f);
-	BOOST_CHECK_EQUAL(cross[2], -11.0f);
+	BOOST_CHECK_EQUAL(cross.x, 44.0f);
+	BOOST_CHECK_EQUAL(cross.y, 0.0f);
+	BOOST_CHECK_EQUAL(cross.z, -11.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointSetFunctionTest)
@@ -351,9 +351,9 @@ BOOST_AUTO_TEST_CASE(PointSetFunctionTest)
 
 	v.Set(10.0f, 15.0f, 20.0f);
 
-	BOOST_CHECK_EQUAL(v[0], 10.0f);
-	BOOST_CHECK_EQUAL(v[1], 15.0f);
-	BOOST_CHECK_EQUAL(v[2], 20.0f);
+	BOOST_CHECK_EQUAL(v.x, 10.0f);
+	BOOST_CHECK_EQUAL(v.y, 15.0f);
+	BOOST_CHECK_EQUAL(v.z, 20.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointNegation)
@@ -362,9 +362,9 @@ BOOST_AUTO_TEST_CASE(PointNegation)
 
 	v = -v;
 
-	BOOST_CHECK_EQUAL(v[0], -1.0f);
-	BOOST_CHECK_EQUAL(v[1], -2.0f);
-	BOOST_CHECK_EQUAL(v[2], -3.0f);
+	BOOST_CHECK_EQUAL(v.x, -1.0f);
+	BOOST_CHECK_EQUAL(v.y, -2.0f);
+	BOOST_CHECK_EQUAL(v.z, -3.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointPre_PostIncrement)
@@ -373,15 +373,15 @@ BOOST_AUTO_TEST_CASE(PointPre_PostIncrement)
 
 	++v;
 
-	BOOST_CHECK_EQUAL(v[0], 2.0f);
-	BOOST_CHECK_EQUAL(v[1], 3.0f);
-	BOOST_CHECK_EQUAL(v[2], 4.0f);
+	BOOST_CHECK_EQUAL(v.x, 2.0f);
+	BOOST_CHECK_EQUAL(v.y, 3.0f);
+	BOOST_CHECK_EQUAL(v.z, 4.0f);
 
 	v++;
 
-	BOOST_CHECK_EQUAL(v[0], 3.0f);
-	BOOST_CHECK_EQUAL(v[1], 4.0f);
-	BOOST_CHECK_EQUAL(v[2], 5.0f);
+	BOOST_CHECK_EQUAL(v.x, 3.0f);
+	BOOST_CHECK_EQUAL(v.y, 4.0f);
+	BOOST_CHECK_EQUAL(v.z, 5.0f);
 }
 
 BOOST_AUTO_TEST_CASE(PointPre_PostDecrement)
@@ -390,13 +390,13 @@ BOOST_AUTO_TEST_CASE(PointPre_PostDecrement)
 
 	--v;
 
-	BOOST_CHECK_EQUAL(v[0], 9.0f);
-	BOOST_CHECK_EQUAL(v[1], 19.0f);
-	BOOST_CHECK_EQUAL(v[2], 29.0f);
+	BOOST_CHECK_EQUAL(v.x, 9.0f);
+	BOOST_CHECK_EQUAL(v.y, 19.0f);
+	BOOST_CHECK_EQUAL(v.z, 29.0f);
 
 	v--;
 
-	BOOST_CHECK_EQUAL(v[0], 8.0f);
-	BOOST_CHECK_EQUAL(v[1], 18.0f);
-	BOOST_CHECK_EQUAL(v[2], 28.0f);
+	BOOST_CHECK_EQUAL(v.x, 8.0f);
+	BOOST_CHECK_EQUAL(v.y, 18.0f);
+	BOOST_CHECK_EQUAL(v.z, 28.0f);
 }

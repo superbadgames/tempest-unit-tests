@@ -34,7 +34,7 @@ void Cannon::v_Update(void)
 
     //std::cout << ""
 
-    F32 yPos = GetPosition()[1];
+    F32 yPos = GetPosition().y;
 
     if(yPos > _bottomBoundary && yPos < _topBoundary)
     {

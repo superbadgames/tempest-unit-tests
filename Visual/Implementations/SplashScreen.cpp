@@ -78,9 +78,9 @@ void SplashScreen::v_Update(void)
 
     TM::Point2 greenPos = _green->GetPosition();
     TM::Point2 bluePos  = _blue->GetPosition();
-    F32 redWidth   = _red->GetScale()[1];
+    F32 redWidth   = _red->GetScale().y;
 
-    if(greenPos[1] >= TE::GameWindow::Instance()->GetScreenBottom()) 
+    if(greenPos.y >= TE::GameWindow::Instance()->GetScreenBottom()) 
     {
         _green->SetDirection(0.0f, -1.0f);
 
@@ -91,7 +91,7 @@ void SplashScreen::v_Update(void)
         _green->SetActive(false);
         _blue->SetActive(false);
 
-        F32 size = _red->GetScale()[1] + TM::Timer::Instance()->DeltaTime() * 250.0f;
+        F32 size = _red->GetScale().y + TM::Timer::Instance()->DeltaTime() * 250.0f;
         _red->SetScale(size, size);
     }
     
