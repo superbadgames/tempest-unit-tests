@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 	BOOST_CHECK_EQUAL(body.GetInverseMass(), 1.0f);
 	BOOST_CHECK_EQUAL(body.GetMass(), 1.0f);
 	BOOST_CHECK_EQUAL(body.HasFiniteMass(), true);
-	BOOST_CHECK_EQUAL(body.GetDamping(), 0.999f);
+	BOOST_CHECK_EQUAL(body.GetLinearDamping(), 0.999f);
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
@@ -145,7 +145,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
 	obj.SetBody();
 
 	obj.p_body->SetVelocity(10.0f, 20.0f);
-	obj.p_body->SetDamping(0.0f);
+	obj.p_body->SetLinearDamping(0.0f);
 
 	IntegrateNTimes(obj, 1000);
 

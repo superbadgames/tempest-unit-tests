@@ -82,7 +82,7 @@ void Projectile::SetType(ProjectileType type)
 		case BULLET:
 			SetMaxDistance(800.0f);
 			p_rigidBody->SetMass(1000.0f);
-			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetLinearDamping(0.99f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			SetScale(5.0f, 5.0f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(301));
@@ -91,7 +91,7 @@ void Projectile::SetType(ProjectileType type)
 		case ARTILLERY:
 			SetMaxDistance(1000.0f);
 			p_rigidBody->SetMass(8000.0f);
-			p_rigidBody->SetDamping(0.6f);
+			p_rigidBody->SetLinearDamping(0.6f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			SetScale(15.0f, 15.0f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(302));
@@ -100,7 +100,7 @@ void Projectile::SetType(ProjectileType type)
 		case MISSILE:
 			SetMaxDistance(1000.0f);
 			p_rigidBody->SetMass(500.0f);
-			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetLinearDamping(0.99f);
 			p_rigidBody->SetAcceleration(500.0f, 0.0f);
 			SetScale(20.0f, 20.0f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(303));
@@ -109,7 +109,7 @@ void Projectile::SetType(ProjectileType type)
 		case FIRE_BALL:
 			SetMaxDistance(300.0f);
 			p_rigidBody->SetMass(50.0f);
-			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetLinearDamping(0.99f);
 			p_rigidBody->SetAcceleration(10.0f, 0.0f);
 			SetScale(7.5f, 7.5f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(304));
@@ -118,7 +118,7 @@ void Projectile::SetType(ProjectileType type)
 		case LAZER:
 			SetMaxDistance(6000.0f);
 			p_rigidBody->SetMass(0.1f);
-			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetLinearDamping(0.99f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			SetScale(10.0f, 7.5f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(305));
@@ -127,7 +127,7 @@ void Projectile::SetType(ProjectileType type)
 		case GRENADE:
 			SetMaxDistance(200.0f);
 			p_rigidBody->SetMass(75.0f);
-			p_rigidBody->SetDamping(0.25f);
+			p_rigidBody->SetLinearDamping(0.25f);
 			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			SetScale(15.0f, 15.0f);
 			SetTexture(TE::TextureManager::Instance()->GetTexture(306));

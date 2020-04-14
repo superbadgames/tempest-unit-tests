@@ -40,22 +40,22 @@ void Cannon::v_Update(void)
     {
         if(TE::Controller::Instance()->GetKeyHeld(TE::W))
         {
-            AddScaledPosition(_upDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+            AddPosition(_upDirection * _movementSpeed * TM::Timer::Instance()->DeltaTime());
         }
         else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
         {
-            AddScaledPosition(_downDirection, _movementSpeed * TM::Timer::Instance()->DeltaTime());
+            AddPosition(_downDirection * _movementSpeed * TM::Timer::Instance()->DeltaTime());
         }
     }
     else
     {
         if(yPos <= _bottomBoundary)
         {
-            AddScaledPosition(_upDirection, _movementSpeed);
+            AddPosition(_upDirection * _movementSpeed);
         }
         else if(yPos >= _topBoundary)
         {
-            AddScaledPosition(_downDirection, _movementSpeed);
+            AddPosition(_downDirection * _movementSpeed);
         }
     }
 

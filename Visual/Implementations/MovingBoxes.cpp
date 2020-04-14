@@ -1,4 +1,5 @@
 #include <Boxes/MovingBoxes.h>
+#include <iostream>
 
 using namespace Boxes;
 
@@ -150,13 +151,13 @@ void MovingBoxes::v_Update(void)
 
     if(TE::Controller::Instance()->GetKeyHeld(TE::E))
     {
-        _activeBox->AddOrientation(0.0f, 0.0f, 25.0f);
+        _activeBox->AddOrientation(1.0f);
     }
     else if(TE::Controller::Instance()->GetKeyHeld(TE::Q))
     {
-        _activeBox->AddOrientation(0.0f, 0.0f, -25.0f);
+        _activeBox->AddOrientation(-1.0f);
     }
-    
+        
     if(TE::Controller::Instance()->GetKeyDown(TE::SPACE))
     {
         _activeBox->SetDirection(0.0f, 0.0f);

@@ -62,16 +62,12 @@ _direction(0.0f)
 //==========================================================================================================================
 void Box::v_Update(void) 
 {
-    AddScaledPosition(_direction, TM::Timer::Instance()->DeltaTime() * _speed);
-    _boundingBox.SetCenter(GetPosition());
-    
+    AddPosition(_direction * TM::Timer::Instance()->DeltaTime() * _speed);
     DefaultUpdate();
 }
 
 void Box::OnCollide(void)
 {
-    AddScaledPosition(-_direction, TM::Timer::Instance()->DeltaTime() * _speed);
-    _boundingBox.SetCenter(GetPosition());
-
+    AddPosition(-_direction * TM::Timer::Instance()->DeltaTime() * _speed);
     _direction = 0.0f;
 }

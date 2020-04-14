@@ -79,7 +79,7 @@ namespace Boxes
 
         inline void AddScaledVelocity(const TM::Vector2& vec, F32 scale)
         {
-            p_rigidBody->AddScaledVelocity(vec, scale);
+            p_rigidBody->SetVelocity(vec * scale);
         }
 
         inline TP::p_RigidBody2D GetRigidBody(void)
