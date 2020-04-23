@@ -51,7 +51,7 @@ Written by Maxwell Miller
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
 #include <Engine/Controller.h>
-#include <Engine/GameWindow.h>
+#include <Engine/OpenGLGameWindow.h>
 #include <Engine/TextureManager.h>
 #include <Engine/FontManager.h>
 #include <Engine/Engine.h>
@@ -187,6 +187,6 @@ int main(void)
 			TE::Engine::Instance()->End();
 		}
 
-		TE::GameWindow::Instance()->DisplayFPS();
+		TE::Engine::Instance()->DisplayFPS();
 	}
 }

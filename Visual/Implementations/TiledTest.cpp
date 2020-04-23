@@ -9,9 +9,6 @@ using namespace Boxes;
 //
 //==========================================================================================================================
 TiledTest::TiledTest(void)
-	:
-	_camera(make_shared<TE::Camera2D>()),
-	_camera2(make_shared<TE::FPSCamera>())
 {  }
 
 TiledTest::~TiledTest(void)
@@ -19,24 +16,18 @@ TiledTest::~TiledTest(void)
 
 void TiledTest::v_Init(void)
 {
-	Level::SetID(TILED_TEST_ID);
+	SetID(TILED_TEST_ID);
 	// TODO: These will be set to the map width and height, when they are gotten from the importer
-	//Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
-	//Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
+	//Level::SetWidth(TE::OpenGLGameWindow::Instance()->GetWidth());
+	//Level::SetHeight(TE::OpenGLGameWindow::Instance()->GetHeight());
+	SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	_camera->SetOrthographic(TE::GameWindow::Instance()->GetScreenLeft(), TE::GameWindow::Instance()->GetScreenRight(), 
-							 TE::GameWindow::Instance()->GetScreenBottom(), TE::GameWindow::Instance()->GetScreenTop(), 
-							 -100.0f, 100.0f);
-	_camera->SetPosition(0.0f, 0.0f, 0.0f);
-	_camera->SetMoveSpeed(500.0f);
+	F32 left = TE::Engine::Instance()->GetScreenLeft();
+	F32 right = TE::Engine::Instance()->GetScreenRight();
+	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
+	F32 top = TE::Engine::Instance()->GetSCreenTop();
 
-	_camera2->SetOrthographic(TE::GameWindow::Instance()->GetScreenLeft(), TE::GameWindow::Instance()->GetScreenRight(),
-							 TE::GameWindow::Instance()->GetScreenBottom(), TE::GameWindow::Instance()->GetScreenTop(),
-							 -100.0f, 100.0f);
-	_camera2->SetPosition(0.0f, 0.0f, 0.0f);
-	_camera2->SetMoveSpeed(500.0f);
-	_camera2->SetMouseSensitivity(0.0f);
+	_camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 
 	std::vector<TileData> objects = _ImportTMXMapData("tiled_tests.tmx");
 
@@ -63,22 +54,22 @@ void TiledTest::v_Update(void)
 	
 	if(TE::Controller::Instance()->GetKeyHeld(TE::W))
 	{
-		_camera->v_Move(0.0f, 1.0f); //up
+		_camera.v_Move(0.0f, 1.0f); //up
 		//_camera2->v_Move(0.0f, 1.0f); //up
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
 	{
-		_camera->v_Move(0.0f, -1.0f); //up
+		_camera.v_Move(0.0f, -1.0f); //up
 		//_camera2->v_Move(0.0f, -1.0f); //up
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::D))
 	{
-		_camera->v_Move(1.0f, 0.0f);
+		_camera.v_Move(1.0f, 0.0f);
 		//_camera2->v_Move(1.0f, 0.0f);
 	}
 	else if(TE::Controller::Instance()->GetKeyHeld(TE::A))
 	{
-		_camera->v_Move(-1.0f, 0.0f);
+		_camera.v_Move(-1.0f, 0.0f);
 		//_camera2->v_Move(-1.0f, 0.0f);
 	}
 }

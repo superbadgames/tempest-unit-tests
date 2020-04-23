@@ -34,8 +34,8 @@ Demo3D::~Demo3D(void)
 void Demo3D::v_Init(void)
 {
 	Level::SetID(DEMO3D_ID);
-	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+	Level::SetWidth(TE::OpenGLGameWindow::Instance()->GetWidth());
+	Level::SetHeight(TE::OpenGLGameWindow::Instance()->GetHeight());
 	Level::SetBackgroundColor(TE::Color(0.2f, 0.4f, 0.5f));
 
 	//Set up Cameras
@@ -74,7 +74,7 @@ void Demo3D::v_Init(void)
 	_fpsCamera->SetMouseSensitivity(0.1f);
 	_fpsCamera->SetDeadZone(0.2f);
 
-	TE::GameWindow::Instance()->SetCamera(_orbitCamera);
+	TE::OpenGLGameWindow::Instance()->SetCamera(_orbitCamera);
 
 	//Crate1
 	_crate1 = ProjectFactory::Instance()->MakeCube();
@@ -200,7 +200,7 @@ void Demo3D::v_Update(void)
 	}
 	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::F11))
 	{
-		TE::GameWindow::Instance()->ToggleWireFrame();
+		TE::OpenGLGameWindow::Instance()->ToggleWireFrame();
 	}
 	else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::F1))
 	{
@@ -208,13 +208,13 @@ void Demo3D::v_Update(void)
 
 		if(!_useOrbit)
 		{
-			TE::GameWindow::Instance()->SetCamera(_fpsCamera);
-			TE::GameWindow::Instance()->DisableMouseCursor();
+			TE::OpenGLGameWindow::Instance()->SetCamera(_fpsCamera);
+			TE::OpenGLGameWindow::Instance()->DisableMouseCursor();
 		}
 		else
 		{
-			TE::GameWindow::Instance()->SetCamera(_orbitCamera);
-			TE::GameWindow::Instance()->EnableMouseCursor();
+			TE::OpenGLGameWindow::Instance()->SetCamera(_orbitCamera);
+			TE::OpenGLGameWindow::Instance()->EnableMouseCursor();
 		}
 	}
 

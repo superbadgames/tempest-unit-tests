@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
 #include <Engine/Texture.h>
-#include <Engine/GameWindow.h>
+#include <Engine/OpenGLGameWindow.h>
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
 #include <Engine/Timer.h>
@@ -41,13 +41,9 @@ namespace Boxes
 
 		void v_Enter(void) final
 		{
-			TE::GameWindow::Instance()->SetCamera(_camera);
+			
 			ActivateBackgroundColor();
 		}
-
-	private:
-		TE::p_Camera2D _camera;
-		TE::p_FPSCamera _camera2;
 
 	};//end Class
 	typedef shared_ptr<TiledTest> p_TiledTest;

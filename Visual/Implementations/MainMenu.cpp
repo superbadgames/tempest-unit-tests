@@ -26,11 +26,11 @@ MainMenu::~MainMenu(void)
 void MainMenu::v_Init(void)
 {
     Level::SetID(MAIN_MENU_ID);
-    Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
-    Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
+    Level::SetWidth(TE::OpenGLGameWindow::Instance()->GetWidth());
+    Level::SetHeight(TE::OpenGLGameWindow::Instance()->GetHeight());
     Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-    F32 top = TE::GameWindow::Instance()->GetScreenTop();
+    F32 top = TE::OpenGLGameWindow::Instance()->GetScreenTop();
 
     _selector->SetColor(TE::Color(1.0f, 0.0f, 0.0f));
     _selector->SetTexture(TE::TextureManager::Instance()->GetTexture(100));

@@ -13,7 +13,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Engine.h>
 #include <Engine/LevelManager.h>
-#include <Engine/GameWindow.h>
+#include <Engine/OpenGLGameWindow.h>
 #include <Engine/Level.h>
 #include <Engine/Controller.h>
 #include <Engine/TextureManager.h>

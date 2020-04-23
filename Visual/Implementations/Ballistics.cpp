@@ -31,18 +31,16 @@ Ballistics::~Ballistics(void)
 //=============================================================================
 void Ballistics::v_Init(void)
 {
-	Level::SetID(BALLISTICS_ID);
-	Level::SetWidth(TE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(TE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
+	SetID(BALLISTICS_ID);
+	SetWidth(TE::Engine::Instance()->GetScreenWidth());
+	SetHeight(TE::Engine::Instance()->GetScreenHeight());
+	SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-	F32 width = static_cast<F32>(Level::GetWidth());
-	F32 height = static_cast<F32>(Level::GetHeight());
+	DefaultInit();
 
-	F32 left = -width / 2.0f;
-	F32 right = width / 2.0f;
-	F32 bottom = -height / 2.0f;
-	F32 top = height / 2.0f;
+	F32 left = TE::Engine::Instance()->GetScreenLeft();
+	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
+	F32 top = TE::Engine::Instance()->GetSCreenTop();
 
 	_levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("BALLISTICS");
@@ -72,7 +70,7 @@ void Ballistics::v_Init(void)
 	}
 
 	//TODO:: Once level's call init when they are set to active, this can be removed
-	TE::GameWindow::Instance()->EnableMouseCursor();
+	TE::Engine::Instance()->EnableMouseCursor();
 }	
 
 //=============================================================================

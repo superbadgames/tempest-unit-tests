@@ -8,7 +8,7 @@
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Timer.h>
-#include <Engine/GameWindow.h>
+#include <Engine/OpenGLGameWindow.h>
 
 namespace TE = Tempest;
 namespace TM = TempestMath;
