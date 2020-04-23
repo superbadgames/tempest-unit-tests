@@ -41,17 +41,19 @@ void MovingBoxes::v_Init(void)
 { 
 
     Level::SetID(MOVING_BOXES_ID);
-    Level::SetWidth(TE::OpenGLGameWindow::Instance()->GetWidth());
-    Level::SetHeight(TE::OpenGLGameWindow::Instance()->GetHeight());
+    Level::SetWidth(TE::Engine::Instance()->GetScreenWidth());
+    Level::SetHeight(TE::Engine::Instance()->GetScreenHeight());
     Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
 
-    F32 width = static_cast<F32>(TE::OpenGLGameWindow::Instance()->GetWidth());
-    F32 height = static_cast<F32>(TE::OpenGLGameWindow::Instance()->GetHeight());
+    DefaultInit();
 
-    _left = TE::OpenGLGameWindow::Instance()->GetScreenLeft();
-    _right = TE::OpenGLGameWindow::Instance()->GetScreenRight();
-    _bottom = TE::OpenGLGameWindow::Instance()->GetScreenBottom();
-    _top = TE::OpenGLGameWindow::Instance()->GetScreenTop();
+    F32 width = static_cast<F32>(TE::Engine::Instance()->GetScreenWidth());
+    F32 height = static_cast<F32>(TE::Engine::Instance()->GetScreenHeight());
+
+    _left = TE::Engine::Instance()->GetScreenLeft();
+    _right = TE::Engine::Instance()->GetScreenRight();
+    _bottom = TE::Engine::Instance()->GetScreenBottom();
+    _top = TE::Engine::Instance()->GetScreenTop();
 
     _levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
     _levelTitle.AddText("Moving Boxes");

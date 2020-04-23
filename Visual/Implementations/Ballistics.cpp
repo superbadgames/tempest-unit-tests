@@ -40,7 +40,7 @@ void Ballistics::v_Init(void)
 
 	F32 left = TE::Engine::Instance()->GetScreenLeft();
 	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
-	F32 top = TE::Engine::Instance()->GetSCreenTop();
+	F32 top = TE::Engine::Instance()->GetScreenTop();
 
 	_levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("BALLISTICS");

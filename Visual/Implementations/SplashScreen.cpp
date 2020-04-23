@@ -28,14 +28,16 @@ SplashScreen::~SplashScreen(void)
 //=============================================================================
 void SplashScreen::v_Init(void) 
 {
-    Level::SetWidth(TE::OpenGLGameWindow::Instance()->GetWidth());
-    Level::SetHeight(TE::OpenGLGameWindow::Instance()->GetHeight());
+    Level::SetWidth(TE::Engine::Instance()->GetScreenWidth());
+    Level::SetHeight(TE::Engine::Instance()->GetScreenHeight());
     Level::SetBackgroundColor(TE::Color(0.0f, 0.0f, 0.0f));
 
-    F32 left = TE::OpenGLGameWindow::Instance()->GetScreenLeft();
-    F32 right = TE::OpenGLGameWindow::Instance()->GetScreenRight();
-    F32 bottom = TE::OpenGLGameWindow::Instance()->GetScreenBottom();
-    F32 top = TE::OpenGLGameWindow::Instance()->GetScreenTop();
+    DefaultInit();
+
+    F32 left = TE::Engine::Instance()->GetScreenLeft();
+    F32 right = TE::Engine::Instance()->GetScreenRight();
+    F32 bottom = TE::Engine::Instance()->GetScreenBottom();
+    F32 top = TE::Engine::Instance()->GetScreenTop();
 
     _red->SetPosition(0.0f, 0.0f);
     _red->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
@@ -80,7 +82,7 @@ void SplashScreen::v_Update(void)
     TM::Point2 bluePos  = _blue->GetPosition();
     F32 redWidth   = _red->GetScale().y;
 
-    if(greenPos.y >= TE::OpenGLGameWindow::Instance()->GetScreenBottom()) 
+    if(greenPos.y >= TE::Engine::Instance()->GetScreenBottom()) 
     {
         _green->SetDirection(0.0f, -1.0f);
 
