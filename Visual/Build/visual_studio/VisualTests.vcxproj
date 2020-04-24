@@ -132,6 +132,10 @@
     <ClCompile Include="..\..\Implementations\Cannon.cpp" />
     <ClCompile Include="..\..\Implementations\Cube.cpp" />
     <ClCompile Include="..\..\Implementations\Demo3D.cpp" />
+    <ClCompile Include="..\..\Implementations\DirectXTests.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Main.cpp" />
     <ClCompile Include="..\..\Implementations\MainMenu.cpp" />
     <ClCompile Include="..\..\Implementations\MovingBoxes.cpp" />
@@ -150,6 +154,10 @@
     <ClInclude Include="..\..\Headers\Boxes\Cube.h" />
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h" />
     <ClInclude Include="..\..\Headers\Boxes\Demo3D.h" />
+    <ClInclude Include="..\..\Headers\Boxes\DirectXTests.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\MainMenu.h" />
     <ClInclude Include="..\..\Headers\Boxes\MovingBoxes.h" />
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h" />

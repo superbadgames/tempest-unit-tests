@@ -71,6 +71,7 @@ namespace TE = Tempest;
 #include <Boxes/Demo3D.h>
 #include <Boxes/Box.h>
 #include <Boxes/TiledTest.h>
+#include <Boxes/DirectXTests.h>
 
 using namespace Boxes;
 
@@ -78,10 +79,11 @@ using namespace Boxes;
 int main(void)
 {
 //=====Window Parameter Constants=====
-	const S32    wndWidth  	   = 1024;
-	const S32    wndHeight 	   = 768;
-	const string wndTitle	   = "Killer Engine UI Tests v0.1";
-	const S32    wndFullScreen = false;
+	S32 wndWidth  	   = 1024;
+	S32 wndHeight 	   = 768;
+	string wndTitle	   = "Killer Engine UI Tests v0.1";
+	bool wndFullScreen = false;
+	bool useOpenGL = false; 
 
 
 	TE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
@@ -159,18 +161,23 @@ int main(void)
 
 	p_SplashScreen splashScreen = make_shared<SplashScreen>();
 	splashScreen->v_Init();
-	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
 
 	p_MovingBoxes boxes = make_shared<MovingBoxes>();
 	boxes->v_Init();
-	TE::Engine::Instance()->SetActiveLevel(boxes);
 	
 	//p_TiledTest level = make_shared<TiledTest>();
 	//level->v_Init();
-	//TE::Engine::Instance()->SetActiveLevel(level);
 
 	//p_Demo3D level2 = make_shared<Demo3D>();
 	//level2->v_Init();
+
+	p_DirectXTests directX = make_shared<DirectXTests>();
+	directX->v_Init();
+
+	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
+	//TE::Engine::Instance()->SetActiveLevel(boxes);
+	//TE::Engine::Instance()->SetActiveLevel(level);
+	TE::Engine::Instance()->SetActiveLevel(directX);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{

@@ -32,6 +32,9 @@
     <Filter Include="Assets\Shaders">
       <UniqueIdentifier>{8d8348c3-b17d-405f-9ec1-94e7df281a03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DirextXTests">
+      <UniqueIdentifier>{f9ad6c02-1eb8-45a7-8d41-27b3e849de03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Main.cpp">
@@ -70,6 +73,9 @@
     <ClCompile Include="..\..\Implementations\TiledTest.cpp">
       <Filter>Source Files\TiledTest</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\DirectXTests.cpp">
+      <Filter>Source Files\DirextXTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h">
@@ -107,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\TiledTest.h">
       <Filter>Source Files\TiledTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\DirectXTests.h">
+      <Filter>Source Files\DirextXTests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
