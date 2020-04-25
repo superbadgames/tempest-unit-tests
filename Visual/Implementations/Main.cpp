@@ -83,7 +83,7 @@ int main(void)
 	S32 wndHeight 	   = 768;
 	string wndTitle	   = "Killer Engine UI Tests v0.1";
 	bool wndFullScreen = false;
-	bool useOpenGL = false; 
+	bool useOpenGL = true; 
 
 
 	TE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
@@ -175,9 +175,9 @@ int main(void)
 	directX->v_Init();
 
 	//TE::Engine::Instance()->SetActiveLevel(splashScreen);
-	//TE::Engine::Instance()->SetActiveLevel(boxes);
+	TE::Engine::Instance()->SetActiveLevel(boxes);
 	//TE::Engine::Instance()->SetActiveLevel(level);
-	TE::Engine::Instance()->SetActiveLevel(directX);
+	//TE::Engine::Instance()->SetActiveLevel(directX);
 	
 	if(TE::ErrorManager::Instance()->DisplayErrors())
 	{
