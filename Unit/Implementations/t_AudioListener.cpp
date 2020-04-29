@@ -1,3 +1,4 @@
+#include "stdafx.h"
 /*------------------------------------------------------------
 Tests the AudioListener, a wrapper to move the listener object of the OpenAL
 context.

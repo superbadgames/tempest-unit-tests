@@ -5,9 +5,8 @@
 #include <Engine/Atom.h>
 #include <Engine/GameObject3D.h>
 #include <Engine/Vector4.h>
-#include <Engine/Vertex.h>
+#include <Engine/Vertex.hpp>
 #include <Engine/Color.h>
-#include <Engine/Vertex.h>
 #include <Engine/Timer.h>
 #include <Engine/OpenGLGameWindow.h>
 
