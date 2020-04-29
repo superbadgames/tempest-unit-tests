@@ -10,6 +10,7 @@ Written by Maxwell Miller
 #pragma once
 
 //=====Engine includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/Engine.h>
 #include <Engine/LevelManager.h>
@@ -35,39 +36,39 @@ namespace TM = TempestMath;
 
 namespace Boxes
 {
-	class Ballistics : public TE::Level
-	{
-	public:
+    class Ballistics : public TE::Level
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-		Ballistics(void);
-		~Ballistics(void);		
+        Ballistics(void);
+        ~Ballistics(void);		
 
 //==========================================================================================================================
 //
 //Virtual Functions 
 //
 //==========================================================================================================================		
-		void v_Init(void) final;
+        void v_Init(void) final;
 
-		void v_Update(void) final;
+        void v_Update(void) final;
 
-	private:
-		void _InitPool(void);
+    private:
+        void _InitPool(void);
 
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================		
-		U32									_poolSize;
-		ProjectileType			  			_activeProjectileType;
-		TE::Text 							_levelTitle;
-		p_Cannon							_cannon;
-		TP::p_GravityForce					p_gravityForce;
-	};
-	typedef shared_ptr<Ballistics> p_Ballistics;
+        U32									_poolSize;
+        ProjectileType			  			_activeProjectileType;
+        TE::Text 							_levelTitle;
+        p_Cannon							_cannon;
+        TP::p_GravityForce					p_gravityForce;
+    };
+    typedef shared_ptr<Ballistics> p_Ballistics;
 }//end namespace

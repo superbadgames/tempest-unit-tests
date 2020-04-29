@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
 #include <Engine/Texture.h>
@@ -18,33 +19,33 @@ namespace TM = TempestMath;
 
 namespace Boxes
 {
-	class TiledTest : public TE::Level
-	{
-	public:
-		//==========================================================================================================================
-		//
-		//Constructors	 	
-		//
-		//==========================================================================================================================
-		TiledTest(void);
+    class TiledTest : public TE::Level
+    {
+    public:
+        //==========================================================================================================================
+        //
+        //Constructors	 	
+        //
+        //==========================================================================================================================
+        TiledTest(void);
 
-		~TiledTest(void);
+        ~TiledTest(void);
 
-		//==========================================================================================================================
-		//
-		//Functions
-		//
-		//==========================================================================================================================
-		void v_Init(void)final;
-		
-		void v_Update(void) final;
+        //==========================================================================================================================
+        //
+        //Functions
+        //
+        //==========================================================================================================================
+        void v_Init(void)final;
+        
+        void v_Update(void) final;
 
-		void v_Enter(void) final
-		{
-			
-			ActivateBackgroundColor();
-		}
+        void v_Enter(void) final
+        {
+            
+            ActivateBackgroundColor();
+        }
 
-	};//end Class
-	typedef shared_ptr<TiledTest> p_TiledTest;
+    };//end Class
+    typedef shared_ptr<TiledTest> p_TiledTest;
 }

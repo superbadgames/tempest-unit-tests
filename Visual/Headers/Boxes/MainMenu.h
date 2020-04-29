@@ -10,6 +10,7 @@ Written by Maxwell Miller
 #pragma once
 
 //=====Engine includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/LevelManager.h>
 #include <Engine/OpenGLGameWindow.h>

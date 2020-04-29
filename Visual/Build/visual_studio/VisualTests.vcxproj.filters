@@ -76,6 +76,9 @@
     <ClCompile Include="..\..\Implementations\DirectXTests.cpp">
       <Filter>Source Files\DirextXTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h">
@@ -116,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\DirectXTests.h">
       <Filter>Source Files\DirextXTests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\stdafx.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

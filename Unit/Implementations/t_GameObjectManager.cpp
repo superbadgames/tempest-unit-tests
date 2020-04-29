@@ -35,6 +35,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>

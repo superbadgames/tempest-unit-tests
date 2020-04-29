@@ -35,6 +35,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
@@ -48,136 +49,136 @@ namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(RandomInt_tests)
 {
-	TM::Random gen { };
+    TM::Random gen { };
 
-	S32 a = gen.RandomInt(0, 1000);
-	BOOST_CHECK_GE(a, 0);
-	BOOST_CHECK_LE(a, 1000);
+    S32 a = gen.RandomInt(0, 1000);
+    BOOST_CHECK_GE(a, 0);
+    BOOST_CHECK_LE(a, 1000);
 
-	a = gen.RandomInt(1, 10);
-	BOOST_CHECK_GE(a, 1);
-	BOOST_CHECK_LE(a, 10);
+    a = gen.RandomInt(1, 10);
+    BOOST_CHECK_GE(a, 1);
+    BOOST_CHECK_LE(a, 10);
 
-	a = gen.RandomInt(5, 10);
-	BOOST_CHECK_GE(a, 5);
-	BOOST_CHECK_LE(a, 10);
+    a = gen.RandomInt(5, 10);
+    BOOST_CHECK_GE(a, 5);
+    BOOST_CHECK_LE(a, 10);
 }
 
 BOOST_AUTO_TEST_CASE(RandomLong_tests)
 {
-	TM::Random gen { };
+    TM::Random gen { };
 
-	S64 a = gen.RandomLong(0, 200);
-	BOOST_CHECK_GE(a, 0);
-	BOOST_CHECK_LE(a, 200);
+    S64 a = gen.RandomLong(0, 200);
+    BOOST_CHECK_GE(a, 0);
+    BOOST_CHECK_LE(a, 200);
 
-	a = gen.RandomLong(1000, 100000);
-	BOOST_CHECK_GE(a, 1000);
-	BOOST_CHECK_LE(a, 100000);
+    a = gen.RandomLong(1000, 100000);
+    BOOST_CHECK_GE(a, 1000);
+    BOOST_CHECK_LE(a, 100000);
 
-	a = gen.RandomLong(50000, 100000);
-	BOOST_CHECK_GE(a, 50000);
-	BOOST_CHECK_LE(a, 100000);
+    a = gen.RandomLong(50000, 100000);
+    BOOST_CHECK_GE(a, 50000);
+    BOOST_CHECK_LE(a, 100000);
 }
 
 BOOST_AUTO_TEST_CASE(RandomFloat_tests)
 {
-	TM::Random gen { };
+    TM::Random gen { };
 
-	F32 a = gen.RandomFloat(-10.0f, 10.0f);
-	BOOST_CHECK_GE(a, -10.0f);
-	BOOST_CHECK_LE(a, 10.0f);
+    F32 a = gen.RandomFloat(-10.0f, 10.0f);
+    BOOST_CHECK_GE(a, -10.0f);
+    BOOST_CHECK_LE(a, 10.0f);
 
-	a = gen.RandomFloat(5.0f, 50.0f);
-	BOOST_CHECK_GE(a, 5.0f);
-	BOOST_CHECK_LE(a, 50.0f);
+    a = gen.RandomFloat(5.0f, 50.0f);
+    BOOST_CHECK_GE(a, 5.0f);
+    BOOST_CHECK_LE(a, 50.0f);
 
-	a = gen.RandomFloat(-1000.0f, 1000.0f);
-	BOOST_CHECK_GE(a, -1000.0f);
-	BOOST_CHECK_LE(a, 1000.0f);
+    a = gen.RandomFloat(-1000.0f, 1000.0f);
+    BOOST_CHECK_GE(a, -1000.0f);
+    BOOST_CHECK_LE(a, 1000.0f);
 
-	a = gen.RandomFloat(0.25f, 0.5f);
-	BOOST_CHECK_GE(a, 0.25f);
-	BOOST_CHECK_LE(a, 0.5f);
+    a = gen.RandomFloat(0.25f, 0.5f);
+    BOOST_CHECK_GE(a, 0.25f);
+    BOOST_CHECK_LE(a, 0.5f);
 }
 
 BOOST_AUTO_TEST_CASE(RandomDouble_tests)
 {
-	TM::Random gen { };
+    TM::Random gen { };
 
-	F64 a = gen.RandomDouble(-10.0f, 10.0f);
-	BOOST_CHECK_GE(a, -10.0f);
-	BOOST_CHECK_LE(a, 10.0f);
+    F64 a = gen.RandomDouble(-10.0f, 10.0f);
+    BOOST_CHECK_GE(a, -10.0f);
+    BOOST_CHECK_LE(a, 10.0f);
 
-	a = gen.RandomDouble(5.0f, 50.0f);
-	BOOST_CHECK_GE(a, 5.0f);
-	BOOST_CHECK_LE(a, 50.0f);
+    a = gen.RandomDouble(5.0f, 50.0f);
+    BOOST_CHECK_GE(a, 5.0f);
+    BOOST_CHECK_LE(a, 50.0f);
 
-	a = gen.RandomDouble(-1000.0f, 1000.0f);
-	BOOST_CHECK_GE(a, -1000.0f);
-	BOOST_CHECK_LE(a, 1000.0f);
+    a = gen.RandomDouble(-1000.0f, 1000.0f);
+    BOOST_CHECK_GE(a, -1000.0f);
+    BOOST_CHECK_LE(a, 1000.0f);
 
-	a = gen.RandomDouble(0.25f, 0.5f);
-	BOOST_CHECK_GE(a, 0.25f);
-	BOOST_CHECK_LE(a, 0.5f);
+    a = gen.RandomDouble(0.25f, 0.5f);
+    BOOST_CHECK_GE(a, 0.25f);
+    BOOST_CHECK_LE(a, 0.5f);
 }
 
 BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 {
-	TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
+    TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
-	BOOST_CHECK_GE(a.x, 0.0f);
-	BOOST_CHECK_LE(a.x, 1.0f);
-	BOOST_CHECK_GE(a.y, 0.0f);
-	BOOST_CHECK_LE(a.y, 1.0f);
+    BOOST_CHECK_GE(a.x, 0.0f);
+    BOOST_CHECK_LE(a.x, 1.0f);
+    BOOST_CHECK_GE(a.y, 0.0f);
+    BOOST_CHECK_LE(a.y, 1.0f);
 
-	a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
+    a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
-	BOOST_CHECK_GE(a.x, 10.0f);
-	BOOST_CHECK_LE(a.x, 100.0f);
-	BOOST_CHECK_GE(a.y, 10.0f);
-	BOOST_CHECK_LE(a.y, 100.0f);
+    BOOST_CHECK_GE(a.x, 10.0f);
+    BOOST_CHECK_LE(a.x, 100.0f);
+    BOOST_CHECK_GE(a.y, 10.0f);
+    BOOST_CHECK_LE(a.y, 100.0f);
 
-	TM::Vector4 b = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
+    TM::Vector4 b = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
-	BOOST_CHECK_GE(b.x, 0.0f);
-	BOOST_CHECK_LE(b.x, 1.0f);
-	BOOST_CHECK_GE(b.y, 0.0f);
-	BOOST_CHECK_LE(b.y, 1.0f);
-	BOOST_CHECK_GE(b.z, 0.0f);
-	BOOST_CHECK_LE(b.z, 1.0f);
+    BOOST_CHECK_GE(b.x, 0.0f);
+    BOOST_CHECK_LE(b.x, 1.0f);
+    BOOST_CHECK_GE(b.y, 0.0f);
+    BOOST_CHECK_LE(b.y, 1.0f);
+    BOOST_CHECK_GE(b.z, 0.0f);
+    BOOST_CHECK_LE(b.z, 1.0f);
 
-	b = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
+    b = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
-	BOOST_CHECK_GE(b.x, 10.0f);
-	BOOST_CHECK_LE(b.x, 100.0f);
-	BOOST_CHECK_GE(b.y, 10.0f);
-	BOOST_CHECK_LE(b.y, 100.0f);
-	BOOST_CHECK_GE(b.z, 10.0f);
-	BOOST_CHECK_LE(b.z, 100.0f);
+    BOOST_CHECK_GE(b.x, 10.0f);
+    BOOST_CHECK_LE(b.x, 100.0f);
+    BOOST_CHECK_GE(b.y, 10.0f);
+    BOOST_CHECK_LE(b.y, 100.0f);
+    BOOST_CHECK_GE(b.z, 10.0f);
+    BOOST_CHECK_LE(b.z, 100.0f);
 }
 
 BOOST_AUTO_TEST_CASE(RandomQuaternion_tests)
 {
-	TM::Quaternion a = TM::Random::Instance()->RandomQuaternion(0.0f, 1.0f);
+    TM::Quaternion a = TM::Random::Instance()->RandomQuaternion(0.0f, 1.0f);
 
-	BOOST_CHECK_GE(a.x, 0.0f);
-	BOOST_CHECK_LE(a.x, 1.0f);
-	BOOST_CHECK_GE(a.y, 0.0f);
-	BOOST_CHECK_LE(a.y, 1.0f);
-	BOOST_CHECK_GE(a.z, 0.0f);
-	BOOST_CHECK_LE(a.z, 1.0f);
-	BOOST_CHECK_GE(a.x, 0.0f);
-	BOOST_CHECK_LE(a.x, 1.0f);
+    BOOST_CHECK_GE(a.x, 0.0f);
+    BOOST_CHECK_LE(a.x, 1.0f);
+    BOOST_CHECK_GE(a.y, 0.0f);
+    BOOST_CHECK_LE(a.y, 1.0f);
+    BOOST_CHECK_GE(a.z, 0.0f);
+    BOOST_CHECK_LE(a.z, 1.0f);
+    BOOST_CHECK_GE(a.x, 0.0f);
+    BOOST_CHECK_LE(a.x, 1.0f);
 
-	a = TM::Random::Instance()->RandomQuaternion(10.0f, 100.0f);
+    a = TM::Random::Instance()->RandomQuaternion(10.0f, 100.0f);
 
-	BOOST_CHECK_GE(a.x, 10.0f);
-	BOOST_CHECK_LE(a.x, 100.0f);
-	BOOST_CHECK_GE(a.y, 10.0f);
-	BOOST_CHECK_LE(a.y, 100.0f);
-	BOOST_CHECK_GE(a.z, 10.0f);
-	BOOST_CHECK_LE(a.z, 100.0f);
-	BOOST_CHECK_GE(a.x, 10.0f);
-	BOOST_CHECK_LE(a.x, 100.0f);
+    BOOST_CHECK_GE(a.x, 10.0f);
+    BOOST_CHECK_LE(a.x, 100.0f);
+    BOOST_CHECK_GE(a.y, 10.0f);
+    BOOST_CHECK_LE(a.y, 100.0f);
+    BOOST_CHECK_GE(a.z, 10.0f);
+    BOOST_CHECK_LE(a.z, 100.0f);
+    BOOST_CHECK_GE(a.x, 10.0f);
+    BOOST_CHECK_LE(a.x, 100.0f);
 }

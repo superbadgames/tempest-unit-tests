@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include <Boxes/MovingBoxes.h>
-#include <iostream>
 
 using namespace Boxes;
 

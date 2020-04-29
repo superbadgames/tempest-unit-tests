@@ -9,6 +9,7 @@ Written by Maxwell Miller
 #pragma once
 
 //Killer1 includes
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/LevelManager.h>
 #include <Engine/Engine.h>

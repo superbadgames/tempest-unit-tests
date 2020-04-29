@@ -35,6 +35,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/Color.h>
@@ -43,64 +44,64 @@ namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(ColorDefaultConstructorAndAccessors)
 {
-	TE::Color c {};
+    TE::Color c {};
 
-	BOOST_CHECK_EQUAL(c[0], 0.0f);
-	BOOST_CHECK_EQUAL(c[1], 0.0f);
-	BOOST_CHECK_EQUAL(c[2], 0.0f);
-	BOOST_CHECK_EQUAL(c[3], 1.0f);
+    BOOST_CHECK_EQUAL(c[0], 0.0f);
+    BOOST_CHECK_EQUAL(c[1], 0.0f);
+    BOOST_CHECK_EQUAL(c[2], 0.0f);
+    BOOST_CHECK_EQUAL(c[3], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ColorSingleVersionConstructor)
 {
-	TE::Color c {1.0f};
+    TE::Color c {1.0f};
 
-	BOOST_CHECK_EQUAL(c[0], 1.0f);
-	BOOST_CHECK_EQUAL(c[1], 1.0f);
-	BOOST_CHECK_EQUAL(c[2], 1.0f);
-	BOOST_CHECK_EQUAL(c[3], 1.0f);
+    BOOST_CHECK_EQUAL(c[0], 1.0f);
+    BOOST_CHECK_EQUAL(c[1], 1.0f);
+    BOOST_CHECK_EQUAL(c[2], 1.0f);
+    BOOST_CHECK_EQUAL(c[3], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ColorTripleVersionConstructor)
 {
-	TE::Color c {0.25f, 0.5f, 0.75f};
+    TE::Color c {0.25f, 0.5f, 0.75f};
 
-	BOOST_CHECK_EQUAL(c[0], 0.25f);
-	BOOST_CHECK_EQUAL(c[1], 0.5f);
-	BOOST_CHECK_EQUAL(c[2], 0.75f);
-	BOOST_CHECK_EQUAL(c[3], 1.0f);
+    BOOST_CHECK_EQUAL(c[0], 0.25f);
+    BOOST_CHECK_EQUAL(c[1], 0.5f);
+    BOOST_CHECK_EQUAL(c[2], 0.75f);
+    BOOST_CHECK_EQUAL(c[3], 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ColorQuadVersionConstructor)
 {
-	TE::Color c {0.25f, 0.5f, 0.75f, 0.0f};
+    TE::Color c {0.25f, 0.5f, 0.75f, 0.0f};
 
-	BOOST_CHECK_EQUAL(c[0], 0.25f);
-	BOOST_CHECK_EQUAL(c[1], 0.5f);
-	BOOST_CHECK_EQUAL(c[2], 0.75f);
-	BOOST_CHECK_EQUAL(c[3], 0.0f);
+    BOOST_CHECK_EQUAL(c[0], 0.25f);
+    BOOST_CHECK_EQUAL(c[1], 0.5f);
+    BOOST_CHECK_EQUAL(c[2], 0.75f);
+    BOOST_CHECK_EQUAL(c[3], 0.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ColorCopyConstructor)
 {
-	TE::Color col1 {0.30f, 0.66f, 0.90f, 0.1f};
+    TE::Color col1 {0.30f, 0.66f, 0.90f, 0.1f};
 
-	TE::Color col2(col1);
+    TE::Color col2(col1);
 
-	BOOST_CHECK_EQUAL(col2[0], 0.30f);
-	BOOST_CHECK_EQUAL(col2[1], 0.66f);
-	BOOST_CHECK_EQUAL(col2[2], 0.90f);
-	BOOST_CHECK_EQUAL(col2[3], 0.1f);
+    BOOST_CHECK_EQUAL(col2[0], 0.30f);
+    BOOST_CHECK_EQUAL(col2[1], 0.66f);
+    BOOST_CHECK_EQUAL(col2[2], 0.90f);
+    BOOST_CHECK_EQUAL(col2[3], 0.1f);
 }
 
 BOOST_AUTO_TEST_CASE(ColorCopyOperator)
 {
-	TE::Color col1 {0.35f, 0.8f, 0.2f, 0.3f};
+    TE::Color col1 {0.35f, 0.8f, 0.2f, 0.3f};
 
-	TE::Color col2 = col1;
+    TE::Color col2 = col1;
 
-	BOOST_CHECK_EQUAL(col2[0], 0.35f);
-	BOOST_CHECK_EQUAL(col2[1], 0.8f);
-	BOOST_CHECK_EQUAL(col2[2], 0.2f);
-	BOOST_CHECK_EQUAL(col2[3], 0.3f);
+    BOOST_CHECK_EQUAL(col2[0], 0.35f);
+    BOOST_CHECK_EQUAL(col2[1], 0.8f);
+    BOOST_CHECK_EQUAL(col2[2], 0.2f);
+    BOOST_CHECK_EQUAL(col2[3], 0.3f);
 }

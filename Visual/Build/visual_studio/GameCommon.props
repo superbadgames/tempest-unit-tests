@@ -6,6 +6,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\Tempest\Headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\..\Tempest\Bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

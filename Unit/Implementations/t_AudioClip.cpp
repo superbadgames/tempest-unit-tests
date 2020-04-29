@@ -32,6 +32,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
@@ -44,17 +45,17 @@ namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioClipConstructor)
 {
-	TE::AudioClip clip {};
+    TE::AudioClip clip {};
 
-	BOOST_CHECK_EQUAL(clip.GetBufferID(), 0);
+    BOOST_CHECK_EQUAL(clip.GetBufferID(), 0);
 }
 
 BOOST_AUTO_TEST_CASE(AudioClipLoadWAV)
 {
-	TE::AudioClip clip {};
-	
-	clip.LoadWAV2("./Assets/Komiku_04_Skate.wav");
+    TE::AudioClip clip {};
+    
+    clip.LoadWAV2("./Assets/Komiku_04_Skate.wav");
 
-	BOOST_CHECK_GT(static_cast<S32>(clip.GetBufferID()), 1);
+    BOOST_CHECK_GT(static_cast<S32>(clip.GetBufferID()), 1);
 }
 

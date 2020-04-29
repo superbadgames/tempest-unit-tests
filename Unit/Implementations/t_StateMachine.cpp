@@ -32,6 +32,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
@@ -46,38 +47,38 @@ namespace TE = Tempest;
 class StateTestObj : public TE::GameObject2D
 {
 public:
-	StateTestObj(void)
-		:
-		_stateMachine(this),
-		_executeIncrement(0)
-	{  }
+    StateTestObj(void)
+        :
+        _stateMachine(this),
+        _executeIncrement(0)
+    {  }
 
-	~StateTestObj(void)
-	{  }
+    ~StateTestObj(void)
+    {  }
 
-	void v_Update(void)
-	{
-		_stateMachine.Update();
-	}
+    void v_Update(void)
+    {
+        _stateMachine.Update();
+    }
 
-	void SetState(TE::State<StateTestObj>* state)
-	{
-		_stateMachine.ChangeState(state);
-	}
+    void SetState(TE::State<StateTestObj>* state)
+    {
+        _stateMachine.ChangeState(state);
+    }
 
-	void Increment(U32 inc)
-	{
-		_executeIncrement += inc;
-	}
+    void Increment(U32 inc)
+    {
+        _executeIncrement += inc;
+    }
 
-	U32 GetIncrement(void) const
-	{
-		return _executeIncrement;
-	}
+    U32 GetIncrement(void) const
+    {
+        return _executeIncrement;
+    }
 
 private:
-	TE::StateMachine<StateTestObj> _stateMachine;
-	U32 _executeIncrement;
+    TE::StateMachine<StateTestObj> _stateMachine;
+    U32 _executeIncrement;
 };
 typedef shared_ptr<StateTestObj> p_StateTestObj;
 
@@ -88,46 +89,46 @@ typedef shared_ptr<StateTestObj> p_StateTestObj;
 class IncrementOneState : public TE::State<StateTestObj>
 {
 public:
-	IncrementOneState(void)
-		:
-		_enterState(false)
-	{  }
+    IncrementOneState(void)
+        :
+        _enterState(false)
+    {  }
 
-	~IncrementOneState(void) final
-	{  }
+    ~IncrementOneState(void) final
+    {  }
 
-	static IncrementOneState* Instance(void)
-	{
-		if(_instance == nullptr)
-		{
-			_instance = new IncrementOneState();
-		}
-		return _instance;
-	}
-	
-	void v_Enter(StateTestObj* obj) final
-	{
-		_enterState = true;
-	}
+    static IncrementOneState* Instance(void)
+    {
+        if(_instance == nullptr)
+        {
+            _instance = new IncrementOneState();
+        }
+        return _instance;
+    }
+    
+    void v_Enter(StateTestObj* obj) final
+    {
+        _enterState = true;
+    }
 
-	void v_Execute(StateTestObj* obj) final
-	{
-		obj->Increment(1);
-	}
+    void v_Execute(StateTestObj* obj) final
+    {
+        obj->Increment(1);
+    }
 
-	void v_Exit(StateTestObj* obj) final
-	{
-		_enterState = false;
-	}
+    void v_Exit(StateTestObj* obj) final
+    {
+        _enterState = false;
+    }
 
-	bool GetEnterState(void) const
-	{
-		return _enterState;
-	}
+    bool GetEnterState(void) const
+    {
+        return _enterState;
+    }
 
 private:
-	static IncrementOneState* _instance;
-	bool _enterState;
+    static IncrementOneState* _instance;
+    bool _enterState;
 };
 
 IncrementOneState* IncrementOneState::_instance = nullptr;
@@ -138,46 +139,46 @@ IncrementOneState* IncrementOneState::_instance = nullptr;
 class IncrementTwoState : public TE::State<StateTestObj>
 {
 public:
-	IncrementTwoState(void)
-		:
-		_enterState(false)
-	{  }
+    IncrementTwoState(void)
+        :
+        _enterState(false)
+    {  }
 
-	~IncrementTwoState(void) final
-	{  }
+    ~IncrementTwoState(void) final
+    {  }
 
-	static IncrementTwoState* Instance(void)
-	{
-		if(_instance == nullptr)
-		{
-			_instance = new IncrementTwoState();
-		}
-		return _instance;
-	}
+    static IncrementTwoState* Instance(void)
+    {
+        if(_instance == nullptr)
+        {
+            _instance = new IncrementTwoState();
+        }
+        return _instance;
+    }
 
-	void v_Enter(StateTestObj* obj) final
-	{
-		_enterState = true;
-	}
+    void v_Enter(StateTestObj* obj) final
+    {
+        _enterState = true;
+    }
 
-	void v_Execute(StateTestObj* obj) final
-	{
-		obj->Increment(2);
-	}
+    void v_Execute(StateTestObj* obj) final
+    {
+        obj->Increment(2);
+    }
 
-	void v_Exit(StateTestObj* obj) final
-	{
-		_enterState = false;
-	}
+    void v_Exit(StateTestObj* obj) final
+    {
+        _enterState = false;
+    }
 
-	bool GetEnterState(void) const
-	{
-		return _enterState;
-	}
+    bool GetEnterState(void) const
+    {
+        return _enterState;
+    }
 
 private:
-	static IncrementTwoState* _instance;
-	bool _enterState;
+    static IncrementTwoState* _instance;
+    bool _enterState;
 };
 IncrementTwoState* IncrementTwoState::_instance = nullptr;
 
@@ -186,25 +187,25 @@ IncrementTwoState* IncrementTwoState::_instance = nullptr;
 //==========================================================================================================================
 BOOST_AUTO_TEST_CASE(StateMachineFirstGo)
 {
-	StateTestObj obj { };
+    StateTestObj obj { };
 
-	BOOST_CHECK_EQUAL(obj.GetIncrement(), 0);
-	BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), false);
+    BOOST_CHECK_EQUAL(obj.GetIncrement(), 0);
+    BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), false);
 
-	obj.SetState(IncrementOneState::Instance());
+    obj.SetState(IncrementOneState::Instance());
 
-	BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), true);
+    BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), true);
 
-	obj.v_Update();
-	
-	BOOST_CHECK_EQUAL(obj.GetIncrement(), 1);
-	
-	obj.SetState(IncrementTwoState::Instance());
+    obj.v_Update();
+    
+    BOOST_CHECK_EQUAL(obj.GetIncrement(), 1);
+    
+    obj.SetState(IncrementTwoState::Instance());
 
-	BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), false);
-	BOOST_CHECK_EQUAL(IncrementTwoState::Instance()->GetEnterState(), true);
+    BOOST_CHECK_EQUAL(IncrementOneState::Instance()->GetEnterState(), false);
+    BOOST_CHECK_EQUAL(IncrementTwoState::Instance()->GetEnterState(), true);
 
-	obj.v_Update();
+    obj.v_Update();
 
-	BOOST_CHECK_EQUAL(obj.GetIncrement(), 3);
+    BOOST_CHECK_EQUAL(obj.GetIncrement(), 3);
 }

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Boxes/ProjectFactory.h>
 
 using namespace Boxes;
@@ -16,10 +17,10 @@ p_ProjectFactory ProjectFactory::_instance = nullptr;
 
 p_ProjectFactory ProjectFactory::Instance(void)
 {
-	if(_instance == nullptr)
-	{
-		_instance = p_ProjectFactory(new ProjectFactory());
-	}
+    if(_instance == nullptr)
+    {
+        _instance = p_ProjectFactory(new ProjectFactory());
+    }
 
-	return _instance;
+    return _instance;
 }

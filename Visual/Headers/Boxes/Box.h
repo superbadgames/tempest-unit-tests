@@ -12,6 +12,7 @@ Written by Maxwell Miller
 #pragma once;
 
 //Killer1 Includes
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/Controller.h>
@@ -27,79 +28,79 @@ namespace TC = TempestCollisions;
 
 namespace Boxes
 {
-	class Box;
-	typedef shared_ptr<Box> p_Box;
+    class Box;
+    typedef shared_ptr<Box> p_Box;
 
-	class Box : public TE::GameObject2D
-	{
-	public:
+    class Box : public TE::GameObject2D
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
 
-		Box(void);
+        Box(void);
 
-		Box(const TM::Point2& pos, F32 width, F32 height);
-		
-		Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col);
+        Box(const TM::Point2& pos, F32 width, F32 height);
+        
+        Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col);
 
-		Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col, TE::p_Texture texture);
+        Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col, TE::p_Texture texture);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================		
-		void v_Update(void);
+        void v_Update(void);
 
-		inline bool OverlapCheck(const shared_ptr<Box> other)
-		{
-			return _boundingBox.TestCollision(other->GetBounding());
-		}
+        inline bool OverlapCheck(const shared_ptr<Box> other)
+        {
+            return _boundingBox.TestCollision(other->GetBounding());
+        }
 
-		void OnCollide(void);
+        void OnCollide(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		inline void SetSpeed(F32 s) 
-		{ 
-			_speed = s; 
-		}
+        inline void SetSpeed(F32 s) 
+        { 
+            _speed = s; 
+        }
 
-		inline F32 GetSpeed(void) const
-		{
-			return _speed;
-		}
+        inline F32 GetSpeed(void) const
+        {
+            return _speed;
+        }
 
-		inline void SetDirection(const TM::Vector2& dir)
-		{
-			_direction = dir;
-		}
+        inline void SetDirection(const TM::Vector2& dir)
+        {
+            _direction = dir;
+        }
 
-		inline void SetDirection(F32 x, F32 y)
-		{
-			_direction.x = x;
-			_direction.y = y;
-		}
+        inline void SetDirection(F32 x, F32 y)
+        {
+            _direction.x = x;
+            _direction.y = y;
+        }
 
-		inline const TM::Vector2& GetDirection(void) const
-		{
-			return _direction;
-		}
+        inline const TM::Vector2& GetDirection(void) const
+        {
+            return _direction;
+        }
 
-	private:
+    private:
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================		
-		F32  	  				_speed;
-		TM::Vector2 			_direction;
-	};
+        F32  	  				_speed;
+        TM::Vector2 			_direction;
+    };
 
 }//End namespace

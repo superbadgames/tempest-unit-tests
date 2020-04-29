@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Boxes/Box.h>
 
 using namespace Boxes;

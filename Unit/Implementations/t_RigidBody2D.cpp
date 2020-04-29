@@ -31,6 +31,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/RigidBody2D.h>
@@ -47,108 +48,108 @@ namespace TP =TempestPhysics;
 class RigidBody2DDefinedObj : public TE::GameObject2D
 {
 public:
-	RigidBody2DDefinedObj(void)
-	: p_body(nullptr)
-	{  }
+    RigidBody2DDefinedObj(void)
+    : p_body(nullptr)
+    {  }
 
-	~RigidBody2DDefinedObj(void)
-	{
-		p_body.reset();
-	}
+    ~RigidBody2DDefinedObj(void)
+    {
+        p_body.reset();
+    }
 
-	void v_Update(void) final
-	{  }
+    void v_Update(void) final
+    {  }
 
-	void SetBody(void)
-	{
-		p_body = TE::EngineFactory::Instance()->MakeRigidBody2D();
-		p_body->SetObject(this);
-	}
+    void SetBody(void)
+    {
+        p_body = TE::EngineFactory::Instance()->MakeRigidBody2D();
+        p_body->SetObject(this);
+    }
 
-	TP::p_RigidBody2D p_body;
+    TP::p_RigidBody2D p_body;
 };
 
 void IntegrateNTimes(RigidBody2DDefinedObj& obj, S32 n)
 {
-	for(S32 i = 0; i < n; ++i)
-	{
-		TM::Timer::Instance()->SingleStep();
-		obj.p_body->Integrate();
-		TE::ErrorManager::Instance()->DisplayErrors();
-	}
+    for(S32 i = 0; i < n; ++i)
+    {
+        TM::Timer::Instance()->SingleStep();
+        obj.p_body->Integrate();
+        TE::ErrorManager::Instance()->DisplayErrors();
+    }
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 {
-	TP::RigidBody2D body { };
+    TP::RigidBody2D body { };
 
-	BOOST_CHECK_EQUAL(body.GetActive(), true);
-	BOOST_CHECK_EQUAL(body.GetVelocity().x, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetVelocity().y, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetAcceleration().x, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetAcceleration().y, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetForces().x, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetForces().y, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetGravityForce().x, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetGravityForce().y, 0.0f);
-	BOOST_CHECK_EQUAL(body.GetInverseMass(), 1.0f);
-	BOOST_CHECK_EQUAL(body.GetMass(), 1.0f);
-	BOOST_CHECK_EQUAL(body.HasFiniteMass(), true);
-	BOOST_CHECK_EQUAL(body.GetLinearDamping(), 0.999f);
+    BOOST_CHECK_EQUAL(body.GetActive(), true);
+    BOOST_CHECK_EQUAL(body.GetVelocity().x, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetVelocity().y, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetAcceleration().x, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetAcceleration().y, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetForces().x, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetForces().y, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetGravityForce().x, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetGravityForce().y, 0.0f);
+    BOOST_CHECK_EQUAL(body.GetInverseMass(), 1.0f);
+    BOOST_CHECK_EQUAL(body.GetMass(), 1.0f);
+    BOOST_CHECK_EQUAL(body.HasFiniteMass(), true);
+    BOOST_CHECK_EQUAL(body.GetLinearDamping(), 0.999f);
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 {
-	RigidBody2DDefinedObj obj { };
-	obj.SetBody();
+    RigidBody2DDefinedObj obj { };
+    obj.SetBody();
 
-	BOOST_CHECK_NE(obj.p_body, nullptr);
+    BOOST_CHECK_NE(obj.p_body, nullptr);
 
-	obj.p_body->SetVelocity(1.0f, 1.0f);
-	obj.p_body->SetAcceleration(-0.25f, 0.0f);
-	obj.SetPosition(1.0f, 1.0f);
+    obj.p_body->SetVelocity(1.0f, 1.0f);
+    obj.p_body->SetAcceleration(-0.25f, 0.0f);
+    obj.SetPosition(1.0f, 1.0f);
 
-	IntegrateNTimes(obj, 100);
+    IntegrateNTimes(obj, 100);
 
-	BOOST_CHECK_GT(obj.GetPosition().x, 1.0f);
-	BOOST_CHECK_GT(obj.GetPosition().y, 1.0f);
+    BOOST_CHECK_GT(obj.GetPosition().x, 1.0f);
+    BOOST_CHECK_GT(obj.GetPosition().y, 1.0f);
 
-	BOOST_CHECK_LT(obj.p_body->GetVelocity().x, 100.0f);
-	//Damping will reduce, hence Less Than, not Equal
-	BOOST_CHECK_LT(obj.p_body->GetVelocity().y, 1.0f);
-	
-	BOOST_CHECK_EQUAL(obj.p_body->GetActive(), true);
+    BOOST_CHECK_LT(obj.p_body->GetVelocity().x, 100.0f);
+    //Damping will reduce, hence Less Than, not Equal
+    BOOST_CHECK_LT(obj.p_body->GetVelocity().y, 1.0f);
+    
+    BOOST_CHECK_EQUAL(obj.p_body->GetActive(), true);
 
-	obj.SetActive(false);
-	BOOST_CHECK_EQUAL(obj.p_body->GetActive(), false);
+    obj.SetActive(false);
+    BOOST_CHECK_EQUAL(obj.p_body->GetActive(), false);
 }
 
 
 BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)
 {
-	RigidBody2DDefinedObj obj { };
-	obj.SetBody();
-	obj.p_body->SetInverseMass(0.0f);
+    RigidBody2DDefinedObj obj { };
+    obj.SetBody();
+    obj.p_body->SetInverseMass(0.0f);
 
-	obj.SetPosition(15.0f, 12.0f);
-	obj.p_body->SetVelocity(1.0f, 1.0f);
+    obj.SetPosition(15.0f, 12.0f);
+    obj.p_body->SetVelocity(1.0f, 1.0f);
 
-	IntegrateNTimes(obj, 1000);
+    IntegrateNTimes(obj, 1000);
 
-	BOOST_CHECK_EQUAL(obj.GetPosition().x, 15.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().y, 12.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().x, 15.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().y, 12.0f);
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
 {
-	RigidBody2DDefinedObj obj { };
-	obj.SetBody();
+    RigidBody2DDefinedObj obj { };
+    obj.SetBody();
 
-	obj.p_body->SetVelocity(10.0f, 20.0f);
-	obj.p_body->SetLinearDamping(0.0f);
+    obj.p_body->SetVelocity(10.0f, 20.0f);
+    obj.p_body->SetLinearDamping(0.0f);
 
-	IntegrateNTimes(obj, 1000);
+    IntegrateNTimes(obj, 1000);
 
-	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().x, 0.0f);
-	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().y, 0.0f);
+    BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().x, 0.0f);
+    BOOST_CHECK_EQUAL(obj.p_body->GetVelocity().y, 0.0f);
 }

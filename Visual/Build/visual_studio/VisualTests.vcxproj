@@ -88,6 +88,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -96,6 +98,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,6 +110,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -120,6 +126,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -142,6 +150,12 @@
     <ClCompile Include="..\..\Implementations\ProjectFactory.cpp" />
     <ClCompile Include="..\..\Implementations\Projectile.cpp" />
     <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
+    <ClCompile Include="..\..\Implementations\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\TiledTest.cpp">
       <SubType>
       </SubType>
@@ -167,6 +181,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Game\Assets\Shaders\basic_model_fragment.glsl" />

@@ -35,6 +35,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/Timer.h>
@@ -45,14 +46,14 @@ namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(TimerDeltaAndTotalTimeUpdates)
 {
-	real startDelta = TM::Timer::Instance()->DeltaTime();
-	F64 startTotal = TM::Timer::Instance()->TotalTime();
+    real startDelta = TM::Timer::Instance()->DeltaTime();
+    F64 startTotal = TM::Timer::Instance()->TotalTime();
 
-	for(int i = 0; i < 100; ++i)
-	{
-		TM::Timer::Instance()->SingleStep();
-	}
+    for(int i = 0; i < 100; ++i)
+    {
+        TM::Timer::Instance()->SingleStep();
+    }
 
-	BOOST_CHECK_GT(TM::Timer::Instance()->DeltaTime(), 0.0);
-	BOOST_CHECK_GT(TM::Timer::Instance()->TotalTime(), startTotal);
+    BOOST_CHECK_GT(TM::Timer::Instance()->DeltaTime(), 0.0);
+    BOOST_CHECK_GT(TM::Timer::Instance()->TotalTime(), startTotal);
 }

@@ -96,6 +96,9 @@
     <ClCompile Include="..\..\Implementations\t_Event.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\stdafx.cpp">
+      <Filter>Source Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">
@@ -104,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h">
+      <Filter>Source Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\stdafx.h">
       <Filter>Source Code</Filter>
     </ClInclude>
   </ItemGroup>

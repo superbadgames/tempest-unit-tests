@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Boxes/DirectXTests.h>
 
 using namespace Boxes;

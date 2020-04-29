@@ -32,6 +32,7 @@ DEALINGS IN THE SOFTWARE.
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
+#include "stdafx.h"
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/BroadPhaseCollision.h>
@@ -45,7 +46,7 @@ namespace TM = TempestMath;
 
 BOOST_AUTO_TEST_CASE(BVH_Constructor)
 {
-	TC::Node<TC::BoundingSphere, TP::RigidBody2D> node;
+    TC::Node<TC::BoundingSphere, TP::RigidBody2D> node;
 
-	BOOST_CHECK_EQUAL(node.IsLeaf(), false);
+    BOOST_CHECK_EQUAL(node.IsLeaf(), false);
 }

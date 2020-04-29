@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Boxes/SplashScreen.h>
 
 using namespace Boxes;

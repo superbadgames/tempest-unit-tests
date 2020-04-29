@@ -16,6 +16,7 @@ Written by Maxwell Miller
 #pragma once
 
 //=====Killer2D includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject2D.h>

@@ -1,6 +1,7 @@
 #pragma once
 
 //Killer1 Includes
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/Controller.h>

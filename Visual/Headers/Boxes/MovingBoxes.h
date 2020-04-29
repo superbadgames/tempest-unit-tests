@@ -11,6 +11,7 @@ Written by Maxwell Miller
 #pragma once
 
 //Killer1 Includes
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/LevelManager.h>

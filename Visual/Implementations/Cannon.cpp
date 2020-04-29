@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Boxes/Cannon.h>
 
 using namespace Boxes;

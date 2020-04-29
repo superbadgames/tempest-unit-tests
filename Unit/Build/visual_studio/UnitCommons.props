@@ -11,6 +11,7 @@
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\Tempest\Headers\;$(ProjectDir)..\..\..\..\boost\boost_1_70_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <PreBuildEvent>
       <Command>xcopy /y/d "$(ProjectDir)..\..\..\..\Tempest\Bin\Tempest_$(PlatformName)_$(Configuration).dll" "$(OutDir)"
