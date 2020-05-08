@@ -35,6 +35,9 @@
     <Filter Include="Source Files\DirextXTests">
       <UniqueIdentifier>{f9ad6c02-1eb8-45a7-8d41-27b3e849de03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Levels">
+      <UniqueIdentifier>{7c61a2a2-97c4-447a-9a67-0e28d9263a0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Main.cpp">
@@ -46,17 +49,8 @@
     <ClCompile Include="..\..\Implementations\Box.cpp">
       <Filter>Source Files\MovingBoxes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Ballistics.cpp">
-      <Filter>Source Files\Ballistics</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Cannon.cpp">
       <Filter>Source Files\Ballistics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\SplashScreen.cpp">
-      <Filter>Source Files\SplashScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\MainMenu.cpp">
-      <Filter>Source Files\MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Projectile.cpp">
       <Filter>Source Files\Ballistics</Filter>
@@ -64,20 +58,11 @@
     <ClCompile Include="..\..\Implementations\Cube.cpp">
       <Filter>Source Files\3D_Demo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Demo3D.cpp">
-      <Filter>Source Files\3D_Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
-      <Filter>Source Files\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\TiledTest.cpp">
-      <Filter>Source Files\TiledTest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\DirectXTests.cpp">
-      <Filter>Source Files\DirextXTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\BoxesFactory.cpp">
+      <Filter>Source Files\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,17 +75,8 @@
     <ClInclude Include="..\..\Headers\Boxes\Box.h">
       <Filter>Source Files\MovingBoxes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\Ballistics.h">
-      <Filter>Source Files\Ballistics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\Cannon.h">
       <Filter>Source Files\Ballistics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h">
-      <Filter>Source Files\SplashScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\MainMenu.h">
-      <Filter>Source Files\MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\Projectile.h">
       <Filter>Source Files\Ballistics</Filter>
@@ -108,20 +84,11 @@
     <ClInclude Include="..\..\Headers\Boxes\Cube.h">
       <Filter>Source Files\3D_Demo</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\Demo3D.h">
-      <Filter>Source Files\3D_Demo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
-      <Filter>Source Files\Factory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\TiledTest.h">
-      <Filter>Source Files\TiledTest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\DirectXTests.h">
-      <Filter>Source Files\DirextXTests</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\stdafx.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\BoxesFactory.h">
+      <Filter>Source Files\Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,5 +164,10 @@
     <None Include="..\..\Game\Assets\Shaders\vertex_pass_through.glsl">
       <Filter>Assets\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\Game\Assets\Levels\moving_boxes.xml">
+      <Filter>Assets\Levels</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

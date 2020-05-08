@@ -135,52 +135,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\Ballistics.cpp" />
     <ClCompile Include="..\..\Implementations\Box.cpp" />
     <ClCompile Include="..\..\Implementations\Cannon.cpp" />
     <ClCompile Include="..\..\Implementations\Cube.cpp" />
-    <ClCompile Include="..\..\Implementations\Demo3D.cpp" />
-    <ClCompile Include="..\..\Implementations\DirectXTests.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Main.cpp" />
-    <ClCompile Include="..\..\Implementations\MainMenu.cpp" />
     <ClCompile Include="..\..\Implementations\MovingBoxes.cpp" />
-    <ClCompile Include="..\..\Implementations\ProjectFactory.cpp" />
+    <ClCompile Include="..\..\Implementations\BoxesFactory.cpp" />
     <ClCompile Include="..\..\Implementations\Projectile.cpp" />
-    <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\TiledTest.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Headers\Boxes\Ballistics.h" />
     <ClInclude Include="..\..\Headers\Boxes\Box.h" />
     <ClInclude Include="..\..\Headers\Boxes\Cannon.h" />
     <ClInclude Include="..\..\Headers\Boxes\Cube.h" />
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h" />
-    <ClInclude Include="..\..\Headers\Boxes\Demo3D.h" />
-    <ClInclude Include="..\..\Headers\Boxes\DirectXTests.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\MainMenu.h" />
     <ClInclude Include="..\..\Headers\Boxes\MovingBoxes.h" />
-    <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h" />
+    <ClInclude Include="..\..\Headers\Boxes\BoxesFactory.h" />
     <ClInclude Include="..\..\Headers\Boxes\Projectile.h" />
-    <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h" />
-    <ClInclude Include="..\..\Headers\Boxes\TiledTest.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +184,9 @@
     <None Include="..\..\Game\Assets\Shaders\sprite_vertex.glsl" />
     <None Include="..\..\Game\Assets\Shaders\sprite_vertex_shader_original.glsl" />
     <None Include="..\..\Game\Assets\Shaders\vertex_pass_through.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\Game\Assets\Levels\moving_boxes.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

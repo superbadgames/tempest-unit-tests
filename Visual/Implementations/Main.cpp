@@ -65,14 +65,15 @@ Written by Maxwell Miller
 namespace TE = Tempest;
 
 //=====Game Includes=====
-#include <Boxes/MainMenu.h>
-#include <Boxes/SplashScreen.h>
+#include <Boxes/BoxesFactory.h>
+//#include <Boxes/MainMenu.h>
+//#include <Boxes/SplashScreen.h>
 #include <Boxes/MovingBoxes.h>
-#include <Boxes/Ballistics.h>
-#include <Boxes/Demo3D.h>
-#include <Boxes/Box.h>
-#include <Boxes/TiledTest.h>
-#include <Boxes/DirectXTests.h>
+//#include <Boxes/Ballistics.h>
+//#include <Boxes/Demo3D.h>
+//#include <Boxes/Box.h>
+//#include <Boxes/TiledTest.h>
+//#include <Boxes/DirectXTests.h>
 
 using namespace Boxes;
 
@@ -156,15 +157,18 @@ int main(void)
     //shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
     //TE::Engine::Instance()->SetActiveLevel(splashScreen);
     
-    shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
+    /*shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
     mainMenu->v_Init();
     TE::LevelManager::Instance()->Add(mainMenu);
 
     p_SplashScreen splashScreen = make_shared<SplashScreen>();
-    splashScreen->v_Init();
+    splashScreen->v_Init();*/
 
     p_MovingBoxes boxes = make_shared<MovingBoxes>();
-    boxes->v_Init();
+    boxes->SetFactory(make_shared<BoxesFactory>());
+    boxes->v_Init("./Assets/Levels/moving_boxes.xml");
+
+    TE::ErrorManager::Instance()->DisplayErrors();
     
     //p_TiledTest level = make_shared<TiledTest>();
     //level->v_Init();
@@ -172,8 +176,8 @@ int main(void)
     //p_Demo3D level2 = make_shared<Demo3D>();
     //level2->v_Init();
 
-    p_DirectXTests directX = make_shared<DirectXTests>();
-    directX->v_Init();
+   /* p_DirectXTests directX = make_shared<DirectXTests>();
+    directX->v_Init();*/
 
     //TE::Engine::Instance()->SetActiveLevel(splashScreen);
     TE::Engine::Instance()->SetActiveLevel(boxes);

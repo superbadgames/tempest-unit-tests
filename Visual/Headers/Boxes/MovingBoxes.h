@@ -27,7 +27,7 @@ Written by Maxwell Miller
 
 #include <Boxes/Box.h>
 #include <Boxes/DataBases.h>
-#include <Boxes/ProjectFactory.h>
+#include <Boxes/BoxesFactory.h>
 
 #include <iostream>
 
@@ -39,40 +39,18 @@ namespace Boxes
     class MovingBoxes : public TE::Level 
     {
     public:
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
         MovingBoxes(void);
         
         ~MovingBoxes(void) final;
-
-//==========================================================================================================================
-//
-//Virtual functions
-//
-//==========================================================================================================================
-        void v_Init(void);
         
         void v_Update(void);
+		
+        //void CheckBoxEdge(p_Box b);
 
-//==========================================================================================================================
-//
-//MovingBoxes functions
-//
-//==========================================================================================================================		
-        void CheckBoxEdge(p_Box b);
+        //void CheckCollisions(void);
 
-        void CheckCollisions(void);
-
-    private:
-//==========================================================================================================================
-//
-//Members
-//
-//==========================================================================================================================		
-        F32 	 _left;
+    private:		
+       /* F32 	 _left;
         F32 	 _right;
         F32 	 _bottom;
         F32 	 _top;
@@ -83,7 +61,7 @@ namespace Boxes
         TE::Text _updateText;
         string   _message1;
         string   _message2;
-        p_Box 	 _activeBox;
+        p_Box 	 _activeBox;*/
     };
     typedef shared_ptr<MovingBoxes> p_MovingBoxes;
 }//End namespace

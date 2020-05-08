@@ -9,27 +9,27 @@ using namespace Boxes;
 //
 //=============================================================================
 MovingBoxes::MovingBoxes(void)
-:
-_left(0.0f),
-_right(0.0f), 
-_bottom(0.0f),
-_top(0.0f),
-_redbox(ProjectFactory::Instance()->MakeBox()),
-_bluebox(ProjectFactory::Instance()->MakeBox()),
-_greenbox(ProjectFactory::Instance()->MakeBox()),
-_levelTitle(),
-_updateText(),
-_message1("Message 1"),
-_message2("Message 2"),
-_activeBox(nullptr)
+//:
+//_left(0.0f),
+//_right(0.0f), 
+//_bottom(0.0f),
+//_top(0.0f),
+//_redbox(ProjectFactory::Instance()->MakeBox()),
+//_bluebox(ProjectFactory::Instance()->MakeBox()),
+//_greenbox(ProjectFactory::Instance()->MakeBox()),
+//_levelTitle(),
+//_updateText(),
+//_message1("Message 1"),
+//_message2("Message 2"),
+//_activeBox(nullptr)
 {  }
 
 MovingBoxes::~MovingBoxes(void) 
 {
-    _activeBox.reset();
-    _redbox.reset();
-    _bluebox.reset();
-    _greenbox.reset();
+    //_activeBox.reset();
+    //_redbox.reset();
+    //_bluebox.reset();
+    //_greenbox.reset();
 }
 
 //=============================================================================
@@ -37,51 +37,51 @@ MovingBoxes::~MovingBoxes(void)
 //InitLevel
 //
 //=============================================================================
-void MovingBoxes::v_Init(void) 
-{ 
-
-    Level::SetID(MOVING_BOXES_ID);
-    Level::SetWidth(TE::Engine::Instance()->GetScreenWidth());
-    Level::SetHeight(TE::Engine::Instance()->GetScreenHeight());
-    Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
-
-    DefaultInit();
-
-    F32 width = static_cast<F32>(TE::Engine::Instance()->GetScreenWidth());
-    F32 height = static_cast<F32>(TE::Engine::Instance()->GetScreenHeight());
-
-    _left = TE::Engine::Instance()->GetScreenLeft();
-    _right = TE::Engine::Instance()->GetScreenRight();
-    _bottom = TE::Engine::Instance()->GetScreenBottom();
-    _top = TE::Engine::Instance()->GetScreenTop();
-
-    _levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
-    _levelTitle.AddText("Moving Boxes");
-    _levelTitle.SetPosition(TM::Point2(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
-    Level::AddTextToLevel(_levelTitle);
-
-    _updateText.SetFont(TE::FontManager::Instance()->GetFont(100));
-    _updateText.AddText("Starting Text");
-    _updateText.SetPosition(TM::Point2(-_levelTitle.GetWidth(), _top - (_top * 0.25f)));
-    Level::AddTextToLevel(_updateText);
-
-    _redbox->SetPosition(0.0f, _top / 3.0f);
-    _redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
-    _redbox->SetScale(32.0f, 32.0f);
-    Level::AddObjectToLevel(_redbox);
-
-    _greenbox->SetPosition(_left / 3.0f, 0.0f);
-    _greenbox->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
-    _greenbox->SetScale(32.0f, 32.0f);
-    Level::AddObjectToLevel(_greenbox);
-
-    _bluebox->SetPosition(_right / 3.0f, 0.0f);
-    _bluebox->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
-    _bluebox->SetScale(32.0f, 32.0f);
-    Level::AddObjectToLevel(_bluebox);
-
-    _activeBox = _redbox;
-}
+//void MovingBoxes::v_Init(void) 
+//{ 
+//
+//    Level::SetID(MOVING_BOXES_ID);
+//    Level::SetWidth(TE::Engine::Instance()->GetScreenWidth());
+//    Level::SetHeight(TE::Engine::Instance()->GetScreenHeight());
+//    Level::SetBackgroundColor(TE::Color(0.2f, 0.2f, 0.2f));
+//
+//    DefaultInit();
+//
+//    F32 width = static_cast<F32>(TE::Engine::Instance()->GetScreenWidth());
+//    F32 height = static_cast<F32>(TE::Engine::Instance()->GetScreenHeight());
+//
+//    _left = TE::Engine::Instance()->GetScreenLeft();
+//    _right = TE::Engine::Instance()->GetScreenRight();
+//    _bottom = TE::Engine::Instance()->GetScreenBottom();
+//    _top = TE::Engine::Instance()->GetScreenTop();
+//
+//    _levelTitle.SetFont(TE::FontManager::Instance()->GetFont(100));
+//    _levelTitle.AddText("Moving Boxes");
+//    _levelTitle.SetPosition(TM::Point2(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
+//    Level::AddTextToLevel(_levelTitle);
+//
+//    _updateText.SetFont(TE::FontManager::Instance()->GetFont(100));
+//    _updateText.AddText("Starting Text");
+//    _updateText.SetPosition(TM::Point2(-_levelTitle.GetWidth(), _top - (_top * 0.25f)));
+//    Level::AddTextToLevel(_updateText);
+//
+//    _redbox->SetPosition(0.0f, _top / 3.0f);
+//    _redbox->SetTexture(TE::TextureManager::Instance()->GetTexture(100));
+//    _redbox->SetScale(32.0f, 32.0f);
+//    Level::AddObjectToLevel(_redbox);
+//
+//    _greenbox->SetPosition(_left / 3.0f, 0.0f);
+//    _greenbox->SetTexture(TE::TextureManager::Instance()->GetTexture(101));
+//    _greenbox->SetScale(32.0f, 32.0f);
+//    Level::AddObjectToLevel(_greenbox);
+//
+//    _bluebox->SetPosition(_right / 3.0f, 0.0f);
+//    _bluebox->SetTexture(TE::TextureManager::Instance()->GetTexture(102));
+//    _bluebox->SetScale(32.0f, 32.0f);
+//    Level::AddObjectToLevel(_bluebox);
+//
+//    _activeBox = _redbox;
+//}
 
 //=============================================================================
 //
@@ -95,11 +95,12 @@ void MovingBoxes::v_Update(void)
     if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
     { 
         TE::AudioManager::Instance()->StopSource(2);
-        TE::Engine::Instance()->SetActiveLevel(TE::LevelManager::Instance()->GetLevel(MAIN_MENU_ID));
+        //TE::Engine::Instance()->SetActiveLevel(TE::LevelManager::Instance()->GetLevel(MAIN_MENU_ID));
+        TE::Engine::Instance()->End();
         return;
     }
 
-    if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE)) 
+    /*if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE)) 
     { 
         _activeBox = _redbox;
     }
@@ -181,7 +182,7 @@ void MovingBoxes::v_Update(void)
     CheckBoxEdge(_greenbox);
     CheckBoxEdge(_bluebox);
 
-    CheckCollisions();
+    CheckCollisions();*/
 }//End update
 
 //==========================================================================================================================
@@ -189,49 +190,49 @@ void MovingBoxes::v_Update(void)
 //MovingBoxes functions
 //
 //==========================================================================================================================	
-void MovingBoxes::CheckBoxEdge(p_Box b)
-{
-    TM::Point2 tempPos = b->GetPosition();
-
-    //Righ/Left check
-    if(tempPos.x >= _right) 
-    {
-        tempPos.x = _left;
-    }
-    else if(tempPos.x <= _left) 
-    {
-        tempPos.x = _right;
-    }
-    
-    //Top/Bottom check
-    if(tempPos.y >= _top) 
-    {
-        tempPos.y = _bottom;
-    }
-    else if(tempPos.y <= _bottom) 
-    {
-        tempPos.y = _top;
-    }
-
-    b->SetPosition(tempPos);
-}
-
-void MovingBoxes::CheckCollisions(void)
-{
-
-    if(_redbox->OverlapCheck(_greenbox) || _redbox->OverlapCheck(_bluebox))
-    {
-        _redbox->OnCollide();
-    }
-
-    if(_greenbox->OverlapCheck(_redbox) || _greenbox->OverlapCheck(_bluebox))
-    {
-        _greenbox->OnCollide();
-    }
-
-    if(_bluebox->OverlapCheck(_redbox) || _bluebox->OverlapCheck(_greenbox))
-    {
-        _bluebox->OnCollide();
-    }
-
-}
+//void MovingBoxes::CheckBoxEdge(p_Box b)
+//{
+//    TM::Point2 tempPos = b->GetPosition();
+//
+//    //Righ/Left check
+//    if(tempPos.x >= _right) 
+//    {
+//        tempPos.x = _left;
+//    }
+//    else if(tempPos.x <= _left) 
+//    {
+//        tempPos.x = _right;
+//    }
+//    
+//    //Top/Bottom check
+//    if(tempPos.y >= _top) 
+//    {
+//        tempPos.y = _bottom;
+//    }
+//    else if(tempPos.y <= _bottom) 
+//    {
+//        tempPos.y = _top;
+//    }
+//
+//    b->SetPosition(tempPos);
+//}
+//
+//void MovingBoxes::CheckCollisions(void)
+//{
+//
+//    if(_redbox->OverlapCheck(_greenbox) || _redbox->OverlapCheck(_bluebox))
+//    {
+//        _redbox->OnCollide();
+//    }
+//
+//    if(_greenbox->OverlapCheck(_redbox) || _greenbox->OverlapCheck(_bluebox))
+//    {
+//        _greenbox->OnCollide();
+//    }
+//
+//    if(_bluebox->OverlapCheck(_redbox) || _bluebox->OverlapCheck(_greenbox))
+//    {
+//        _bluebox->OnCollide();
+//    }
+//
+//}
