@@ -39,14 +39,7 @@ namespace Boxes
 //Constructors
 //
 //==========================================================================================================================		
-
         Box(void);
-
-        Box(const TM::Point2& pos, F32 width, F32 height);
-        
-        Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col);
-
-        Box(const TM::Point2& pos, F32 width, F32 height, const TE::Color& col, TE::p_Texture texture);
 
 //==========================================================================================================================
 //

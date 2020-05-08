@@ -100,6 +100,8 @@ void MovingBoxes::v_Update(void)
         return;
     }
 
+    _DefaultUpdate();
+
     /*if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE)) 
     { 
         _activeBox = _redbox;
