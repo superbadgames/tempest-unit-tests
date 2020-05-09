@@ -33,67 +33,23 @@ namespace Boxes
 
     class Box : public TE::GameObject2D
     {
-    public:
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================		
+    public:		
         Box(void);
-
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================		
+		
         void v_Update(void);
 
-        inline bool OverlapCheck(const shared_ptr<Box> other)
-        {
-            return _boundingBox.TestCollision(other->GetBounding());
-        }
+        bool OverlapCheck(const shared_ptr<Box> other);
 
         void OnCollide(void);
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
-        inline void SetSpeed(F32 s) 
-        { 
-            _speed = s; 
-        }
+        void On(void);
 
-        inline F32 GetSpeed(void) const
-        {
-            return _speed;
-        }
+        void Off(void);
 
-        inline void SetDirection(const TM::Vector2& dir)
-        {
-            _direction = dir;
-        }
-
-        inline void SetDirection(F32 x, F32 y)
-        {
-            _direction.x = x;
-            _direction.y = y;
-        }
-
-        inline const TM::Vector2& GetDirection(void) const
-        {
-            return _direction;
-        }
-
-    private:
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================		
-        F32  	  				_speed;
-        TM::Vector2 			_direction;
+    private:		
+        bool _toggle;
+        F32	_speed;
+        TM::Vector2 _direction;
     };
 
 }//End namespace

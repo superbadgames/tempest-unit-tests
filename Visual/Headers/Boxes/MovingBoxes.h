@@ -42,7 +42,7 @@ namespace Boxes
         MovingBoxes(void);
         
         ~MovingBoxes(void) final;
-        
+
         void v_Update(void);
 		
         //void CheckBoxEdge(p_Box b);
@@ -50,18 +50,9 @@ namespace Boxes
         //void CheckCollisions(void);
 
     private:		
-       /* F32 	 _left;
-        F32 	 _right;
-        F32 	 _bottom;
-        F32 	 _top;
-        p_Box 	 _redbox;
-        p_Box 	 _bluebox;
-        p_Box 	 _greenbox;
-        TE::Text _levelTitle;
-        TE::Text _updateText;
-        string   _message1;
-        string   _message2;
-        p_Box 	 _activeBox;*/
+        U32 _redBoxID;
+        U32 _greenBoxID;
+        U32 _blueBoxID;
     };
     typedef shared_ptr<MovingBoxes> p_MovingBoxes;
 }//End namespace

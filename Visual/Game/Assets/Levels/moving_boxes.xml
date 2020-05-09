@@ -15,9 +15,9 @@
 -->    
     <objects>
         <dynamic>
-            <obj type="box" xpos="0.0" ypos="256.0" textureID="100" scale="1.0">Red</obj>
-            <obj type="box" xpos="341.33" ypos="0.0" textureID="101" scale="1.0">Green</obj>
-            <obj type="box" xpos="-341.33" ypos="0.0" textureID="102" scale="1.0">Blue</obj>
+            <obj type="box" name="red" xpos="0.0" ypos="256.0" textureID="100" scale="1.0">Red</obj>
+            <obj type="box" name="green" xpos="341.33" ypos="0.0" textureID="101" scale="1.0">Green</obj>
+            <obj type="box" name="blue" xpos="-341.33" ypos="0.0" textureID="102" scale="1.0">Blue</obj>
         </dynamic>
         <static>
         </static>
