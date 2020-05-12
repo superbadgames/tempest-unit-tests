@@ -42,6 +42,14 @@ namespace Boxes
 
         void OnCollide(void);
 
+        void CheckInputToggleOnOff(void);
+
+        void CheckDirectionalInput(void);
+
+        void UpdatePosition(void);
+        
+        void BorderCheck(void);
+
         void On(void);
 
         void Off(void);

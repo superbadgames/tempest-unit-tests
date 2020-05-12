@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <Boxes/Box.h>
+#include <iostream>
 
 using namespace Boxes;
 
@@ -14,6 +15,26 @@ Box::Box(void)
 }
 
 void Box::v_Update(void)
+{
+    CheckInputToggleOnOff();
+    CheckDirectionalInput();
+    UpdatePosition();
+    BorderCheck();
+    DefaultUpdate();
+}
+
+bool Box::OverlapCheck(const shared_ptr<Box> other)
+{
+    return _boundingBox.TestCollision(other->GetBounding());
+}
+
+void Box::OnCollide(void)
+{
+    AddPosition(-_direction * TM::Timer::Instance()->DeltaTime() * _speed);
+    _direction = 0.0f;
+}
+
+void Box::CheckInputToggleOnOff(void)
 {
     if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE))
     {
@@ -48,7 +69,10 @@ void Box::v_Update(void)
             Off();
         }
     }
-    
+}
+
+void Box::CheckDirectionalInput(void)
+{
     if(_toggle)
     {
         bool up = TE::Controller::Instance()->GetKeyDown(TE::UP_ARROW);
@@ -104,20 +128,33 @@ void Box::v_Update(void)
             _direction.Set(0.0f, 0.0f);
         }
     }
+}
+
+void Box::UpdatePosition(void)
+{
+    _position += _direction * TM::Timer::Instance()->DeltaTime() * _speed;
+}
+
+void Box::BorderCheck(void)
+{
+    std::cout << "x and right = " << _position.x << ":" << _level->GetRightBorder() << std::endl;;
+    if(_position.x >= static_cast<real>(_level->GetRightBorder()))
+    {
+        _position.x = static_cast<real>(_level->GetLeftBorder());
+    }
+    else if(_position.x <= static_cast<real>(_level->GetLeftBorder()))
+    {
+        _position.x = static_cast<real>(_level->GetRightBorder());
+    }
     
-    AddPosition(_direction * TM::Timer::Instance()->DeltaTime() * _speed);
-    DefaultUpdate();
-}
-
-bool Box::OverlapCheck(const shared_ptr<Box> other)
-{
-    return _boundingBox.TestCollision(other->GetBounding());
-}
-
-void Box::OnCollide(void)
-{
-    AddPosition(-_direction * TM::Timer::Instance()->DeltaTime() * _speed);
-    _direction = 0.0f;
+    if(_position.y >= static_cast<real>(_level->GetTopBorder()))
+    {
+        _position.y = static_cast<real>(_level->GetBottomBorder());
+    }
+    else if(_position.y <= static_cast<real>(_level->GetBottomBorder()))
+    {
+        _position.y = static_cast<real>(_level->GetTopBorder());
+    }
 }
 
 void Box::On(void)

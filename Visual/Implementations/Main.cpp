@@ -191,14 +191,15 @@ int main(void)
 
     while (TE::Engine::Instance()->Running()) 
     {
-        TE::Engine::Instance()->Update();
+        TE::Engine::Instance()->DisplayFPS();
         TE::Engine::Instance()->Render();
+        TE::Engine::Instance()->Update();
         
         if(TE::ErrorManager::Instance()->DisplayErrors())
         {
             TE::Engine::Instance()->End();
         }
 
-        TE::Engine::Instance()->DisplayFPS();
     }
+    TE::Engine::Instance()->ShutDown();
 }

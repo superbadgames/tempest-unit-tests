@@ -16,7 +16,9 @@ MovingBoxes::MovingBoxes(void)
 {  }
 
 MovingBoxes::~MovingBoxes(void) 
-{  }
+{
+    
+}
 
 
 void MovingBoxes::v_Update(void) 
@@ -34,9 +36,7 @@ void MovingBoxes::v_Update(void)
     _DefaultUpdate();
 
     /*
-    
-
-    
+      
 
     if(TE::Controller::Instance()->GetKeyDown(TE::U))
     {
