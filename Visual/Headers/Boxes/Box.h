@@ -40,7 +40,7 @@ namespace Boxes
 
         bool OverlapCheck(const shared_ptr<Box> other);
 
-        void OnCollide(void);
+        void v_OnCollide(U32 otherObjectID) final;
 
         void CheckInputToggleOnOff(void);
 

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include <Boxes/Box.h>
 #include <iostream>
-
 using namespace Boxes;
 
 
@@ -28,7 +27,7 @@ bool Box::OverlapCheck(const shared_ptr<Box> other)
     return _boundingBox.TestCollision(other->GetBounding());
 }
 
-void Box::OnCollide(void)
+void Box::v_OnCollide(U32 otherObjectID)
 {
     AddPosition(-_direction * TM::Timer::Instance()->DeltaTime() * _speed);
     _direction = 0.0f;
@@ -132,28 +131,27 @@ void Box::CheckDirectionalInput(void)
 
 void Box::UpdatePosition(void)
 {
-    _position += _direction * TM::Timer::Instance()->DeltaTime() * _speed;
+    AddPosition(_direction * TM::Timer::Instance()->DeltaTime() * _speed);
 }
 
 void Box::BorderCheck(void)
 {
-    std::cout << "x and right = " << _position.x << ":" << _level->GetRightBorder() << std::endl;;
-    if(_position.x >= static_cast<real>(_level->GetRightBorder()))
+    if(GetPosition().x >= static_cast<real>(_level->GetRightBorder()))
     {
-        _position.x = static_cast<real>(_level->GetLeftBorder());
+        SetPositionX(static_cast<real>(_level->GetLeftBorder()));
     }
-    else if(_position.x <= static_cast<real>(_level->GetLeftBorder()))
+    else if(GetPosition().x <= static_cast<real>(_level->GetLeftBorder()))
     {
-        _position.x = static_cast<real>(_level->GetRightBorder());
+        SetPositionX(static_cast<real>(_level->GetRightBorder()));
     }
     
-    if(_position.y >= static_cast<real>(_level->GetTopBorder()))
+    if(GetPosition().y >= static_cast<real>(_level->GetTopBorder()))
     {
-        _position.y = static_cast<real>(_level->GetBottomBorder());
+        SetPositionY(static_cast<real>(_level->GetBottomBorder()));
     }
-    else if(_position.y <= static_cast<real>(_level->GetBottomBorder()))
+    else if(GetPosition().y <= static_cast<real>(_level->GetBottomBorder()))
     {
-        _position.y = static_cast<real>(_level->GetTopBorder());
+        SetPositionY(static_cast<real>(_level->GetTopBorder()));
     }
 }
 

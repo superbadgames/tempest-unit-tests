@@ -16,9 +16,7 @@ MovingBoxes::MovingBoxes(void)
 {  }
 
 MovingBoxes::~MovingBoxes(void) 
-{
-    
-}
+{  }
 
 
 void MovingBoxes::v_Update(void) 
