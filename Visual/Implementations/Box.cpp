@@ -7,7 +7,8 @@ using namespace Boxes;
 Box::Box(void)
     :
     _toggle(false),
-    _speed(200.0f),
+    _speed(150.0f),
+    _collisionBuffer(10.0f),
     _direction(0.0f)
 {
     Init();
@@ -29,7 +30,14 @@ bool Box::OverlapCheck(const shared_ptr<Box> other)
 
 void Box::v_OnCollide(U32 otherObjectID)
 {
-    AddPosition(-_direction * TM::Timer::Instance()->DeltaTime() * _speed);
+    TE::p_GameObject2D otherObject = TE::GameObjectManager::Instance()->GetDynamicObject(otherObjectID);
+    if(otherObject != nullptr)
+    {
+        _direction = -_direction;
+        return;
+    }
+    
+    AddPosition(-_direction * _collisionBuffer);
     _direction = 0.0f;
 }
 

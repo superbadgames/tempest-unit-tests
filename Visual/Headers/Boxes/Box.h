@@ -57,6 +57,7 @@ namespace Boxes
     private:		
         bool _toggle;
         F32	_speed;
+        F32 _collisionBuffer;
         TM::Vector2 _direction;
     };
 

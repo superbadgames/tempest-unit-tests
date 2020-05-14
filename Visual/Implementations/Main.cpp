@@ -97,6 +97,7 @@ int main(void)
     TE::TextureManager::Instance()->LoadTexture(100, "./Assets/Textures/Boxes/red_box_32_32.png");
     TE::TextureManager::Instance()->LoadTexture(101, "./Assets/Textures/Boxes/green_box_32_32.png");
     TE::TextureManager::Instance()->LoadTexture(102, "./Assets/Textures/Boxes/blue_box_32_32.png");
+    TE::TextureManager::Instance()->LoadTexture(103, "./Assets/Textures/Environmental/brick_wall_v1.png");
     TE::TextureManager::Instance()->LoadTexture(300, "./Assets/Textures/Ballistics/cannon.png");
     TE::TextureManager::Instance()->LoadTexture(301, "./Assets/Textures/Ballistics/bullet_v2.png");
     TE::TextureManager::Instance()->LoadTexture(302, "./Assets/Textures/Ballistics/artillery_v1.png");

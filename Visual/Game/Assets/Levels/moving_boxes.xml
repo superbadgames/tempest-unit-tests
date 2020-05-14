@@ -15,11 +15,15 @@
 -->    
     <objects>
         <dynamic>
-            <obj type="box" name="red" xpos="0.0" ypos="256.0" textureID="100" scale="1.0">Red</obj>
-            <obj type="box" name="green" xpos="341.33" ypos="0.0" textureID="101" scale="1.0">Green</obj>
-            <obj type="box" name="blue" xpos="-341.33" ypos="0.0" textureID="102" scale="1.0">Blue</obj>
+            <obj type="box" name="red" xpos="0.0" ypos="256.0" textureID="100" scale="1.0"></obj>
+            <obj type="box" name="green" xpos="341.33" ypos="0.0" textureID="101" scale="1.0"></obj>
+            <obj type="box" name="blue" xpos="-341.33" ypos="0.0" textureID="102" scale="1.0"></obj>
         </dynamic>
         <static>
+            <obj name="wall_1" xpos="200.0" ypos="100.0" textureID="103" scale="2.0"></obj>
+            <obj name="wall_2" xpos="-300.0" ypos="300.0" textureID="103" scale="2.0"></obj>
+            <obj name="wall_3" xpos="-300.0" ypos="-300.0" textureID="103" scale="2.0"></obj>
+            <obj name="wall_4" xpos="300.0" ypos="-300.0" textureID="103" scale="2.0"></obj>
         </static>
     </objects>
 </level>
