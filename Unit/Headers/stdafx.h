@@ -29,7 +29,7 @@
 #include <Engine/GameWindow.h>
 #include <Engine/Font.h>
 #include <Engine/Keys.h>
-#include <Engine/Controller.h>
+#include <Engine/Input.h>
 
 #include <Engine/AudioClip.h>
 #include <Engine/AudioListener.h>

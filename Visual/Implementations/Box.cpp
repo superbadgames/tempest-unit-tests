@@ -43,7 +43,7 @@ void Box::v_OnCollide(U32 otherObjectID)
 
 void Box::CheckInputToggleOnOff(void)
 {
-    if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ONE))
+    if(TE::Input::Instance()->GetKeyDown(TE::Keys::ONE))
     {
         if(std::strcmp(_name.c_str(), "red") == 0)
         {
@@ -54,7 +54,7 @@ void Box::CheckInputToggleOnOff(void)
             Off();
         }
     }
-    else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::TWO)) 
+    else if(TE::Input::Instance()->GetKeyDown(TE::Keys::TWO)) 
     { 
         if(std::strcmp(_name.c_str(), "green") == 0)
         {
@@ -65,7 +65,7 @@ void Box::CheckInputToggleOnOff(void)
             Off();
         }
     }
-    else if(TE::Controller::Instance()->GetKeyDown(TE::Keys::THREE)) 
+    else if(TE::Input::Instance()->GetKeyDown(TE::Keys::THREE)) 
     { 
         if(std::strcmp(_name.c_str(), "blue") == 0)
         {
@@ -82,10 +82,10 @@ void Box::CheckDirectionalInput(void)
 {
     if(_toggle)
     {
-        bool up = TE::Controller::Instance()->GetKeyDown(TE::UP_ARROW);
-        bool down = TE::Controller::Instance()->GetKeyDown(TE::DOWN_ARROW);
-        bool left = TE::Controller::Instance()->GetKeyDown(TE::LEFT_ARROW);
-        bool right = TE::Controller::Instance()->GetKeyDown(TE::RIGHT_ARROW);
+        bool up = TE::Input::Instance()->GetKeyDown(TE::UP_ARROW);
+        bool down = TE::Input::Instance()->GetKeyDown(TE::DOWN_ARROW);
+        bool left = TE::Input::Instance()->GetKeyDown(TE::LEFT_ARROW);
+        bool right = TE::Input::Instance()->GetKeyDown(TE::RIGHT_ARROW);
 
         if(up)	  
         { 
@@ -121,16 +121,16 @@ void Box::CheckDirectionalInput(void)
             _direction.Set(-1.0f, -1.0f);
         }
 
-        if(TE::Controller::Instance()->GetKeyHeld(TE::E))
+        if(TE::Input::Instance()->GetKeyHeld(TE::E))
         {
             AddOrientation(1.0f);
         }
-        else if(TE::Controller::Instance()->GetKeyHeld(TE::Q))
+        else if(TE::Input::Instance()->GetKeyHeld(TE::Q))
         {
             AddOrientation(-1.0f);
         }
         
-        if(TE::Controller::Instance()->GetKeyDown(TE::SPACE))
+        if(TE::Input::Instance()->GetKeyDown(TE::SPACE))
         {
             _direction.Set(0.0f, 0.0f);
         }

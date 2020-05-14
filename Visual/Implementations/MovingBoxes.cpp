@@ -23,7 +23,7 @@ void MovingBoxes::v_Update(void)
 {	
     TE::AudioManager::Instance()->PlaySource(2);
     
-    if(TE::Controller::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
+    if(TE::Input::Instance()->GetKeyDown(TE::Keys::ESCAPE)) 
     { 
         TE::AudioManager::Instance()->StopSource(2);
         //TE::Engine::Instance()->SetActiveLevel(TE::LevelManager::Instance()->GetLevel(MAIN_MENU_ID));
@@ -36,7 +36,7 @@ void MovingBoxes::v_Update(void)
     /*
       
 
-    if(TE::Controller::Instance()->GetKeyDown(TE::U))
+    if(TE::Input::Instance()->GetKeyDown(TE::U))
     {
         if(_updateText.GetText() == _message1)
         {

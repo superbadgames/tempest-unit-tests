@@ -39,11 +39,11 @@ void Cannon::v_Update(void)
 
     if(yPos > _bottomBoundary && yPos < _topBoundary)
     {
-        if(TE::Controller::Instance()->GetKeyHeld(TE::W))
+        if(TE::Input::Instance()->GetKeyHeld(TE::W))
         {
             AddPosition(_upDirection * _movementSpeed * TM::Timer::Instance()->DeltaTime());
         }
-        else if(TE::Controller::Instance()->GetKeyHeld(TE::S))
+        else if(TE::Input::Instance()->GetKeyHeld(TE::S))
         {
             AddPosition(_downDirection * _movementSpeed * TM::Timer::Instance()->DeltaTime());
         }

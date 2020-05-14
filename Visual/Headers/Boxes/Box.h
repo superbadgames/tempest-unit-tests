@@ -15,7 +15,7 @@ Written by Maxwell Miller
 #include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
-#include <Engine/Controller.h>
+#include <Engine/Input.h>
 #include <Engine/Timer.h>
 #include <Engine/Vector2.h>
 #include <Engine/Point2.h>
