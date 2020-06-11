@@ -38,7 +38,6 @@ Written by Maxwell Miller
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
 #include <Engine/Vector4.h>
-#include <Engine/EngineFactory.h>
 
 namespace TP =TempestPhysics;
 namespace TM = TempestMath;

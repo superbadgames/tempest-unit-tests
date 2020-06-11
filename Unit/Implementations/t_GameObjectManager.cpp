@@ -74,20 +74,20 @@ BOOST_AUTO_TEST_CASE(GameObjectManagerAddRemoveGetGameObject)
     shared_ptr<GameObjectManagerDefineObj2D> obj3 = make_shared<GameObjectManagerDefineObj2D>();
     U32 id_3 = obj3->GetID();
 
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count2D(), 0);
+    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 0);
     
-    TE::GameObjectManager::Instance()->Add(obj1);
-    TE::GameObjectManager::Instance()->Add(obj2);
-    TE::GameObjectManager::Instance()->Add(obj3);
+    TE::GameObjectManager::Instance()->AddDynamicObject(obj1);
+    TE::GameObjectManager::Instance()->AddDynamicObject(obj2);
+    TE::GameObjectManager::Instance()->AddDynamicObject(obj3);
     
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count2D(), 3);
+    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 3);
 
-    TE::p_GameObject2D gotObj = TE::GameObjectManager::Instance()->GetGameObject2D(id_1);
+    TE::p_GameObject2D gotObj = TE::GameObjectManager::Instance()->GetDynamicObject(id_1);
 
     BOOST_CHECK_EQUAL(gotObj->GetID(), id_1);
     
-    TE::GameObjectManager::Instance()->Remove2D(id_2);
-    TE::GameObjectManager::Instance()->Remove2D(id_3);
+    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_2);
+    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_3);
 
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->Count2D(), 1);
+    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 1);
 }

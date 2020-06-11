@@ -37,7 +37,7 @@ Written by Maxwell Miller
 #include <Engine/RigidBody2D.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/Vector4.h>
-#include <Engine/EngineFactory.h>
+#include <Engine/Factory.h>
 #include <Engine/ErrorManager.h>
 
 namespace TE = Tempest;
@@ -62,7 +62,7 @@ public:
 
     void SetBody(void)
     {
-        p_body = TE::EngineFactory::Instance()->MakeRigidBody2D();
+        p_body = make_shared<TP::RigidBody2D>();
         p_body->SetObject(this);
     }
 
