@@ -49,103 +49,103 @@ Disabled until game object can be smarter
 class ForcesObject : public TE::GameObject
 {
 public:
-	ForcesObject(void)
-	: p_body2D(nullptr), p_body3D(nullptr)
-	{
-		GameObject::SetOrientation(1.0f);
-	}
+    ForcesObject(void)
+    : p_body2D(nullptr), p_body3D(nullptr)
+    {
+        GameObject::SetOrientation(1.0f);
+    }
 
-	~ForcesObject(void)
-	{
-		p_body2D.reset();
-		p_body3D.reset();
-	}
+    ~ForcesObject(void)
+    {
+        p_body2D.reset();
+        p_body3D.reset();
+    }
 
-	void v_Update(void) final
-	{  }
+    void v_Update(void) final
+    {  }
 
-	void SetBody2D(void)
-	{
-		p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
-		p_body2D->SetObject(this);
-	}
+    void SetBody2D(void)
+    {
+        p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
+        p_body2D->SetObject(this);
+    }
 
-	void SetBody3D(void)
-	{
-		p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
-		p_body3D->SetObject(this);
-	}
+    void SetBody3D(void)
+    {
+        p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
+        p_body3D->SetObject(this);
+    }
 
-	TP::p_RigidBody2D p_body2D;
-	TP::p_RigidBody3D p_body3D;
+    TP::p_RigidBody2D p_body2D;
+    TP::p_RigidBody3D p_body3D;
 };
 
 BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
 {
-	TP::GravityForce gravity { };
-	ForcesObject obj { };
-	obj.SetBody2D();
-	obj.SetPosition(0.0f, 20.0f, 0.0f);
+    TP::GravityForce gravity { };
+    ForcesObject obj { };
+    obj.SetBody2D();
+    obj.SetPosition(0.0f, 20.0f, 0.0f);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		gravity.v_UpdateForce(obj.p_body2D);
-		obj.p_body2D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        gravity.v_UpdateForce(obj.p_body2D);
+        obj.p_body2D->Integrate();
+    }
 
-	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+    BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
-	obj.SetPosition(20.0f, 0.0f, 0.0f);
-	obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
+    obj.SetPosition(20.0f, 0.0f, 0.0f);
+    obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
+    gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
 
-	for(int i = 0; i < 50; ++i)
-	{
-		gravity.v_UpdateForce(obj.p_body2D);
-		obj.p_body2D->Integrate();
-	}	
+    for(int i = 0; i < 50; ++i)
+    {
+        gravity.v_UpdateForce(obj.p_body2D);
+        obj.p_body2D->Integrate();
+    }	
 
-	BOOST_CHECK_LT(obj.GetPosition().x, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_LT(obj.GetPosition().x, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(GravityForceRigidBody3D)
 {
-	TP::GravityForce gravity { };
-	ForcesObject obj { };
-	obj.SetBody3D();
-	obj.SetPosition(0.0f, 20.0f, 0.0f);
+    TP::GravityForce gravity { };
+    ForcesObject obj { };
+    obj.SetBody3D();
+    obj.SetPosition(0.0f, 20.0f, 0.0f);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		gravity.v_UpdateForce(obj.p_body3D);
-		obj.p_body3D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        gravity.v_UpdateForce(obj.p_body3D);
+        obj.p_body3D->Integrate();
+    }
 
-	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+    BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
-	obj.SetPosition(20.0f, 0.0f, 0.0f);
-	obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
+    obj.SetPosition(20.0f, 0.0f, 0.0f);
+    obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
+    gravity.Set(TM::Vector4(-1.0f, 0.0f, 0.0f));
 
-	for(int i = 0; i < 50; ++i)
-	{
-		gravity.v_UpdateForce(obj.p_body3D);
-		obj.p_body3D->Integrate();
-	}	
+    for(int i = 0; i < 50; ++i)
+    {
+        gravity.v_UpdateForce(obj.p_body3D);
+        obj.p_body3D->Integrate();
+    }	
 
-	BOOST_CHECK_LT(obj.GetPosition().x, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_LT(obj.GetPosition().x, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 */

@@ -53,34 +53,34 @@ Disabled until gameobject can be smarter
 class TestLevel : public TE::Level
 {
 public:
-	TestLevel(void)
-	{
-		Level::SetCameraOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
-	}
+    TestLevel(void)
+    {
+        Level::SetCameraOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+    }
 
-	~TestLevel(void)
-	{  }
+    ~TestLevel(void)
+    {  }
 
-	void v_Init(void) final
-	{  }
+    void v_Init(void) final
+    {  }
 
-	void v_Update(void) final
-	{  }
+    void v_Update(void) final
+    {  }
 };
 
 class TestLevelDefinedGameObject : public TE::GameObject
 {
 public:
-	TestLevelDefinedGameObject(void)
-	{
-		GameObject::MakeSprite();
-	};
+    TestLevelDefinedGameObject(void)
+    {
+        GameObject::MakeSprite();
+    };
 
-	~TestLevelDefinedGameObject(void)
-	{  };
+    ~TestLevelDefinedGameObject(void)
+    {  };
 
-	void v_Update(void)
-	{  };
+    void v_Update(void)
+    {  };
 };
 
 //==========================================================================================================================
@@ -89,59 +89,59 @@ public:
 
 BOOST_AUTO_TEST_CASE(LevelSetAndGetDepthTests)
 {
-	TestLevel test { };
-	test.SetDepth(200);
-	test.SetNearBorder(-100);
-	test.SetFarBorder(100);
+    TestLevel test { };
+    test.SetDepth(200);
+    test.SetNearBorder(-100);
+    test.SetFarBorder(100);
 
-	BOOST_CHECK_EQUAL(test.GetDepth(), 200);
-	BOOST_CHECK_EQUAL(test.GetNearBorder(), -100);
-	BOOST_CHECK_EQUAL(test.GetFarBorder(), 100);
+    BOOST_CHECK_EQUAL(test.GetDepth(), 200);
+    BOOST_CHECK_EQUAL(test.GetNearBorder(), -100);
+    BOOST_CHECK_EQUAL(test.GetFarBorder(), 100);
 }
 
 BOOST_AUTO_TEST_CASE(LevelAddAndRemoveObjects)
 {
-	TestLevel* test = new TestLevel();
-	test->SetDepth(200);
-	test->SetNearBorder(-100);
-	test->SetFarBorder(100);
+    TestLevel* test = new TestLevel();
+    test->SetDepth(200);
+    test->SetNearBorder(-100);
+    test->SetFarBorder(100);
 
-	shared_ptr<TestLevelDefinedGameObject> obj1 { new TestLevelDefinedGameObject() };
+    shared_ptr<TestLevelDefinedGameObject> obj1 { new TestLevelDefinedGameObject() };
 
-	U32 obj1ID = obj1->GetID();
+    U32 obj1ID = obj1->GetID();
 
-	test->AddObjectToLevel(obj1);
+    test->AddObjectToLevel(obj1);
 
-	auto copy1 = test->GetGameObject(obj1ID);
+    auto copy1 = test->GetGameObject(obj1ID);
 
-	BOOST_CHECK_EQUAL(obj1ID, copy1->GetID());
+    BOOST_CHECK_EQUAL(obj1ID, copy1->GetID());
 
-	test->RemoveObjectFromLevel(obj1ID);
+    test->RemoveObjectFromLevel(obj1ID);
 
-	auto copy2 = test->GetGameObject(obj1ID);
+    auto copy2 = test->GetGameObject(obj1ID);
 
-	BOOST_CHECK_EQUAL(copy2, nullptr);
+    BOOST_CHECK_EQUAL(copy2, nullptr);
 
 /*
-	Error in GetShader call is blocking this code from running. It should be fixec, but I have
-	already spent too much time trying to get this to work. Calling it for now, since this is an
-	issue in the unit test framework, not the code itself.
+    Error in GetShader call is blocking this code from running. It should be fixec, but I have
+    already spent too much time trying to get this to work. Calling it for now, since this is an
+    issue in the unit test framework, not the code itself.
 
-	shared_ptr<TP::RigidBody2D> RigidBody2D { new TP::RigidBody2D() };
+    shared_ptr<TP::RigidBody2D> RigidBody2D { new TP::RigidBody2D() };
 
-	U32 RigidBody2DID = RigidBody2D->GetID();
+    U32 RigidBody2DID = RigidBody2D->GetID();
 
-	test->AddObjectToLevel(RigidBody2D);
+    test->AddObjectToLevel(RigidBody2D);
 
-	auto RigidBody2DCopy = test->GetRigidBody2D(RigidBody2DID);
+    auto RigidBody2DCopy = test->GetRigidBody2D(RigidBody2DID);
 
-	BOOST_CHECK_EQUAL(RigidBody2DCopy->GetID(), RigidBody2DID);
+    BOOST_CHECK_EQUAL(RigidBody2DCopy->GetID(), RigidBody2DID);
 
-	test->RemoveObjectFromLevel(RigidBody2DID);
+    test->RemoveObjectFromLevel(RigidBody2DID);
 
-	auto RigidBody2DCopy2 = test->GetRigidBody2D(RigidBody2DID);
+    auto RigidBody2DCopy2 = test->GetRigidBody2D(RigidBody2DID);
 
-	BOOST_CHECK_EQUAL(RigidBody2DCopy2, nullptr);
+    BOOST_CHECK_EQUAL(RigidBody2DCopy2, nullptr);
 
 }
 

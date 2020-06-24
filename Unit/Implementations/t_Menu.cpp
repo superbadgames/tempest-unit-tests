@@ -48,145 +48,145 @@ Disabled until gameobject can be smarter
 class MenuSelector : public TE::GameObject
 {
 public:
-	MenuSelector(void)
-	{  }
+    MenuSelector(void)
+    {  }
 
-	~MenuSelector(void)
-	{  }
+    ~MenuSelector(void)
+    {  }
 
-	void v_Update(void)
-	{  }
+    void v_Update(void)
+    {  }
 };
 
 BOOST_AUTO_TEST_CASE(MenuConstructorAndAccessors)
 {
-	TE::Menu menu{ };
+    TE::Menu menu{ };
 
-	menu.SetPosition(TM::Point(50.0f, 100.0f));
+    menu.SetPosition(TM::Point(50.0f, 100.0f));
 
-	BOOST_CHECK_EQUAL(menu.GetPosition().x, 50.0f);
-	BOOST_CHECK_EQUAL(menu.GetPosition().y, 100.0f);
+    BOOST_CHECK_EQUAL(menu.GetPosition().x, 50.0f);
+    BOOST_CHECK_EQUAL(menu.GetPosition().y, 100.0f);
 
-	menu.SetItemOffset(TM::Point(0.0f, 25.0f));
-	
-	BOOST_CHECK_EQUAL(menu.GetItemOffset().x, 0.0f);
-	BOOST_CHECK_EQUAL(menu.GetItemOffset().y, 25.0f);	
+    menu.SetItemOffset(TM::Point(0.0f, 25.0f));
+    
+    BOOST_CHECK_EQUAL(menu.GetItemOffset().x, 0.0f);
+    BOOST_CHECK_EQUAL(menu.GetItemOffset().y, 25.0f);	
 
-	menu.SetTitleOffset(TM::Point(0.0f, 50.0f));
+    menu.SetTitleOffset(TM::Point(0.0f, 50.0f));
 
-	BOOST_CHECK_EQUAL(menu.GetTitleOffset().x, 0.0f);
-	BOOST_CHECK_EQUAL(menu.GetTitleOffset().y, 50.0f);
+    BOOST_CHECK_EQUAL(menu.GetTitleOffset().x, 0.0f);
+    BOOST_CHECK_EQUAL(menu.GetTitleOffset().y, 50.0f);
 }
 
 bool menuItem1ActionStatus = false;
 
 void MenuItem1Action(void)
 {
-	menuItem1ActionStatus = !menuItem1ActionStatus;
+    menuItem1ActionStatus = !menuItem1ActionStatus;
 }
 
 BOOST_AUTO_TEST_CASE(MenuItemAddRemove)
 {
-	TE::Menu menu { };
+    TE::Menu menu { };
 
-	menu.SetPosition(0.0f, -100.0f);
-	menu.SetItemOffset(10.0f, -25.0f);
-	menu.SetSelectorOffset(-10.0f, 0.0f);
-	
-	TE::MenuItem item1 { };
-	item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
+    menu.SetPosition(0.0f, -100.0f);
+    menu.SetItemOffset(10.0f, -25.0f);
+    menu.SetSelectorOffset(-10.0f, 0.0f);
+    
+    TE::MenuItem item1 { };
+    item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
 
-	//Test that items are added and positions are correct.
-	menu.AddItem(item1);
+    //Test that items are added and positions are correct.
+    menu.AddItem(item1);
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+    BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
 
-	TE::MenuItem item2 { };
-	item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
+    TE::MenuItem item2 { };
+    item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
 
-	menu.AddItem(item2);
+    menu.AddItem(item2);
 
-	std::vector<TE::MenuItem> list = menu.GetItemList();
+    std::vector<TE::MenuItem> list = menu.GetItemList();
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
+    BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
 
-	BOOST_CHECK_EQUAL(list[0].pos.x, 0.0f);
-	BOOST_CHECK_EQUAL(list[0].pos.y, -100.0f);
+    BOOST_CHECK_EQUAL(list[0].pos.x, 0.0f);
+    BOOST_CHECK_EQUAL(list[0].pos.y, -100.0f);
 
-	BOOST_CHECK_EQUAL(list[1].pos.x, 10.0f);
-	BOOST_CHECK_EQUAL(list[1].pos.y, -125.0f);
+    BOOST_CHECK_EQUAL(list[1].pos.x, 10.0f);
+    BOOST_CHECK_EQUAL(list[1].pos.y, -125.0f);
 
-	menu.RemoveItem(1);
+    menu.RemoveItem(1);
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+    BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
 
-	menu.RemoveItem(1);
+    menu.RemoveItem(1);
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+    BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
 
-	menu.RemoveItem(0);
+    menu.RemoveItem(0);
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 0);
+    BOOST_CHECK_EQUAL(menu.GetTotalItems(), 0);
 
-	//Check that positions are updating if an index above is removed. 
-	menu.AddItem(item1);
-	menu.AddItem(item2);
-	menu.RemoveItem(0);
+    //Check that positions are updating if an index above is removed. 
+    menu.AddItem(item1);
+    menu.AddItem(item2);
+    menu.RemoveItem(0);
 
-	list = menu.GetItemList();
+    list = menu.GetItemList();
 
-	BOOST_CHECK_EQUAL(list[0].pos.x, 0.0f);
-	BOOST_CHECK_EQUAL(list[0].pos.y, -100.0f);	
+    BOOST_CHECK_EQUAL(list[0].pos.x, 0.0f);
+    BOOST_CHECK_EQUAL(list[0].pos.y, -100.0f);	
 }
 
 BOOST_AUTO_TEST_CASE(MenuItemSelector)
 {
-	TE::Menu menu { };
+    TE::Menu menu { };
 
-	menu.SetPosition(0.0f, -100.0f);
-	menu.SetItemOffset(0.0f, -25.0f);
-	menu.SetTitleOffset(0.0f, -50.0f);
-	menu.SetSelectorOffset(-10.0f, 0.0f);
-	
-	TE::MenuItem item1 { };
-	item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
-	item1.Action = &MenuItem1Action;
+    menu.SetPosition(0.0f, -100.0f);
+    menu.SetItemOffset(0.0f, -25.0f);
+    menu.SetTitleOffset(0.0f, -50.0f);
+    menu.SetSelectorOffset(-10.0f, 0.0f);
+    
+    TE::MenuItem item1 { };
+    item1.text = shared_ptr<TE::Text>(new TE::Text("Item1"));
+    item1.Action = &MenuItem1Action;
 
-	TE::MenuItem item2 { };
-	item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
+    TE::MenuItem item2 { };
+    item2.text = shared_ptr<TE::Text>(new TE::Text("Item2"));
 
-	menu.AddItem(item1);
-	menu.AddItem(item2);
+    menu.AddItem(item1);
+    menu.AddItem(item2);
 
-	shared_ptr<MenuSelector> selector = make_shared<MenuSelector>();
-	selector->SetActive(false);
+    shared_ptr<MenuSelector> selector = make_shared<MenuSelector>();
+    selector->SetActive(false);
 
-	menu.SetSelector(selector);
+    menu.SetSelector(selector);
 
-	BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
-	BOOST_CHECK_EQUAL(selector->GetPosition().y, -150.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().y, -150.0f);
 
-	menu.MoveSelectorDown();
+    menu.MoveSelectorDown();
 
-	BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
-	BOOST_CHECK_EQUAL(selector->GetPosition().y, -175.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().y, -175.0f);
 
-	menu.MoveSelectorUp();
+    menu.MoveSelectorUp();
 
-	BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
-	BOOST_CHECK_EQUAL(selector->GetPosition().y, -150.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().y, -150.0f);
 
-	menu.SetSelectorPosition(1);
+    menu.SetSelectorPosition(1);
 
-	BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
-	BOOST_CHECK_EQUAL(selector->GetPosition().y, -175.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().x, -10.0f);
+    BOOST_CHECK_EQUAL(selector->GetPosition().y, -175.0f);
 
-	menu.SetSelectorPosition(0);
-	menu.CallSelectedAction();
-	BOOST_CHECK_EQUAL(menuItem1ActionStatus, true);
+    menu.SetSelectorPosition(0);
+    menu.CallSelectedAction();
+    BOOST_CHECK_EQUAL(menuItem1ActionStatus, true);
 
-	menu.CallSelectedAction();
-	BOOST_CHECK_EQUAL(menuItem1ActionStatus, false);
+    menu.CallSelectedAction();
+    BOOST_CHECK_EQUAL(menuItem1ActionStatus, false);
 }
 
 */

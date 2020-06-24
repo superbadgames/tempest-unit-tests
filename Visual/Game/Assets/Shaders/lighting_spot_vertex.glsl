@@ -14,9 +14,9 @@ out vec4 fs_position;
 
 void main()
 {
-	fs_normal = mat4(transpose(inverse(model))) * normal;
-	fs_position = model * position;
+    fs_normal = mat4(transpose(inverse(model))) * normal;
+    fs_position = model * position;
 
-	fs_texCoord = texCoord;
-	gl_Position = projection * view * model * position;
+    fs_texCoord = texCoord;
+    gl_Position = projection * view * model * position;
 }

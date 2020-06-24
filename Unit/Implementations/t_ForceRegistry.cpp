@@ -50,111 +50,111 @@ Disabled until game object can be smarter
 class ForceRegObject : public TE::GameObject
 {
 public:
-	ForceRegObject(void)
-	: p_body2D(nullptr), p_body3D(nullptr)
-	{
-		GameObject::SetOrientation(1.0f);
-	}
+    ForceRegObject(void)
+    : p_body2D(nullptr), p_body3D(nullptr)
+    {
+        GameObject::SetOrientation(1.0f);
+    }
 
-	~ForceRegObject(void)
-	{
-		p_body2D.reset();
-		p_body3D.reset();
-	}
+    ~ForceRegObject(void)
+    {
+        p_body2D.reset();
+        p_body3D.reset();
+    }
 
-	void v_Update(void) final
-	{  }
+    void v_Update(void) final
+    {  }
 
-	void SetBody2D(void)
-	{
-		p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
-		p_body2D->SetObject(this);
-	}
+    void SetBody2D(void)
+    {
+        p_body2D = TE::EngineFactory::Instance()->MakeRigidBody2D();
+        p_body2D->SetObject(this);
+    }
 
-	void SetBody3D(void)
-	{
-		p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
-		p_body3D->SetObject(this);
-	}
+    void SetBody3D(void)
+    {
+        p_body3D = TE::EngineFactory::Instance()->MakeRigidBody3D();
+        p_body3D->SetObject(this);
+    }
 
-	TP::p_RigidBody2D p_body2D;
-	TP::p_RigidBody3D p_body3D;
+    TP::p_RigidBody2D p_body2D;
+    TP::p_RigidBody3D p_body3D;
 };
 
 BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 {
-	TP::ForceRegistry registry { };
-	ForceRegObject obj { };
-	obj.SetPosition(0.0f, 20.0f, 0.0f);
-	obj.SetBody2D();
+    TP::ForceRegistry registry { };
+    ForceRegObject obj { };
+    obj.SetPosition(0.0f, 20.0f, 0.0f);
+    obj.SetBody2D();
 
-	TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
+    TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
 
-	registry.Add(obj.p_body2D, p_gravity);
+    registry.Add(obj.p_body2D, p_gravity);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		registry.UpdateForces();
-		obj.p_body2D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        registry.UpdateForces();
+        obj.p_body2D->Integrate();
+    }
 
-	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+    BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
-	obj.SetPosition(20.0f, 0.0f, 0.0f);
-	obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
-	p_gravity->Set(1.0f, 0.0f, 1.0f);
+    obj.SetPosition(20.0f, 0.0f, 0.0f);
+    obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
+    p_gravity->Set(1.0f, 0.0f, 1.0f);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		registry.UpdateForces();
-		obj.p_body2D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        registry.UpdateForces();
+        obj.p_body2D->Integrate();
+    }
 
-	BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
 {
-	TP::ForceRegistry registry { };
-	ForceRegObject obj { };
-	obj.SetPosition(0.0f, 20.0f, 0.0f);
-	obj.SetBody3D();
+    TP::ForceRegistry registry { };
+    ForceRegObject obj { };
+    obj.SetPosition(0.0f, 20.0f, 0.0f);
+    obj.SetBody3D();
 
-	TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
+    TP::p_GravityForce p_gravity = TP::PhysicsFactory::Instance()->MakeGravityForce();
 
-	registry.Add(obj.p_body3D, p_gravity);
+    registry.Add(obj.p_body3D, p_gravity);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		registry.UpdateForces();
-		obj.p_body3D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        registry.UpdateForces();
+        obj.p_body3D->Integrate();
+    }
 
-	BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
-	BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().x, 0.0f);
+    BOOST_CHECK_LT(obj.GetPosition().y, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 
-	obj.SetPosition(20.0f, 0.0f, 0.0f);
-	obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
-	p_gravity->Set(1.0f, 0.0f, 1.0f);
+    obj.SetPosition(20.0f, 0.0f, 0.0f);
+    obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
+    p_gravity->Set(1.0f, 0.0f, 1.0f);
 
-	for(int i = 0; i < 50; ++i)
-	{
-		registry.UpdateForces();
-		obj.p_body3D->Integrate();
-	}
+    for(int i = 0; i < 50; ++i)
+    {
+        registry.UpdateForces();
+        obj.p_body3D->Integrate();
+    }
 
-	BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
-	BOOST_CHECK_GT(obj.GetPosition().z, 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
+    BOOST_CHECK_GT(obj.GetPosition().x, 20.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().y, 0.0f);
+    BOOST_CHECK_GT(obj.GetPosition().z, 0.0f);
+    BOOST_CHECK_EQUAL(obj.GetPosition().w, 1.0f);
 }
 
 */

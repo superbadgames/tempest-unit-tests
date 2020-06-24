@@ -34,19 +34,19 @@ Written by Maxwell Miller
 
 /*
 
-	Tests to add: 
+    Tests to add: 
 
-	AddClip
-	AddSource
-	RemoveClip
-	RemoveSource
-	AddClipToSource
-	SetListener
-	GetListener -> Change stuff
-	GetClip -> Change stuff
-	GetSource -> Change stuff 
+    AddClip
+    AddSource
+    RemoveClip
+    RemoveSource
+    AddClipToSource
+    SetListener
+    GetListener -> Change stuff
+    GetClip -> Change stuff
+    GetSource -> Change stuff 
 
-	AudioManager::LoadClip(U32 id, string filepath) => Should be created
+    AudioManager::LoadClip(U32 id, string filepath) => Should be created
 
 
 
@@ -62,67 +62,67 @@ namespace TE = Tempest;
 
 BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 {
-	shared_ptr<TE::AudioListener> listener = make_shared<TE::AudioListener>();
+    shared_ptr<TE::AudioListener> listener = make_shared<TE::AudioListener>();
 
-	TE::AudioManager::Instance()->SetListener(listener);
+    TE::AudioManager::Instance()->SetListener(listener);
 
-	shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
-	clip->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
+    shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
+    clip->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
 
-	TE::AudioManager::Instance()->AddClip(1, clip);
+    TE::AudioManager::Instance()->AddClip(1, clip);
 
-	shared_ptr<TE::AudioClip> clip2 = make_shared<TE::AudioClip>();
-	clip2->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
+    shared_ptr<TE::AudioClip> clip2 = make_shared<TE::AudioClip>();
+    clip2->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 
-	shared_ptr<TE::AudioSource> source = make_shared<TE::AudioSource>();
-	source->AddClip(clip2);
+    shared_ptr<TE::AudioSource> source = make_shared<TE::AudioSource>();
+    source->AddClip(clip2);
 
-	TE::AudioManager::Instance()->AddSource(1, source);
-	TE::AudioManager::Instance()->AddClip(2, clip2);
+    TE::AudioManager::Instance()->AddSource(1, source);
+    TE::AudioManager::Instance()->AddClip(2, clip2);
 
-	shared_ptr<TE::AudioSource> source2 = make_shared<TE::AudioSource>();
+    shared_ptr<TE::AudioSource> source2 = make_shared<TE::AudioSource>();
 
-	TE::AudioManager::Instance()->AddSource(2, source2);
+    TE::AudioManager::Instance()->AddSource(2, source2);
 
-	TE::AudioManager::Instance()->AddClipToSource(2, 2);
+    TE::AudioManager::Instance()->AddClipToSource(2, 2);
 
-	//Check that sources and clips have been added correctly. 
-	//Assuming that not nullptr is enough to know its ok. 
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(1), nullptr);
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(1), nullptr);
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(2)->GetClip(), nullptr);
+    //Check that sources and clips have been added correctly. 
+    //Assuming that not nullptr is enough to know its ok. 
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(1), nullptr);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(1), nullptr);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(2)->GetClip(), nullptr);
 
-	//Check that we can remove clips and sources
-	TE::AudioManager::Instance()->RemoveClip(1);
-	TE::AudioManager::Instance()->RemoveSource(1);
+    //Check that we can remove clips and sources
+    TE::AudioManager::Instance()->RemoveClip(1);
+    TE::AudioManager::Instance()->RemoveSource(1);
 
-	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetClip(1), nullptr);
-	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetSource(1), nullptr);
+    BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetClip(1), nullptr);
+    BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetSource(1), nullptr);
 
-	//Check that load clip is working
-	TE::AudioManager::Instance()->LoadClip(3, "../Assets/Audio/Komiku_04_Skate.wav");
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(3), nullptr);
+    //Check that load clip is working
+    TE::AudioManager::Instance()->LoadClip(3, "../Assets/Audio/Komiku_04_Skate.wav");
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetClip(3), nullptr);
 
-	shared_ptr<TE::AudioSource> source3 = make_shared<TE::AudioSource>();
-	TE::AudioManager::Instance()->AddSource(3, source);
+    shared_ptr<TE::AudioSource> source3 = make_shared<TE::AudioSource>();
+    TE::AudioManager::Instance()->AddSource(3, source);
 
-	TE::AudioManager::Instance()->AddClipToSource(3, 3);
+    TE::AudioManager::Instance()->AddClipToSource(3, 3);
 
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3), nullptr);
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3)->GetClip(), nullptr);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3), nullptr);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(3)->GetClip(), nullptr);
 
-	//Check for SetListener(void)
-	//First, unset the listener. Then call SetListener(void)
-	TE::AudioManager::Instance()->SetListener(nullptr);
-	BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetListener(), nullptr);
+    //Check for SetListener(void)
+    //First, unset the listener. Then call SetListener(void)
+    TE::AudioManager::Instance()->SetListener(nullptr);
+    BOOST_CHECK_EQUAL(TE::AudioManager::Instance()->GetListener(), nullptr);
 
-	TE::AudioManager::Instance()->SetListener();
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
+    TE::AudioManager::Instance()->SetListener();
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetListener(), nullptr);
 
-	//Test Load Source
-	TE::AudioManager::Instance()->LoadSource(4);
-	BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(4), nullptr);
+    //Test Load Source
+    TE::AudioManager::Instance()->LoadSource(4);
+    BOOST_CHECK_NE(TE::AudioManager::Instance()->GetSource(4), nullptr);
 }
 
 */

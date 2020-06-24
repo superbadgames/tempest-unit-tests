@@ -12,6 +12,6 @@ out vec4 fs_texCoord;
 
 void main(void)
 {
-	gl_Position = projection_mat * view_mat * model_mat * position;
-	fs_texCoord = texCoord;
+    gl_Position = projection_mat * view_mat * model_mat * position;
+    fs_texCoord = texCoord;
 }
