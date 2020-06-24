@@ -35,7 +35,7 @@ namespace Boxes
     {
     public:		
         Box(void);
-		
+        
         void v_Update(void);
 
         bool OverlapCheck(const shared_ptr<Box> other);

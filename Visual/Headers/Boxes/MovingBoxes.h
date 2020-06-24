@@ -44,7 +44,7 @@ namespace Boxes
         ~MovingBoxes(void) final;
 
         void v_Update(void);
-		
+        
         //void CheckBoxEdge(p_Box b);
 
         //void CheckCollisions(void);
