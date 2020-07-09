@@ -53,22 +53,22 @@ namespace TM = TempestMath;
 //GameObject Class Creation
 //==========================================================================================================================
 
-class GameObject2DTest : public TE::GameObject2D
-{
-public:
-    GameObject2DTest(void) 
-    {  }
-
-    ~GameObject2DTest(void)
-    {  }
-
-    void v_Update(void)
-    {  }
-};
-
-BOOST_AUTO_TEST_CASE(GameObjectConstructor)
-{
-    GameObject2DTest obj { };
-
-    BOOST_CHECK_GE(obj.GetID(), (U32)1);
-}
+//class GameObject2DTest : public TE::GameObject2D
+//{
+//public:
+//    GameObject2DTest(void) 
+//    {  }
+//
+//    ~GameObject2DTest(void)
+//    {  }
+//
+//    void v_Update(void)
+//    {  }
+//};
+//
+//BOOST_AUTO_TEST_CASE(GameObjectConstructor)
+//{
+//    GameObject2DTest obj { };
+//
+//    BOOST_CHECK_GE(obj.GetID(), (U32)1);
+//}

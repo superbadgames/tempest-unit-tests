@@ -343,61 +343,40 @@ BOOST_AUTO_TEST_CASE(Matrix4Reset)
 BOOST_AUTO_TEST_CASE(Matrix4Translation)
 {
     TM::Matrix4 T{};
-    T.SetTranslate(10.0f, 5.0f);
+    T.Translate(10.0f, 5.0f);
 
     BOOST_CHECK_EQUAL(T.column4.x, 10.0f);
     BOOST_CHECK_EQUAL(T.column4.y, 5.0f);
     BOOST_CHECK_EQUAL(T.column4.z, 0.0f);
     BOOST_CHECK_EQUAL(T.column4.w, 1.0f);
 
-    T.SetTranslate(15.0f, 20.0f, 30.0f);
+    T.Translate(15.0f, 20.0f, 30.0f);
 
     BOOST_CHECK_EQUAL(T.column4.x, 15.0f);
     BOOST_CHECK_EQUAL(T.column4.y, 20.0f);
     BOOST_CHECK_EQUAL(T.column4.z, 30.0f);
     BOOST_CHECK_EQUAL(T.column4.w, 1.0f);
-
-    TM::Matrix4 T2 = TM::Matrix4::Translate(3.0f, 5.0f);
-
-    BOOST_CHECK_EQUAL(T2.column4.x, 3.0f);
-    BOOST_CHECK_EQUAL(T2.column4.y, 5.0f);
-    BOOST_CHECK_EQUAL(T2.column4.z, 0.0f);
-    BOOST_CHECK_EQUAL(T2.column4.w, 1.0f);
-
-    TM::Matrix4 T3 = TM::Matrix4::Translate(6.0f, 9.0f, 100.0f);
-
-    BOOST_CHECK_EQUAL(T3.column4.x, 6.0f);
-    BOOST_CHECK_EQUAL(T3.column4.y, 9.0f);
-    BOOST_CHECK_EQUAL(T3.column4.z, 100.0f);
-    BOOST_CHECK_EQUAL(T3.column4.w, 1.0f);
-
-    TM::Matrix4 T4 = TM::Matrix4::Translate(TM::Vector4(5.0f, 4.0f, 2.0f, 0.0f));
-
-    BOOST_CHECK_EQUAL(T4.column4.x, 5.0f);
-    BOOST_CHECK_EQUAL(T4.column4.y, 4.0f);
-    BOOST_CHECK_EQUAL(T4.column4.z, 2.0f);
-    BOOST_CHECK_EQUAL(T4.column4.w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix4Scale)
 {
     TM::Matrix4 mat(1.0f);
 
-    mat.SetScale(3.0f, 4.0f);
+    mat.Scale(3.0f, 4.0f);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 3.0f);
     BOOST_CHECK_EQUAL(mat.column2.y, 4.0f);
     BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
 
-    mat.SetScale(2.0f, 2.0f, 2.0f);
+    mat.Scale(2.0f, 2.0f, 2.0f);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 2.0f);
     BOOST_CHECK_EQUAL(mat.column2.y, 2.0f);
     BOOST_CHECK_EQUAL(mat.column3.z, 2.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
 
-    mat.SetScale(TM::Vector4(5.0f, 4.0f, 3.0f, 0.0f));
+    mat.Scale(TM::Vector4(5.0f, 4.0f, 3.0f, 0.0f));
 
     BOOST_CHECK_EQUAL(mat.column1.x, 5.0f);
     BOOST_CHECK_EQUAL(mat.column2.y, 4.0f);
@@ -406,7 +385,7 @@ BOOST_AUTO_TEST_CASE(Matrix4Scale)
     
     TM::Vector2 vec{2.0f, 3.0f};
 
-    mat.SetScale(vec);
+    mat.Scale(vec);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 2.0f);
     BOOST_CHECK_EQUAL(mat.column2.y, 3.0f);
@@ -415,40 +394,19 @@ BOOST_AUTO_TEST_CASE(Matrix4Scale)
 
     TM::Vector3 vec3d{10.0f, 20.0f, 5.0f};
 
-    mat.SetScale(vec3d);
+    mat.Scale(vec3d);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 10.0f);
     BOOST_CHECK_EQUAL(mat.column2.y, 20.0f);
     BOOST_CHECK_EQUAL(mat.column3.z, 5.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
-
-    TM::Matrix4 mat2 = TM::Matrix4::Scale(2.0f, 5.0f);
-
-    BOOST_CHECK_EQUAL(mat2.column1.x, 2.0f);
-    BOOST_CHECK_EQUAL(mat2.column2.y, 5.0f);
-    BOOST_CHECK_EQUAL(mat2.column3.z, 1.0f);
-    BOOST_CHECK_EQUAL(mat2.column4.w, 1.0f);
-
-    TM::Matrix4 mat3 = TM::Matrix4::Scale(6.0f, 4.0f, 8.0f);
-
-    BOOST_CHECK_EQUAL(mat3.column1.x, 6.0f);
-    BOOST_CHECK_EQUAL(mat3.column2.y, 4.0f);
-    BOOST_CHECK_EQUAL(mat3.column3.z, 8.0f);
-    BOOST_CHECK_EQUAL(mat3.column4.w, 1.0f);
-
-    TM::Matrix4 mat4 = TM::Matrix4::Scale(TM::Vector4(13.0f, 50.0f, 2.0f, 0.0f));
-
-    BOOST_CHECK_EQUAL(mat4.column1.x, 13.0f);
-    BOOST_CHECK_EQUAL(mat4.column2.y, 50.0f);
-    BOOST_CHECK_EQUAL(mat4.column3.z, 2.0f);
-    BOOST_CHECK_EQUAL(mat4.column4.w, 1.0f);
 }
 
 BOOST_AUTO_TEST_CASE(Matrix4Rotation)
 {
     TM::Matrix4 mat{1.0f};
 
-    mat.SetRotateX(-22.0f);
+    mat.RotateX(-22.0f);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
     BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
@@ -470,30 +428,8 @@ BOOST_AUTO_TEST_CASE(Matrix4Rotation)
     BOOST_CHECK_EQUAL(mat.column4.z, 0.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
 
-    TM::Matrix4 xMat = TM::Matrix4::RotateX(-22.0f);
-
-    BOOST_CHECK_EQUAL(xMat.column1.x, 1.0f);
-    BOOST_CHECK_EQUAL(xMat.column1.y, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column1.z, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column1.w, 0.0f);
-
-    BOOST_CHECK_EQUAL(xMat.column2.x, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.y), 0.92718f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.z), 0.37461f);
-    BOOST_CHECK_EQUAL(xMat.column2.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(xMat.column3.x, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.y), -0.37461f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.z), 0.92718f);
-    BOOST_CHECK_EQUAL(xMat.column3.w, 0.0f);
-
-    BOOST_CHECK_EQUAL(xMat.column4.x, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column4.y, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column4.z, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column4.w, 1.0f);
-
     mat.MakeIdentity();
-    mat.SetRotateY(30.0f);
+    mat.RotateY(30.0f);
 
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.86603f);
     BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
@@ -515,29 +451,7 @@ BOOST_AUTO_TEST_CASE(Matrix4Rotation)
     BOOST_CHECK_EQUAL(mat.column4.z, 0.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
 
-    TM::Matrix4 yMat = TM::Matrix4::RotateY(30.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.x), 0.86603f);
-    BOOST_CHECK_EQUAL(yMat.column1.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.z),0.50000f);
-    BOOST_CHECK_EQUAL(yMat.column1.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(yMat.column2.x, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column2.y, 1.0f);
-    BOOST_CHECK_EQUAL(yMat.column2.z, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column2.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.x), -0.50000f);
-    BOOST_CHECK_EQUAL(yMat.column3.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.z), 0.86603f);
-    BOOST_CHECK_EQUAL(yMat.column3.w, 0.0f);
-
-    BOOST_CHECK_EQUAL(yMat.column4.x, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column4.y, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column4.z, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column4.w, 1.0f);
-
-    mat.SetRotateZ(26.0f);
+    mat.RotateZ(26.0f);
 
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.89879f);
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), -0.43837f);
@@ -558,51 +472,6 @@ BOOST_AUTO_TEST_CASE(Matrix4Rotation)
     BOOST_CHECK_EQUAL(mat.column4.y, 0.0f);
     BOOST_CHECK_EQUAL(mat.column4.z, 0.0f);
     BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
-
-    TM::Matrix4 zMat = TM::Matrix4::RotateZ(26.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.x), 0.89879f);
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.y), -0.43837f);
-    BOOST_CHECK_EQUAL(zMat.column1.z, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column1.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.x), 0.43837f);
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.y), 0.89879f);
-    BOOST_CHECK_EQUAL(zMat.column2.z, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column2.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(zMat.column3.x, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column3.y, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column3.z, 1.0f);
-    BOOST_CHECK_EQUAL(zMat.column3.w, 0.0f);
-
-    BOOST_CHECK_EQUAL(zMat.column4.x, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column4.y, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column4.z, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column4.w, 1.0f);
-/*	
-    mat.Rotate(30.0f, 78.0f, 245.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), -0.08787f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), 0.18843);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.z), 0.97815f);
-    BOOST_CHECK_EQUAL(mat.column1.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.x), -0.99158f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.y), 0.07725f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.z), -0.10396f);
-    BOOST_CHECK_EQUAL(mat.column2.w, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.x), -0.09515f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.y), -0.97904f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.18006f);
-    BOOST_CHECK_EQUAL(mat.column3.w, 0.0f);
-
-    BOOST_CHECK_EQUAL(mat.column4.x, 0.0f);
-    BOOST_CHECK_EQUAL(mat.column4.y, 0.0f);
-    BOOST_CHECK_EQUAL(mat.column4.z, 0.0f);
-    BOOST_CHECK_EQUAL(mat.column4.w, 1.0f);
-*/
 }
 
 
@@ -728,34 +597,6 @@ BOOST_AUTO_TEST_CASE(Matrix4Inverse)
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column4.y), 1.25263f);
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column4.z), -2.30526f);
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column4.w), -1.30526f);
-
-    //TM::Matrix4 mat2 = mat1.GetInverse();
-
-/*
-    This should work, but for some reason .column2.y is wrong, and I do not know why
-    It is coming up ad like, -5.something something. Not sure why. Could cause
-    problems later for sure though...
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.x), 3.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.y), 18.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.z), 1.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.w), 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.x), 8.0f);
-    BOOST_CHECK_EQUAL(mat2.column2.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.z), 9.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.w), 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.x), 1.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.y), 2.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.z), 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.w), -1.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column4.x), 7.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column4.y), 2.99999f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column4.z), 9.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column4.w), 1.0f);
-*/
 
     TM::Matrix4 mat3
     {

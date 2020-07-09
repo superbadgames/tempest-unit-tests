@@ -282,7 +282,7 @@ BOOST_AUTO_TEST_CASE(Matrix3Rotation)
 {
     TM::Matrix3 mat{1.0f};
 
-    mat.SetRotateX(-22.0f);
+    mat.RotateX(-22.0f);
 
     BOOST_CHECK_EQUAL(mat.column1.x, 1.0f);
     BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
@@ -296,22 +296,7 @@ BOOST_AUTO_TEST_CASE(Matrix3Rotation)
     BOOST_CHECK_EQUAL(RoundFloat(mat.column3.y), -0.37461f);
     BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.92718f);
 
-    TM::Matrix3 xMat = TM::Matrix3::RotateX(-22.0f);
-
-    BOOST_CHECK_EQUAL(xMat.column1.x, 1.0f);
-    BOOST_CHECK_EQUAL(xMat.column1.y, 0.0f);
-    BOOST_CHECK_EQUAL(xMat.column1.z, 0.0f);
-
-    BOOST_CHECK_EQUAL(xMat.column2.x, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.y), 0.92718f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column2.z), 0.37461f);
-    
-    BOOST_CHECK_EQUAL(xMat.column3.x, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.y), -0.37461f);
-    BOOST_CHECK_EQUAL(RoundFloat(xMat.column3.z), 0.92718f);
-
-
-    mat.SetRotateY(30.0f);
+    mat.RotateY(30.0f);
 
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.86603f);
     BOOST_CHECK_EQUAL(mat.column1.y, 0.0f);
@@ -325,21 +310,7 @@ BOOST_AUTO_TEST_CASE(Matrix3Rotation)
     BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
     BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.86603f);
 
-    TM::Matrix3 yMat = TM::Matrix3::RotateY(30.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.x), 0.86603f);
-    BOOST_CHECK_EQUAL(yMat.column1.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column1.z),0.50000f);
-    
-    BOOST_CHECK_EQUAL(yMat.column2.x, 0.0f);
-    BOOST_CHECK_EQUAL(yMat.column2.y, 1.0f);
-    BOOST_CHECK_EQUAL(yMat.column2.z, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.x), -0.50000f);
-    BOOST_CHECK_EQUAL(yMat.column3.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(yMat.column3.z), 0.86603f);
-
-    mat.SetRotateZ(26.0f);
+    mat.RotateZ(26.0f);
 
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), 0.89879f);
     BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), -0.43837f);
@@ -352,37 +323,7 @@ BOOST_AUTO_TEST_CASE(Matrix3Rotation)
     BOOST_CHECK_EQUAL(mat.column3.x, 0.0f);
     BOOST_CHECK_EQUAL(mat.column3.y, 0.0f);
     BOOST_CHECK_EQUAL(mat.column3.z, 1.0f);
-
-    TM::Matrix3 zMat = TM::Matrix3::RotateZ(26.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.x), 0.89879f);
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column1.y), -0.43837f);
-    BOOST_CHECK_EQUAL(zMat.column1.z, 0.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.x), 0.43837f);
-    BOOST_CHECK_EQUAL(RoundFloat(zMat.column2.y), 0.89879f);
-    BOOST_CHECK_EQUAL(zMat.column2.z, 0.0f);
-    
-    BOOST_CHECK_EQUAL(zMat.column3.x, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column3.y, 0.0f);
-    BOOST_CHECK_EQUAL(zMat.column3.z, 1.0f);
-/*	
-    mat.Rotate(30.0f, 78.0f, 245.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.x), -0.08787f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.y), 0.18843);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column1.z), 0.97815f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.x), -0.99158f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.y), 0.07725f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column2.z), -0.10396f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.x), -0.09515f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.y), -0.97904f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat.column3.z), 0.18006f);
-*/
 }
-
 
 BOOST_AUTO_TEST_CASE(Matrix3Transpose)
 {
@@ -477,30 +418,6 @@ BOOST_AUTO_TEST_CASE(Matrix3Inverse)
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.x), 0.12903f);
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.y), 0.09677f);
     BOOST_CHECK_EQUAL(RoundFloat(mat1.column3.z), -1.16129f);
-
-    //TM::Matrix3 mat2 = mat1.GetInverse();
-
-/*
-    This should work, but for some reason .column2.y is wrong, and I do not know why
-    It is coming up ad like, -5.something something. Not sure why. Could cause
-    problems later for sure though...
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.x), 3.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.y), 18.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column1.z), 1.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.x), 8.0f);
-    BOOST_CHECK_EQUAL(mat2.column2.y, 0.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column2.z), 9.0f);
-    
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.x), 1.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.y), 2.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2.column3.z), 0.0f);
-
-    BOOST_CHECK_EQUAL(RoundFloat(mat2[3].x), 7.0f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2[3].y), 2.99999f);
-    BOOST_CHECK_EQUAL(RoundFloat(mat2[3].z), 9.0f);
-*/
 
     TM::Matrix3 mat3
     {

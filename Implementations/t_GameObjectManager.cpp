@@ -63,31 +63,31 @@ BOOST_AUTO_TEST_CASE(GameObjectManagerConstructor)
     BOOST_CHECK_NE(TE::GameObjectManager::Instance(), nullptr);
 }
 
-BOOST_AUTO_TEST_CASE(GameObjectManagerAddRemoveGetGameObject)
-{
-    shared_ptr<GameObjectManagerDefineObj2D> obj1 = make_shared<GameObjectManagerDefineObj2D>();
-    U32 id_1 = obj1->GetID();
-
-    shared_ptr<GameObjectManagerDefineObj2D> obj2 = make_shared<GameObjectManagerDefineObj2D>();
-    U32 id_2 = obj2->GetID();
-
-    shared_ptr<GameObjectManagerDefineObj2D> obj3 = make_shared<GameObjectManagerDefineObj2D>();
-    U32 id_3 = obj3->GetID();
-
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 0);
-    
-    TE::GameObjectManager::Instance()->AddDynamicObject(obj1);
-    TE::GameObjectManager::Instance()->AddDynamicObject(obj2);
-    TE::GameObjectManager::Instance()->AddDynamicObject(obj3);
-    
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 3);
-
-    TE::p_GameObject2D gotObj = TE::GameObjectManager::Instance()->GetDynamicObject(id_1);
-
-    BOOST_CHECK_EQUAL(gotObj->GetID(), id_1);
-    
-    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_2);
-    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_3);
-
-    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 1);
-}
+//BOOST_AUTO_TEST_CASE(GameObjectManagerAddRemoveGetGameObject)
+//{
+//    shared_ptr<GameObjectManagerDefineObj2D> obj1 = make_shared<GameObjectManagerDefineObj2D>();
+//    U32 id_1 = obj1->GetID();
+//
+//    shared_ptr<GameObjectManagerDefineObj2D> obj2 = make_shared<GameObjectManagerDefineObj2D>();
+//    U32 id_2 = obj2->GetID();
+//
+//    shared_ptr<GameObjectManagerDefineObj2D> obj3 = make_shared<GameObjectManagerDefineObj2D>();
+//    U32 id_3 = obj3->GetID();
+//
+//    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 0);
+//    
+//    TE::GameObjectManager::Instance()->AddDynamicObject(obj1);
+//    TE::GameObjectManager::Instance()->AddDynamicObject(obj2);
+//    TE::GameObjectManager::Instance()->AddDynamicObject(obj3);
+//    
+//    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 3);
+//
+//    TE::p_GameObject2D gotObj = TE::GameObjectManager::Instance()->GetDynamicObject(id_1);
+//
+//    BOOST_CHECK_EQUAL(gotObj->GetID(), id_1);
+//    
+//    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_2);
+//    TE::GameObjectManager::Instance()->RemoveDynamicObject(id_3);
+//
+//    BOOST_CHECK_EQUAL(TE::GameObjectManager::Instance()->GetDynamicObjectCount(), 1);
+//}
