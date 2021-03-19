@@ -36,7 +36,7 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/AABB.h>
-#include <Engine/Point3.h>
+#include <Engine/Vector3.h>
 
 namespace TC = TempestCollisions;
 namespace TM = TempestMath;
@@ -45,18 +45,18 @@ BOOST_AUTO_TEST_CASE(AABBConstructors)
 {
     TC::AABB box {  };
 
-    BOOST_CHECK_EQUAL(box.GetCenter().x, 0.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().y, 0.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().z, 0.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetX(), 0.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetY(), 0.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetZ(), 0.0f);
     BOOST_CHECK_EQUAL(box.GetWidth(), 0.0f);
     BOOST_CHECK_EQUAL(box.GetHeight(), 0.0f);
     BOOST_CHECK_EQUAL(box.GetDepth(), 0.0f);
 
     TC::AABB box2 { TM::Point3(4.0f, 53.0f, 20.0f), 1.0f, 2.0f, 3.0f };
 
-    BOOST_CHECK_EQUAL(box2.GetCenter().x, 4.0f);
-    BOOST_CHECK_EQUAL(box2.GetCenter().y, 53.0f);
-    BOOST_CHECK_EQUAL(box2.GetCenter().z, 20.0f);
+    BOOST_CHECK_EQUAL(box2.GetCenter().GetX(), 4.0f);
+    BOOST_CHECK_EQUAL(box2.GetCenter().GetY(), 53.0f);
+    BOOST_CHECK_EQUAL(box2.GetCenter().GetZ(), 20.0f);
     BOOST_CHECK_EQUAL(box2.GetWidth(), 1.0f);
     BOOST_CHECK_EQUAL(box2.GetHeight(), 2.0f);
     BOOST_CHECK_EQUAL(box2.GetDepth(), 3.0f);
@@ -71,15 +71,15 @@ BOOST_AUTO_TEST_CASE(AABBAccessors)
     
     box.SetCenter(TM::Point3(2.0f, 5.0f, 3.0f));
 
-    BOOST_CHECK_EQUAL(box.GetCenter().x, 2.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().y, 5.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().z, 3.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetX(), 2.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetY(), 5.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetZ(), 3.0f);
 
     box.SetCenter(14.0f, 30.0f, 150.0f);
 
-    BOOST_CHECK_EQUAL(box.GetCenter().x, 14.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().y, 30.0f);
-    BOOST_CHECK_EQUAL(box.GetCenter().z, 150.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetX(), 14.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetY(), 30.0f);
+    BOOST_CHECK_EQUAL(box.GetCenter().GetZ(), 150.0f);
 
     box.SetHalfWidth(5.0f);
     BOOST_CHECK_EQUAL(box.GetHalfWidth(), 5.0f);

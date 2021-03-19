@@ -50,12 +50,12 @@ BOOST_AUTO_TEST_CASE(AudioSourceConstructor)
     BOOST_CHECK_EQUAL(source.GetLooping(), false);
     BOOST_CHECK_GT((int)source.GetSourceID(), 0);
     BOOST_CHECK_EQUAL(source.GetPitch(), 1.0f);
-    BOOST_CHECK_EQUAL(source.GetPosition().x, 0.0f);
-    BOOST_CHECK_EQUAL(source.GetPosition().y, 0.0f);
-    BOOST_CHECK_EQUAL(source.GetPosition().z, 0.0f);
-    BOOST_CHECK_EQUAL(source.GetVelocity().x, 0.0f);
-    BOOST_CHECK_EQUAL(source.GetVelocity().y, 0.0f);
-    BOOST_CHECK_EQUAL(source.GetVelocity().z, 0.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetX(), 0.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetY(), 0.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetZ(), 0.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetX(), 0.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetY(), 0.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetZ(), 0.0f);
     BOOST_CHECK_EQUAL(source.GetClip(), nullptr);
 }
 
@@ -101,9 +101,9 @@ BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
     //Position
     source.SetPosition(2.0f, 3.0f, 4.0f);
 
-    BOOST_CHECK_EQUAL(source.GetPosition().x, 2.0f);
-    BOOST_CHECK_EQUAL(source.GetPosition().y, 3.0f);
-    BOOST_CHECK_EQUAL(source.GetPosition().z, 4.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetX(), 2.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetY(), 3.0f);
+    BOOST_CHECK_EQUAL(source.GetPosition().GetZ(), 4.0f);
 
     F32 xPos, yPos, zPos;
 
@@ -116,9 +116,9 @@ BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
     //Velocity
     source.SetVelocity(6.0f, 7.0f, 8.0f);
 
-    BOOST_CHECK_EQUAL(source.GetVelocity().x, 6.0f);
-    BOOST_CHECK_EQUAL(source.GetVelocity().y, 7.0f);
-    BOOST_CHECK_EQUAL(source.GetVelocity().z, 8.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetX(), 6.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetY(), 7.0f);
+    BOOST_CHECK_EQUAL(source.GetVelocity().GetZ(), 8.0f);
 
     F32 xVel, yVel, zVel;
 
