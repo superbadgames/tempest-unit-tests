@@ -129,21 +129,21 @@ BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
     BOOST_CHECK_EQUAL(zVel, 8.0f);
 }
 
-BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
-{
-
-    TE::AudioSource source { };
-
-    shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
-
-    clip->LoadWAV2("./Assets/Komiku_04_Skate.wav");
-
-    BOOST_CHECK_GT(static_cast<S32>(clip->GetBufferID()), 1);
-    
-    source.AddClip(clip);
-
-    shared_ptr<TE::AudioClip> clipCopy = source.GetClip();
-
-    BOOST_CHECK_NE(clipCopy, nullptr);
-    BOOST_CHECK_GT(static_cast<S32>(clipCopy->GetBufferID()), 1);
-}
+//BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
+//{
+//
+//    TE::AudioSource source { };
+//
+//    shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
+//
+//    clip->LoadWAV2("./Assets/Komiku_04_Skate.wav");
+//
+//    BOOST_CHECK_GT(static_cast<S32>(clip->GetBufferID()), 1);
+//    
+//    source.AddClip(clip);
+//
+//    shared_ptr<TE::AudioClip> clipCopy = source.GetClip();
+//
+//    BOOST_CHECK_NE(clipCopy, nullptr);
+//    BOOST_CHECK_GT(static_cast<S32>(clipCopy->GetBufferID()), 1);
+//}

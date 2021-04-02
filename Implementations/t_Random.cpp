@@ -127,58 +127,58 @@ BOOST_AUTO_TEST_CASE(RandomVector4_tests)
 {
     TM::Vector4 a = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
-    BOOST_CHECK_GE(a.x, 0.0f);
-    BOOST_CHECK_LE(a.x, 1.0f);
-    BOOST_CHECK_GE(a.y, 0.0f);
-    BOOST_CHECK_LE(a.y, 1.0f);
+    BOOST_CHECK_GE(a.GetX(), 0.0f);
+    BOOST_CHECK_LE(a.GetX(), 1.0f);
+    BOOST_CHECK_GE(a.GetY(), 0.0f);
+    BOOST_CHECK_LE(a.GetY(), 1.0f);
 
     a = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
-    BOOST_CHECK_GE(a.x, 10.0f);
-    BOOST_CHECK_LE(a.x, 100.0f);
-    BOOST_CHECK_GE(a.y, 10.0f);
-    BOOST_CHECK_LE(a.y, 100.0f);
+    BOOST_CHECK_GE(a.GetX(), 10.0f);
+    BOOST_CHECK_LE(a.GetX(), 100.0f);
+    BOOST_CHECK_GE(a.GetY(), 10.0f);
+    BOOST_CHECK_LE(a.GetY(), 100.0f);
 
     TM::Vector4 b = TM::Random::Instance()->RandomVector4(0.0f, 1.0f);
 
-    BOOST_CHECK_GE(b.x, 0.0f);
-    BOOST_CHECK_LE(b.x, 1.0f);
-    BOOST_CHECK_GE(b.y, 0.0f);
-    BOOST_CHECK_LE(b.y, 1.0f);
-    BOOST_CHECK_GE(b.z, 0.0f);
-    BOOST_CHECK_LE(b.z, 1.0f);
+    BOOST_CHECK_GE(b.GetX(), 0.0f);
+    BOOST_CHECK_LE(b.GetX(), 1.0f);
+    BOOST_CHECK_GE(b.GetY(), 0.0f);
+    BOOST_CHECK_LE(b.GetY(), 1.0f);
+    BOOST_CHECK_GE(b.GetZ(), 0.0f);
+    BOOST_CHECK_LE(b.GetZ(), 1.0f);
 
     b = TM::Random::Instance()->RandomVector4(10.0f, 100.0f);
 
-    BOOST_CHECK_GE(b.x, 10.0f);
-    BOOST_CHECK_LE(b.x, 100.0f);
-    BOOST_CHECK_GE(b.y, 10.0f);
-    BOOST_CHECK_LE(b.y, 100.0f);
-    BOOST_CHECK_GE(b.z, 10.0f);
-    BOOST_CHECK_LE(b.z, 100.0f);
+    BOOST_CHECK_GE(b.GetX(), 10.0f);
+    BOOST_CHECK_LE(b.GetX(), 100.0f);
+    BOOST_CHECK_GE(b.GetY(), 10.0f);
+    BOOST_CHECK_LE(b.GetY(), 100.0f);
+    BOOST_CHECK_GE(b.GetZ(), 10.0f);
+    BOOST_CHECK_LE(b.GetZ(), 100.0f);
 }
 
 BOOST_AUTO_TEST_CASE(RandomQuaternion_tests)
 {
     TM::Quaternion a = TM::Random::Instance()->RandomQuaternion(0.0f, 1.0f);
 
-    BOOST_CHECK_GE(a.x, 0.0f);
-    BOOST_CHECK_LE(a.x, 1.0f);
-    BOOST_CHECK_GE(a.y, 0.0f);
-    BOOST_CHECK_LE(a.y, 1.0f);
-    BOOST_CHECK_GE(a.z, 0.0f);
-    BOOST_CHECK_LE(a.z, 1.0f);
-    BOOST_CHECK_GE(a.x, 0.0f);
-    BOOST_CHECK_LE(a.x, 1.0f);
+    BOOST_CHECK_GE(a.GetX(), 0.0f);
+    BOOST_CHECK_LE(a.GetX(), 1.0f);
+    BOOST_CHECK_GE(a.GetY(), 0.0f);
+    BOOST_CHECK_LE(a.GetY(), 1.0f);
+    BOOST_CHECK_GE(a.GetZ(), 0.0f);
+    BOOST_CHECK_LE(a.GetZ(), 1.0f);
+    BOOST_CHECK_GE(a.GetX(), 0.0f);
+    BOOST_CHECK_LE(a.GetX(), 1.0f);
 
     a = TM::Random::Instance()->RandomQuaternion(10.0f, 100.0f);
 
-    BOOST_CHECK_GE(a.x, 10.0f);
-    BOOST_CHECK_LE(a.x, 100.0f);
-    BOOST_CHECK_GE(a.y, 10.0f);
-    BOOST_CHECK_LE(a.y, 100.0f);
-    BOOST_CHECK_GE(a.z, 10.0f);
-    BOOST_CHECK_LE(a.z, 100.0f);
-    BOOST_CHECK_GE(a.x, 10.0f);
-    BOOST_CHECK_LE(a.x, 100.0f);
+    BOOST_CHECK_GE(a.GetX(), 10.0f);
+    BOOST_CHECK_LE(a.GetX(), 100.0f);
+    BOOST_CHECK_GE(a.GetY(), 10.0f);
+    BOOST_CHECK_LE(a.GetY(), 100.0f);
+    BOOST_CHECK_GE(a.GetZ(), 10.0f);
+    BOOST_CHECK_LE(a.GetZ(), 100.0f);
+    BOOST_CHECK_GE(a.GetX(), 10.0f);
+    BOOST_CHECK_LE(a.GetX(), 100.0f);
 }

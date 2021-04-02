@@ -139,7 +139,6 @@
     <ClCompile Include="..\..\Implementations\t_AudioSource.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Color.cpp" />
     <ClCompile Include="..\..\Implementations\t_Event.cpp" />
     <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp" />
     <ClCompile Include="..\..\Implementations\t_ForceRegistry.cpp" />
@@ -147,25 +146,18 @@
     <ClCompile Include="..\..\Implementations\t_GameObjectManager.cpp" />
     <ClCompile Include="..\..\Implementations\t_Level.cpp" />
     <ClCompile Include="..\..\Implementations\t_Main.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Matrix3.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Matrix4.cpp" />
     <ClCompile Include="..\..\Implementations\t_Menu.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Point.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Quaternion.cpp" />
     <ClCompile Include="..\..\Implementations\t_Random.cpp" />
     <ClCompile Include="..\..\Implementations\t_RigidBody2D.cpp" />
     <ClCompile Include="..\..\Implementations\t_RigidBody3D.cpp" />
     <ClCompile Include="..\..\Implementations\t_StateMachine.cpp" />
     <ClCompile Include="..\..\Implementations\t_Timer.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Vector3.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\stdafx.h" />
-    <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

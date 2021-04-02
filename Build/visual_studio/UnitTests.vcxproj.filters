@@ -12,9 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\t_Vector3.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Main.cpp">
       <Filter>Source Code</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
     <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Color.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
@@ -54,19 +48,7 @@
     <ClCompile Include="..\..\Implementations\t_Main.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Matrix3.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Matrix4.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Menu.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Point.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Quaternion.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Random.cpp">
@@ -79,9 +61,6 @@
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Timer.cpp">
-      <Filter>Source Code\Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Vector4.cpp">
       <Filter>Source Code\Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_GameObjectManager.cpp">
@@ -106,9 +85,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h">
-      <Filter>Source Code</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\stdafx.h">
       <Filter>Source Code</Filter>
     </ClInclude>
